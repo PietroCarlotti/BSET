@@ -23,7 +23,7 @@ scenarios.
 
 For a detailed walkthrough and examples of the imputation-based
 methodology, please visit the [BSET
-Tutorial](https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html).
+Tutorial](https://htmlpreview.github.io/?https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html).
 
 ## Installation
 
