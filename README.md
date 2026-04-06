@@ -21,8 +21,9 @@ replicate studies from both papers, enabling performance comparisons
 between Bayesian and frequentist approaches across diverse clinical
 scenarios.
 
-Go here to view a tutorial for this package: [BSET
-Tutorial](https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html)
+For a detailed walkthrough and examples of the imputation-based
+methodology, please visit the [BSET
+Tutorial](https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html).
 
 ## Installation
 
