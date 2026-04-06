@@ -305,8 +305,8 @@ BSET_no_X <- function(
 #' P_{1i}, & \text{if } Z_i = 1 \\
 #' P_{0i}, & \text{if } Z_i = 0
 #' \end{cases}, \quad i = 1, \ldots, n,}
-#' \deqn{P_i \overset{\text{ind.}}{\sim} \mathcal{N}_4(\Beta X_i, \Sigma), \quad i = 1, \ldots, n,}
-#' \deqn{\Beta = \begin{bmatrix}
+#' \deqn{P_i \overset{\text{ind.}}{\sim} \mathcal{N}_4(B X_i, \Sigma), \quad i = 1, \ldots, n,}
+#' \deqn{B = \begin{bmatrix}
 #' \beta_{1} & \beta_{2} & \beta_{3} & \beta_{4} \\
 #' \end{bmatrix}^\top,}
 #' \deqn{\beta_{k} \sim \mathcal{N}_d (\mu_{\beta}, \Sigma_{\beta}), \quad k = 1, \ldots, 4,}

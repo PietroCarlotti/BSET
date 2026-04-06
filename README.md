@@ -6,10 +6,14 @@
 <!-- badges: end -->
 
 `BSET` (Bayesian Surrogate Evaluation Test) is an `R` package for
-validating surrogate markers in clinical trials. It implements the
-imputation-based Bayesian methodology proposed by Carlotti and Parast
-(2026), extending the frequentist rank-based framework of Parast et
-al. (2024).
+assessing the validity of surrogate markers in clinical trials. It
+provides hypothesis testing tools to evaluate whether a surrogate can
+reliably estimate the causal effect of a treatment on a primary outcome.
+The package implements the imputation-based Bayesian methodology of
+Carlotti and Parast (2026), extending the frequentist rank-based
+approach of Parast et al. (2024). BSET addresses key limitations of the
+frequentist method, including the lack of causal interpretability and
+the inability to adjust for covariates in the estimation process.
 
 The package supports Bayesian testing both with and without baseline
 covariates. Additionally, it includes comprehensive simulation suites to
