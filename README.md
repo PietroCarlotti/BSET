@@ -9,11 +9,13 @@
 validating surrogate markers in clinical trials. It implements the
 imputation-based Bayesian methodology proposed by Carlotti and Parast
 (2026), extending the frequentist rank-based framework of Parast et
-al. (2024). The package supports Bayesian testing both with and without
-baseline covariates. Additionally, it includes comprehensive simulation
-suites to replicate studies from both papers, enabling performance
-comparisons between Bayesian and frequentist approaches across diverse
-clinical scenarios.
+al. (2024).
+
+The package supports Bayesian testing both with and without baseline
+covariates. Additionally, it includes comprehensive simulation suites to
+replicate studies from both papers, enabling performance comparisons
+between Bayesian and frequentist approaches across diverse clinical
+scenarios.
 
 ## Installation
 
