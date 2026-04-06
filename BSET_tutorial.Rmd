@@ -1,5 +1,5 @@
 ---
-title: "BSET_tutorial"
+title: "BSET tutorial"
 author: "Pietro Carlotti"
 date: "`r Sys.Date()`"
 output: html_document

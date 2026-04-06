@@ -19,7 +19,8 @@ The package supports Bayesian testing both with and without baseline
 covariates. Additionally, it includes comprehensive simulation suites to
 replicate studies from both papers, enabling performance comparisons
 between Bayesian and frequentist approaches across diverse clinical
-scenarios.
+scenarios. Go here to view a tutorial for this package: [BSET
+Tutorial](https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html)
 
 ## Installation
 
