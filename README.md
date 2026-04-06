@@ -24,13 +24,3 @@ scenarios.
 For a detailed walkthrough and examples of the imputation-based
 methodology, please visit the [BSET
 Tutorial](https://htmlpreview.github.io/?https://github.com/PietroCarlotti/BSET/blob/main/BSET_tutorial.html).
-
-## Installation
-
-You can install the development version of BSET from
-[GitHub](https://github.com/) with:
-
-``` r
-# install.packages("pak")
-pak::pak("PietroCarlotti/BSET")
-```

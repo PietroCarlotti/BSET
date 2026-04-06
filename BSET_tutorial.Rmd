@@ -9,22 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Introduction
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+`BSET` (Bayesian Surrogate Evaluation Test) is an `R` package for assessing the validity of surrogate markers in clinical trials. It provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. The package implements the imputation-based Bayesian methodology of Carlotti and Parast (2026), extending the frequentist rank-based approach of Parast et al. (2024). BSET addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The package supports Bayesian testing both with and without baseline covariates. Additionally, it includes comprehensive simulation suites to replicate studies from both papers, enabling performance comparisons between Bayesian and frequentist approaches across diverse clinical scenarios.
 
-```{r cars}
-summary(cars)
+## Installation
+
+You can install the development version of BSET from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("PietroCarlotti/BSET")
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
