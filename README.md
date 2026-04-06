@@ -1,13 +1,17 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # BSET
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of BSET is to …
+`BSET` is an `R` package that can be used to perform a Bayesian
+evaluation test to validate a surrogate marker in the context of
+clinical trials. The test is based on the imputation-based methodology
+proposed by Carlotti and Parast (2026), which extends and complements
+the frequentist rank-based test developed by Parast et al. (2024).
+
+The package provides functions to …
 
 ## Installation
 
