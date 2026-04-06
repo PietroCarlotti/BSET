@@ -17,9 +17,17 @@ The package supports Bayesian testing both with and without baseline covariates.
 
 ## Installation
 
-You can install the development version of BSET from [GitHub](https://github.com/) with:
+The package is not yet available on CRAN, but you can install the development version of BSET from [GitHub](https://github.com/) with:
 
-``` r
+```{r install-BSET}
 # install.packages("pak")
-pak::pak("PietroCarlotti/BSET")
+# pak::pak("PietroCarlotti/BSET")
+```
+
+## Generating the data
+
+The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of Parast et al. (2025), which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of Carlotti and Parast (2026).
+
+```{r generate-data}
+
 ```
