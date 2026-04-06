@@ -1,0 +1,28 @@
+Package: BSET
+Type: Package
+Title: A Bayesian Surrogate Evaluation Test
+Version: 1.0
+Date: 2026-02-09
+Author: Pietro Carlotti
+Maintainer: Pietro Carlotti <pietro.carlotti@utexas.edu>
+Description: This package provides tools to perform hypothesis testing for evaluating the validity of a surrogate marker as a substitute for estimating the causal effect of a treatment on a primary outcome. It implements a method inspired by the rank-based approach of Parast et al. (2024), while addressing key limitations of their approach, including the lack of causal interpretability of their estimator and the inability to incorporate covariates into the estimation procedure.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Imports: 
+    rstan,
+    ggplot2,
+    future,
+    future.apply,
+    parallel,
+    mvtnorm,
+    dplyr,
+    purrr,
+    SurrogateRank,
+    Rdpack,
+    tibble,
+    rlang
+RdMacros: Rdpack
+Depends: 
+    R (>= 3.5)
