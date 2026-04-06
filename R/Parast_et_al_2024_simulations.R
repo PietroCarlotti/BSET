@@ -266,6 +266,9 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
     simulation_setting <- simulation_id$setting
     simulation_number <- simulation_id$simulation
     
+    # PRINT PROGRESS (DELETE AFTER YOU ARE DONE DEBUGGING)
+    message(paste0("Running simulation ", simulation_number, " for setting ", simulation_setting, " (", settings[[simulation_setting]]$setting_label, ")"))
+    
     # Generate data
     data <- DGP_no_X(
       n = n,
