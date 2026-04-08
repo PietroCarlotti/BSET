@@ -1,8 +1,12 @@
 ---
-title: "BSET tutorial"
+title: "BSET vignette"
 author: "Pietro Carlotti"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  bookdown::html_document2:
+    base_format: rmarkdown::html_vignette
+    number_sections: false
+    toc: true
 vignette: >
   %\VignetteIndexEntry{BSET Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
@@ -11,6 +15,24 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+/* Force the table to be wider */
+table {
+  width: 70%; /* Adjust this percentage as you like (e.g., 100% for full width) */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+/* Style the caption */
+caption {
+  caption-side: bottom !important;
+  text-align: center;
+  padding-top: 10px;
+  width: 100%; /* Ensures the caption can use the full width of the table */
+}
 ```
 
 ## Introduction
@@ -30,8 +52,132 @@ The package is not yet available on CRAN, but you can install the development ve
 
 ## Generating the data
 
-The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of Parast et al. (2025), which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of Carlotti and Parast (2026).
+```{r set-seed}
+# Set the random seed for reproducibility
+set.seed(123)
+```
 
-```{r generate-data}
+The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of Parast et al. (2024), which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of Carlotti and Parast (2026).
 
+For example, this how we can generate data from the second setting defined in Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included):
+
+```{r generate-data-no-X}
+# Sample size
+n <- 50
+
+# Treatment assignment probability
+p <- 0.5
+
+# Mean vector of potential outcomes for the primary outcome and the surrogate
+mu_star <- c(6, 6, 2.5, 2.5)
+
+# Covariance matrix of potential outcomes for the primary outcome and the surrogate
+Sigma_star <- kronecker(
+  diag(2),
+  matrix(
+    data = c(3, 3,
+             3, 3.1),
+    nrow = 2,
+    ncol = 2)
+)
+
+# Generate the data
+data_no_X <- BSET::DGP_no_X(
+  n = n,
+  p = p,
+  mu_star = mu_star,
+  Sigma_star <- Sigma_star,
+  model = "Gaussian"
+)
+```
+
+While this is how we can generate data from the first setting defined in Carlotti and Parast (2026) (i.e.: the setting where the surrogate is useful and covariates are included):
+
+```{r generate-data-X}
+# Sample size
+n <- 50
+
+# Treatment assignment probability
+p <- 0.5
+
+# Binary covariate probability
+q <- 0.5
+
+# Mean vector for potential outcomes when X = 0 and when X = 1
+mu_0 <- c(5, 5, 0, 0)
+mu_1 <- c(5, -5, 0, -10)
+
+# Covariance matrix for potential outcomes when X = 0 and when X = 1
+Sigma_0 <- kronecker(
+  diag(2),
+  matrix(
+    data = c(1, 1,
+             1, 2),
+    nrow = 2,
+    ncol = 2)
+  )
+
+Sigma_1 <- kronecker(
+  diag(2),
+  matrix(
+    data = c(1, 1,
+             1, 2),
+    nrow = 2,
+    ncol = 2)
+  )
+
+# Generate the data
+data_X <- BSET::DGP_X_binary(
+  n = n,
+  p = p,
+  q = q,
+  mu_0 = mu_0,
+  mu_1 = mu_1,
+  Sigma_0 = Sigma_0,
+  Sigma_1 = Sigma_1
+  )
+```
+
+## Computing the true values of \(\delta\) and \(\theta\)
+
+Given the data generated with the above functions, we can estimate \(\delta\) and \(\theta\) using the `compute_delta` and `compute_theta` functions, respectively.
+
+For example, for the data generated without covariates:
+
+```{r compute-delta-theta-no-X}
+# Compute delta
+delta_no_X <- BSET::compute_delta(MC_data = data_no_X)
+
+# Compute theta
+theta_no_X <- BSET::compute_theta(MC_data = data_no_X)
+```
+
+And for the data generated with covariates:
+
+```{r compute-delta-theta-X}
+# Compute delta
+delta_X <- BSET::compute_delta(MC_data = data_X)
+
+# Compute theta
+theta_X <- BSET::compute_theta(MC_data = data_X)
+```
+
+As you can see in Table \@ref(tab:delta-theta-table), the estimated values of \(\delta\) and \(\theta\) are different in the two settings, which will lead to different conclusions when we will perform the hypothesis testing.
+
+```{r delta-theta-table, echo=FALSE}
+delta_theta_table <- data.frame(
+  Setting = c("No X", "Binary X"),
+  "$\\delta$" = c(delta_no_X$delta, delta_X$delta),
+  "$\\theta$" = c(theta_no_X$theta, theta_X$theta),
+  check.names = FALSE # Prevents R from turning symbols into dots
+)
+
+knitr::kable(
+  delta_theta_table, 
+  caption = "Estimated values of $\\delta$ and $\\theta$ in the two settings.",
+  escape = FALSE,
+  booktabs = TRUE,
+  align = "ccc",
+  digits = 3
+)
 ```
