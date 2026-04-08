@@ -319,4 +319,55 @@ Once we have the value of \(BF_{n, \alpha}\), we can compute the value of \(v_S\
   P(\text{BF}_n \geq \text{BF}_{n, \alpha} \; | \; V_S = v_S) = 1 - \beta,
 \]
 
-where \(1 - \beta\) is the desired power of the test.
+where \(1 - \beta\) is the desired power of the test. A root-finding algorithm is used to solve for the value of \(v_S\) that satisfies the above equation, which is implemented in the function `compute_V_S_star`.
+
+For example, for a Type II error rate of \(\beta = 0.2\), we can compute the value of \(v_S\) as follows:
+
+```{r compute-V_S-star}
+# Type II error rate
+beta <- 0.2
+
+# Compute the value of v_S that satisfies the power constraint
+V_S_star <- BSET::compute_V_S_star(
+  n = n,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  a = a,
+  b = b,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16
+)$V_S_star
+```
+
+Then, we have that
+
+\[
+  v_S = `r round(V_S_star, 3)`.
+\]
+
+Finally, the validation threshold \(\eta\) can be computed as
+
+\[
+  \eta = \max \{v_Y - v_S, 0\},
+\]
+
+where \(v_Y\) is the hypothesized value of the treatment effect on the primary outcome (typically set equal to the estimate computed on the available data).
+
+For example, we can set \(v_Y\) equal to the Monte Carlo estimate of \(V_Y\) for setting 1 of Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included).
+
+```{r compute-eta}
+# Hypothesized value of the treatment effect on the primary outcome
+v_Y <- estimands_Parast_et_al_2024$V_Y_MC[2]
+
+# Compute the validation threshold eta
+eta <- max(v_Y - V_S_star, 0)
+```
+
+In this case, we have that
+
+\[
+  \eta = `r round(eta, 3)`.
+\]
+
+
