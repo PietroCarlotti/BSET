@@ -385,20 +385,48 @@ BSET_no_X_data <- data.frame(
 )
 ```
 
-Then, we need to define the 
+We also need to define the posterior sampling parameters:
+\begin{itemize}
+  \item \textbf{n\_chains}: The number of MCMC chains to run.
+  \item \textbf{n\_iter}: The total number of MCMC iterations to run for each chain.
+  \item \textbf{burn\_in\_ratio}: The proportion of MCMC iterations to discard as burn-in.
+\end{itemize}
 
-```{r BSET-no-X}
+```{r BSET-no-X-posterior-sampling-parameters}
 # Posterior sampling parameters
 n_chains <- 4
 n_iter <- 2000
 burn_in_ratio <- 0.25
+```
 
+Then, we need to define the prior parameters for the distribution of the potential outcomes in our Bayesian model. In particular, we need to specify:
+\begin{itemize}
+  \item \textbf{mu\_0}: A numeric vector of length 4 containing the prior means for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
+  \item \textbf{Sigma\_0}: A numeric positive-definite matrix of dimension \(4 \times 4\) containing the prior covariance matrix for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
+  \item \textbf{s}: A numeric vector of length 4 containing the prior scale parameters for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
+  \item \textbf{tau}: A numeric scalar containing the prior scale parameter for the correlation matrix of the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
+\end{itemize}
+
+```{r BSET-no-X-prior-parameters}
 # Prior parameters
 mu_0 <- rep(0, 4)
 Sigma_0 <- diag(4)
 s <- rep(1, 4)
 tau <- 1
+```
 
+If the true values of \(\delta\) and \(\theta\) are known, we can also specify them as input to the function `BSET_no_X` to check whether if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 2 of Parast et al. (2024).
+
+We can also specify some additional parameters for the BSET procedure, such as:
+\begin{itemize}
+  \item \textbf{plot}: A logical scalar indicating whether to plot the posterior distribution of \(\theta\).
+  \item \textbf{mute}: A logical scalar indicating whether to suppress the output of the MCMC sampling process.
+  \item \textbf{parallel}: A logical scalar indicating whether to run the MCMC sampling process in parallel or sequentially.
+\end{itemize}
+
+Finally, we can run the BSET procedure without adjusting for covariates as follows:
+
+```{r BSET-no-X}
 BSET_no_X_results <- BSET::BSET_no_X(
   data = BSET_no_X_data,
   Y = "Y",
