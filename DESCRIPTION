@@ -28,8 +28,6 @@ Suggests:
     knitr,
     rmarkdown,
     bookdown,
-    ggplot2,
-    dplyr
 VignetteBuilder: 
     knitr,
     bookdown
