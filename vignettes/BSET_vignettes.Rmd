@@ -394,7 +394,7 @@ We also need to define the posterior sampling parameters:
 
 ```{r BSET-no-X-posterior-sampling-parameters}
 # Posterior sampling parameters
-n_chains <- 4
+n_chains <- 2
 n_iter <- 2000
 burn_in_ratio <- 0.25
 ```
