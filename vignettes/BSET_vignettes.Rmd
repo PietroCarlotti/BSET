@@ -370,4 +370,40 @@ In this case, we have that
   \eta = `r round(eta, 3)`.
 \]
 
+## Run the BSET procedure
 
+```{r BSET-no-X}
+
+BSET_no_X_data <- data.frame(
+  Y = data_no_X$P_observed[, "Y"],
+  S = data_no_X$P_observed[, "S"],
+  Z = data_no_X$Z 
+)
+
+BSET::BSET_no_X(
+  data = BSET_no_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  delta_true = delta_no_X$delta,
+  theta_true = theta_no_X$theta,
+  seed = 123,
+  n_chains = 4,
+  n_iter = 2000,
+  burn_in_ratio = 0.25,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_0 = rep(0, 4),
+  Sigma_0 = diag(4),
+  s = rep(1, 4),
+  tau = 1,
+  plot = TRUE,
+  mute = FALSE,
+  parallel = TRUE
+)
+```
