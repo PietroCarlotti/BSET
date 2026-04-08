@@ -56,6 +56,13 @@ The package is not yet available on CRAN, but you can install the development ve
 # pak::pak("PietroCarlotti/BSET")
 ```
 
+To follow along with the examples in this tutorial, you will also need to install the following packages:
+
+```{r packages, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
 ## Generating the data
 
 ```{r set-seed}
@@ -241,5 +248,75 @@ knitr::kable(
 
 ## Compute the validation threshold \(\eta\)
 
+The validation threshold \(\eta\) is the value of \(\theta\) below which the surrogate is considered valid. As explained in Carlotti and Parast (2026), the computation of \(\eta\) is based on the distribution of the following Bayes factor:
+\[
+  BF_{n} = \frac{1 - F_{\text{Beta} \left( a + n \hat{V}_{S}, \, b + n - n \hat{V}_{S} \right)} \left( \frac{1}{2} \right)}{1 - F_{\text{Beta} \left( a, \, b \right)} \left( \frac{1}{2} \right)}.
+\]
+Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed with the function `compute_BF_distribution`. For example, the distribution of the Bayes factor under the null hypothesis \(V_S = 0.5\) can be computed as follows:
 
+```{r compute-BF-distribution}
+# Sample size
+n <- 50
 
+# Hypothesized value of V_S under the null
+V_S_zero <- 0.5
+
+# Prior parameters for the Beta distribution
+a <- 1
+b <- 1
+
+# Alternative hypothesis for the Bayes factor
+BF_alternative <- "greater"
+
+# Compute the distribution of the Bayes factor
+BF_distribution <- BSET::compute_BF_distribution(
+  n = n,
+  V_S_true = V_S_zero,
+  V_S_zero = V_S_zero,
+  a = a,
+  b = b,
+  BF_alternative = BF_alternative
+)
+```
+
+The distribution of the Bayes factor under the null hypothesis is shown in Figure \@ref(fig:BF-distribution-plot). Since the Bayes factor can take values on a very wide range, we plot the distribution on the log scale.
+
+```{r BF-distribution-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Distribution of the Bayes factor under the null hypothesis $V_S = 0.5$."}
+# Log transform the Bayes factor
+BF_distribution$log_BF_values <- log(BF_distribution$BF_values)
+
+ggplot(BF_distribution, aes(x = log_BF_values, y = BF_PMF)) +
+  geom_col(fill = "steelblue", width = 0.07) +
+  labs(
+    x = expression(log(BF[n])),
+    y = "PMF"
+  ) +
+  theme_minimal()
+```
+
+Given the distribution of the Bayes factor under the null hypothesis, we can compute the critical value \(BF_{n, \alpha}\) corresponding to a specified Type I error rate \(\alpha\).
+
+```{r compute-BF-alpha}
+# Type I error rate
+alpha <- 0.05
+
+# Compute the critical value of the Bayes factor corresponding to alpha
+BF_alpha <- BF_distribution %>%
+    dplyr::filter(BF_CDF >= 1 - alpha) %>%
+    dplyr::slice(1) %>%
+    dplyr::pull(BF_values)
+```
+
+For example, for \(\alpha = 0.05\) we have
+
+\[
+  BF_{n, \alpha} = `r round(BF_alpha, 3)`.
+\]
+
+Once we have the value of \(BF_{n, \alpha}\), we can compute the value of \(v_S\) that satisfies the following equation:
+
+\[
+  P(\text{BF}_n \geq \text{BF}_{n, \alpha} \; | \; V_S = v_S) = 1 - \beta,
+\]
+
+where \(1 - \beta\) is the desired power of the test.
