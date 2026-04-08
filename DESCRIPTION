@@ -26,7 +26,12 @@ Imports:
 RdMacros: Rdpack
 Suggests:
     knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    rmarkdown,
+    bookdown,
+    ggplot2,
+    dplyr
+VignetteBuilder: 
+    knitr,
+    bookdown
 Depends: 
     R (>= 3.5)

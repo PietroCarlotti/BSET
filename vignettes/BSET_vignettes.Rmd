@@ -76,7 +76,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -108,7 +108,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -256,7 +256,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 50
+n <- 10
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -374,7 +374,7 @@ In this case, we have that
 
 The package includes two functions to run the BSET procedure: `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without adjusting for covariates, while the second one runs the BSET procedure adjusting for covariates.
 
-# BSET with no covariates
+### BSET with no covariates
 As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of Parast et al. (2024). First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
 
 ```{r BSET-no-X-data}
@@ -462,7 +462,7 @@ The posterior distribution of \(\theta\) from the BSET procedure without adjusti
 BSET_no_X_results$theta_posterior_plot
 ```
 
-# BSET with covariates
+### BSET with covariates
 As an example, we can run the BSET procedure adjusting for covariates on the data generated from the first setting of Carlotti and Parast (2026). First of all, we need to prepare the data in the format required by the function `BSET_X`: a data frame with four columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), the third column contains the treatment assignment \(Z\), and the fourth column contains the values of the binary covariate \(X\). We call \(d\) the number of covariates, which in this case is equal to \(2\) (including the intercept).
 
 ```{r BSET-X-data}
