@@ -253,7 +253,6 @@ BSET_no_X <- function(
       ggplot2::coord_cartesian(xlim=c(-1,1)) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
-        title = bquote("Posterior Distribution of " ~ theta),
         x = expression(theta),
         y = "Frequency"
       )
@@ -541,7 +540,6 @@ BSET_X <- function(
       ggplot2::coord_cartesian(xlim=c(-1,1)) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
-        title = bquote("Posterior Distribution of " ~ theta),
         x = expression(theta),
         y = "Frequency"
       )

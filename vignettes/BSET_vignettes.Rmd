@@ -76,7 +76,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 10
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -108,7 +108,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 10
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -256,7 +256,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 10
+n <- 50
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -374,6 +374,7 @@ In this case, we have that
 
 The package includes two functions to run the BSET procedure: `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without adjusting for covariates, while the second one runs the BSET procedure adjusting for covariates.
 
+# BSET with no covariates
 As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of Parast et al. (2024). First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
 
 ```{r BSET-no-X-data}
@@ -386,11 +387,10 @@ BSET_no_X_data <- data.frame(
 ```
 
 We also need to define the posterior sampling parameters:
-\begin{itemize}
-  \item \textbf{n\_chains}: The number of MCMC chains to run.
-  \item \textbf{n\_iter}: The total number of MCMC iterations to run for each chain.
-  \item \textbf{burn\_in\_ratio}: The proportion of MCMC iterations to discard as burn-in.
-\end{itemize}
+
+* `n_chains`: The number of MCMC chains to run.
+* `n_iter`: The total number of MCMC iterations to run for each chain.
+* `burn_in_ratio`: The proportion of MCMC iterations to discard as burn-in.
 
 ```{r BSET-no-X-posterior-sampling-parameters}
 # Posterior sampling parameters
@@ -400,12 +400,11 @@ burn_in_ratio <- 0.25
 ```
 
 Then, we need to define the prior parameters for the distribution of the potential outcomes in our Bayesian model. In particular, we need to specify:
-\begin{itemize}
-  \item \textbf{mu\_0}: A numeric vector of length 4 containing the prior means for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
-  \item \textbf{Sigma\_0}: A numeric positive-definite matrix of dimension \(4 \times 4\) containing the prior covariance matrix for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
-  \item \textbf{s}: A numeric vector of length 4 containing the prior scale parameters for the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
-  \item \textbf{tau}: A numeric scalar containing the prior scale parameter for the correlation matrix of the potential outcomes \(Y_{0}\), \(Y_{1}\), \(S_{0}\), and \(S_{1}\).
-\end{itemize}
+
+*  `mu_0`: A numeric vector of length 4 containing the prior means for the potential outcomes.
+* `Sigma_0`: A numeric positive-definite matrix of dimension \(4 \times 4\) containing the prior covariance matrix for the potential outcomes.
+* `s`: A numeric vector of length 4 containing the prior scale parameters for the potential outcomes.
+* `tau`: A numeric scalar containing the prior scale parameter for the correlation matrix of the potential outcomes.
 
 ```{r BSET-no-X-prior-parameters}
 # Prior parameters
@@ -418,15 +417,16 @@ tau <- 1
 If the true values of \(\delta\) and \(\theta\) are known, we can also specify them as input to the function `BSET_no_X` to check whether if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 2 of Parast et al. (2024).
 
 We can also specify some additional parameters for the BSET procedure, such as:
-\begin{itemize}
-  \item \textbf{plot}: A logical scalar indicating whether to plot the posterior distribution of \(\theta\).
-  \item \textbf{mute}: A logical scalar indicating whether to suppress the output of the MCMC sampling process.
-  \item \textbf{parallel}: A logical scalar indicating whether to run the MCMC sampling process in parallel or sequentially.
-\end{itemize}
+
+* `seed`: An integer scalar to set the random seed for reproducibility of the MCMC sampling process.
+* `plot`: A logical scalar indicating whether to plot the posterior distribution of \(\theta\).
+* `mute`: A logical scalar indicating whether to suppress the output of the MCMC sampling process.
+* `parallel`: A logical scalar indicating whether to run the MCMC sampling process in parallel or sequentially.
 
 Finally, we can run the BSET procedure without adjusting for covariates as follows:
 
 ```{r BSET-no-X}
+# Run the BSET procedure without adjusting for covariates
 BSET_no_X_results <- BSET::BSET_no_X(
   data = BSET_no_X_data,
   Y = "Y",
@@ -450,7 +450,81 @@ BSET_no_X_results <- BSET::BSET_no_X(
   s = s,
   tau = tau,
   plot = TRUE,
-  mute = FALSE,
+  mute = TRUE,
   parallel = TRUE
 )
+```
+
+The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in Figure \@ref(fig:BSET-no-X-plot).
+
+```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The blue vertical line indicates the upper bound of the 95% credible interval, the green vertical line indicates value of the validation threshold $\\eta$, the orange vertical line indicates the true value of $\\delta$, and the red vertical line indicates the true value of $\\theta$."}
+# Plot the posterior distribution of theta
+BSET_no_X_results$theta_posterior_plot
+```
+
+# BSET with covariates
+As an example, we can run the BSET procedure adjusting for covariates on the data generated from the first setting of Carlotti and Parast (2026). First of all, we need to prepare the data in the format required by the function `BSET_X`: a data frame with four columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), the third column contains the treatment assignment \(Z\), and the fourth column contains the values of the binary covariate \(X\). We call \(d\) the number of covariates, which in this case is equal to \(2\) (including the intercept).
+
+```{r BSET-X-data}
+# Prepare the data for BSET_X
+BSET_X_data <- data.frame(
+  Y = data_X$P_observed[, "Y"],
+  S = data_X$P_observed[, "S"],
+  Z = data_X$Z,
+  X = data_X$X
+)
+```
+
+The posterior sampling parameters are defined in the same way as for the BSET procedure without adjusting for covariates. Whereas the prior parameters for the distribution of the potential outcomes in our Bayesian model are defined as follows:
+
+* `mu_beta`: A numeric vector of length \(d\) containing the prior means for the regression coefficients of the potential outcomes on the covariates.
+* `Sigma_beta`: A numeric positive-definite matrix of dimension \(d \times d\) containing the prior covariance matrix for the regression coefficients of the potential outcomes on the covariates.
+
+```{r BSET-X-prior-parameters}
+# Prior parameters for the regression coefficients of the potential outcomes on the covariates
+d <- 2
+mu_beta <- rep(0, d)
+Sigma_beta <- 10*diag(d)
+```
+
+We can also specify the true values of \(\delta\) and \(\theta\) as input to the function `BSET_X` to check whether if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 1 of Carlotti and Parast (2026).
+
+Finally, we can run the BSET procedure adjusting for covariates as follows:
+
+```{r BSET-X}
+# Run the BSET procedure adjusting for covariates
+BSET_X_results <- BSET::BSET_X(
+  data = BSET_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
+  theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
+  seed = 123,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_beta = mu_beta,
+  Sigma_beta = Sigma_beta,
+  s = s,
+  tau = tau,
+  plot = TRUE,
+  mute = TRUE,
+  parallel = TRUE
+)
+```
+
+The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in Figure \@ref(fig:BSET-X-plot).
+
+```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The blue vertical line indicates the upper bound of the 95% credible interval, the green vertical line indicates value of the validation threshold $\\eta$, the orange vertical line indicates the true value of $\\delta$, and the red vertical line indicates the true value of $\\theta$."}
+# Plot the posterior distribution of theta
+BSET_X_results$theta_posterior_plot
 ```
