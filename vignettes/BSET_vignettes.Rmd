@@ -76,7 +76,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -108,7 +108,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -256,7 +256,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 50
+n <- 10
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -373,24 +373,35 @@ In this case, we have that
 ## Run the BSET procedure
 
 ```{r BSET-no-X}
-
+# Prepare the data for BSET_no_X
 BSET_no_X_data <- data.frame(
   Y = data_no_X$P_observed[, "Y"],
   S = data_no_X$P_observed[, "S"],
   Z = data_no_X$Z 
 )
 
-BSET::BSET_no_X(
+# Posterior sampling parameters
+n_chains <- 4
+n_iter <- 2000
+burn_in_ratio <- 0.25
+
+# Prior parameters
+mu_0 <- rep(0, 4)
+Sigma_0 <- diag(4)
+s <- rep(1, 4)
+tau <- 1
+
+BSET_no_X_results <- BSET::BSET_no_X(
   data = BSET_no_X_data,
   Y = "Y",
   S = "S",
   Z = "Z",
-  delta_true = delta_no_X$delta,
-  theta_true = theta_no_X$theta,
+  delta_true = estimands_Parast_et_al_2024$delta_MC[2],
+  theta_true = estimands_Parast_et_al_2024$theta_MC[2],
   seed = 123,
-  n_chains = 4,
-  n_iter = 2000,
-  burn_in_ratio = 0.25,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
   a = a,
   b = b,
   alpha = alpha,
@@ -398,10 +409,10 @@ BSET::BSET_no_X(
   V_S_zero = V_S_zero,
   BF_alternative = BF_alternative,
   root_tolerance = 1e-16,
-  mu_0 = rep(0, 4),
-  Sigma_0 = diag(4),
-  s = rep(1, 4),
-  tau = 1,
+  mu_0 = mu_0,
+  Sigma_0 = Sigma_0,
+  s = s,
+  tau = tau,
   plot = TRUE,
   mute = FALSE,
   parallel = TRUE
