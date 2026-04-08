@@ -372,14 +372,22 @@ In this case, we have that
 
 ## Run the BSET procedure
 
-```{r BSET-no-X}
+The package includes two functions to run the BSET procedure: `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without adjusting for covariates, while the second one runs the BSET procedure adjusting for covariates.
+
+As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of Parast et al. (2024). First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
+
+```{r BSET-no-X-data}
 # Prepare the data for BSET_no_X
 BSET_no_X_data <- data.frame(
   Y = data_no_X$P_observed[, "Y"],
   S = data_no_X$P_observed[, "S"],
   Z = data_no_X$Z 
 )
+```
 
+Then, we need to define the 
+
+```{r BSET-no-X}
 # Posterior sampling parameters
 n_chains <- 4
 n_iter <- 2000
