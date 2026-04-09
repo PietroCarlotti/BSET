@@ -1,7 +1,14 @@
+url: https://PietroCarlotti.github.io/BSET/
 template:
   bootstrap: 5
   bootswatch: cosmo
   assets: pkgdown/extra
+
+articles:
+  - title: Tutorials
+    navbar: ~
+    contents:
+      - BSET_tutorial
 
 code:
   highlight:

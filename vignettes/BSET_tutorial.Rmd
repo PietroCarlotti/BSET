@@ -2,11 +2,7 @@
 title: "BSET Tutorial"
 author: "Pietro Carlotti"
 date: "`r Sys.Date()`"
-output: 
-  bookdown::html_document2:
-    base_format: rmarkdown::html_vignette
-    number_sections: false
-    toc: true
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{BSET Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
