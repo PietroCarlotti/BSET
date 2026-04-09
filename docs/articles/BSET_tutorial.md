@@ -445,53 +445,36 @@ as follows:
 
 ``` r
 # Run the BSET procedure without adjusting for covariates
-BSET_no_X_results <- BSET::BSET_no_X(
-  data = BSET_no_X_data,
-  Y = "Y",
-  S = "S",
-  Z = "Z",
-  delta_true = estimands_Parast_et_al_2024$delta_MC[2],
-  theta_true = estimands_Parast_et_al_2024$theta_MC[2],
-  seed = 123,
-  n_chains = n_chains,
-  n_iter = n_iter,
-  burn_in_ratio = burn_in_ratio,
-  a = a,
-  b = b,
-  alpha = alpha,
-  beta = beta,
-  V_S_zero = V_S_zero,
-  BF_alternative = BF_alternative,
-  root_tolerance = 1e-16,
-  mu_0 = mu_0,
-  Sigma_0 = Sigma_0,
-  s = s,
-  tau = tau,
-  plot = TRUE,
-  mute = TRUE,
-  parallel = TRUE
-)
+# BSET_no_X_results <- BSET::BSET_no_X(
+#   data = BSET_no_X_data,
+#   Y = "Y",
+#   S = "S",
+#   Z = "Z",
+#   delta_true = estimands_Parast_et_al_2024$delta_MC[2],
+#   theta_true = estimands_Parast_et_al_2024$theta_MC[2],
+#   seed = 123,
+#   n_chains = n_chains,
+#   n_iter = n_iter,
+  # burn_in_ratio = burn_in_ratio,
+  # a = a,
+  # b = b,
+  # alpha = alpha,
+  # beta = beta,
+  # V_S_zero = V_S_zero,
+  # BF_alternative = BF_alternative,
+  # root_tolerance = 1e-16,
+  # mu_0 = mu_0,
+  # Sigma_0 = Sigma_0,
+  # s = s,
+  # tau = tau,
+  # plot = TRUE,
+  # mute = TRUE,
+  # parallel = TRUE
+# )
 ```
 
 The posterior distribution of $`\theta`$ from the BSET procedure without
 adjusting for covariates is shown in Figure @ref(fig:BSET-no-X-plot).
-
-![Posterior distribution of \$\theta\$ from the BSET procedure without
-adjusting for covariates. The \<span style='color:blue'\>blue\</span\>
-vertical line indicates the upper bound of the 95% credible interval,
-the \<span style='color:green'\>green\</span\> vertical line indicates
-value of the validation threshold \$\eta\$, the \<span
-style='color:orange'\>orange\</span\> vertical line indicates the true
-value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
-vertical line indicates the true value of
-\$\theta\$.](BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png)
-
-Posterior distribution of $`\theta`$ from the BSET procedure without
-adjusting for covariates. The blue vertical line indicates the upper
-bound of the 95% credible interval, the green vertical line indicates
-value of the validation threshold $`\eta`$, the orange vertical line
-indicates the true value of $`\delta`$, and the red vertical line
-indicates the true value of $`\theta`$.
 
 ### BSET with covariates
 
@@ -546,51 +529,34 @@ follows:
 
 ``` r
 # Run the BSET procedure adjusting for covariates
-BSET_X_results <- BSET::BSET_X(
-  data = BSET_X_data,
-  Y = "Y",
-  S = "S",
-  Z = "Z",
-  X = "X",
-  delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
-  theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
-  seed = 123,
-  n_chains = n_chains,
-  n_iter = n_iter,
-  burn_in_ratio = burn_in_ratio,
-  a = a,
-  b = b,
-  alpha = alpha,
-  beta = beta,
-  V_S_zero = V_S_zero,
-  BF_alternative = BF_alternative,
-  root_tolerance = 1e-16,
-  mu_beta = mu_beta,
-  Sigma_beta = Sigma_beta,
-  s = s,
-  tau = tau,
-  plot = TRUE,
-  mute = TRUE,
-  parallel = TRUE
-)
+# BSET_X_results <- BSET::BSET_X(
+#   data = BSET_X_data,
+#   Y = "Y",
+#   S = "S",
+#   Z = "Z",
+#   X = "X",
+#   delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
+#   theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
+#   seed = 123,
+#   n_chains = n_chains,
+#   n_iter = n_iter,
+#   burn_in_ratio = burn_in_ratio,
+#   a = a,
+#   b = b,
+#   alpha = alpha,
+#   beta = beta,
+#   V_S_zero = V_S_zero,
+#   BF_alternative = BF_alternative,
+#   root_tolerance = 1e-16,
+#   mu_beta = mu_beta,
+#   Sigma_beta = Sigma_beta,
+#   s = s,
+#   tau = tau,
+#   plot = TRUE,
+#   mute = TRUE,
+#   parallel = TRUE
+# )
 ```
 
 The posterior distribution of $`\theta`$ from the BSET procedure
 adjusting for covariates is shown in Figure @ref(fig:BSET-X-plot).
-
-![Posterior distribution of \$\theta\$ from the BSET procedure adjusting
-for covariates. The \<span style='color:blue'\>blue\</span\> vertical
-line indicates the upper bound of the 95% credible interval, the \<span
-style='color:green'\>green\</span\> vertical line indicates value of the
-validation threshold \$\eta\$, the \<span
-style='color:orange'\>orange\</span\> vertical line indicates the true
-value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
-vertical line indicates the true value of
-\$\theta\$.](BSET_tutorial_files/figure-html/BSET-X-plot-1.png)
-
-Posterior distribution of $`\theta`$ from the BSET procedure adjusting
-for covariates. The blue vertical line indicates the upper bound of the
-95% credible interval, the green vertical line indicates value of the
-validation threshold $`\eta`$, the orange vertical line indicates the
-true value of $`\delta`$, and the red vertical line indicates the true
-value of $`\theta`$.

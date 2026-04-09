@@ -1,22 +1,22 @@
-/* Force table width and centering in Articles */
-.container.body-content table, 
-article table, 
-.contents table {
-  width: 70% !important;
-  max-width: 70% !important;
+/* Widen page */
+.container,
+.container-xl,
+.container-xxl {
+  max-width: 1600px !important;
+}
+
+/* Center tables */
+.article table {
+  width: 80% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  margin-bottom: 20px !important;
-  display: table !important; /* Forces margin: auto to work */
 }
 
-/* Center captions */
-caption {
-  caption-side: bottom !important;
-  text-align: center !important;
-  width: 100% !important;
+.article caption {
+  caption-side: bottom;
+  text-align: center;
 }
 
-/* Force code coloring for comments if Arrow theme is still dull */
-span.co { color: #5e97d1 !important; font-style: italic; } /* Light Blue Comments */
-span.va { color: #228b22 !important; } /* Green Variables/Arguments */
+/* Code colors */
+span.co { color: #5e97d1 !important; font-style: italic; }
+span.va { color: #228b22 !important; }

@@ -75,18 +75,16 @@ body {
 
 /* Force the table to be wider */
 table {
-  width: 70%; /* Adjust this percentage as you like (e.g., 100% for full width) */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+  width: 70% !important;
+  margin: 20px auto !important;
+  display: table !important;
+  float: none !important;
 }
 
 /* Style the caption */
 caption {
   caption-side: bottom !important;
-  text-align: center;
-  padding-top: 10px;
-  width: 100%; /* Ensures the caption can use the full width of the table */
+  text-align: center !important;
 }
 </style>
 <div class="section level2">
@@ -611,52 +609,36 @@ the MCMC sampling process in parallel or sequentially.</li>
 covariates as follows:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the BSET procedure without adjusting for covariates</span></span>
-<span><span class="va">BSET_no_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_no_X.html">BSET_no_X</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">BSET_no_X_data</span>,</span>
-<span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
-<span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
-<span>  Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
-<span>  delta_true <span class="op">=</span> <span class="va">estimands_Parast_et_al_2024</span><span class="op">$</span><span class="va">delta_MC</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
-<span>  theta_true <span class="op">=</span> <span class="va">estimands_Parast_et_al_2024</span><span class="op">$</span><span class="va">theta_MC</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
-<span>  n_chains <span class="op">=</span> <span class="va">n_chains</span>,</span>
-<span>  n_iter <span class="op">=</span> <span class="va">n_iter</span>,</span>
-<span>  burn_in_ratio <span class="op">=</span> <span class="va">burn_in_ratio</span>,</span>
-<span>  a <span class="op">=</span> <span class="va">a</span>,</span>
-<span>  b <span class="op">=</span> <span class="va">b</span>,</span>
-<span>  alpha <span class="op">=</span> <span class="va">alpha</span>,</span>
-<span>  beta <span class="op">=</span> <span class="va">beta</span>,</span>
-<span>  V_S_zero <span class="op">=</span> <span class="va">V_S_zero</span>,</span>
-<span>  BF_alternative <span class="op">=</span> <span class="va">BF_alternative</span>,</span>
-<span>  root_tolerance <span class="op">=</span> <span class="fl">1e-16</span>,</span>
-<span>  mu_0 <span class="op">=</span> <span class="va">mu_0</span>,</span>
-<span>  Sigma_0 <span class="op">=</span> <span class="va">Sigma_0</span>,</span>
-<span>  s <span class="op">=</span> <span class="va">s</span>,</span>
-<span>  tau <span class="op">=</span> <span class="va">tau</span>,</span>
-<span>  plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mute <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  parallel <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># BSET_no_X_results &lt;- BSET::BSET_no_X(</span></span>
+<span><span class="co">#   data = BSET_no_X_data,</span></span>
+<span><span class="co">#   Y = "Y",</span></span>
+<span><span class="co">#   S = "S",</span></span>
+<span><span class="co">#   Z = "Z",</span></span>
+<span><span class="co">#   delta_true = estimands_Parast_et_al_2024$delta_MC[2],</span></span>
+<span><span class="co">#   theta_true = estimands_Parast_et_al_2024$theta_MC[2],</span></span>
+<span><span class="co">#   seed = 123,</span></span>
+<span><span class="co">#   n_chains = n_chains,</span></span>
+<span><span class="co">#   n_iter = n_iter,</span></span>
+<span>  <span class="co"># burn_in_ratio = burn_in_ratio,</span></span>
+<span>  <span class="co"># a = a,</span></span>
+<span>  <span class="co"># b = b,</span></span>
+<span>  <span class="co"># alpha = alpha,</span></span>
+<span>  <span class="co"># beta = beta,</span></span>
+<span>  <span class="co"># V_S_zero = V_S_zero,</span></span>
+<span>  <span class="co"># BF_alternative = BF_alternative,</span></span>
+<span>  <span class="co"># root_tolerance = 1e-16,</span></span>
+<span>  <span class="co"># mu_0 = mu_0,</span></span>
+<span>  <span class="co"># Sigma_0 = Sigma_0,</span></span>
+<span>  <span class="co"># s = s,</span></span>
+<span>  <span class="co"># tau = tau,</span></span>
+<span>  <span class="co"># plot = TRUE,</span></span>
+<span>  <span class="co"># mute = TRUE,</span></span>
+<span>  <span class="co"># parallel = TRUE</span></span>
+<span><span class="co"># )</span></span></code></pre></div>
 <p>The posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
 from the BSET procedure without adjusting for covariates is shown in
 Figure @ref(fig:BSET-no-X-plot).</p>
-<div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
-Posterior distribution of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure without adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
-of the 95% credible interval, the <span style="color:green">green</span>
-vertical line indicates value of the validation threshold
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the <span style="color:orange">orange</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-and the <span style="color:red">red</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
-</p>
-</div>
 </div>
 <div class="section level3">
 <h3 id="bset-with-covariates">BSET with covariates<a class="anchor" aria-label="anchor" href="#bset-with-covariates"></a>
@@ -728,53 +710,37 @@ for setting 1 of Carlotti and Parast (2026).</p>
 follows:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the BSET procedure adjusting for covariates</span></span>
-<span><span class="va">BSET_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">BSET_X_data</span>,</span>
-<span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
-<span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
-<span>  Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
-<span>  X <span class="op">=</span> <span class="st">"X"</span>,</span>
-<span>  delta_true <span class="op">=</span> <span class="va">estimands_Carlotti_and_Parast_2026</span><span class="op">$</span><span class="va">delta_MC</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>  theta_true <span class="op">=</span> <span class="va">estimands_Carlotti_and_Parast_2026</span><span class="op">$</span><span class="va">theta_MC</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
-<span>  n_chains <span class="op">=</span> <span class="va">n_chains</span>,</span>
-<span>  n_iter <span class="op">=</span> <span class="va">n_iter</span>,</span>
-<span>  burn_in_ratio <span class="op">=</span> <span class="va">burn_in_ratio</span>,</span>
-<span>  a <span class="op">=</span> <span class="va">a</span>,</span>
-<span>  b <span class="op">=</span> <span class="va">b</span>,</span>
-<span>  alpha <span class="op">=</span> <span class="va">alpha</span>,</span>
-<span>  beta <span class="op">=</span> <span class="va">beta</span>,</span>
-<span>  V_S_zero <span class="op">=</span> <span class="va">V_S_zero</span>,</span>
-<span>  BF_alternative <span class="op">=</span> <span class="va">BF_alternative</span>,</span>
-<span>  root_tolerance <span class="op">=</span> <span class="fl">1e-16</span>,</span>
-<span>  mu_beta <span class="op">=</span> <span class="va">mu_beta</span>,</span>
-<span>  Sigma_beta <span class="op">=</span> <span class="va">Sigma_beta</span>,</span>
-<span>  s <span class="op">=</span> <span class="va">s</span>,</span>
-<span>  tau <span class="op">=</span> <span class="va">tau</span>,</span>
-<span>  plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mute <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  parallel <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># BSET_X_results &lt;- BSET::BSET_X(</span></span>
+<span><span class="co">#   data = BSET_X_data,</span></span>
+<span><span class="co">#   Y = "Y",</span></span>
+<span><span class="co">#   S = "S",</span></span>
+<span><span class="co">#   Z = "Z",</span></span>
+<span><span class="co">#   X = "X",</span></span>
+<span><span class="co">#   delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],</span></span>
+<span><span class="co">#   theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],</span></span>
+<span><span class="co">#   seed = 123,</span></span>
+<span><span class="co">#   n_chains = n_chains,</span></span>
+<span><span class="co">#   n_iter = n_iter,</span></span>
+<span><span class="co">#   burn_in_ratio = burn_in_ratio,</span></span>
+<span><span class="co">#   a = a,</span></span>
+<span><span class="co">#   b = b,</span></span>
+<span><span class="co">#   alpha = alpha,</span></span>
+<span><span class="co">#   beta = beta,</span></span>
+<span><span class="co">#   V_S_zero = V_S_zero,</span></span>
+<span><span class="co">#   BF_alternative = BF_alternative,</span></span>
+<span><span class="co">#   root_tolerance = 1e-16,</span></span>
+<span><span class="co">#   mu_beta = mu_beta,</span></span>
+<span><span class="co">#   Sigma_beta = Sigma_beta,</span></span>
+<span><span class="co">#   s = s,</span></span>
+<span><span class="co">#   tau = tau,</span></span>
+<span><span class="co">#   plot = TRUE,</span></span>
+<span><span class="co">#   mute = TRUE,</span></span>
+<span><span class="co">#   parallel = TRUE</span></span>
+<span><span class="co"># )</span></span></code></pre></div>
 <p>The posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
 from the BSET procedure adjusting for covariates is shown in Figure
 @ref(fig:BSET-X-plot).</p>
-<div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
-Posterior distribution of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
-of the 95% credible interval, the <span style="color:green">green</span>
-vertical line indicates value of the validation threshold
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the <span style="color:orange">orange</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-and the <span style="color:red">red</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
-</p>
-</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
