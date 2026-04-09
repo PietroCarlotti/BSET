@@ -1,0 +1,11 @@
+/* pkgdown/extra.css */
+
+/* Wider content area */
+.container-fluid {
+  max-width: 1100px;
+}
+
+/* Better table width */
+table {
+  width: 90%;
+}

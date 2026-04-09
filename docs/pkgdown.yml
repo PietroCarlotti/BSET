@@ -3,7 +3,4 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   BSET_tutorial: BSET_tutorial.html
-last_built: 2026-04-09T16:42Z
-urls:
-  reference: https://PietroCarlotti.github.io/BSET/reference
-  article: https://PietroCarlotti.github.io/BSET/articles
+last_built: 2026-04-09T17:01Z
