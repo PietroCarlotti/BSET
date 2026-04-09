@@ -1,5 +1,6 @@
 # Articles
 
-### All vignettes
+### Tutorials
 
-- [BSET Tutorial](BSET_tutorial.md):
+- [BSET
+  Tutorial](https://PietroCarlotti.github.io/BSET/articles/BSET_tutorial.md):
