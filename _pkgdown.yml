@@ -2,11 +2,10 @@
 template:
   bootstrap: 5
   bslib:
-    toc: true           # floating Table of Contents for articles
-    code-bg: "#f7f7f7" # background for code blocks
-    code-color: "#333"  # default text color in code blocks
+    toc: true
+    toc_float: false
 
-highlight: tango      # base syntax highlighting (closest to RStudio)
+highlight: tango
 
 navbar:
   structure:
@@ -15,10 +14,7 @@ navbar:
 
 articles:
   - title: "Tutorial"
+    toc: true
+    toc_depth: 3
     contents:
       - BSET_tutorial
-
-# Include your custom CSS for finer control of code colors
-# This loads pkgdown/extra.css automatically
-css:
-  - pkgdown/extra.css
