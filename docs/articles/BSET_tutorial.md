@@ -57,7 +57,7 @@ is perfect and covariates are not included):
 
 ``` r
 # Sample size
-n <- 6
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -91,7 +91,7 @@ useful and covariates are included):
 
 ``` r
 # Sample size
-n <- 6
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -165,8 +165,8 @@ The estimated values of $`\delta`$ and $`\theta`$ are shown in Table
 
 |         Setting          | $`\widehat{\delta}`$ | $`\widehat{\theta}`$ |
 |:------------------------:|:--------------------:|:--------------------:|
-| No X (Perfect Surrogate) |        0.000         |        0.167         |
-|         Binary X         |        0.875         |        0.000         |
+| No X (Perfect Surrogate) |        0.013         |          0           |
+|         Binary X         |        0.192         |          0           |
 
 Estimated values of $`\delta`$ and $`\theta`$ in the two settings.
 
@@ -196,10 +196,10 @@ intermediate values for imperfect surrogates or misspecified models.
 
 |       Setting       | $`\delta`$ | $`\theta`$ |
 |:-------------------:|:----------:|:----------:|
-|  Useless surrogate  |   0.458    |    0.5     |
+|  Useless surrogate  |   0.222    |    0.4     |
 |  Perfect surrogate  |   0.042    |    0.1     |
-| Imperfect surrogate |   0.083    |    0.1     |
-| Misspecified model  |   0.238    |    0.2     |
+| Imperfect surrogate |   0.083    |    0.2     |
+| Misspecified model  |   0.160    |    0.1     |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Parast et al. (2024).
@@ -212,7 +212,7 @@ higher.
 
 |      Setting      | $`\delta`$ | $`\theta`$ |
 |:-----------------:|:----------:|:----------:|
-| Perfect surrogate |   0.286    |     0      |
+| Perfect surrogate |   0.143    |     0      |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Carlotti and Parast (2026).
@@ -234,7 +234,7 @@ can be computed as follows:
 
 ``` r
 # Sample size
-n <- 6
+n <- 50
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -287,7 +287,7 @@ For example, for $`\alpha = 0.05`$ we have
 
 ``` math
 
-  BF_{n, \alpha} = 2.857.
+  BF_{n, \alpha} = 1.385.
 ```
 
 Once we have the value of $`BF_{n, \alpha}`$, we can compute the value
@@ -326,7 +326,7 @@ Then, we have that
 
 ``` math
 
-  v_S = 0.963.
+  v_S = 0.685.
 ```
 
 Finally, the validation threshold $`\eta`$ can be computed as
@@ -356,7 +356,7 @@ In this case, we have that
 
 ``` math
 
-  \eta = 0.037.
+  \eta = 0.315.
 ```
 
 ## Run the BSET procedure
@@ -445,36 +445,53 @@ as follows:
 
 ``` r
 # Run the BSET procedure without adjusting for covariates
-# BSET_no_X_results <- BSET::BSET_no_X(
-#   data = BSET_no_X_data,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   delta_true = estimands_Parast_et_al_2024$delta_MC[2],
-#   theta_true = estimands_Parast_et_al_2024$theta_MC[2],
-#   seed = 123,
-#   n_chains = n_chains,
-#   n_iter = n_iter,
-  # burn_in_ratio = burn_in_ratio,
-  # a = a,
-  # b = b,
-  # alpha = alpha,
-  # beta = beta,
-  # V_S_zero = V_S_zero,
-  # BF_alternative = BF_alternative,
-  # root_tolerance = 1e-16,
-  # mu_0 = mu_0,
-  # Sigma_0 = Sigma_0,
-  # s = s,
-  # tau = tau,
-  # plot = TRUE,
-  # mute = TRUE,
-  # parallel = TRUE
-# )
+BSET_no_X_results <- BSET::BSET_no_X(
+  data = BSET_no_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  delta_true = estimands_Parast_et_al_2024$delta_MC[2],
+  theta_true = estimands_Parast_et_al_2024$theta_MC[2],
+  seed = 123,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_0 = mu_0,
+  Sigma_0 = Sigma_0,
+  s = s,
+  tau = tau,
+  plot = TRUE,
+  mute = TRUE,
+  parallel = TRUE
+)
 ```
 
 The posterior distribution of $`\theta`$ from the BSET procedure without
 adjusting for covariates is shown in Figure @ref(fig:BSET-no-X-plot).
+
+![Posterior distribution of \$\theta\$ from the BSET procedure without
+adjusting for covariates. The \<span style='color:blue'\>blue\</span\>
+vertical line indicates the upper bound of the 95% credible interval,
+the \<span style='color:green'\>green\</span\> vertical line indicates
+value of the validation threshold \$\eta\$, the \<span
+style='color:orange'\>orange\</span\> vertical line indicates the true
+value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
+vertical line indicates the true value of
+\$\theta\$.](BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png)
+
+Posterior distribution of $`\theta`$ from the BSET procedure without
+adjusting for covariates. The blue vertical line indicates the upper
+bound of the 95% credible interval, the green vertical line indicates
+value of the validation threshold $`\eta`$, the orange vertical line
+indicates the true value of $`\delta`$, and the red vertical line
+indicates the true value of $`\theta`$.
 
 ### BSET with covariates
 
@@ -529,34 +546,51 @@ follows:
 
 ``` r
 # Run the BSET procedure adjusting for covariates
-# BSET_X_results <- BSET::BSET_X(
-#   data = BSET_X_data,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   X = "X",
-#   delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
-#   theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
-#   seed = 123,
-#   n_chains = n_chains,
-#   n_iter = n_iter,
-#   burn_in_ratio = burn_in_ratio,
-#   a = a,
-#   b = b,
-#   alpha = alpha,
-#   beta = beta,
-#   V_S_zero = V_S_zero,
-#   BF_alternative = BF_alternative,
-#   root_tolerance = 1e-16,
-#   mu_beta = mu_beta,
-#   Sigma_beta = Sigma_beta,
-#   s = s,
-#   tau = tau,
-#   plot = TRUE,
-#   mute = TRUE,
-#   parallel = TRUE
-# )
+BSET_X_results <- BSET::BSET_X(
+  data = BSET_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
+  theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
+  seed = 123,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_beta = mu_beta,
+  Sigma_beta = Sigma_beta,
+  s = s,
+  tau = tau,
+  plot = TRUE,
+  mute = TRUE,
+  parallel = TRUE
+)
 ```
 
 The posterior distribution of $`\theta`$ from the BSET procedure
 adjusting for covariates is shown in Figure @ref(fig:BSET-X-plot).
+
+![Posterior distribution of \$\theta\$ from the BSET procedure adjusting
+for covariates. The \<span style='color:blue'\>blue\</span\> vertical
+line indicates the upper bound of the 95% credible interval, the \<span
+style='color:green'\>green\</span\> vertical line indicates value of the
+validation threshold \$\eta\$, the \<span
+style='color:orange'\>orange\</span\> vertical line indicates the true
+value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
+vertical line indicates the true value of
+\$\theta\$.](BSET_tutorial_files/figure-html/BSET-X-plot-1.png)
+
+Posterior distribution of $`\theta`$ from the BSET procedure adjusting
+for covariates. The blue vertical line indicates the upper bound of the
+95% credible interval, the green vertical line indicates value of the
+validation threshold $`\eta`$, the orange vertical line indicates the
+true value of $`\delta`$, and the red vertical line indicates the true
+value of $`\theta`$.
