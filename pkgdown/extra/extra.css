@@ -1,0 +1,15 @@
+/* Target tables specifically within pkgdown articles */
+.contents table {
+  width: 70% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 20px !important;
+}
+
+/* Ensure captions stay centered and full width */
+.contents caption {
+  caption-side: bottom !important;
+  text-align: center !important;
+  padding-top: 10px !important;
+  width: 100% !important;
+}

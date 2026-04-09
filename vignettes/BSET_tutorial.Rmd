@@ -101,7 +101,7 @@ data_no_X <- BSET::DGP_no_X(
   n = n,
   p = p,
   mu_star = mu_star,
-  Sigma_star <- Sigma_star,
+  Sigma_star = Sigma_star,
   model = "Gaussian"
 )
 ```
@@ -377,14 +377,6 @@ In this case, we have that
 The package includes two functions to run the BSET procedure: `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without adjusting for covariates, while the second one runs the BSET procedure adjusting for covariates.
 
 ### BSET with no covariates
-
-If the data do not include baseline covariates, we can run the BSET procedure by fitting the following Bayesian model:
-\begin{align*}
-  (Y_i, S_i) = \begin{cases}
-    (Y_i(0), S_i(0)) & \text{if } Z_i = 0 \\
-    (Y_i(1), S_i(1)) & \text{if } Z_i = 1
-  \end{cases} \quad \text{for } i = 1, \ldots, n,
-\end{align*}
 
 As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of Parast et al. (2024). First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
 
