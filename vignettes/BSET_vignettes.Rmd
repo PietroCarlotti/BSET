@@ -76,7 +76,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -108,7 +108,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -256,7 +256,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 50
+n <- 10
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
