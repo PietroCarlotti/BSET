@@ -65,6 +65,8 @@ library(dplyr)
 
 ## Generating the data
 
+We start by setting the random seed for reproducibility of the results.
+
 ```{r set-seed}
 # Set the random seed for reproducibility
 set.seed(123)
@@ -414,7 +416,7 @@ s <- rep(1, 4)
 tau <- 1
 ```
 
-If the true values of \(\delta\) and \(\theta\) are known, we can also specify them as input to the function `BSET_no_X` to check whether if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 2 of Parast et al. (2024).
+If the true values of \(\delta\) and \(\theta\) are known, we can also specify them as input to the function `BSET_no_X` to check whether they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates for setting 2 of Parast et al. (2024).
 
 We can also specify some additional parameters for the BSET procedure, such as:
 
