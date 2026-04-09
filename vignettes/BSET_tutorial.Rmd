@@ -75,7 +75,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 6
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -107,7 +107,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 6
+n <- 50
 
 # Treatment assignment probability
 p <- 0.5
@@ -255,7 +255,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 6
+n <- 50
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -427,39 +427,39 @@ Finally, we can run the BSET procedure without adjusting for covariates as follo
 
 ```{r BSET-no-X}
 # Run the BSET procedure without adjusting for covariates
-# BSET_no_X_results <- BSET::BSET_no_X(
-#   data = BSET_no_X_data,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   delta_true = estimands_Parast_et_al_2024$delta_MC[2],
-#   theta_true = estimands_Parast_et_al_2024$theta_MC[2],
-#   seed = 123,
-#   n_chains = n_chains,
-#   n_iter = n_iter,
-  # burn_in_ratio = burn_in_ratio,
-  # a = a,
-  # b = b,
-  # alpha = alpha,
-  # beta = beta,
-  # V_S_zero = V_S_zero,
-  # BF_alternative = BF_alternative,
-  # root_tolerance = 1e-16,
-  # mu_0 = mu_0,
-  # Sigma_0 = Sigma_0,
-  # s = s,
-  # tau = tau,
-  # plot = TRUE,
-  # mute = TRUE,
-  # parallel = TRUE
-# )
+BSET_no_X_results <- BSET::BSET_no_X(
+  data = BSET_no_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  delta_true = estimands_Parast_et_al_2024$delta_MC[2],
+  theta_true = estimands_Parast_et_al_2024$theta_MC[2],
+  seed = 123,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_0 = mu_0,
+  Sigma_0 = Sigma_0,
+  s = s,
+  tau = tau,
+  plot = TRUE,
+  mute = TRUE,
+  parallel = TRUE
+)
 ```
 
 The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in Figure \@ref(fig:BSET-no-X-plot).
 
 ```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta
-# BSET_no_X_results$theta_posterior_plot
+BSET_no_X_results$theta_posterior_plot
 ```
 
 ### BSET with covariates
@@ -493,38 +493,38 @@ Finally, we can run the BSET procedure adjusting for covariates as follows:
 
 ```{r BSET-X}
 # Run the BSET procedure adjusting for covariates
-# BSET_X_results <- BSET::BSET_X(
-#   data = BSET_X_data,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   X = "X",
-#   delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
-#   theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
-#   seed = 123,
-#   n_chains = n_chains,
-#   n_iter = n_iter,
-#   burn_in_ratio = burn_in_ratio,
-#   a = a,
-#   b = b,
-#   alpha = alpha,
-#   beta = beta,
-#   V_S_zero = V_S_zero,
-#   BF_alternative = BF_alternative,
-#   root_tolerance = 1e-16,
-#   mu_beta = mu_beta,
-#   Sigma_beta = Sigma_beta,
-#   s = s,
-#   tau = tau,
-#   plot = TRUE,
-#   mute = TRUE,
-#   parallel = TRUE
-# )
+BSET_X_results <- BSET::BSET_X(
+  data = BSET_X_data,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  delta_true = estimands_Carlotti_and_Parast_2026$delta_MC[1],
+  theta_true = estimands_Carlotti_and_Parast_2026$theta_MC[1],
+  seed = 123,
+  n_chains = n_chains,
+  n_iter = n_iter,
+  burn_in_ratio = burn_in_ratio,
+  a = a,
+  b = b,
+  alpha = alpha,
+  beta = beta,
+  V_S_zero = V_S_zero,
+  BF_alternative = BF_alternative,
+  root_tolerance = 1e-16,
+  mu_beta = mu_beta,
+  Sigma_beta = Sigma_beta,
+  s = s,
+  tau = tau,
+  plot = TRUE,
+  mute = TRUE,
+  parallel = TRUE
+)
 ```
 
 The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in Figure \@ref(fig:BSET-X-plot).
 
 ```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta
-# BSET_X_results$theta_posterior_plot
+BSET_X_results$theta_posterior_plot
 ```
