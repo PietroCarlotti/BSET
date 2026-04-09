@@ -156,7 +156,7 @@ defined in Parast et al. (2024) (i.e.: the setting where the surrogate
 is perfect and covariates are not included):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample size</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
 <span></span>
 <span><span class="co"># Treatment assignment probability</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
@@ -187,7 +187,7 @@ in Carlotti and Parast (2026) (i.e.: the setting where the surrogate is
 useful and covariates are included):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample size</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
 <span></span>
 <span><span class="co"># Treatment assignment probability</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
@@ -275,12 +275,12 @@ in the two settings.</caption>
 <tr class="odd">
 <td align="center">No X (Perfect Surrogate)</td>
 <td align="center">0.000</td>
-<td align="center">0</td>
+<td align="center">0.167</td>
 </tr>
 <tr class="even">
 <td align="center">Binary X</td>
-<td align="center">0.286</td>
-<td align="center">0</td>
+<td align="center">0.875</td>
+<td align="center">0.000</td>
 </tr>
 </tbody>
 </table>
@@ -328,23 +328,23 @@ al. (2024).</caption>
 <tbody>
 <tr class="odd">
 <td align="center">Useless surrogate</td>
-<td align="center">0.560</td>
-<td align="center">0.4</td>
+<td align="center">0.458</td>
+<td align="center">0.5</td>
 </tr>
 <tr class="even">
 <td align="center">Perfect surrogate</td>
-<td align="center">0.062</td>
-<td align="center">0.0</td>
+<td align="center">0.042</td>
+<td align="center">0.1</td>
 </tr>
 <tr class="odd">
 <td align="center">Imperfect surrogate</td>
-<td align="center">0.292</td>
-<td align="center">0.4</td>
+<td align="center">0.083</td>
+<td align="center">0.1</td>
 </tr>
 <tr class="even">
 <td align="center">Misspecified model</td>
-<td align="center">0.000</td>
-<td align="center">0.1</td>
+<td align="center">0.238</td>
+<td align="center">0.2</td>
 </tr>
 </tbody>
 </table>
@@ -375,7 +375,7 @@ for the simulation settings considered in Carlotti and Parast
 </tr></thead>
 <tbody><tr class="odd">
 <td align="center">Perfect surrogate</td>
-<td align="center">0.095</td>
+<td align="center">0.286</td>
 <td align="center">0</td>
 </tr></tbody>
 </table>
@@ -405,7 +405,7 @@ hypothesis
 can be computed as follows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample size</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
 <span></span>
 <span><span class="co"># Hypothesized value of V_S under the null</span></span>
 <span><span class="va">V_S_zero</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
@@ -453,8 +453,8 @@ corresponding to a specified Type I error rate
 <p>For example, for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>
 we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>=</mo><mn>4.002</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  BF_{n, \alpha} = 4.002.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>=</mo><mn>2.857</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  BF_{n, \alpha} = 2.857.
 </annotation></semantics></math></p>
 <p>Once we have the value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub></mrow><annotation encoding="application/x-tex">BF_{n, \alpha}</annotation></semantics></math>,
@@ -492,8 +492,8 @@ as follows:</p>
 <span>  root_tolerance <span class="op">=</span> <span class="fl">1e-16</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">V_S_star</span></span></code></pre></div>
 <p>Then, we have that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>S</mi></msub><mo>=</mo><mn>0.917</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  v_S = 0.917.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>S</mi></msub><mo>=</mo><mn>0.963</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  v_S = 0.963.
 </annotation></semantics></math></p>
 <p>Finally, the validation threshold
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
@@ -519,8 +519,8 @@ surrogate is perfect and covariates are not included).</p>
 <span><span class="co"># Compute the validation threshold eta</span></span>
 <span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">v_Y</span> <span class="op">-</span> <span class="va">V_S_star</span>, <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, we have that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  \eta = 0.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.037</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  \eta = 0.037.
 </annotation></semantics></math></p>
 </div>
 <div class="section level2">
@@ -656,16 +656,18 @@ covariates as follows:</p>
 from the BSET procedure without adjusting for covariates is shown in
 Figure @ref(fig:BSET-no-X-plot).</p>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. The blue vertical line indicates the upper bound of the 95% credible interval, the green vertical line indicates value of the validation threshold $\eta$, the orange vertical line indicates the true value of $\delta$, and the red vertical line indicates the true value of $\theta$." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure without adjusting for covariates. The blue
-vertical line indicates the upper bound of the 95% credible interval,
-the green vertical line indicates value of the validation threshold
+from the BSET procedure without adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
+of the 95% credible interval, the <span style="color:green">green</span>
+vertical line indicates value of the validation threshold
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the orange vertical line indicates the true value of
+the <span style="color:orange">orange</span> vertical line indicates the
+true value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-and the red vertical line indicates the true value of
+and the <span style="color:red">red</span> vertical line indicates the
+true value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
 </p>
 </div>
@@ -772,13 +774,12 @@ follows:</p>
 from the BSET procedure adjusting for covariates is shown in Figure
 @ref(fig:BSET-X-plot).</p>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure. The <span style="color:blue">blue</span>
-vertical line indicates the upper bound of the 95% credible interval,
-the <span style="color:green">green</span> vertical line indicates the
-validation threshold
+from the BSET procedure adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
+of the 95% credible interval, the <span style="color:green">green</span>
+vertical line indicates value of the validation threshold
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
 the <span style="color:orange">orange</span> vertical line indicates the
 true value of
