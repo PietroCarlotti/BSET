@@ -1,11 +1,13 @@
 # _pkgdown.yml
+
 template:
   bootstrap: 5
   bslib:
     toc: true
     toc_float: false
+    code-bg: "#f8f8f8"
 
-highlight: tango
+highlight: arrow
 
 navbar:
   structure:
