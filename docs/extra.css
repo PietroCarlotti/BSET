@@ -1,36 +1,52 @@
-/* pkgdown/extra.css */
+/* ===== PAGE WIDTH ===== */
 
-/* Wider article body */
+.container,
+.container-lg,
+.container-xl {
+  max-width: 1200px !important;
+}
+
 .article-container {
-  max-width: 950px;
+  max-width: 900px !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Wider page container */
-.container-fluid {
-  max-width: 1200px;
-}
 
-/* Tables centered and wider */
+/* ===== TABLES ===== */
+
 table {
   width: 90%;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Code block styling */
+
+/* ===== TABLE OF CONTENTS ===== */
+
+#toc {
+  max-width: 700px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* allow wrapping nicely instead of narrow breaks */
+#toc li {
+  line-height: 1.4;
+}
+
+
+/* ===== CODE BLOCKS ===== */
+
 pre code {
-  background: #f7f7f7;
+  background: #f8f8f8;
   font-size: 0.9em;
-  color: #333;
+  padding: 0.6em;
 }
 
-/* Comments in light blue */
-code span.co { color: #56B4E9; }
 
-/* Function arguments in green */
-code span.va { color: #009E73; }
+/* ===== BETTER PARAGRAPH READABILITY ===== */
 
-/* Strings in orange */
-code span.st { color: #D55E00; }
-
-/* Numbers in purple */
-code span.m { color: #CC79A7; }
+p {
+  line-height: 1.6;
+}
