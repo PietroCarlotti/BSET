@@ -53,7 +53,7 @@ For example, this how we can generate data from the second setting defined in Pa
 
 ```{r generate-data-no-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -85,7 +85,7 @@ While this is how we can generate data from the first setting defined in Carlott
 
 ```{r generate-data-X}
 # Sample size
-n <- 50
+n <- 10
 
 # Treatment assignment probability
 p <- 0.5
@@ -128,7 +128,7 @@ data_X <- BSET::DGP_X_binary(
   )
 ```
 
-## Computing the true values of \(\delta\) and \(\theta\)
+## Computing the true values of the discrepancy parameters
 
 Given the data generated with the above functions, we can estimate \(\delta\) and \(\theta\) using the `compute_delta` and `compute_theta` functions, respectively.
 
@@ -223,7 +223,7 @@ knitr::kable(
 )
 ```
 
-## Compute the validation threshold \(\eta\)
+## Computing the validation threshold
 
 The validation threshold \(\eta\) is the value of \(\theta\) below which the surrogate is considered valid. As explained in Carlotti and Parast (2026), the computation of \(\eta\) is based on the distribution of the following Bayes factor:
 \[
@@ -233,7 +233,7 @@ Given the true value of \(V_S\), the distribution of \(BF_n\) can be computed wi
 
 ```{r compute-BF-distribution}
 # Sample size
-n <- 50
+n <- 10
 
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
@@ -347,7 +347,7 @@ In this case, we have that
   \eta = `r round(eta, 3)`.
 \]
 
-## Run the BSET procedure
+## Running the BSET procedure
 
 The package includes two functions to run the BSET procedure: `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without adjusting for covariates, while the second one runs the BSET procedure adjusting for covariates.
 
