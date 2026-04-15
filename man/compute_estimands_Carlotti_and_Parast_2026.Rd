@@ -34,6 +34,6 @@ settings are defined as follows:
     \deqn{S_1 = Y_1 + \mathcal{N}(-10, 1), \quad S_0 = Y_0 + \mathcal{N}(-10, 1)}
   }
   \item Setting 2: \strong{X Gaussian}
-  \deqn{()}
+  \deqn{(Y_1, S_1, Y_0, S_0) \mid X = x \sim \mathcal{N}(x (1, 7, 0, 6)', \frac{1}{2} I_4),}
 }
 }

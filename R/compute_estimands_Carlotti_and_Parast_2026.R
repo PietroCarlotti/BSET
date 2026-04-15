@@ -16,7 +16,7 @@
 #'     \deqn{S_1 = Y_1 + \mathcal{N}(-10, 1), \quad S_0 = Y_0 + \mathcal{N}(-10, 1)}
 #'   }
 #'   \item Setting 2: \strong{X Gaussian}
-#'   \deqn{()}
+#'   \deqn{(Y_1, S_1, Y_0, S_0) \mid X = x \sim \mathcal{N}(x (1, 7, 0, 6)', \frac{1}{2} I_4),}
 #' }
 #'
 #' @param MC_samples Integer. The number of Monte Carlo samples to generate per setting.
@@ -34,7 +34,7 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
   p = 0.5
   
   # Possible settings
-  n_settings <- 1
+  n_settings <- 2
   settings <- vector("list", n_settings)
   
   for (setting in 1:n_settings) {
