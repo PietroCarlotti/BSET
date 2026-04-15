@@ -57,7 +57,7 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
   n1 <- sum(Z)
   n0 <- n - n1
   
-  # Observed and Unobserved (Vectorized logic)
+  # Observed and Unobserved
   # When Z=1, we observe cols 1-2 (Y1, S1). When Z=0, we observe cols 3-4 (Y0, S0).
   P_observed <- Z * P[, c("Y1", "S1")] + (1 - Z) * P[, c("Y0", "S0")]
   P_unobserved <- Z * P[, c("Y0", "S0")] + (1 - Z) * P[, c("Y1", "S1")]
@@ -77,16 +77,16 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
   ))
 }
 
-#' Data Generating Process with a Continuous Covariate
+#' Data Generating Process with a Gaussian Covariate
 #' 
 #' This function generates potential outcomes from a data generating process
 #' similar to the one described in Parast et al. (2024), but with the addition
-#' of a continuous covariate X. It creates a dataset of potential outcomes
+#' of a Gaussian covariate X. It creates a dataset of potential outcomes
 #' \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
 #' \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
 #' 
-#' @details The potential outcomes are generated from multivariate normal
-#' distributions with mean vector and covariance matrix that depend on the
+#' @details The potential outcomes are generated from a multivariate normal
+#' distribution with mean vector and covariance matrix that depend on the
 #' value of \eqn{X}. Specifically, the mean vector is a linear function of \eqn{X}:
 #' \deqn{\mu(X) = x \cdot (\beta_{Y1}, \beta_{S1}, \beta_{Y0}, \beta_{S0})^T,}
 #' and the covariance matrix is constant across values of \eqn{X}:
@@ -94,14 +94,14 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
 #' 
 #' @param n Integer. Total sample size.
 #' @param p Numeric. Probability of being assigned to the treatment group \eqn{(Z=1)}.
-#' @param beta Numeric vector. Coefficients for the linear function of the mean vector.
+#' @param beta Numeric vector. Coefficients for the linear function of the covariate \eqn{X}.
 #' @param Sigma Matrix. Covariance matrix for the potential outcomes.
-#' @param m Numeric. Mean of the continuous covariate X.
-#' @param s Numeric. Standard deviation of the continuous covariate X.
+#' @param m Numeric. Mean of the Gaussian covariate \eqn{X}.
+#' @param s Numeric. Standard deviation of the Gaussian covariate \eqn{X}.
 #' 
 #' @return A list containing:
 #' \itemize{
-#'  \item \code{X}: The continuous covariate vector.
+#'  \item \code{X}: The Gaussian covariate vector.
 #'  \item \code{Z}: Treatment assignment vector.
 #'  \item \code{n1}: Number of treated units.
 #'  \item \code{n0}: Number of control units.
