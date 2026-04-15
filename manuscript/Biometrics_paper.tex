@@ -678,6 +678,8 @@ with the following specific parameter values:
 \end{align}
 This construction implies that, conditionally on the covariates, the potential outcomes are not identically distributed across units, violating a key assumption of the Mann-Whitney test. More specifically, we chose the generating parameters to maximize the discrepancy between \(\delta\) and \(\theta\), which are approximatelyequal to \(0.25\) and \(0\), respectively, while keeping the generating process as regular as possible. In fact, it is easy to verify that in this setting the surrogate is just a replica of the primary outcome with an addition of unitary Gaussian noise, with treatment effect homogeneity across the two subpopulations defined by \(X\) and uncorrelated potential outcomes. Therefore, we would hope that any surrogate validation method would correctly identify $S$ as a valid surrogate.
 
+TEST
+
 In Setting 6, instead, we generated a baseline covariate as  \(X_{i} \iid \mathcal{N} (3, 1)\) and the distribution of \(P_{i}\) given \(X_{i}\) was defined as follows:
 \begin{equation}
   P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; \mathcal{N}_{4} \left(X_{i} \, \beta, \Sigma\right), 
