@@ -56,7 +56,7 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
   p <- 0.5
   
   # Possible settings
-  n_settings <- 1
+  n_settings <- 2
   settings <- vector("list", n_settings)
   
   for (setting in 1:n_settings) {
@@ -72,6 +72,9 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
       
       # Setting label
       setting_label <- "X binary"
+      
+      # Binary covariate probability
+      q <- 0.5
       
       # Number of covariates (including the intercept)
       d <- 2
@@ -98,18 +101,55 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
                  1, 2),
         nrow = 2,
         ncol = 2))
+      
+      # Store setting parameters in the list
+      settings[[setting]] <- list(
+        setting_name = setting_name,
+        setting_label = setting_label,
+        q = q,
+        d = d,
+        mu_0 = mu_0,
+        mu_1 = mu_1,
+        Sigma_0 = Sigma_0,
+        Sigma_1 = Sigma_1
+      )
+    } else if (setting == 2) {
+      ##############
+      # X Gaussian #
+      ##############
+      
+      # Setting name
+      setting_name <- "X_gaussian"
+      
+      # Setting label
+      setting_label <- "X Gaussian"
+      
+      # Number of covariates (including the intercept)
+      d <- 2
+      
+      # Vector of coefficients for the covariates in the potential outcomes model
+      beta <- c(1, 7, 0, 6)
+      
+      # Covariance matrix of the potential outcomes
+      Sigma <- 0.5 * diag(4)
+      
+      # Mean vector the Gaussian covariate X
+      m <- 3
+      
+      # Standard deviation of the Gaussian covariate X
+      s <- 1
+      
+      # Store setting parameters in the list
+      settings[[setting]] <- list(
+        setting_name = setting_name,
+        setting_label = setting_label,
+        d = d,
+        beta = beta,
+        Sigma = Sigma,
+        m = m,
+        s = s
+      )
     }
-    
-    settings[[setting]] <- list(
-      setting_name = setting_name,
-      setting_label = setting_label,
-      d = d,
-      q = q,
-      mu_0 = mu_0,
-      mu_1 = mu_1,
-      Sigma_0 = Sigma_0,
-      Sigma_1 = Sigma_1
-    )
   }
   
   ######################
@@ -175,15 +215,26 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
     simulation_number <- simulation_id$simulation
     
     # Generate data
-    data <- DGP_X_binary(
-      n = n,
-      p = p,
-      q = settings[[simulation_setting]]$q,
-      mu_0 = settings[[simulation_setting]]$mu_0,
-      mu_1 = settings[[simulation_setting]]$mu_1,
-      Sigma_0 = settings[[simulation_setting]]$Sigma_0,
-      Sigma_1 = settings[[simulation_setting]]$Sigma_1
-    )
+    if (simulation_setting == 1) {
+      data <- DGP_X_binary(
+        n = n,
+        p = p,
+        q = settings[[simulation_setting]]$q,
+        mu_0 = settings[[simulation_setting]]$mu_0,
+        mu_1 = settings[[simulation_setting]]$mu_1,
+        Sigma_0 = settings[[simulation_setting]]$Sigma_0,
+        Sigma_1 = settings[[simulation_setting]]$Sigma_1
+      )
+    } else if (simulation_setting == 2) {
+      data <- DGP_X_gaussian(
+        n = n,
+        p = p,
+        beta = settings[[simulation_setting]]$beta,
+        Sigma = settings[[simulation_setting]]$Sigma,
+        m = settings[[simulation_setting]]$m,
+        s = settings[[simulation_setting]]$s
+      )
+    }
     
     observed_data <- data.frame(
       Y = data$P_observed[, "Y"],

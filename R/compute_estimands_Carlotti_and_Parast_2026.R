@@ -3,8 +3,10 @@
 #' This function iterates through the simulation settings defined in Carlotti
 #' and Parast (2026) and estimates the true values of \eqn{U_Y}, \eqn{U_S},
 #' \eqn{\delta}, \eqn{V_Y}, \eqn{V_S}, and \eqn{\theta} using a Monte Carlo
-#' dataset generated according to the specified data-generating processes. The
-#' settings are defined as follows:
+#' dataset generated according to the specified data-generating processes.
+#' 
+#' @details
+#' The settings are defined as follows:
 #' \itemize{
 #'   \item Setting 1: \strong{X binary}
 #'   \itemize{
