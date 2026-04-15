@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex Biometrics_paper"] 0 "Biometrics_paper.aux" "Biometrics_paper.bbl" "Biometrics_paper" 1776277095.45837 -1
+["bibtex Biometrics_paper"] 1776278514.07805 "Biometrics_paper.aux" "Biometrics_paper.bbl" "Biometrics_paper" 1776278575.91862 0
   "./Surrogate_bib.bib" 1776276676.28232 154461 2cedf84af7e1d49d63982790680930ad ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "Biometrics_paper.aux" 1776277095.21293 7744 d37bae14f95c48e8323b1f8acfa269f9 "pdflatex"
+  "Biometrics_paper.aux" 1776278575.66322 10704 9db412cd3d296e18005f3accdcedcd6d "pdflatex"
   (generated)
   "Biometrics_paper.bbl"
   "Biometrics_paper.blg"
   (rewritten before read)
-["pdflatex"] 1776277094.64345 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex" "Biometrics_paper.pdf" "Biometrics_paper" 1776277095.45851 2
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex" 1776276671.35735 68917 df2350c69c396a0df61f7b731a36fb2d ""
+["pdflatex"] 1776278574.89444 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex" "Biometrics_paper.pdf" "Biometrics_paper" 1776278575.91875 0
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex" 1776278574.74194 74877 ddc773e397ec564de53add10b6ad7d53 ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -164,11 +164,11 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "Biometrics_paper.aux" 1776277095.21293 7744 d37bae14f95c48e8323b1f8acfa269f9 "pdflatex"
-  "Biometrics_paper.bbl" 1776277051.64982 0 d41d8cd98f00b204e9800998ecf8427e "bibtex Biometrics_paper"
-  "Biometrics_paper.out" 1776277095.21548 2647 c87d2f4215d28b8c128b328647fbab09 "pdflatex"
-  "Biometrics_paper.tex" 1776276671.35735 68917 df2350c69c396a0df61f7b731a36fb2d ""
-  "Plots/discrepancy.png" 0 -1 0 ""
+  "Biometrics_paper.aux" 1776278575.66322 10704 9db412cd3d296e18005f3accdcedcd6d "pdflatex"
+  "Biometrics_paper.bbl" 1776278514.16275 9271 086cde17fc2e64e343282b25d0158ff1 "bibtex Biometrics_paper"
+  "Biometrics_paper.out" 1776278575.67737 3055 ae6b39ee0b299c2563e38964f401a496 "pdflatex"
+  "Biometrics_paper.tex" 1776278574.74194 74877 ddc773e397ec564de53add10b6ad7d53 ""
+  "discrepancy.png" 1763091519.28237 92872 1b18ba003cdf2b329413ae875c2be5dc ""
   (generated)
   "Biometrics_paper.aux"
   "Biometrics_paper.log"
