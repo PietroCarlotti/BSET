@@ -1,0 +1,174 @@
+\begin{thebibliography}{33}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barnard et~al.(2000)Barnard, McCulloch, and Meng]{barnard2000modeling}
+John Barnard, Robert McCulloch, and Xiao-Li Meng.
+\newblock Modeling covariance matrices in terms of standard deviations and correlations, with application to shrinkage.
+\newblock \emph{Statistica Sinica}, pages 1281--1311, 2000.
+
+\bibitem[Burzykowski et~al.(2005)Burzykowski, Molenberghs, and Buyse]{burzykowski2005evaluation}
+Tomasz Burzykowski, Geert Molenberghs, and Marc Buyse.
+\newblock \emph{The evaluation of surrogate endpoints}.
+\newblock Springer, 2005.
+
+\bibitem[Buyse(2010)]{buyse2010generalized}
+Marc Buyse.
+\newblock Generalized pairwise comparisons of prioritized outcomes in the two-sample problem.
+\newblock \emph{Statistics in medicine}, 29\penalty0 (30):\penalty0 3245--3257, 2010.
+
+\bibitem[Buyse and Molenberghs(1998)]{buyse1998criteria}
+Marc Buyse and Geert Molenberghs.
+\newblock Criteria for the validation of surrogate endpoints in randomized experiments.
+\newblock \emph{Biometrics}, pages 1014--1029, 1998.
+
+\bibitem[Colantuoni and Rosenblum(2015)]{colantuoni2015leveraging}
+Elizabeth Colantuoni and Michael Rosenblum.
+\newblock Leveraging prognostic baseline variables to gain precision in randomized trials.
+\newblock \emph{Statistics in medicine}, 34\penalty0 (18):\penalty0 2602--2617, 2015.
+
+\bibitem[{D}{C}{C}{T}(1993)]{diabetes1993effect}
+{D}{C}{C}{T}.
+\newblock Diabetes control and complications trial research group: The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus.
+\newblock \emph{New England journal of medicine}, 329\penalty0 (14):\penalty0 977--986, 1993.
+
+\bibitem[Elliott(2023)]{elliott2023surrogate}
+Michael~R Elliott.
+\newblock Surrogate endpoints in clinical trials.
+\newblock \emph{Annual Review of Statistics and its Application}, 10:\penalty0 75--96, 2023.
+
+\bibitem[Fay et~al.(2018)Fay, Brittain, Shih, Follmann, and Gabriel]{fay2018causal}
+Michael~P Fay, Erica~H Brittain, Joanna~H Shih, Dean~A Follmann, and Erin~E Gabriel.
+\newblock Causal estimands and confidence intervals associated with wilcoxon-mann-whitney tests in randomized experiments.
+\newblock \emph{Statistics in Medicine}, 37\penalty0 (20):\penalty0 2923--2937, 2018.
+
+\bibitem[{FDA}(1992)]{FDA_AcceleratedApprovalProgram2024}
+{FDA}.
+\newblock U.s. food and drug administration, accelerated approval program.
+\newblock FDA — NDA and BLA Approvals, 1992.
+\newblock URL \url{https://www.fda.gov/drugs/nda-and-bla-approvals/accelerated-approval-program}.
+
+\bibitem[FDA(2025)]{FDA_approved}
+FDA.
+\newblock Table of surrogate endpoints that were the basis of drug approval or licensure.
+\newblock {https://www.fda.gov/drugs/development-resources/table-surrogate-endpoints-were-basis-drug-approval-or-licensure}, 2025.
+
+\bibitem[Frangakis and Rubin(2002)]{frangakis2002principal}
+Constantine~E Frangakis and Donald~B Rubin.
+\newblock Principal stratification in causal inference.
+\newblock \emph{Biometrics}, 58\penalty0 (1):\penalty0 21--29, 2002.
+
+\bibitem[Freedman et~al.(1992)Freedman, Graubard, and Schatzkin]{freedman1992statistical}
+Laurence~S Freedman, Barry~I Graubard, and Arthur Schatzkin.
+\newblock Statistical validation of intermediate endpoints for chronic diseases.
+\newblock \emph{Statistics in medicine}, 11\penalty0 (2):\penalty0 167--178, 1992.
+
+\bibitem[Ghosal and Van~der Vaart(2017)]{ghosal2017fundamentals}
+Subhashis Ghosal and Aad~W Van~der Vaart.
+\newblock \emph{Fundamentals of nonparametric Bayesian inference}, volume~44.
+\newblock Cambridge University Press, 2017.
+
+\bibitem[Gilbert and Hudgens(2008)]{gilbert2008evaluating}
+Peter~B Gilbert and Michael~G Hudgens.
+\newblock Evaluating candidate principal surrogate endpoints.
+\newblock \emph{Biometrics}, 64\penalty0 (4):\penalty0 1146--1154, 2008.
+
+\bibitem[Gustafson(2010)]{gustafson2010bayesian}
+Paul Gustafson.
+\newblock Bayesian inference for partially identified models.
+\newblock \emph{The international journal of biostatistics}, 6\penalty0 (2), 2010.
+
+\bibitem[Hoeffding(1992)]{hoeffding1992class}
+Wassily Hoeffding.
+\newblock A class of statistics with asymptotically normal distribution.
+\newblock In \emph{Breakthroughs in statistics: Foundations and basic theory}, pages 308--334. Springer, 1992.
+
+\bibitem[Holland(1986)]{holland1986statistics}
+Paul~W Holland.
+\newblock Statistics and causal inference.
+\newblock \emph{Journal of the American statistical Association}, 81\penalty0 (396):\penalty0 945--960, 1986.
+
+\bibitem[Huang and Gilbert(2011)]{huang2011comparing}
+Ying Huang and Peter~B Gilbert.
+\newblock Comparing biomarkers as principal surrogate endpoints.
+\newblock \emph{Biometrics}, 67\penalty0 (4):\penalty0 1442--1451, 2011.
+
+\bibitem[Imbens and Rubin(2015)]{imbens2015causal}
+Guido~W Imbens and Donald~B Rubin.
+\newblock \emph{Causal inference in statistics, social, and biomedical sciences}.
+\newblock Cambridge university press, 2015.
+
+\bibitem[Lavine et~al.(2010)Lavine, Schwimmer, Molleston, Scheimann, Murray, Abrams, Rosenthal, Sanyal, Robuck, Brunt, et~al.]{lavine2010treatment}
+Joel~E Lavine, Jeffrey~B Schwimmer, Jean~P Molleston, Ann~O Scheimann, Karen~F Murray, Stephanie~H Abrams, Philip Rosenthal, Arun~J Sanyal, Patricia~R Robuck, Elizabeth~M Brunt, et~al.
+\newblock Treatment of nonalcoholic fatty liver disease in children: Tonic trial design.
+\newblock \emph{Contemporary clinical trials}, 31\penalty0 (1):\penalty0 62--70, 2010.
+
+\bibitem[Lewandowski et~al.(2009)Lewandowski, Kurowicka, and Joe]{lewandowski2009generating}
+Daniel Lewandowski, Dorota Kurowicka, and Harry Joe.
+\newblock Generating random correlation matrices based on vines and extended onion method.
+\newblock \emph{Journal of multivariate analysis}, 100\penalty0 (9):\penalty0 1989--2001, 2009.
+
+\bibitem[Li et~al.(2023)Li, Ding, and Mealli]{li2023bayesian}
+Fan Li, Peng Ding, and Fabrizia Mealli.
+\newblock Bayesian causal inference: a critical review.
+\newblock \emph{Philosophical Transactions of the Royal Society A}, 381\penalty0 (2247):\penalty0 20220153, 2023.
+
+\bibitem[Mann and Whitney(1947)]{mann1947test}
+Henry~B Mann and Donald~R Whitney.
+\newblock On a test of whether one of two random variables is stochastically larger than the other.
+\newblock \emph{The annals of mathematical statistics}, pages 50--60, 1947.
+
+\bibitem[Miller and Harrison(2018)]{miller2018mixture}
+Jeffrey~W Miller and Matthew~T Harrison.
+\newblock Mixture models with a prior on the number of components.
+\newblock \emph{Journal of the American Statistical Association}, 113\penalty0 (521):\penalty0 340--356, 2018.
+
+\bibitem[Parast(2025)]{parast2025surrogate}
+Layla Parast.
+\newblock Surrogate marker evaluation: A tutorial using r.
+\newblock \emph{Statistics in Medicine}, 44\penalty0 (10-12):\penalty0 e70048, 2025.
+
+\bibitem[Parast et~al.(2016)Parast, McDermott, and Tian]{parast2015robust}
+Layla Parast, Mary~M McDermott, and Lu~Tian.
+\newblock Robust estimation of the proportion of treatment effect explained by surrogate marker information.
+\newblock \emph{Statistics in Medicine}, 35\penalty0 (10):\penalty0 1637--1653, 2016.
+
+\bibitem[Parast et~al.(2024)Parast, Cai, and Tian]{parast2024rank}
+Layla Parast, Tianxi Cai, and Lu~Tian.
+\newblock A rank-based approach to evaluate a surrogate marker in a small sample setting.
+\newblock \emph{Biometrics}, 80\penalty0 (1):\penalty0 ujad035, 2024.
+
+\bibitem[Rubin(1974)]{rubin1974estimating}
+Donald~B Rubin.
+\newblock Estimating causal effects of treatments in randomized and nonrandomized studies.
+\newblock \emph{Journal of educational Psychology}, 66\penalty0 (5):\penalty0 688, 1974.
+
+\bibitem[Schwartz(1965)]{schwartz1965bayes}
+Lorraine Schwartz.
+\newblock On bayes procedures.
+\newblock \emph{Zeitschrift f{\"u}r Wahrscheinlichkeitstheorie und verwandte Gebiete}, 4\penalty0 (1):\penalty0 10--26, 1965.
+
+\bibitem[Thas et~al.(2012)Thas, Neve, Clement, and Ottoy]{thas2012probabilistic}
+Olivier Thas, Jan~De Neve, Lieven Clement, and Jean-Pierre Ottoy.
+\newblock Probabilistic index models.
+\newblock \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology}, 74\penalty0 (4):\penalty0 623--671, 2012.
+
+\bibitem[Wang and Taylor(2002)]{wang2002measure}
+Yue Wang and Jeremy~MG Taylor.
+\newblock A measure of the proportion of treatment effect explained by a surrogate marker.
+\newblock \emph{Biometrics}, 58\penalty0 (4):\penalty0 803--812, 2002.
+
+\bibitem[Zhang et~al.(2008)Zhang, Tsiatis, and Davidian]{zhang2008improving}
+Min Zhang, Anastasios~A Tsiatis, and Marie Davidian.
+\newblock Improving efficiency of inferences in randomized clinical trials using auxiliary covariates.
+\newblock \emph{Biometrics}, 64\penalty0 (3):\penalty0 707--715, 2008.
+
+\bibitem[Zhang and Ma(2019)]{zhang2019machine}
+Zhiwei Zhang and Shujie Ma.
+\newblock Machine learning methods for leveraging baseline covariate information to improve the efficiency of clinical trials.
+\newblock \emph{Statistics in Medicine}, 38\penalty0 (10):\penalty0 1703--1714, 2019.
+
+\end{thebibliography}
