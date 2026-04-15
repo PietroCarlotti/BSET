@@ -21,8 +21,10 @@ A data frame containing the Monte Carlo estimates for each setting:
 This function iterates through the four simulation settings defined in Parast
 et al. (2024) and estimates the true values of \eqn{U_Y}, \eqn{U_S},
 \eqn{\delta}, \eqn{V_Y}, \eqn{V_S}, and \eqn{\theta} using a Monte Carlo
-dataset generated according to the specified data-generating processes. The
-settings are defined as follows:
+dataset generated according to the specified data-generating processes.
+}
+\details{
+The settings are defined as follows:
 \itemize{
   \item Setting 1: \strong{Useless surrogate (Gaussian model)}
     \deqn{Y_1 \sim \mathcal{N}(5, 3), \quad Y_0 \sim \mathcal{N}(3, 3),}
