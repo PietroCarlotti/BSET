@@ -33,5 +33,10 @@ settings are defined as follows:
     \deqn{Y_1 \sim \mathcal{N}(5, 1), \quad Y_0 \sim \mathcal{N}(0, 1)}
     \deqn{S_1 = Y_1 + \mathcal{N}(-10, 1), \quad S_0 = Y_0 + \mathcal{N}(-10, 1)}
   }
+  \item Setting 2: \strong{X Gaussian}
+  \itemize{
+  \deqn{Y_1 = 1 + 7X + \mathcal{N}(0, 0.5), \quad Y_0 = 1 + 7X + \mathcal{N}(0, 0.5)}
+  \deqn{S_1 = 0 + 6X + \mathcal{N}(0, 0.5), \quad S_0 = 0 + 6X + \mathcal{N}(0, 0.5)}
+  }
 }
 }

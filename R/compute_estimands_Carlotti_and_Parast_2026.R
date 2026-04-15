@@ -15,6 +15,11 @@
 #'     \deqn{Y_1 \sim \mathcal{N}(5, 1), \quad Y_0 \sim \mathcal{N}(0, 1)}
 #'     \deqn{S_1 = Y_1 + \mathcal{N}(-10, 1), \quad S_0 = Y_0 + \mathcal{N}(-10, 1)}
 #'   }
+#'   \item Setting 2: \strong{X Gaussian}
+#'   \itemize{
+#'   \deqn{Y_1 = 1 + 7X + \mathcal{N}(0, 0.5), \quad Y_0 = 1 + 7X + \mathcal{N}(0, 0.5)}
+#'   \deqn{S_1 = 0 + 6X + \mathcal{N}(0, 0.5), \quad S_0 = 0 + 6X + \mathcal{N}(0, 0.5)}
+#'   }
 #' }
 #'
 #' @param MC_samples Integer. The number of Monte Carlo samples to generate per setting.
@@ -77,6 +82,18 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
                  1, 2),
         nrow = 2,
         ncol = 2))
+      
+      # Store setting parameters in the list
+      settings[[setting]] <- list(
+        setting_name = setting_name,
+        setting_label = setting_label,
+        q = q,
+        d = d,
+        mu_0 = mu_0,
+        mu_1 = mu_1,
+        Sigma_0 = Sigma_0,
+        Sigma_1 = Sigma_1
+      )
     } else if (setting == 2) {
       ##############
       # X Gaussian #
@@ -91,19 +108,29 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
       # Number of covariates (including the intercept)
       d <- 2
       
-      # Vector of coefficients for the Gaussian covariate
+      # Vector of coefficients for the covariates in the potential outcomes model
       beta <- c(1, 7, 0, 6)
+      
+      # Covariance matrix of the potential outcomes
+      Sigma <- 0.5 * diag(4)
+      
+      # Mean vector the Gaussian covariate X
+      m <- 3
+      
+      # Standard deviation of the Gaussian covariate X
+      s <- 1
+      
+      # Store setting parameters in the list
+      settings[[setting]] <- list(
+        setting_name = setting_name,
+        setting_label = setting_label,
+        d = d,
+        beta = beta,
+        Sigma = Sigma,
+        m = m,
+        s = s
+      )
     }
-    
-    settings[[setting]] <- list(
-      setting_name = setting_name,
-      setting_label = setting_label,
-      d = d,
-      mu_0 = mu_0,
-      mu_1 = mu_1,
-      Sigma_0 = Sigma_0,
-      Sigma_1 = Sigma_1
-    )
   }
   
   # Initialize estimands dataframe
@@ -123,21 +150,42 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
     setting_name <- settings[[i]]$setting_name
     setting_label <- settings[[i]]$setting_label
     d <- settings[[i]]$d
-    mu_0 <- settings[[i]]$mu_0
-    mu_1 <- settings[[i]]$mu_1
-    Sigma_0 <- settings[[i]]$Sigma_0
-    Sigma_1 <- settings[[i]]$Sigma_1
     
-    # Generate large-scale Monte Carlo data
-    MC_data <- DGP_X_binary(
-      n = MC_samples,
-      p = p,
-      q = q,
-      mu_0 = mu_0,
-      mu_1 = mu_1,
-      Sigma_0 = Sigma_0,
-      Sigma_1 = Sigma_1
-    )
+    if (setting_name == "X_binary") {
+      # Binary covariate parameters
+      q <- settings[[i]]$q
+      mu_0 <- settings[[i]]$mu_0
+      mu_1 <- settings[[i]]$mu_1
+      Sigma_0 <- settings[[i]]$Sigma_0
+      Sigma_1 <- settings[[i]]$Sigma_1
+      
+      # Generate large-scale Monte Carlo data
+      MC_data <- DGP_X_binary(
+        n = MC_samples,
+        p = p,
+        q = q,
+        mu_0 = mu_0,
+        mu_1 = mu_1,
+        Sigma_0 = Sigma_0,
+        Sigma_1 = Sigma_1
+      )
+    } else if (setting_name == "X_gaussian") {
+      # Gaussian covariate parameters
+      beta <- settings[[i]]$beta
+      Sigma <- settings[[i]]$Sigma
+      m <- settings[[i]]$m
+      s <- settings[[i]]$s
+      
+      # Generate large-scale Monte Carlo data
+      MC_data <- DGP_X_Gaussian(
+        n = MC_samples,
+        p = p,
+        beta = beta,
+        Sigma = Sigma,
+        m = m,
+        s = s
+      )
+    }
     
     # Compute estimands
     delta_estimands <- compute_delta(MC_data)
