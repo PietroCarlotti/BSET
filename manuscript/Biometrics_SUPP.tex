@@ -1,0 +1,133 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+
+\documentclass[12pt]{article}
+
+% Preamble
+\usepackage[margin=1in]{geometry} % Page margins
+\usepackage{xcolor}
+\usepackage{setspace} % Line spacing
+%\doublespacing
+\renewcommand{\baselinestretch}{1.79}
+
+\usepackage{xr}
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+
+
+
+ \newcommand{\argmin}{\mathop{\rm arg\min}}
+\newcommand{\argmax}{\mathop{\rm arg\max}}
+
+
+\usepackage{graphicx,verbatim,array,multicol, xcolor, lscape, mathrsfs, color,enumitem}
+\usepackage{psfrag, amsmath, amsfonts, epsfig, fancybox, setspace,soul,amsthm,natbib,algorithm, algorithmicx, algpseudocode, float, subcaption, booktabs, pdflscape}
+\usepackage[hidelinks]{hyperref}
+\def\bW{{\bf W}}
+\def\bZ{{\bf Z}}
+\def\bL{{\bf L}}
+\def\bw{{\bf w}}
+\def\supone{^{(1)}}
+\def\supzero{^{(0)}}
+\def\supg{^{(g)}}
+\def\transpose{{\sf \scriptscriptstyle{T}}}
+\def\bU{{\bf U}}
+\def\bUhat{{\widehat \bU}}
+\def\trans{^{\transpose}}
+\def\var{\text{Var}}
+\def\bbeta{\boldsymbol{\beta}}
+\def\bomega{\boldsymbol{\omega}}
+\def\bPi{\boldsymbol{\Pi}}
+\def\calt{\mathcal{T}}
+\newtheorem{theorem}{Theorem}
+% \setlength{\parindent}{0pt}
+\def\bSigma{\boldsymbol{\Sigma}}
+\def\bmu{\boldsymbol{\mu}}
+\newtheorem{assumption}{Assumption}
+\setcitestyle{authoryear}
+
+% Other packages
+\usepackage{bbm} % Indicator function
+\usepackage{algorithm} % Algorithm environment
+\usepackage{algpseudocode} % Algorithm pseudocode environment
+\usepackage{multirow} % For multi-row cells in tables
+
+% New commands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\iid}{\overset{\text{\footnotesize i.i.d.}}{\sim}}
+\newcommand{\indepsim}{\overset{\text{ind.}}{\sim}}
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\one}{\mathbbm{1}}
+
+\allowdisplaybreaks
+
+% New environments
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+\begin{document}
+
+\setlength\parindent{15pt} 
+
+  \begin{center}
+    \LARGE{Supplementary Material for \\ A Bayesian Critique of Rank-Based Methods for \\
+    
+    Surrogate Marker Evaluation by Carlotti and Parast}
+
+ 
+
+\end{center}
+\clearpage
+\thispagestyle{empty}
+
+\clearpage
+\setcounter{page}{1}
+\appendix
+
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\theequation}{A.\arabic{equation}}
+
+\allowdisplaybreaks
+
+
+\section*{Appendix A}
+
+
+\end{document}
