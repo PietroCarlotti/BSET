@@ -28,7 +28,7 @@ A data frame containing:
 }
 \description{
 This function executes the simulation study described in Carlotti and Parast
-(2026) for the covariate-augmented setting with a binary covariate \(X\). It
+(2026) for the covariate-augmented setting with a binary covariate \eqn{X}. It
 performs the frequentist and Bayesian surrogate evaluation tests from Parast
 et al. (2024) and Carlotti and Parast (2026), respectively, and returns a
 structured data frame of the results. The execution is parallelized using the
