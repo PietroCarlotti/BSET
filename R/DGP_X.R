@@ -44,7 +44,6 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
   n_X0 <- n - n_X1
   
   # Potential outcomes generation
-  # Generate full sets for both scenarios then switch based on X
   P_X0 <- mvtnorm::rmvnorm(n = n, mean = mu_0, sigma = Sigma_0)
   P_X1 <- mvtnorm::rmvnorm(n = n, mean = mu_1, sigma = Sigma_1)
   
@@ -69,6 +68,78 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
     X = X,
     n_X1 = n_X1,
     n_X0 = n_X0,
+    Z = Z,
+    n1 = n1,
+    n0 = n0,
+    P = P,
+    P_observed = P_observed,
+    P_unobserved = P_unobserved
+  ))
+}
+
+#' Data Generating Process with a Continuous Covariate
+#' 
+#' This function generates potential outcomes from a data generating process
+#' similar to the one described in Parast et al. (2024), but with the addition
+#' of a continuous covariate X. It creates a dataset of potential outcomes
+#' \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
+#' \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
+#' 
+#' @details The potential outcomes are generated from multivariate normal
+#' distributions with mean vector and covariance matrix that depend on the
+#' value of \eqn{X}. Specifically, the mean vector is a linear function of \eqn{X}:
+#' \deqn{\mu(X) = x \cdot (\beta_{Y1}, \beta_{S1}, \beta_{Y0}, \beta_{S0})^T,}
+#' and the covariance matrix is constant across values of \eqn{X}:
+#' \deqn{\Sigma(X) = \Sigma.}
+#' 
+#' @param n Integer. Total sample size.
+#' @param p Numeric. Probability of being assigned to the treatment group \eqn{(Z=1)}.
+#' @param beta Numeric vector. Coefficients for the linear function of the mean vector.
+#' @param Sigma Matrix. Covariance matrix for the potential outcomes.
+#' @param m Numeric. Mean of the continuous covariate X.
+#' @param s Numeric. Standard deviation of the continuous covariate X.
+#' 
+#' @return A list containing:
+#' \itemize{
+#'  \item \code{X}: The continuous covariate vector.
+#'  \item \code{Z}: Treatment assignment vector.
+#'  \item \code{n1}: Number of treated units.
+#'  \item \code{n0}: Number of control units.
+#'  \item \code{P}: Full matrix of potential outcomes.
+#'  \item \code{P_observed}: Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
+#'  \item \code{P_unobserved}: Counterfactual outcomes under the opposite treatment.
+#' }
+#' 
+#' @importFrom mvtnorm rmvnorm
+#' @importFrom stats rbinom rnorm
+#' @export
+DGP_X_Gaussian <- function(n, p, beta, Sigma, m, s) {
+  
+  # Continuous covariate
+  X <- stats::rnorm(n = n, mean = m, sd = s)
+  
+  # Potential outcomes generation
+  mu_X <- X %*% t(beta)
+  P <- matrix(data = NA, nrow = n, ncol = 4)
+  colnames(P) <- c("Y1", "S1", "Y0", "S0")
+  
+  for (i in 1:n) {
+    P[i, ] <- mvtnorm::rmvnorm(n = 1, mean = mu_X[i, ], sigma = Sigma)
+  }
+  
+  # Treatment assignment
+  Z <- stats::rbinom(n = n, size = 1, prob = p)
+  n1 <- sum(Z)
+  n0 <- n - n1
+  
+  # Observed and Unobserved (Vectorized logic)
+  P_observed <- Z * P[, c("Y1", "S1")] + (1 - Z) * P[, c("Y0", "S0")]
+  P_unobserved <- Z * P[, c("Y0", "S0")] + (1 - Z) * P[, c("Y1", "S1")]
+  
+  colnames(P_observed) <- colnames(P_unobserved) <- c("Y", "S")
+  
+  return(list(
+    X = X,
     Z = Z,
     n1 = n1,
     n0 = n0,

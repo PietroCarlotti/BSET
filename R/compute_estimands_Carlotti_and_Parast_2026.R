@@ -31,9 +31,6 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
   # Treatment assignment probability
   p = 0.5
   
-  # Binary covariate probability
-  q <- 0.5
-  
   # Possible settings
   n_settings <- 1
   settings <- vector("list", n_settings)
@@ -51,6 +48,9 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
       
       # Setting label
       setting_label <- "X binary"
+      
+      # Binary covariate probability
+      q <- 0.5
       
       # Number of covariates (including the intercept)
       d <- 2
@@ -77,6 +77,22 @@ compute_estimands_Carlotti_and_Parast_2026 <- function(MC_samples) {
                  1, 2),
         nrow = 2,
         ncol = 2))
+    } else if (setting == 2) {
+      ##############
+      # X Gaussian #
+      ##############
+      
+      # Setting name
+      setting_name <- "X_gaussian"
+      
+      # Setting label
+      setting_label <- "X Gaussian"
+      
+      # Number of covariates (including the intercept)
+      d <- 2
+      
+      # Vector of coefficients for the Gaussian covariate
+      beta <- c(1, 7, 0, 6)
     }
     
     settings[[setting]] <- list(
