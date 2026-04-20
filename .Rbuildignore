@@ -3,3 +3,8 @@
 ^README\.Rmd$
 ^doc$
 ^Meta$
+^BSET_1\.0\.pdf$
+^_pkgdown\.yml$
+^docs$
+^manuscript$
+^pkgdown$
