@@ -4,6 +4,8 @@
 #' the rank-based methodology of Parast et al. (2024). It calculates confidence
 #' intervals, the \eqn{\varepsilon} threshold used, and determines if the surrogate is
 #' valid.
+#' This function is generally not intended to be called directly by the user
+#' and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 #'
 #' @param P_observed Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
 #' @param Z Treatment assignment vector.

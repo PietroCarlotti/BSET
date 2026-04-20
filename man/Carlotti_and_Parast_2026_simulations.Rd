@@ -25,6 +25,8 @@ A data frame containing:
   \item \code{timestamp}: Character. Date and time when the simulation was completed.
   \item \code{seed}: Numeric. The random seed used for reproducibility.
 }
+This function is not a primary user-facing function of the package and
+does not include examples.
 }
 \description{
 This function executes the simulation study described in Carlotti and Parast
@@ -40,6 +42,6 @@ data using \code{DGP_X} and processes the results using \code{BSET_X}. The
 simulation utilizes MCMC sampling via \code{rstan} for the Bayesian
 estimation components. Note that it relies on an external object 
 \code{estimands_Carlotti_and_Parast_2026} that contains the true values of
-the computed using the function
+the parameters computed using the function
 \code{compute_estimands_Carlotti_and_Parast_2026}.
 }

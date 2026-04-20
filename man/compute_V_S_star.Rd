@@ -50,8 +50,10 @@ constraint:
 \deqn{P(\text{BF}_n \geq \text{BF}_{n, \alpha} \; | \; V_S = v_S) = 1 - \beta,}
 where \eqn{\text{BF}_{n, \alpha}} is the \eqn{(1 - \alpha)} quantile of the
 Bayes factor distribution under the null hypothesis \eqn{V_S = V^0_{S}}, and \eqn{1 - \beta} is the desired power of the
-test. The computes the distribution of the Bayes factor under the null
+test. The function computes the distribution of the Bayes factor under the null
 hypothesis, derives the critical value \eqn{\text{BF}_{n, \alpha}}, and then
 uses a root-finding algorithm to solve for the value of \eqn{v_S} that
 satisfies the power constraint.
+This function is generally not intended to be called directly by the user
+and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 }

@@ -35,7 +35,9 @@
 #'   \item \code{timestamp}: Character. Date and time when the simulation was completed.
 #'   \item \code{seed}: Numeric. The random seed used for reproducibility.
 #' }
-#' 
+#' This function is not a primary user-facing function of the package and
+#' does not include examples.
+#'
 #' @import dplyr
 #' @importFrom purrr map_dfr
 #' @importFrom future plan multisession

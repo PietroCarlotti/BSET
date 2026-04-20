@@ -106,4 +106,40 @@ P_{0i}, & \text{if } Z_i = 0
 \deqn{\Sigma = \text{diag}(\sigma_{1:4}) \, \Omega \, \text{diag}(\sigma_{1:4}),}
 \deqn{\sigma_k \sim \text{Half-Normal}(0, s_k), \quad k = 1, \ldots, 4,}
 \deqn{\Omega \sim \text{LKJ}(\tau).}
+This is a primary user-facing function of the package and includes a working example below.
+}
+\examples{
+# Generate data from the setting of Carlotti and Parast (2026) with a binary covariate
+set.seed(123)
+data_X <- DGP_X_binary(
+  n = 100,
+  p = 0.5,
+  q = 0.5,
+  mu_0 = c(5, 5, 0, 0),
+  mu_1 = c(5, -5, 0, -10),
+  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
+  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
+)
+
+# Prepare the data frame
+df <- data.frame(
+  Y = data_X$P_observed[, "Y"],
+  S = data_X$P_observed[, "S"],
+  Z = data_X$Z,
+  X = data_X$X
+)
+
+# Run BSET with covariates (computationally intensive)
+\donttest{
+result <- BSET_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  seed = 123,
+  n_chains = 2,
+  n_iter = 500
+)
+}
 }

@@ -49,7 +49,7 @@ set.seed(123)
 
 The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of Parast et al. (2024), which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of Carlotti and Parast (2026).
 
-For example, this how we can generate data from the second setting defined in Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included):
+For example, this is how we can generate data from the second setting defined in Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included):
 
 ```{r generate-data-no-X}
 # Sample size
@@ -435,7 +435,7 @@ BSET_no_X_results <- BSET::BSET_no_X(
 
 The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in Figure \@ref(fig:BSET-no-X-plot).
 
-```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
+```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta
 BSET_no_X_results$theta_posterior_plot
 ```
@@ -465,7 +465,7 @@ mu_beta <- rep(0, d)
 Sigma_beta <- 10*diag(d)
 ```
 
-We can also specify the true values of \(\delta\) and \(\theta\) as input to the function `BSET_X` to check whether if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 1 of Carlotti and Parast (2026).
+We can also specify the true values of \(\delta\) and \(\theta\) as input to the function `BSET_X` to check if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 1 of Carlotti and Parast (2026).
 
 Finally, we can run the BSET procedure adjusting for covariates as follows:
 
@@ -502,7 +502,7 @@ BSET_X_results <- BSET::BSET_X(
 
 The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in Figure \@ref(fig:BSET-X-plot).
 
-```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
+```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta
 BSET_X_results$theta_posterior_plot
 ```

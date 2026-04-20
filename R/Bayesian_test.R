@@ -4,6 +4,8 @@
 #' imputation-based methodology of Carlotti and Parast (2026). It calculates
 #' credible intervals, the \eqn{\eta} threshold used, and determines if the
 #' surrogate is valid.
+#' This function is generally not intended to be called directly by the user
+#' and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 #'
 #' @param P_MCMC A three-dimensional array of potential outcomes obtained via MCMC sampling with dimensions \code{[n_subjects, variables, n_samples]}. The variables should correspond to \eqn{(Y_1, S_1, Y_0, S_0)}.
 #' @param alpha Numeric. Significance level for the credible interval (default is 0.05).

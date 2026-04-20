@@ -36,4 +36,6 @@ the surrogate \eqn{S}:
 \deqn{\hat{V}_S = \frac{1}{n} \sum\limits^{n}_{i=1} I(S_{1i} > S_{0i}).}
 Then, it calculates
 \deqn{\hat{\theta} = \hat{V}_Y - \hat{V}_S.}
+This function is generally not intended to be called directly by the user
+and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 }

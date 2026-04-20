@@ -25,6 +25,8 @@ A data frame containing:
   \item \code{timestamp}: Character. Date and time when the simulation was completed.
   \item \code{seed}: Numeric. The random seed used for reproducibility.
 }
+This function is not a primary user-facing function of the package and
+does not include examples.
 }
 \description{
 This function executes the simulation study described in Parast et al. (2024)

@@ -12,6 +12,8 @@
 #' \deqn{\hat{U}_S = \frac{1}{n_1 n_0} \sum\limits_{i:Z_i=1} \sum\limits_{j:Z_j=0} I(S_i > S_j).}
 #' Then, it calculates
 #' \deqn{\hat{\delta} = \hat{U}_Y - \hat{U}_S.}
+#' This function is generally not intended to be called directly by the user
+#' and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 #'
 #' @param MC_data A list containing:
 #' \itemize{

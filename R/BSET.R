@@ -8,7 +8,7 @@
 #' without covariates, as proposed by Carlotti and Parast (2026). The function
 #' fits a Bayesian model using Stan to generate posterior samples for the
 #' parameters of interest. These posterior samples are then used to conduct a
-#' Bayesian hypothesis tests for evaluating the validity of the surrogate marker.
+#' Bayesian hypothesis test for evaluating the validity of the surrogate marker.
 #' A frequentist test is also performed for comparison. The Bayesian model is specified as follows:
 #' \deqn{(Y_i, S_i) = \begin{cases}
 #' P_{1i}, & \text{if } Z_i = 1 \\
@@ -19,7 +19,8 @@
 #' \deqn{\Sigma = \text{diag}(\sigma_{1:4}) \, \Omega \, \text{diag}(\sigma_{1:4}),}
 #' \deqn{\sigma_k \sim \text{Half-Normal}(0, s_k), \quad k = 1, \ldots, 4,}
 #' \deqn{\Omega \sim \text{LKJ}(\tau).}
-#' 
+#' This is a primary user-facing function of the package and includes a working example below.
+#'
 #' @param data A data frame containing the observed data.
 #' @param Y Character. Name of the outcome variable.
 #' @param S Character. Name of the surrogate variable.
@@ -51,6 +52,36 @@
 #'  \item \code{frequentist_test}: A list containing the results of the frequentist test, including point estimates and confidence intervals.
 #'  \item \code{theta_posterior_plot}: A \code{ggplot} object showing the posterior distribution of \eqn{\theta}, with vertical lines indicating the credible interval, the \eqn{\eta} threshold, and the true values of \eqn{\delta} and \eqn{\theta} (if provided).
 #'  }
+#' @examples
+#' # Generate data from the perfect surrogate setting of Parast et al. (2024)
+#' set.seed(123)
+#' data_no_X <- DGP_no_X(
+#'   n = 100,
+#'   p = 0.5,
+#'   mu_star = c(6, 6, 2.5, 2.5),
+#'   Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
+#'   model = "Gaussian"
+#' )
+#'
+#' # Prepare the data frame
+#' df <- data.frame(
+#'   Y = data_no_X$P_observed[, "Y"],
+#'   S = data_no_X$P_observed[, "S"],
+#'   Z = data_no_X$Z
+#' )
+#'
+#' # Run BSET without covariates (computationally intensive)
+#' \donttest{
+#' result <- BSET_no_X(
+#'   data = df,
+#'   Y = "Y",
+#'   S = "S",
+#'   Z = "Z",
+#'   seed = 123,
+#'   n_chains = 2,
+#'   n_iter = 500
+#' )
+#' }
 #' @importFrom rlang .data
 #' @export
 BSET_no_X <- function(
@@ -312,12 +343,47 @@ BSET_no_X <- function(
 #' \deqn{\Sigma = \text{diag}(\sigma_{1:4}) \, \Omega \, \text{diag}(\sigma_{1:4}),}
 #' \deqn{\sigma_k \sim \text{Half-Normal}(0, s_k), \quad k = 1, \ldots, 4,}
 #' \deqn{\Omega \sim \text{LKJ}(\tau).}
-#' 
+#' This is a primary user-facing function of the package and includes a working example below.
+#'
 #' @param X Character vector. Names of the covariates to include in the model.
 #' @param intercept Whether to include an intercept in the regression model (default is TRUE).
 #' @param mu_beta Prior mean vector for regression coefficients (default is a vector of zeros with length equal to the number of covariates, including the intercept if specified).
 #' @param Sigma_beta Prior covariance matrix for regression coefficients (default is a diagonal matrix with large variances, with dimensions equal to the number of covariates, including the intercept if specified).
 #' @inheritParams BSET_no_X
+#' @examples
+#' # Generate data from the setting of Carlotti and Parast (2026) with a binary covariate
+#' set.seed(123)
+#' data_X <- DGP_X_binary(
+#'   n = 100,
+#'   p = 0.5,
+#'   q = 0.5,
+#'   mu_0 = c(5, 5, 0, 0),
+#'   mu_1 = c(5, -5, 0, -10),
+#'   Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
+#'   Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
+#' )
+#'
+#' # Prepare the data frame
+#' df <- data.frame(
+#'   Y = data_X$P_observed[, "Y"],
+#'   S = data_X$P_observed[, "S"],
+#'   Z = data_X$Z,
+#'   X = data_X$X
+#' )
+#'
+#' # Run BSET with covariates (computationally intensive)
+#' \donttest{
+#' result <- BSET_X(
+#'   data = df,
+#'   Y = "Y",
+#'   S = "S",
+#'   Z = "Z",
+#'   X = "X",
+#'   seed = 123,
+#'   n_chains = 2,
+#'   n_iter = 500
+#' )
+#' }
 #' @importFrom rlang .data
 #' @export
 BSET_X <- function(

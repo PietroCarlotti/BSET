@@ -62,4 +62,6 @@ Given the true value of \eqn{V_S}, the distribution of the Bayes factor can
 be computed by evaluating \eqn{BF_n} for all possible values of
 \eqn{\hat{V}_S} and their corresponding probabilities under the Binomial
 distribution with parameters \eqn{n} and the true value of \eqn{V_S}.
+This function is generally not intended to be called directly by the user
+and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
 }

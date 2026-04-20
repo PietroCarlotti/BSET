@@ -13,7 +13,7 @@
 #' simulation utilizes MCMC sampling via \code{rstan} for the Bayesian
 #' estimation components. Note that it relies on an external object 
 #' \code{estimands_Carlotti_and_Parast_2026} that contains the true values of
-#' the computed using the function
+#' the parameters computed using the function
 #' \code{compute_estimands_Carlotti_and_Parast_2026}.
 #'
 #' @param seed Numeric. A random seed for reproducibility of the simulations.
@@ -30,6 +30,8 @@
 #'   \item \code{timestamp}: Character. Date and time when the simulation was completed.
 #'   \item \code{seed}: Numeric. The random seed used for reproducibility.
 #' }
+#' This function is not a primary user-facing function of the package and
+#' does not include examples.
 #'
 #' @import dplyr
 #' @importFrom purrr map_dfr

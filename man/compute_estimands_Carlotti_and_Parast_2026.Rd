@@ -38,4 +38,6 @@ The settings are defined as follows:
   \item Setting 2: \strong{X Gaussian}
   \deqn{(Y_1, S_1, Y_0, S_0) \mid X = x \sim \mathcal{N}(x (1, 7, 0, 6)', \frac{1}{2} I_4),}
 }
+This function is not a primary user-facing function of the package and
+does not include examples.
 }

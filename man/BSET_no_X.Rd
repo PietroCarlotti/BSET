@@ -92,7 +92,7 @@ This function implements the Bayesian Surrogate Evaluation Test (BSET)
 without covariates, as proposed by Carlotti and Parast (2026). The function
 fits a Bayesian model using Stan to generate posterior samples for the
 parameters of interest. These posterior samples are then used to conduct a
-Bayesian hypothesis tests for evaluating the validity of the surrogate marker.
+Bayesian hypothesis test for evaluating the validity of the surrogate marker.
 A frequentist test is also performed for comparison. The Bayesian model is specified as follows:
 \deqn{(Y_i, S_i) = \begin{cases}
 P_{1i}, & \text{if } Z_i = 1 \\
@@ -103,4 +103,36 @@ P_{0i}, & \text{if } Z_i = 0
 \deqn{\Sigma = \text{diag}(\sigma_{1:4}) \, \Omega \, \text{diag}(\sigma_{1:4}),}
 \deqn{\sigma_k \sim \text{Half-Normal}(0, s_k), \quad k = 1, \ldots, 4,}
 \deqn{\Omega \sim \text{LKJ}(\tau).}
+This is a primary user-facing function of the package and includes a working example below.
+}
+\examples{
+# Generate data from the perfect surrogate setting of Parast et al. (2024)
+set.seed(123)
+data_no_X <- DGP_no_X(
+  n = 100,
+  p = 0.5,
+  mu_star = c(6, 6, 2.5, 2.5),
+  Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
+  model = "Gaussian"
+)
+
+# Prepare the data frame
+df <- data.frame(
+  Y = data_no_X$P_observed[, "Y"],
+  S = data_no_X$P_observed[, "S"],
+  Z = data_no_X$Z
+)
+
+# Run BSET without covariates (computationally intensive)
+\donttest{
+result <- BSET_no_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  seed = 123,
+  n_chains = 2,
+  n_iter = 500
+)
+}
 }

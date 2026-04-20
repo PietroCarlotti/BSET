@@ -30,6 +30,8 @@ A list containing:
  \item \code{P_observed}: Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
  \item \code{P_unobserved}: Counterfactual outcomes under the opposite treatment.
 }
+This function is not a primary user-facing function of the package and
+does not include examples.
 }
 \description{
 This function generates potential outcomes from a data generating process
