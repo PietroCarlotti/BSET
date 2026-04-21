@@ -30,9 +30,12 @@ A list containing:
 }
 \description{
 This function performs a frequentist test for surrogate evaluation based on 
-the rank-based methodology of Parast et al. (2024). It calculates confidence
+the rank-based methodology of \insertCite{parast2024rank;textual}{BSET}. It calculates confidence
 intervals, the \eqn{\varepsilon} threshold used, and determines if the surrogate is
 valid.
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{parast2024rank}{BSET}
 }

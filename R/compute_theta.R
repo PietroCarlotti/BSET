@@ -1,7 +1,7 @@
 #' Monte Carlo Computation of the Parameter \eqn{\theta} from Carlotti and Parast (2026)
 #'
 #' This function implements a Monte Carlo approach to estimate the parameter
-#' \eqn{\theta} from Carlotti and Parast (2026). This parameter represents the
+#' \eqn{\theta} from \insertCite{carlotti2026bayesian;textual}{BSET}. This parameter represents the
 #' difference in treatment effects between the primary and surrogate outcomes,
 #' both measured using the probability that the treated outcome is larger
 #' than the control outcome.
@@ -29,6 +29,8 @@
 #'   \item \code{theta}: The difference \code{V_Y} - \code{V_S}.
 #' }
 #' 
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @export
 compute_theta <- function(MC_data) {
   

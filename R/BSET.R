@@ -5,7 +5,7 @@
 #' Bayesian Surrogate Evaluation Test without Covariates from Carlotti and Parast (2026)
 #'
 #' This function implements the Bayesian Surrogate Evaluation Test (BSET)
-#' without covariates, as proposed by Carlotti and Parast (2026). The function
+#' without covariates, as proposed by \insertCite{carlotti2026bayesian;textual}{BSET}. The function
 #' fits a Bayesian model using Stan to generate posterior samples for the
 #' parameters of interest. These posterior samples are then used to conduct a
 #' Bayesian hypothesis test for evaluating the validity of the surrogate marker.
@@ -82,6 +82,10 @@
 #'   n_iter = 500
 #' )
 #' }
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
+#'
+#' \insertRef{parast2024rank}{BSET}
 #' @importFrom rlang .data
 #' @export
 BSET_no_X <- function(
@@ -324,7 +328,7 @@ BSET_no_X <- function(
 #' 
 #' This function implements the Bayesian Surrogate Evaluation Test (BSET) which
 #' includes covariates via a multivariate regression model for the potential, as
-#' proposed by Carlotti and Parast (2026). The function fits a Bayesian model
+#' proposed by \insertCite{carlotti2026bayesian;textual}{BSET}. The function fits a Bayesian model
 #' using Stan to generate posterior samples for the parameters of interest,
 #' including the regression coefficients for the covariates. These posterior
 #' samples are then used to conduct a Bayesian hypothesis test for evaluating
@@ -384,6 +388,10 @@ BSET_no_X <- function(
 #'   n_iter = 500
 #' )
 #' }
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
+#'
+#' \insertRef{parast2024rank}{BSET}
 #' @importFrom rlang .data
 #' @export
 BSET_X <- function(

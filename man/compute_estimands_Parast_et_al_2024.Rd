@@ -13,8 +13,8 @@ compute_estimands_Parast_et_al_2024(MC_samples)
 A data frame containing the Monte Carlo estimates for each setting:
 \itemize{
   \item \code{setting}: The index of the simulation setting.
-  \item \code{U_Y_MC}, \code{U_S_MC}, \code{delta_MC}: Parameters of interest from Parast et al. (2024).
-  \item \code{V_Y_MC}, \code{V_S_MC}, \code{theta_MC}: Parameters of interest from Carlotti and Parast (2026).
+  \item \code{U_Y_MC}, \code{U_S_MC}, \code{delta_MC}: Parameters of interest from \insertCite{parast2024rank;textual}{BSET}.
+  \item \code{V_Y_MC}, \code{V_S_MC}, \code{theta_MC}: Parameters of interest from \insertCite{carlotti2026bayesian;textual}{BSET}.
 }
 }
 \description{
@@ -40,6 +40,10 @@ The settings are defined as follows:
     \deqn{Y_1 = 2 + 6/5 \sqrt{S_1} + 3/10 \exp(S_1 / 500) + \exp(\mathcal{N}(0, 0.3)),}
     \deqn{Y_0 = 4/5 \sqrt{S_0} + 1/5 \exp(S_0 / 50) + \exp(\mathcal{N}(0, 0.3)).}
 }
-This function is not a primary user-facing function of the package and
-does not include examples.
+This function is generally not intended to be called directly by the user.
+It is provided as a utility for computing the true parameter values for the
+simulation settings described in \insertCite{parast2024rank;textual}{BSET}.
+}
+\references{
+\insertRef{parast2024rank}{BSET}
 }

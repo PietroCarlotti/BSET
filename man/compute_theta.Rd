@@ -23,7 +23,7 @@ A list containing the true values:
 }
 \description{
 This function implements a Monte Carlo approach to estimate the parameter
-\eqn{\theta} from Carlotti and Parast (2026). This parameter represents the
+\eqn{\theta} from \insertCite{carlotti2026bayesian;textual}{BSET}. This parameter represents the
 difference in treatment effects between the primary and surrogate outcomes,
 both measured using the probability that the treated outcome is larger
 than the control outcome.
@@ -38,4 +38,7 @@ Then, it calculates
 \deqn{\hat{\theta} = \hat{V}_Y - \hat{V}_S.}
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }

@@ -1,7 +1,7 @@
 #' Data Generating Process with a Binary Covariate
 #'
 #' This function generates potential outcomes from a data generating process
-#' similar to the one described in Parast et al. (2024), but with the addition
+#' similar to the one described in \insertCite{parast2024rank;textual}{BSET}, but with the addition
 #' of a binary covariate X. It creates a dataset of potential outcomes
 #' \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
 #' \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
@@ -47,6 +47,8 @@
 #'   Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
 #'   Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
 #' )
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats rbinom
 #' @export
@@ -94,7 +96,7 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
 #' Data Generating Process with a Gaussian Covariate
 #' 
 #' This function generates potential outcomes from a data generating process
-#' similar to the one described in Parast et al. (2024), but with the addition
+#' similar to the one described in \insertCite{parast2024rank;textual}{BSET}, but with the addition
 #' of a Gaussian covariate X. It creates a dataset of potential outcomes
 #' \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
 #' \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
@@ -137,6 +139,8 @@ DGP_X_binary <- function(n, p, q, mu_0, mu_1, Sigma_0, Sigma_1) {
 #'   m = 3,
 #'   s = 1
 #' )
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats rbinom rnorm
 #' @export

@@ -1,7 +1,7 @@
 #' Data Generating Process without Baseline Covariates
 #'
 #' This function generates potential outcomes from the simulation settings
-#' described in Parast et al. (2024). It creates a dataset of potential outcomes
+#' described in \insertCite{parast2024rank;textual}{BSET}. It creates a dataset of potential outcomes
 #' \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes 
 #' \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
 #' 
@@ -43,6 +43,8 @@
 #'   Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
 #'   model = "Gaussian"
 #' )
+#' @references
+#' \insertRef{parast2024rank}{BSET}
 #' @importFrom Rdpack reprompt
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats rbinom rnorm

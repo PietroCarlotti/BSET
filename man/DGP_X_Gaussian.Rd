@@ -30,12 +30,13 @@ A list containing:
  \item \code{P_observed}: Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
  \item \code{P_unobserved}: Counterfactual outcomes under the opposite treatment.
 }
-This function is not a primary user-facing function of the package and
-does not include examples.
+This function is useful for generating synthetic data to test or explore
+the method, for instance to verify the behavior of \code{BSET_X} under
+known simulation settings.
 }
 \description{
 This function generates potential outcomes from a data generating process
-similar to the one described in Parast et al. (2024), but with the addition
+similar to the one described in \insertCite{parast2024rank;textual}{BSET}, but with the addition
 of a Gaussian covariate X. It creates a dataset of potential outcomes
 \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
 \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
@@ -47,4 +48,18 @@ value of \eqn{X}. Specifically, the mean vector is a linear function of \eqn{X}:
 \deqn{\mu(X) = x \cdot (\beta_{Y1}, \beta_{S1}, \beta_{Y0}, \beta_{S0})^T,}
 and the covariance matrix is constant across values of \eqn{X}:
 \deqn{\Sigma(X) = \Sigma.}
+}
+\examples{
+set.seed(123)
+data <- DGP_X_Gaussian(
+  n = 100,
+  p = 0.5,
+  beta = c(1, 7, 0, 6),
+  Sigma = 0.5 * diag(4),
+  m = 3,
+  s = 1
+)
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }

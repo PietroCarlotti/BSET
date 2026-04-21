@@ -1,7 +1,7 @@
 #' Frequentist Test from Parast et al. (2024)
 #'
 #' This function performs a frequentist test for surrogate evaluation based on 
-#' the rank-based methodology of Parast et al. (2024). It calculates confidence
+#' the rank-based methodology of \insertCite{parast2024rank;textual}{BSET}. It calculates confidence
 #' intervals, the \eqn{\varepsilon} threshold used, and determines if the surrogate is
 #' valid.
 #' This function is generally not intended to be called directly by the user
@@ -23,6 +23,8 @@
 #'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{epsilon}, which indicates that the test identifies the surrogate as valid.
 #' }
 #' 
+#' @references
+#' \insertRef{parast2024rank}{BSET}
 #' @importFrom SurrogateRank test.surrogate
 #' @export
 frequentist_test <- function(P_observed, Z, alpha = 0.05, beta = 0.2, delta_true = NULL) {

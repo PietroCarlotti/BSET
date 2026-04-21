@@ -25,7 +25,7 @@ A list containing:
 }
 \description{
 This function implements a Monte Carlo approach to estimate the parameter
-\eqn{\delta} from Parast et al. (2024) . This parameter represents the
+\eqn{\delta} from \insertCite{parast2024rank;textual}{BSET}. This parameter represents the
 difference in treatment effects between the primary and surrogate outcomes,
 both measured using the Mann-Whitney statistic.
 }
@@ -39,4 +39,7 @@ Then, it calculates
 \deqn{\hat{\delta} = \hat{U}_Y - \hat{U}_S.}
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{parast2024rank}{BSET}
 }

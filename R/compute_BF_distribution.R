@@ -1,7 +1,7 @@
 #' Compute the Distribution of the Bayes Factor from Carlotti and Parast (2026)
 #'
 #' This function calculates the probability mass function and cumulative distribution 
-#' function of the Bayes factor defined in Carlotti and Parast (2026) for the
+#' function of the Bayes factor defined in \insertCite{carlotti2026bayesian;textual}{BSET} for the
 #' following hypothesis test:
 #' \deqn{\begin{cases}
 #' H_0: V_S = V_S^{0} \\
@@ -44,6 +44,8 @@
 #'   \item \code{BF_CDF}: The cumulative distribution function for the Bayes Factor.
 #' }
 #' 
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @importFrom stats pbeta dbinom
 #' @importFrom dplyr %>% group_by summarise arrange mutate
 #' @importFrom rlang .data

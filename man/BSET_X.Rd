@@ -87,7 +87,7 @@ BSET_X(
 \description{
 This function implements the Bayesian Surrogate Evaluation Test (BSET) which
 includes covariates via a multivariate regression model for the potential, as
-proposed by Carlotti and Parast (2026). The function fits a Bayesian model
+proposed by \insertCite{carlotti2026bayesian;textual}{BSET}. The function fits a Bayesian model
 using Stan to generate posterior samples for the parameters of interest,
 including the regression coefficients for the covariates. These posterior
 samples are then used to conduct a Bayesian hypothesis test for evaluating
@@ -142,4 +142,9 @@ result <- BSET_X(
   n_iter = 500
 )
 }
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
+
+\insertRef{parast2024rank}{BSET}
 }

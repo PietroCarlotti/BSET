@@ -36,7 +36,7 @@ A data frame containing:
 }
 \description{
 This function calculates the probability mass function and cumulative distribution 
-function of the Bayes factor defined in Carlotti and Parast (2026) for the
+function of the Bayes factor defined in \insertCite{carlotti2026bayesian;textual}{BSET} for the
 following hypothesis test:
 \deqn{\begin{cases}
 H_0: V_S = V_S^{0} \\
@@ -64,4 +64,7 @@ be computed by evaluating \eqn{BF_n} for all possible values of
 distribution with parameters \eqn{n} and the true value of \eqn{V_S}.
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }

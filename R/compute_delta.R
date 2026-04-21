@@ -1,7 +1,7 @@
 #' Monte Carlo Computation of the Parameter \eqn{\delta} from Parast et al. (2024)
 #'
 #' This function implements a Monte Carlo approach to estimate the parameter
-#' \eqn{\delta} from Parast et al. (2024) . This parameter represents the
+#' \eqn{\delta} from \insertCite{parast2024rank;textual}{BSET}. This parameter represents the
 #' difference in treatment effects between the primary and surrogate outcomes,
 #' both measured using the Mann-Whitney statistic.
 #' 
@@ -30,6 +30,8 @@
 #'   \item \code{delta}: The difference \code{U_Y} - \code{U_S}.
 #' }
 #' 
+#' @references
+#' \insertRef{parast2024rank}{BSET}
 #' @importFrom stats wilcox.test
 #' @export
 compute_delta <- function(MC_data) {

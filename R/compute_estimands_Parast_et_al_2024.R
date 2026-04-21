@@ -24,17 +24,19 @@
 #' }
 #' This function is generally not intended to be called directly by the user.
 #' It is provided as a utility for computing the true parameter values for the
-#' simulation settings described in Parast et al. (2024).
+#' simulation settings described in \insertCite{parast2024rank;textual}{BSET}.
 #'
 #' @param MC_samples Integer. The number of Monte Carlo samples to generate per setting.
 #'
 #' @return A data frame containing the Monte Carlo estimates for each setting:
 #' \itemize{
 #'   \item \code{setting}: The index of the simulation setting.
-#'   \item \code{U_Y_MC}, \code{U_S_MC}, \code{delta_MC}: Parameters of interest from Parast et al. (2024).
-#'   \item \code{V_Y_MC}, \code{V_S_MC}, \code{theta_MC}: Parameters of interest from Carlotti and Parast (2026).
+#'   \item \code{U_Y_MC}, \code{U_S_MC}, \code{delta_MC}: Parameters of interest from \insertCite{parast2024rank;textual}{BSET}.
+#'   \item \code{V_Y_MC}, \code{V_S_MC}, \code{theta_MC}: Parameters of interest from \insertCite{carlotti2026bayesian;textual}{BSET}.
 #' }
 #'
+#' @references
+#' \insertRef{parast2024rank}{BSET}
 #' @export
 compute_estimands_Parast_et_al_2024 <- function(MC_samples) {
   # Treatment assignment probability

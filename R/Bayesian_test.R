@@ -1,7 +1,7 @@
 #' Bayesian Test from Carlotti and Parast (2026)
 #'
 #' This function performs a Bayesian test for surrogate evaluation based on the
-#' imputation-based methodology of Carlotti and Parast (2026). It calculates
+#' imputation-based methodology of \insertCite{carlotti2026bayesian;textual}{BSET}. It calculates
 #' credible intervals, the \eqn{\eta} threshold used, and determines if the
 #' surrogate is valid.
 #' This function is generally not intended to be called directly by the user
@@ -22,6 +22,8 @@
 #'   \item \code{coverage}: Logical indicating if \code{theta_true} falls within the \code{CI} (if \code{theta_true} is provided).
 #'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{eta}, which indicates that the test identifies the surrogate as valid.
 #' }
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @export
 Bayesian_test <- function(P_MCMC, alpha = 0.05, V_S_star, theta_true = NULL, V_Y_true = NULL) {
   

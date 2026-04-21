@@ -41,7 +41,7 @@ A list containing:
 }
 \description{
 This function determines the value \eqn{v_S} that is used to compute the
-surrogate validation threshold \eqn{\eta} from Carlotti and Parast (2026):
+surrogate validation threshold \eqn{\eta} from \insertCite{carlotti2026bayesian;textual}{BSET}:
 \deqn{\eta = \max \{v_Y - v_S, 0\},}
 where \eqn{v_Y} is the hypothesized value of the treatment effect on the
 primary outcome (typically set equal to the estimate computed on the
@@ -56,4 +56,7 @@ uses a root-finding algorithm to solve for the value of \eqn{v_S} that
 satisfies the power constraint.
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }

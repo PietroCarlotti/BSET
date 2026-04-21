@@ -34,12 +34,13 @@ A list containing:
   \item \code{P_observed}: Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
   \item \code{P_unobserved}: Counterfactual outcomes under the opposite treatment.
 }
-This function is not a primary user-facing function of the package and
-does not include examples.
+This function is useful for generating synthetic data to test or explore
+the method, for instance to verify the behavior of \code{BSET_X} under
+known simulation settings.
 }
 \description{
 This function generates potential outcomes from a data generating process
-similar to the one described in Parast et al. (2024), but with the addition
+similar to the one described in \insertCite{parast2024rank;textual}{BSET}, but with the addition
 of a binary covariate X. It creates a dataset of potential outcomes
 \deqn{P = (Y_1, S_1, Y_0, S_0)} and observed outcomes
 \deqn{P_{observed} = (Y, S)} based on a random treatment assignment \eqn{Z}.
@@ -50,4 +51,19 @@ distributions with different mean vectors and covariance matrices depending
 on the value of \eqn{X}. Specifically:
 \deqn{P \mid X = 0 \sim \mathcal{N}_{4}(\mu^{0}, \Sigma^{0}), \\
 P \mid X = 1 \sim \mathcal{N}_{4}(\mu^{1}, \Sigma^{1}).}
+}
+\examples{
+set.seed(123)
+data <- DGP_X_binary(
+  n = 100,
+  p = 0.5,
+  q = 0.5,
+  mu_0 = c(5, 5, 0, 0),
+  mu_1 = c(5, -5, 0, -10),
+  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
+  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
+)
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }

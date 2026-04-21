@@ -1,7 +1,7 @@
 #' Compute \eqn{v_S} from Carlotti and Parast (2026)
 #'
 #' This function determines the value \eqn{v_S} that is used to compute the
-#' surrogate validation threshold \eqn{\eta} from Carlotti and Parast (2026):
+#' surrogate validation threshold \eqn{\eta} from \insertCite{carlotti2026bayesian;textual}{BSET}:
 #' \deqn{\eta = \max \{v_Y - v_S, 0\},}
 #' where \eqn{v_Y} is the hypothesized value of the treatment effect on the
 #' primary outcome (typically set equal to the estimate computed on the
@@ -32,6 +32,8 @@
 #'   \item \code{V_S_star}: The value of \eqn{v_S} that satisfies the power constraint for the surrogate validation test.
 #' }
 #' 
+#' @references
+#' \insertRef{carlotti2026bayesian}{BSET}
 #' @importFrom stats uniroot
 #' @importFrom dplyr %>% filter slice pull
 #' @importFrom rlang .data

@@ -37,9 +37,12 @@ A list containing:
 }
 \description{
 This function performs a Bayesian test for surrogate evaluation based on the
-imputation-based methodology of Carlotti and Parast (2026). It calculates
+imputation-based methodology of \insertCite{carlotti2026bayesian;textual}{BSET}. It calculates
 credible intervals, the \eqn{\eta} threshold used, and determines if the
 surrogate is valid.
 This function is generally not intended to be called directly by the user
 and is instead used internally within \code{BSET_no_X} and \code{BSET_X}.
+}
+\references{
+\insertRef{carlotti2026bayesian}{BSET}
 }
