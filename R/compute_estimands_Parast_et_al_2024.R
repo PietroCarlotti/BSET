@@ -22,8 +22,9 @@
 #'     \deqn{Y_1 = 2 + 6/5 \sqrt{S_1} + 3/10 \exp(S_1 / 500) + \exp(\mathcal{N}(0, 0.3)),}
 #'     \deqn{Y_0 = 4/5 \sqrt{S_0} + 1/5 \exp(S_0 / 50) + \exp(\mathcal{N}(0, 0.3)).}
 #' }
-#' This function is not a primary user-facing function of the package and
-#' does not include examples.
+#' This function is generally not intended to be called directly by the user.
+#' It is provided as a utility for computing the true parameter values for the
+#' simulation settings described in Parast et al. (2024).
 #'
 #' @param MC_samples Integer. The number of Monte Carlo samples to generate per setting.
 #'

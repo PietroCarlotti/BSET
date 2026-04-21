@@ -30,9 +30,19 @@
 #'   \item \code{P_observed}: Observed outcomes \eqn{(Y, S)} corresponding to the assigned treatment \eqn{Z}.
 #'   \item \code{P_unobserved}: Counterfactual outcomes under the opposite treatment.
 #' }
-#' This function is not a primary user-facing function of the package and
-#' does not include examples.
+#' This function is useful for generating synthetic data to test or explore
+#' the method, for instance to verify the behavior of \code{BSET_no_X} under
+#' known simulation settings.
 #'
+#' @examples
+#' set.seed(123)
+#' data <- DGP_no_X(
+#'   n = 100,
+#'   p = 0.5,
+#'   mu_star = c(6, 6, 2.5, 2.5),
+#'   Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
+#'   model = "Gaussian"
+#' )
 #' @importFrom Rdpack reprompt
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats rbinom rnorm
