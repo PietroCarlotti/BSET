@@ -2,4 +2,5 @@
 
 ### Tutorial
 
-- [BSET Tutorial](BSET_tutorial.md):
+- [BSET
+  Tutorial](https://pietrocarlotti.github.io/BSET/articles/BSET_tutorial.md):

@@ -33,7 +33,9 @@
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
       </ul>
-<ul class="navbar-nav"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/PietroCarlotti/BSET/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+      </ul>
 </div>
 
 
@@ -52,7 +54,7 @@ Carlotti</h4>
             
             <h4 data-toc-skip class="date">2026-04-21</h4>
       
-
+      <small class="dont-index">Source: <a href="https://github.com/PietroCarlotti/BSET/blob/HEAD/vignettes/BSET_tutorial.Rmd" class="external-link"><code>vignettes/BSET_tutorial.Rmd</code></a></small>
       <div class="d-none name"><code>BSET_tutorial.Rmd</code></div>
     </div>
 
@@ -203,7 +205,7 @@ functions, respectively.</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-are shown in Table @ref(tab:delta-theta-table).</p>
+are shown in the table below.</p>
 <table class="table">
 <caption>Estimated values of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
@@ -239,15 +241,10 @@ without covariates, and the
 <code>compute_estimands_Carlotti_and_Parast_2026</code> function for
 data including covariates.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Number of Monte Carlo samples to generate per setting</span></span>
-<span><span class="va">MC_samples</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="co">#00000</span></span>
-<span></span>
-<span><span class="co"># Compute the true values of delta and theta for all settings of Parast et al. (2024)</span></span>
-<span><span class="va">estimands_Parast_et_al_2024</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/compute_estimands_Parast_et_al_2024.html">compute_estimands_Parast_et_al_2024</a></span><span class="op">(</span><span class="va">MC_samples</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Compute the true values of delta and theta for all settings of Carlotti and Parast (2026)</span></span>
-<span><span class="va">estimands_Carlotti_and_Parast_2026</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/compute_estimands_Carlotti_and_Parast_2026.html">compute_estimands_Carlotti_and_Parast_2026</a></span><span class="op">(</span><span class="va">MC_samples</span><span class="op">)</span></span></code></pre></div>
-<p>As shown in Table @ref(tab:estimands-Parast-et-al-2024),
+<code class="sourceCode R"><span><span class="co"># Load precomputed Monte Carlo estimands (based on 1,000,000 samples)</span></span>
+<span><span class="va">estimands_Parast_et_al_2024</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="va"><a href="../reference/estimands_Parast_et_al_2024.html">estimands_Parast_et_al_2024</a></span></span>
+<span><span class="va">estimands_Carlotti_and_Parast_2026</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="va"><a href="../reference/estimands_Carlotti_and_Parast_2026.html">estimands_Carlotti_and_Parast_2026</a></span></span></code></pre></div>
+<p>As shown in the table below,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
@@ -272,29 +269,28 @@ al. (2024).</caption>
 <tbody>
 <tr class="odd">
 <td align="center">Useless surrogate</td>
-<td align="center">0.480</td>
-<td align="center">0.6</td>
+<td align="center">0.293</td>
+<td align="center">0.293</td>
 </tr>
 <tr class="even">
 <td align="center">Perfect surrogate</td>
-<td align="center">0.062</td>
-<td align="center">0.2</td>
+<td align="center">0.003</td>
+<td align="center">0.003</td>
 </tr>
 <tr class="odd">
 <td align="center">Imperfect surrogate</td>
-<td align="center">0.125</td>
-<td align="center">0.2</td>
+<td align="center">0.111</td>
+<td align="center">0.111</td>
 </tr>
 <tr class="even">
 <td align="center">Misspecified model</td>
-<td align="center">0.333</td>
-<td align="center">0.3</td>
+<td align="center">0.148</td>
+<td align="center">0.148</td>
 </tr>
 </tbody>
 </table>
-<p>Whereas, as shown in Table
-@ref(tab:estimands-Carlotti-and-Parast-2026), when we include covariates
-in the data generating process,
+<p>Whereas, as shown in the table below, when we include covariates in
+the data generating process,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
@@ -317,18 +313,11 @@ for the simulation settings considered in Carlotti and Parast
 <th align="center"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math></th>
 <th align="center"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></th>
 </tr></thead>
-<tbody>
-<tr class="odd">
+<tbody><tr class="odd">
 <td align="center">Perfect surrogate</td>
-<td align="center">0.875</td>
-<td align="center">0</td>
-</tr>
-<tr class="even">
-<td align="center">Perfect surrogate</td>
-<td align="center">0.476</td>
-<td align="center">0</td>
-</tr>
-</tbody>
+<td align="center">0.251</td>
+<td align="center">0.006</td>
+</tr></tbody>
 </table>
 </div>
 <div class="section level2">
@@ -374,9 +363,8 @@ can be computed as follows:</p>
 <span>  BF_alternative <span class="op">=</span> <span class="va">BF_alternative</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The distribution of the Bayes factor under the null hypothesis is
-shown in Figure @ref(fig:BF-distribution-plot). Since the Bayes factor
-can take values on a very wide range, we plot the distribution on the
-log scale.</p>
+shown in the figure below. Since the Bayes factor can take values on a
+very wide range, we plot the distribution on the log scale.</p>
 <div class="figure" style="text-align: center">
 <img src="BSET_tutorial_files/figure-html/BF-distribution-plot-1.png" class="r-plt" alt="Distribution of the Bayes factor under the null hypothesis $V_S = 0.5$." width="768"><p class="caption">
 Distribution of the Bayes factor under the null hypothesis
@@ -466,8 +454,8 @@ surrogate is perfect and covariates are not included).</p>
 <span><span class="co"># Compute the validation threshold eta</span></span>
 <span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">v_Y</span> <span class="op">-</span> <span class="va">V_S_star</span>, <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, we have that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.031</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  \eta = 0.031.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  \eta = 0.
 </annotation></semantics></math></p>
 </div>
 <div class="section level2">
@@ -608,25 +596,10 @@ covariates as follows:</p>
 <span>  mute <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  parallel <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## recompiling to avoid crashing R session</span></span></code></pre>
-<pre><code><span><span class="co">## Trying to compile a simple C file</span></span></code></pre>
-<pre><code><span><span class="co">## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’</span></span>
-<span><span class="co">## using SDK: ‘’</span></span>
-<span><span class="co">## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o</span></span>
-<span><span class="co">## In file included from &lt;built-in&gt;:1:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:</span></span>
-<span><span class="co">## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found</span></span>
-<span><span class="co">##   679 | #include &lt;cmath&gt;</span></span>
-<span><span class="co">##       |          ^~~~~~~</span></span>
-<span><span class="co">## 1 error generated.</span></span>
-<span><span class="co">## make: *** [foo.o] Error 1</span></span></code></pre>
 <p>The posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure without adjusting for covariates is shown in
-Figure @ref(fig:BSET-no-X-plot).</p>
+from the BSET procedure without adjusting for covariates is shown in the
+figure below.</p>
 <div class="figure" style="text-align: center">
 <img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates the value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
 Posterior distribution of
@@ -685,7 +658,7 @@ We call
 the number of covariates, which in this case is equal to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
 (including the intercept).</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prepare the data for BSET_X</span></span>
 <span><span class="va">BSET_X_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Y <span class="op">=</span> <span class="va">data_X</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"Y"</span><span class="op">]</span>,</span>
@@ -710,7 +683,7 @@ dimension
 containing the prior covariance matrix for the regression coefficients
 of the potential outcomes on the covariates.</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prior parameters for the regression coefficients of the potential outcomes on the covariates</span></span>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">mu_beta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">d</span><span class="op">)</span></span>
@@ -731,7 +704,7 @@ and
 for setting 1 of Carlotti and Parast (2026).</p>
 <p>Finally, we can run the BSET procedure adjusting for covariates as
 follows:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the BSET procedure adjusting for covariates</span></span>
 <span><span class="va">BSET_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">BSET_X_data</span>,</span>
@@ -760,25 +733,10 @@ follows:</p>
 <span>  mute <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  parallel <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## recompiling to avoid crashing R session</span></span></code></pre>
-<pre><code><span><span class="co">## Trying to compile a simple C file</span></span></code></pre>
-<pre><code><span><span class="co">## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’</span></span>
-<span><span class="co">## using SDK: ‘’</span></span>
-<span><span class="co">## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o</span></span>
-<span><span class="co">## In file included from &lt;built-in&gt;:1:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:</span></span>
-<span><span class="co">## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:</span></span>
-<span><span class="co">## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found</span></span>
-<span><span class="co">##   679 | #include &lt;cmath&gt;</span></span>
-<span><span class="co">##       |          ^~~~~~~</span></span>
-<span><span class="co">## 1 error generated.</span></span>
-<span><span class="co">## make: *** [foo.o] Error 1</span></span></code></pre>
 <p>The posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure adjusting for covariates is shown in Figure
-@ref(fig:BSET-X-plot).</p>
+from the BSET procedure adjusting for covariates is shown in the figure
+below.</p>
 <div class="figure" style="text-align: center">
 <img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates the value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
 Posterior distribution of

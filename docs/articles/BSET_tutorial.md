@@ -152,8 +152,8 @@ delta_X <- BSET::compute_delta(MC_data = data_X)
 theta_X <- BSET::compute_theta(MC_data = data_X)
 ```
 
-The estimated values of $`\delta`$ and $`\theta`$ are shown in Table
-@ref(tab:delta-theta-table).
+The estimated values of $`\delta`$ and $`\theta`$ are shown in the table
+below.
 
 |         Setting          | $`\widehat{\delta}`$ | $`\widehat{\theta}`$ |
 |:------------------------:|:--------------------:|:--------------------:|
@@ -170,42 +170,35 @@ data without covariates, and the
 covariates.
 
 ``` r
-# Number of Monte Carlo samples to generate per setting
-MC_samples <- 10#00000
-
-# Compute the true values of delta and theta for all settings of Parast et al. (2024)
-estimands_Parast_et_al_2024 <- BSET::compute_estimands_Parast_et_al_2024(MC_samples)
-
-# Compute the true values of delta and theta for all settings of Carlotti and Parast (2026)
-estimands_Carlotti_and_Parast_2026 <- BSET::compute_estimands_Carlotti_and_Parast_2026(MC_samples)
+# Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
+estimands_Parast_et_al_2024 <- BSET::estimands_Parast_et_al_2024
+estimands_Carlotti_and_Parast_2026 <- BSET::estimands_Carlotti_and_Parast_2026
 ```
 
-As shown in Table @ref(tab:estimands-Parast-et-al-2024), $`\delta`$ and
-$`\theta`$ yield identical values (up to Monte Carlo error) across all
-settings. Both estimands are close to $`0`$ for a perfect surrogate,
-they are significantly higher for a useless surrogate, and take
-intermediate values for imperfect surrogates or misspecified models.
+As shown in the table below, $`\delta`$ and $`\theta`$ yield identical
+values (up to Monte Carlo error) across all settings. Both estimands are
+close to $`0`$ for a perfect surrogate, they are significantly higher
+for a useless surrogate, and take intermediate values for imperfect
+surrogates or misspecified models.
 
 |       Setting       | $`\delta`$ | $`\theta`$ |
 |:-------------------:|:----------:|:----------:|
-|  Useless surrogate  |   0.480    |    0.6     |
-|  Perfect surrogate  |   0.062    |    0.2     |
-| Imperfect surrogate |   0.125    |    0.2     |
-| Misspecified model  |   0.333    |    0.3     |
+|  Useless surrogate  |   0.293    |   0.293    |
+|  Perfect surrogate  |   0.003    |   0.003    |
+| Imperfect surrogate |   0.111    |   0.111    |
+| Misspecified model  |   0.148    |   0.148    |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Parast et al. (2024).
 
-Whereas, as shown in Table @ref(tab:estimands-Carlotti-and-Parast-2026),
-when we include covariates in the data generating process, $`\delta`$
-and $`\theta`$ yield different values. In particular, while $`\theta`$
-is close to $`0`$ for a perfect surrogate, $`\delta`$ is significantly
-higher.
+Whereas, as shown in the table below, when we include covariates in the
+data generating process, $`\delta`$ and $`\theta`$ yield different
+values. In particular, while $`\theta`$ is close to $`0`$ for a perfect
+surrogate, $`\delta`$ is significantly higher.
 
 |      Setting      | $`\delta`$ | $`\theta`$ |
 |:-----------------:|:----------:|:----------:|
-| Perfect surrogate |   0.875    |     0      |
-| Perfect surrogate |   0.476    |     0      |
+| Perfect surrogate |   0.251    |   0.006    |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Carlotti and Parast (2026).
@@ -248,9 +241,8 @@ BF_distribution <- BSET::compute_BF_distribution(
 ```
 
 The distribution of the Bayes factor under the null hypothesis is shown
-in Figure @ref(fig:BF-distribution-plot). Since the Bayes factor can
-take values on a very wide range, we plot the distribution on the log
-scale.
+in the figure below. Since the Bayes factor can take values on a very
+wide range, we plot the distribution on the log scale.
 
 ![Distribution of the Bayes factor under the null hypothesis \$V_S =
 0.5\$.](BSET_tutorial_files/figure-html/BF-distribution-plot-1.png)
@@ -346,7 +338,7 @@ In this case, we have that
 
 ``` math
 
-  \eta = 0.031.
+  \eta = 0.
 ```
 
 ## Running the BSET procedure
@@ -470,26 +462,8 @@ BSET_no_X_results <- BSET::BSET_no_X(
 )
 ```
 
-    ## recompiling to avoid crashing R session
-
-    ## Trying to compile a simple C file
-
-    ## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-    ## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’
-    ## using SDK: ‘’
-    ## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
-    ## In file included from <built-in>:1:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:
-    ## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
-    ##   679 | #include <cmath>
-    ##       |          ^~~~~~~
-    ## 1 error generated.
-    ## make: *** [foo.o] Error 1
-
 The posterior distribution of $`\theta`$ from the BSET procedure without
-adjusting for covariates is shown in Figure @ref(fig:BSET-no-X-plot).
+adjusting for covariates is shown in the figure below.
 
 ![Posterior distribution of \$\theta\$ from the BSET procedure without
 adjusting for covariates. The \<span style='color:blue'\>blue\</span\>
@@ -601,26 +575,8 @@ BSET_X_results <- BSET::BSET_X(
 )
 ```
 
-    ## recompiling to avoid crashing R session
-
-    ## Trying to compile a simple C file
-
-    ## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-    ## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’
-    ## using SDK: ‘’
-    ## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
-    ## In file included from <built-in>:1:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:
-    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:
-    ## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
-    ##   679 | #include <cmath>
-    ##       |          ^~~~~~~
-    ## 1 error generated.
-    ## make: *** [foo.o] Error 1
-
 The posterior distribution of $`\theta`$ from the BSET procedure
-adjusting for covariates is shown in Figure @ref(fig:BSET-X-plot).
+adjusting for covariates is shown in the figure below.
 
 ![Posterior distribution of \$\theta\$ from the BSET procedure adjusting
 for covariates. The \<span style='color:blue'\>blue\</span\> vertical

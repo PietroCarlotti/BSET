@@ -144,7 +144,7 @@ delta_X <- BSET::compute_delta(MC_data = data_X)
 theta_X <- BSET::compute_theta(MC_data = data_X)
 ```
 
-The estimated values of \(\delta\) and \(\theta\) are shown in Table \@ref(tab:delta-theta-table).
+The estimated values of \(\delta\) and \(\theta\) are shown in the table below.
 
 ```{r delta-theta-table, echo=FALSE}
 delta_theta_table <- data.frame(
@@ -167,17 +167,12 @@ knitr::kable(
 To determine the values of \(\delta\) and \(\theta\) for all the settings defined in the two papers, we use a large-scale Monte Carlo simulation via the `compute_estimands_Parast_et_al_2024` function for data without covariates, and the `compute_estimands_Carlotti_and_Parast_2026` function for data including covariates.
 
 ```{r compute-delta-theta-true}
-# Number of Monte Carlo samples to generate per setting
-MC_samples <- 10#00000
-
-# Compute the true values of delta and theta for all settings of Parast et al. (2024)
-estimands_Parast_et_al_2024 <- BSET::compute_estimands_Parast_et_al_2024(MC_samples)
-
-# Compute the true values of delta and theta for all settings of Carlotti and Parast (2026)
-estimands_Carlotti_and_Parast_2026 <- BSET::compute_estimands_Carlotti_and_Parast_2026(MC_samples)
+# Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
+estimands_Parast_et_al_2024 <- BSET::estimands_Parast_et_al_2024
+estimands_Carlotti_and_Parast_2026 <- BSET::estimands_Carlotti_and_Parast_2026
 ```
 
-As shown in Table \@ref(tab:estimands-Parast-et-al-2024), \(\delta\) and \(\theta\) yield identical values (up to Monte Carlo error) across all settings. Both estimands are close to \(0\) for a perfect surrogate, they are significantly higher for a useless surrogate, and take intermediate values for imperfect surrogates or misspecified models.
+As shown in the table below, \(\delta\) and \(\theta\) yield identical values (up to Monte Carlo error) across all settings. Both estimands are close to \(0\) for a perfect surrogate, they are significantly higher for a useless surrogate, and take intermediate values for imperfect surrogates or misspecified models.
 
 ```{r estimands-Parast-et-al-2024, echo=FALSE}
 estimands_Parast_et_al_2024_table <- data.frame(
@@ -196,7 +191,7 @@ knitr::kable(
 )
 ```
 
-Whereas, as shown in Table \@ref(tab:estimands-Carlotti-and-Parast-2026), when we include covariates in the data generating process, \(\delta\) and \(\theta\) yield different values. In particular, while \(\theta\) is close to \(0\) for a perfect surrogate, \(\delta\) is significantly higher.
+Whereas, as shown in the table below, when we include covariates in the data generating process, \(\delta\) and \(\theta\) yield different values. In particular, while \(\theta\) is close to \(0\) for a perfect surrogate, \(\delta\) is significantly higher.
 
 ```{r estimands-Carlotti-and-Parast-2026, echo=FALSE}
 estimands_Carlotti_and_Parast_2026_table <- data.frame(
@@ -245,7 +240,7 @@ BF_distribution <- BSET::compute_BF_distribution(
 )
 ```
 
-The distribution of the Bayes factor under the null hypothesis is shown in Figure \@ref(fig:BF-distribution-plot). Since the Bayes factor can take values on a very wide range, we plot the distribution on the log scale.
+The distribution of the Bayes factor under the null hypothesis is shown in the figure below. Since the Bayes factor can take values on a very wide range, we plot the distribution on the log scale.
 
 ```{r BF-distribution-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Distribution of the Bayes factor under the null hypothesis $V_S = 0.5$."}
 # Log transform the Bayes factor
@@ -394,7 +389,7 @@ We can also specify some additional parameters for the BSET procedure, such as:
 
 Finally, we can run the BSET procedure without adjusting for covariates as follows:
 
-```{r BSET-no-X}
+```{r BSET-no-X, eval=FALSE}
 # Run the BSET procedure without adjusting for covariates
 BSET_no_X_results <- BSET::BSET_no_X(
   data = BSET_no_X_data,
@@ -424,7 +419,11 @@ BSET_no_X_results <- BSET::BSET_no_X(
 )
 ```
 
-The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in Figure \@ref(fig:BSET-no-X-plot).
+```{r BSET-no-X-load, echo=FALSE}
+BSET_no_X_results <- readRDS("BSET_no_X_results.rds")
+```
+
+The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in the figure below.
 
 ```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta
@@ -462,7 +461,7 @@ We can also specify the true values of \(\delta\) and \(\theta\) as input to the
 
 Finally, we can run the BSET procedure adjusting for covariates as follows:
 
-```{r BSET-X}
+```{r BSET-X, eval=FALSE}
 # Run the BSET procedure adjusting for covariates
 BSET_X_results <- BSET::BSET_X(
   data = BSET_X_data,
@@ -493,7 +492,11 @@ BSET_X_results <- BSET::BSET_X(
 )
 ```
 
-The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in Figure \@ref(fig:BSET-X-plot).
+```{r BSET-X-load, echo=FALSE}
+BSET_X_results <- readRDS("BSET_X_results.rds")
+```
+
+The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in the figure below.
 
 ```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
 # Plot the posterior distribution of theta

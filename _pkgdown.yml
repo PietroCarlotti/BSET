@@ -1,5 +1,7 @@
 # _pkgdown.yml
 
+url: https://pietrocarlotti.github.io/BSET/
+
 template:
   bootstrap: 5
   bslib:
