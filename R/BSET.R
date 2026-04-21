@@ -162,25 +162,29 @@ BSET_no_X <- function(
   
   # Parallel vs sequential execution
   if (parallel) {
-    # Detect available cores
-    available_cores <- parallel::detectCores() - 1
-    
+    # Detect available cores (cap at 2 during CRAN checks)
+    available_cores <- if (isTRUE(as.logical(Sys.getenv("_R_CHECK_LIMIT_CORES_", "FALSE")))) {
+      2L
+    } else {
+      parallel::detectCores() - 1
+    }
+
     # Maximum allowed PSOCK connections. R default is 128
     max_connections <- getOption("future.connections.max", 128) - 4
-    
+
     # Number of cores to use
     stan_cores <- min(available_cores, max_connections, n_chains)
-    
+
     # Plan parallel execution
     future::plan(future::multisession, workers = stan_cores)
-    
+
     # Shut down workers on exit
     on.exit(future::plan(future::sequential), add = TRUE)
   } else {
     # Use a single core for sequential execution
     stan_cores <- 1
   }
-  
+
   # Ensure compiled models are saved and reused
   rstan::rstan_options(auto_write = TRUE)
   
@@ -486,25 +490,29 @@ BSET_X <- function(
   
   # Parallel vs sequential execution
   if (parallel) {
-    # Detect available cores
-    available_cores <- parallel::detectCores() - 1
-    
+    # Detect available cores (cap at 2 during CRAN checks)
+    available_cores <- if (isTRUE(as.logical(Sys.getenv("_R_CHECK_LIMIT_CORES_", "FALSE")))) {
+      2L
+    } else {
+      parallel::detectCores() - 1
+    }
+
     # Maximum allowed PSOCK connections. R default is 128
     max_connections <- getOption("future.connections.max", 128) - 4
-    
+
     # Number of cores to use
     stan_cores <- min(available_cores, max_connections, n_chains)
-    
+
     # Plan parallel execution
     future::plan(future::multisession, workers = stan_cores)
-    
+
     # Shut down workers on exit
     on.exit(future::plan(future::sequential), add = TRUE)
   } else {
     # Use a single core for sequential execution
     stan_cores <- 1
   }
-  
+
   # Ensure compiled models are saved and reused
   rstan::rstan_options(auto_write = TRUE)
   
