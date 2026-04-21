@@ -4,12 +4,10 @@ url: https://pietrocarlotti.github.io/BSET/
 
 template:
   bootstrap: 5
+  bootswatch: flatly
   bslib:
     toc: true
     toc_float: false
-    code-bg: "#f8f8f8"
-
-highlight: arrow
 
 navbar:
   structure:
