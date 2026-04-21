@@ -8,16 +8,16 @@
   without Covariates from Carlotti and Parast (2026)
 - [`Bayesian_test()`](Bayesian_test.md) : Bayesian Test from Carlotti
   and Parast (2026)
-- [`Carlotti_and_Parast_2026_simulations()`](Carlotti_and_Parast_2026_simulations.md)
-  : Run Simulations for the Settings in Carlotti and Parast (2026)
 - [`Carlotti_and_Parast_2026_simulations_grid`](Carlotti_and_Parast_2026_simulations_grid.md)
   : Simulation grid for Carlotti and Parast (2026)
+- [`DGP_X_Gaussian()`](DGP_X_Gaussian.md) : Data Generating Process with
+  a Gaussian Covariate
 - [`DGP_X_binary()`](DGP_X_binary.md) : Data Generating Process with a
   Binary Covariate
 - [`DGP_no_X()`](DGP_no_X.md) : Data Generating Process without Baseline
   Covariates
-- [`Parast_et_al_2024_simulations()`](Parast_et_al_2024_simulations.md)
-  : Run Simulations for the Settings in Parast et al. (2024)
+- [`Parast_et_al_2024_simulations_grid`](Parast_et_al_2024_simulations_grid.md)
+  : Simulation grid for Parast et al. (2024)
 - [`compute_BF_distribution()`](compute_BF_distribution.md) : Compute
   the Distribution of the Bayes Factor from Carlotti and Parast (2026)
 - [`compute_V_S_star()`](compute_V_S_star.md) : Compute \\v_S\\ from

@@ -45,4 +45,12 @@ computing the Mann-Whitney U statistic for both the primary outcome
 \sum\limits\_{i:Z_i=1} \sum\limits\_{j:Z_j=0} I(Y_i \> Y_j),\$\$
 \$\$\hat{U}\_S = \frac{1}{n_1 n_0} \sum\limits\_{i:Z_i=1}
 \sum\limits\_{j:Z_j=0} I(S_i \> S_j).\$\$ Then, it calculates
-\$\$\hat{\delta} = \hat{U}\_Y - \hat{U}\_S.\$\$
+\$\$\hat{\delta} = \hat{U}\_Y - \hat{U}\_S.\$\$ This function is
+generally not intended to be called directly by the user and is instead
+used internally within `BSET_no_X` and `BSET_X`.
+
+## References
+
+Parast L, Cai T, Tian L (2024). “A rank-based approach to evaluate a
+surrogate marker in a small sample setting.” *Biometrics*, **80**(1),
+ujad035.

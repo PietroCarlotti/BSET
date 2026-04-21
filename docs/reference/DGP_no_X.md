@@ -1,7 +1,7 @@
 # Data Generating Process without Baseline Covariates
 
 This function generates potential outcomes from the simulation settings
-described in Parast et al. (2024). It creates a dataset of potential
+described in Parast et al. (2024) . It creates a dataset of potential
 outcomes \$\$P = (Y_1, S_1, Y_0, S_0)\$\$ and observed outcomes
 \$\$P\_{observed} = (Y, S)\$\$ based on a random treatment assignment
 \\Z\\.
@@ -60,6 +60,10 @@ A list containing:
 
 - `P_unobserved`: Counterfactual outcomes under the opposite treatment.
 
+This function is useful for generating synthetic data to test or explore
+the method, for instance to verify the behavior of `BSET_no_X` under
+known simulation settings.
+
 ## Details
 
 The function supports two types of data-generating processes:
@@ -72,3 +76,22 @@ The function supports two types of data-generating processes:
   generated from a non-Gaussian distribution, and the potential outcomes
   for the primary outcome are generated from a non-linear function of
   the surrogate plus non-Gaussian noise.
+
+## References
+
+Parast L, Cai T, Tian L (2024). “A rank-based approach to evaluate a
+surrogate marker in a small sample setting.” *Biometrics*, **80**(1),
+ujad035.
+
+## Examples
+
+``` r
+set.seed(123)
+data <- DGP_no_X(
+  n = 100,
+  p = 0.5,
+  mu_star = c(6, 6, 2.5, 2.5),
+  Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
+  model = "Gaussian"
+)
+```

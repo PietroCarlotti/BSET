@@ -21,7 +21,9 @@ shape parameters of the Beta prior. Given the true value of \\V_S\\, the
 distribution of the Bayes factor can be computed by evaluating \\BF_n\\
 for all possible values of \\\hat{V}\_S\\ and their corresponding
 probabilities under the Binomial distribution with parameters \\n\\ and
-the true value of \\V_S\\.
+the true value of \\V_S\\. This function is generally not intended to be
+called directly by the user and is instead used internally within
+`BSET_no_X` and `BSET_X`.
 
 ## Usage
 
@@ -75,3 +77,8 @@ A data frame containing:
 - `BF_PMF`: The probability mass function for the Bayes Factor.
 
 - `BF_CDF`: The cumulative distribution function for the Bayes Factor.
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.

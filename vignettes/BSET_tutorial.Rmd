@@ -47,7 +47,7 @@ We start by setting the random seed for reproducibility of the results.
 set.seed(123)
 
 # Sample size and treatment assignment probability used throughout
-n <- 50
+n <- 7
 p <- 0.5
 ```
 
@@ -168,7 +168,7 @@ To determine the values of \(\delta\) and \(\theta\) for all the settings define
 
 ```{r compute-delta-theta-true}
 # Number of Monte Carlo samples to generate per setting
-MC_samples <- 1000000
+MC_samples <- 10#00000
 
 # Compute the true values of delta and theta for all settings of Parast et al. (2024)
 estimands_Parast_et_al_2024 <- BSET::compute_estimands_Parast_et_al_2024(MC_samples)

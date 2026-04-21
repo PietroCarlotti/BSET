@@ -2,7 +2,7 @@
 
 This function implements the Bayesian Surrogate Evaluation Test (BSET)
 which includes covariates via a multivariate regression model for the
-potential, as proposed by Carlotti and Parast (2026). The function fits
+potential, as proposed by Carlotti and Parast (2026) . The function fits
 a Bayesian model using Stan to generate posterior samples for the
 parameters of interest, including the regression coefficients for the
 covariates. These posterior samples are then used to conduct a Bayesian
@@ -18,6 +18,8 @@ comparison. The Bayesian model is specified as follows: \$\$(Y_i, S_i) =
 4,\$\$ \$\$\Sigma = \text{diag}(\sigma\_{1:4}) \\ \Omega \\
 \text{diag}(\sigma\_{1:4}),\$\$ \$\$\sigma_k \sim \text{Half-Normal}(0,
 s_k), \quad k = 1, \ldots, 4,\$\$ \$\$\Omega \sim \text{LKJ}(\tau).\$\$
+This is a primary user-facing function of the package and includes a
+working example below.
 
 ## Usage
 
@@ -167,3 +169,50 @@ BSET_X(
 
   Logical. Whether to use parallel processing for MCMC sampling (default
   is TRUE)
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.
+
+Parast L, Cai T, Tian L (2024). “A rank-based approach to evaluate a
+surrogate marker in a small sample setting.” *Biometrics*, **80**(1),
+ujad035.
+
+## Examples
+
+``` r
+# Generate data from the setting of Carlotti and Parast (2026) with a binary covariate
+set.seed(123)
+data_X <- DGP_X_binary(
+  n = 100,
+  p = 0.5,
+  q = 0.5,
+  mu_0 = c(5, 5, 0, 0),
+  mu_1 = c(5, -5, 0, -10),
+  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
+  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
+)
+
+# Prepare the data frame
+df <- data.frame(
+  Y = data_X$P_observed[, "Y"],
+  S = data_X$P_observed[, "S"],
+  Z = data_X$Z,
+  X = data_X$X
+)
+
+# Run BSET with covariates (computationally intensive)
+# \donttest{
+result <- BSET_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  seed = 123,
+  n_chains = 2,
+  n_iter = 500
+)
+# }
+```

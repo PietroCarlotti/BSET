@@ -1,9 +1,11 @@
 # Bayesian Test from Carlotti and Parast (2026)
 
 This function performs a Bayesian test for surrogate evaluation based on
-the imputation-based methodology of Carlotti and Parast (2026). It
+the imputation-based methodology of Carlotti and Parast (2026) . It
 calculates credible intervals, the \\\eta\\ threshold used, and
-determines if the surrogate is valid.
+determines if the surrogate is valid. This function is generally not
+intended to be called directly by the user and is instead used
+internally within `BSET_no_X` and `BSET_X`.
 
 ## Usage
 
@@ -65,3 +67,8 @@ A list containing:
 
 - `power`: Logical indicating if the upper bound of `CI` is below `eta`,
   which indicates that the test identifies the surrogate as valid.
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.

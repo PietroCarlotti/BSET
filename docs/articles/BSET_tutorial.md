@@ -43,6 +43,10 @@ We start by setting the random seed for reproducibility of the results.
 ``` r
 # Set the random seed for reproducibility
 set.seed(123)
+
+# Sample size and treatment assignment probability used throughout
+n <- 7
+p <- 0.5
 ```
 
 The package includes two functions to generate data for the simulations:
@@ -51,17 +55,11 @@ settings of Parast et al. (2024), which do not include covariates; the
 second one generates data which depends on a binary covariate $`X`$ and
 is used for the simulations of Carlotti and Parast (2026).
 
-For example, this how we can generate data from the second setting
+For example, this is how we can generate data from the second setting
 defined in Parast et al. (2024) (i.e.: the setting where the surrogate
 is perfect and covariates are not included):
 
 ``` r
-# Sample size
-n <- 50
-
-# Treatment assignment probability
-p <- 0.5
-
 # Mean vector of potential outcomes for the primary outcome and the surrogate
 mu_star <- c(6, 6, 2.5, 2.5)
 
@@ -90,12 +88,6 @@ Carlotti and Parast (2026) (i.e.: the setting where the surrogate is
 useful and covariates are included):
 
 ``` r
-# Sample size
-n <- 50
-
-# Treatment assignment probability
-p <- 0.5
-
 # Binary covariate probability
 q <- 0.5
 
@@ -134,7 +126,7 @@ data_X <- BSET::DGP_X_binary(
   )
 ```
 
-## Computing the true values of $`\delta`$ and $`\theta`$
+## Computing the true values of the discrepancy parameters
 
 Given the data generated with the above functions, we can estimate
 $`\delta`$ and $`\theta`$ using the `compute_delta` and `compute_theta`
@@ -165,8 +157,8 @@ The estimated values of $`\delta`$ and $`\theta`$ are shown in Table
 
 |         Setting          | $`\widehat{\delta}`$ | $`\widehat{\theta}`$ |
 |:------------------------:|:--------------------:|:--------------------:|
-| No X (Perfect Surrogate) |        0.013         |          0           |
-|         Binary X         |        0.192         |          0           |
+| No X (Perfect Surrogate) |          0           |          0           |
+|         Binary X         |          0           |          0           |
 
 Estimated values of $`\delta`$ and $`\theta`$ in the two settings.
 
@@ -196,10 +188,10 @@ intermediate values for imperfect surrogates or misspecified models.
 
 |       Setting       | $`\delta`$ | $`\theta`$ |
 |:-------------------:|:----------:|:----------:|
-|  Useless surrogate  |   0.222    |    0.4     |
-|  Perfect surrogate  |   0.042    |    0.1     |
-| Imperfect surrogate |   0.083    |    0.2     |
-| Misspecified model  |   0.160    |    0.1     |
+|  Useless surrogate  |   0.480    |    0.6     |
+|  Perfect surrogate  |   0.062    |    0.2     |
+| Imperfect surrogate |   0.125    |    0.2     |
+| Misspecified model  |   0.333    |    0.3     |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Parast et al. (2024).
@@ -212,12 +204,13 @@ higher.
 
 |      Setting      | $`\delta`$ | $`\theta`$ |
 |:-----------------:|:----------:|:----------:|
-| Perfect surrogate |   0.143    |     0      |
+| Perfect surrogate |   0.875    |     0      |
+| Perfect surrogate |   0.476    |     0      |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Carlotti and Parast (2026).
 
-## Compute the validation threshold $`\eta`$
+## Computing the validation threshold
 
 The validation threshold $`\eta`$ is the value of $`\theta`$ below which
 the surrogate is considered valid. As explained in Carlotti and Parast
@@ -233,9 +226,6 @@ distribution of the Bayes factor under the null hypothesis $`V_S = 0.5`$
 can be computed as follows:
 
 ``` r
-# Sample size
-n <- 50
-
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
 
@@ -287,7 +277,7 @@ For example, for $`\alpha = 0.05`$ we have
 
 ``` math
 
-  BF_{n, \alpha} = 1.385.
+  BF_{n, \alpha} = 4.411.
 ```
 
 Once we have the value of $`BF_{n, \alpha}`$, we can compute the value
@@ -326,7 +316,7 @@ Then, we have that
 
 ``` math
 
-  v_S = 0.685.
+  v_S = 0.969.
 ```
 
 Finally, the validation threshold $`\eta`$ can be computed as
@@ -356,15 +346,22 @@ In this case, we have that
 
 ``` math
 
-  \eta = 0.315.
+  \eta = 0.031.
 ```
 
-## Run the BSET procedure
+## Running the BSET procedure
 
 The package includes two functions to run the BSET procedure:
 `BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without
 adjusting for covariates, while the second one runs the BSET procedure
 adjusting for covariates.
+
+The result of the procedure is summarized by the posterior distribution
+of $`\theta`$ and its 95% credible interval. In general, if the upper
+bound of the credible interval falls below the validation threshold
+$`\eta`$, the BSET procedure concludes that there is evidence that the
+surrogate is valid. If instead the upper bound exceeds $`\eta`$, the
+procedure does not find sufficient evidence of surrogacy.
 
 ### BSET with no covariates
 
@@ -473,6 +470,24 @@ BSET_no_X_results <- BSET::BSET_no_X(
 )
 ```
 
+    ## recompiling to avoid crashing R session
+
+    ## Trying to compile a simple C file
+
+    ## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+    ## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’
+    ## using SDK: ‘’
+    ## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+    ## In file included from <built-in>:1:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:
+    ## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+    ##   679 | #include <cmath>
+    ##       |          ^~~~~~~
+    ## 1 error generated.
+    ## make: *** [foo.o] Error 1
+
 The posterior distribution of $`\theta`$ from the BSET procedure without
 adjusting for covariates is shown in Figure @ref(fig:BSET-no-X-plot).
 
@@ -480,7 +495,7 @@ adjusting for covariates is shown in Figure @ref(fig:BSET-no-X-plot).
 adjusting for covariates. The \<span style='color:blue'\>blue\</span\>
 vertical line indicates the upper bound of the 95% credible interval,
 the \<span style='color:green'\>green\</span\> vertical line indicates
-value of the validation threshold \$\eta\$, the \<span
+the value of the validation threshold \$\eta\$, the \<span
 style='color:orange'\>orange\</span\> vertical line indicates the true
 value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
 vertical line indicates the true value of
@@ -489,9 +504,20 @@ vertical line indicates the true value of
 Posterior distribution of $`\theta`$ from the BSET procedure without
 adjusting for covariates. The blue vertical line indicates the upper
 bound of the 95% credible interval, the green vertical line indicates
-value of the validation threshold $`\eta`$, the orange vertical line
+the value of the validation threshold $`\eta`$, the orange vertical line
 indicates the true value of $`\delta`$, and the red vertical line
 indicates the true value of $`\theta`$.
+
+Two features of this result are worth highlighting. First, the posterior
+distribution of $`\theta`$ is centered around the true value of
+$`\theta`$, demonstrating that the Bayesian imputation approach
+accurately recovers the true discrepancy between the treatment effects
+on $`Y`$ and $`S`$. In this setting, covariates do not play a role in
+the data generating process, so the frequentist estimand $`\delta`$
+coincides with $`\theta`$ and both methods perform similarly. Second,
+since the upper bound of the 95% credible interval falls below the
+validation threshold $`\eta`$, the BSET procedure concludes that there
+is evidence that the surrogate is valid in this setting.
 
 ### BSET with covariates
 
@@ -536,9 +562,9 @@ Sigma_beta <- 10*diag(d)
 ```
 
 We can also specify the true values of $`\delta`$ and $`\theta`$ as
-input to the function `BSET_X` to check whether if they are included in
-the posterior credible intervals. In this case, we can set $`\delta`$
-and $`\theta`$ equal to the Monte Carlo estimates of $`\delta`$ and
+input to the function `BSET_X` to check if they are included in the
+posterior credible intervals. In this case, we can set $`\delta`$ and
+$`\theta`$ equal to the Monte Carlo estimates of $`\delta`$ and
 $`\theta`$ for setting 1 of Carlotti and Parast (2026).
 
 Finally, we can run the BSET procedure adjusting for covariates as
@@ -575,14 +601,32 @@ BSET_X_results <- BSET::BSET_X(
 )
 ```
 
+    ## recompiling to avoid crashing R session
+
+    ## Trying to compile a simple C file
+
+    ## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+    ## using C compiler: ‘Apple clang version 21.0.0 (clang-2100.0.123.102)’
+    ## using SDK: ‘’
+    ## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/pc29642/Library/R/arm64/4.4/library/Rcpp/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/unsupported"  -I"/Users/pc29642/Library/R/arm64/4.4/library/BH/include" -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/src/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/RcppParallel/include/"  -I"/Users/pc29642/Library/R/arm64/4.4/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+    ## In file included from <built-in>:1:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Dense:1:
+    ## In file included from /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/Core:19:
+    ## /Users/pc29642/Library/R/arm64/4.4/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+    ##   679 | #include <cmath>
+    ##       |          ^~~~~~~
+    ## 1 error generated.
+    ## make: *** [foo.o] Error 1
+
 The posterior distribution of $`\theta`$ from the BSET procedure
 adjusting for covariates is shown in Figure @ref(fig:BSET-X-plot).
 
 ![Posterior distribution of \$\theta\$ from the BSET procedure adjusting
 for covariates. The \<span style='color:blue'\>blue\</span\> vertical
 line indicates the upper bound of the 95% credible interval, the \<span
-style='color:green'\>green\</span\> vertical line indicates value of the
-validation threshold \$\eta\$, the \<span
+style='color:green'\>green\</span\> vertical line indicates the value of
+the validation threshold \$\eta\$, the \<span
 style='color:orange'\>orange\</span\> vertical line indicates the true
 value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
 vertical line indicates the true value of
@@ -590,7 +634,20 @@ vertical line indicates the true value of
 
 Posterior distribution of $`\theta`$ from the BSET procedure adjusting
 for covariates. The blue vertical line indicates the upper bound of the
-95% credible interval, the green vertical line indicates value of the
-validation threshold $`\eta`$, the orange vertical line indicates the
-true value of $`\delta`$, and the red vertical line indicates the true
-value of $`\theta`$.
+95% credible interval, the green vertical line indicates the value of
+the validation threshold $`\eta`$, the orange vertical line indicates
+the true value of $`\delta`$, and the red vertical line indicates the
+true value of $`\theta`$.
+
+Unlike the previous setting, covariates now play a role in the data
+generating process, and this is where the two methods diverge. The
+posterior distribution of $`\theta`$ is still centered around its true
+value, confirming that the covariate-adjusted Bayesian model correctly
+recovers the true discrepancy parameter. In contrast, the frequentist
+estimand $`\delta`$ diverges substantially from the true $`\theta`$,
+illustrating a key limitation of rank-based methods when covariates are
+present. Since the upper bound of the 95% credible interval falls below
+the validation threshold $`\eta`$, the BSET procedure correctly
+concludes that there is evidence that the surrogate is valid in this
+setting, while the frequentist method, being based on $`\delta`$, would
+incorrectly conclude that it is not.

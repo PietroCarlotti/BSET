@@ -1,7 +1,7 @@
 # Monte Carlo Computation of the Parameter \\\theta\\ from Carlotti and Parast (2026)
 
 This function implements a Monte Carlo approach to estimate the
-parameter \\\theta\\ from Carlotti and Parast (2026). This parameter
+parameter \\\theta\\ from Carlotti and Parast (2026) . This parameter
 represents the difference in treatment effects between the primary and
 surrogate outcomes, both measured using the probability that the treated
 outcome is larger than the control outcome.
@@ -40,4 +40,11 @@ computing the sample probabilities for both the primary outcome \\Y\\
 and the surrogate \\S\\: \$\$\hat{V}\_Y = \frac{1}{n}
 \sum\limits^{n}\_{i=1} I(Y\_{1i} \> Y\_{0i}),\$\$ \$\$\hat{V}\_S =
 \frac{1}{n} \sum\limits^{n}\_{i=1} I(S\_{1i} \> S\_{0i}).\$\$ Then, it
-calculates \$\$\hat{\theta} = \hat{V}\_Y - \hat{V}\_S.\$\$
+calculates \$\$\hat{\theta} = \hat{V}\_Y - \hat{V}\_S.\$\$ This function
+is generally not intended to be called directly by the user and is
+instead used internally within `BSET_no_X` and `BSET_X`.
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.

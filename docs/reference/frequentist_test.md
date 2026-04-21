@@ -1,9 +1,11 @@
 # Frequentist Test from Parast et al. (2024)
 
 This function performs a frequentist test for surrogate evaluation based
-on the rank-based methodology of Parast et al. (2024). It calculates
+on the rank-based methodology of Parast et al. (2024) . It calculates
 confidence intervals, the \\\varepsilon\\ threshold used, and determines
-if the surrogate is valid.
+if the surrogate is valid. This function is generally not intended to be
+called directly by the user and is instead used internally within
+`BSET_no_X` and `BSET_X`.
 
 ## Usage
 
@@ -50,3 +52,9 @@ A list containing:
 - `power`: Logical indicating if the upper bound of `CI` is below
   `epsilon`, which indicates that the test identifies the surrogate as
   valid.
+
+## References
+
+Parast L, Cai T, Tian L (2024). “A rank-based approach to evaluate a
+surrogate marker in a small sample setting.” *Biometrics*, **80**(1),
+ujad035.

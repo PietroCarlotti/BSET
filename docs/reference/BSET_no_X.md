@@ -1,10 +1,10 @@
 # Bayesian Surrogate Evaluation Test without Covariates from Carlotti and Parast (2026)
 
 This function implements the Bayesian Surrogate Evaluation Test (BSET)
-without covariates, as proposed by Carlotti and Parast (2026). The
+without covariates, as proposed by Carlotti and Parast (2026) . The
 function fits a Bayesian model using Stan to generate posterior samples
 for the parameters of interest. These posterior samples are then used to
-conduct a Bayesian hypothesis tests for evaluating the validity of the
+conduct a Bayesian hypothesis test for evaluating the validity of the
 surrogate marker. A frequentist test is also performed for comparison.
 The Bayesian model is specified as follows: \$\$(Y_i, S_i) =
 \begin{cases} P\_{1i}, & \text{if } Z_i = 1 \\ P\_{0i}, & \text{if } Z_i
@@ -14,6 +14,8 @@ The Bayesian model is specified as follows: \$\$(Y_i, S_i) =
 \$\$\Sigma = \text{diag}(\sigma\_{1:4}) \\ \Omega \\
 \text{diag}(\sigma\_{1:4}),\$\$ \$\$\sigma_k \sim \text{Half-Normal}(0,
 s_k), \quad k = 1, \ldots, 4,\$\$ \$\$\Omega \sim \text{LKJ}(\tau).\$\$
+This is a primary user-facing function of the package and includes a
+working example below.
 
 ## Usage
 
@@ -167,3 +169,46 @@ A list containing:
   distribution of \\\theta\\, with vertical lines indicating the
   credible interval, the \\\eta\\ threshold, and the true values of
   \\\delta\\ and \\\theta\\ (if provided).
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.
+
+Parast L, Cai T, Tian L (2024). “A rank-based approach to evaluate a
+surrogate marker in a small sample setting.” *Biometrics*, **80**(1),
+ujad035.
+
+## Examples
+
+``` r
+# Generate data from the perfect surrogate setting of Parast et al. (2024)
+set.seed(123)
+data_no_X <- DGP_no_X(
+  n = 100,
+  p = 0.5,
+  mu_star = c(6, 6, 2.5, 2.5),
+  Sigma_star = kronecker(diag(2), matrix(c(3, 3, 3, 3.1), 2, 2)),
+  model = "Gaussian"
+)
+
+# Prepare the data frame
+df <- data.frame(
+  Y = data_no_X$P_observed[, "Y"],
+  S = data_no_X$P_observed[, "S"],
+  Z = data_no_X$Z
+)
+
+# Run BSET without covariates (computationally intensive)
+# \donttest{
+result <- BSET_no_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  seed = 123,
+  n_chains = 2,
+  n_iter = 500
+)
+# }
+```

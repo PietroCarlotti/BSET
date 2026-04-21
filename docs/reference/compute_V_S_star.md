@@ -1,19 +1,21 @@
 # Compute \\v_S\\ from Carlotti and Parast (2026)
 
 This function determines the value \\v_S\\ that is used to compute the
-surrogate validation threshold \\\eta\\ from Carlotti and Parast (2026):
-\$\$\eta = \max \\v_Y - v_S, 0\\,\$\$ where \\v_Y\\ is the hypothesized
-value of the treatment effect on the primary outcome (typically set
-equal to the estimate computed on the available data) and \\v_S\\ is the
-value that satisfies the following power constraint: \$\$P(\text{BF}\_n
-\geq \text{BF}\_{n, \alpha} \\ \| \\ V_S = v_S) = 1 - \beta,\$\$ where
-\\\text{BF}\_{n, \alpha}\\ is the \\(1 - \alpha)\\ quantile of the Bayes
-factor distribution under the null hypothesis \\V_S = V^0\_{S}\\, and
-\\1 - \beta\\ is the desired power of the test. The computes the
-distribution of the Bayes factor under the null hypothesis, derives the
-critical value \\\text{BF}\_{n, \alpha}\\, and then uses a root-finding
-algorithm to solve for the value of \\v_S\\ that satisfies the power
-constraint.
+surrogate validation threshold \\\eta\\ from Carlotti and Parast (2026)
+: \$\$\eta = \max \\v_Y - v_S, 0\\,\$\$ where \\v_Y\\ is the
+hypothesized value of the treatment effect on the primary outcome
+(typically set equal to the estimate computed on the available data) and
+\\v_S\\ is the value that satisfies the following power constraint:
+\$\$P(\text{BF}\_n \geq \text{BF}\_{n, \alpha} \\ \| \\ V_S = v_S) = 1 -
+\beta,\$\$ where \\\text{BF}\_{n, \alpha}\\ is the \\(1 - \alpha)\\
+quantile of the Bayes factor distribution under the null hypothesis
+\\V_S = V^0\_{S}\\, and \\1 - \beta\\ is the desired power of the test.
+The function computes the distribution of the Bayes factor under the
+null hypothesis, derives the critical value \\\text{BF}\_{n, \alpha}\\,
+and then uses a root-finding algorithm to solve for the value of \\v_S\\
+that satisfies the power constraint. This function is generally not
+intended to be called directly by the user and is instead used
+internally within `BSET_no_X` and `BSET_X`.
 
 ## Usage
 
@@ -78,3 +80,8 @@ A list containing:
 
 - `V_S_star`: The value of \\v_S\\ that satisfies the power constraint
   for the surrogate validation test.
+
+## References
+
+Carlotti P, Parast L (2026). “A Bayesian Critique of Rank-Based Methods
+for Surrogate Marker Evaluation.” *arXiv preprint arXiv:2603.14381*.
