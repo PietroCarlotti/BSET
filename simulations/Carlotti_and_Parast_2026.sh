@@ -21,7 +21,7 @@ done
 wait
 
 # Slack notification
-Slack_URL="$\{SLACK_WEBHOOK_URL\}"
+Slack_URL="${SLACK_WEBHOOK_URL}"
 
 # Create a nice message
 Slack_notification="*BSET Simulations Complete*\nAll $n_batches batches have finished running.\nTime: $(date)"
