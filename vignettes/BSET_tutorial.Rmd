@@ -102,7 +102,7 @@ We start by setting the random seed for reproducibility of the results.
 set.seed(123)
 
 # Sample size and treatment assignment probability used throughout
-n <- 7
+n <- 50
 p <- 0.5
 ```
 
