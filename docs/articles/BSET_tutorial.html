@@ -68,11 +68,12 @@ Carlotti</h4>
 in clinical trials. It provides hypothesis testing tools to evaluate
 whether a surrogate can reliably estimate the causal effect of a
 treatment on a primary outcome. The package implements the
-imputation-based Bayesian methodology of Carlotti and Parast (2026),
-extending the frequentist rank-based approach of Parast et al. (2024).
-BSET addresses key limitations of the frequentist method, including the
-lack of causal interpretability and the inability to adjust for
-covariates in the estimation process.</p>
+imputation-based Bayesian methodology of <span class="citation">Carlotti
+and Parast (2026)</span>, extending the frequentist rank-based approach
+of <span class="citation">Parast, Cai, and Tian (2024)</span>. BSET
+addresses key limitations of the frequentist method, including the lack
+of causal interpretability and the inability to adjust for covariates in
+the estimation process.</p>
 <p>The package supports Bayesian testing both with and without baseline
 covariates. Additionally, it includes comprehensive simulation suites to
 replicate studies from both papers, enabling performance comparisons
@@ -105,10 +106,10 @@ outcome <code>Y</code>, the surrogate <code>S</code>, and the treatment
 assignment <code>Z</code>. <code>BSET_X</code> additionally requires a
 covariate column <code>X</code>.</p>
 <p>To illustrate the usage of the package, we simulate a small dataset
-with a binary covariate using base R:</p>
+with a binary covariate:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set the random seed for reproducibility</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Sample size</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
@@ -144,16 +145,17 @@ the data frame and the names of the relevant columns:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_no_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Example output from BSET_no_X: posterior distribution of $\theta$." width="768"><p class="caption">
-Example output from BSET_no_X: posterior distribution of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
+<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET_no_X`." width="768"><p class="caption">
+Posterior distribution of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+from <code>BSET_no_X</code>.
 </p>
 </div>
 <p>To run BSET <strong>with</strong> a baseline covariate, add the
 covariate column name via the <code>X</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">df_qs</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">df</span>,</span>
 <span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
 <span>  Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
@@ -163,10 +165,10 @@ covariate column name via the <code>X</code> argument:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Example output from BSET_X: posterior distribution of $\theta$ adjusted for a baseline covariate." width="768"><p class="caption">
-Example output from BSET_X: posterior distribution of
+<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET_X`, adjusted for a baseline covariate." width="768"><p class="caption">
+Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-adjusted for a baseline covariate.
+from <code>BSET_X</code>, adjusted for a baseline covariate.
 </p>
 </div>
 <p>Both functions return the posterior distribution of
@@ -176,8 +178,13 @@ the discrepancy between the treatment effects on
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
 The blue vertical line marks the upper bound of the 95% credible
-interval, and the green vertical line marks the validation threshold
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>.
+interval, the green vertical line marks the validation threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
+the orange vertical line marks the true value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(the frequentist estimand of <span class="citation">Parast, Cai, and
+Tian (2024)</span>), and the red vertical line marks the true value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
 If the blue line falls below the green line, there is evidence that the
 surrogate is valid.</p>
 <p>The rest of this tutorial explains how the data are generated, how
@@ -197,21 +204,23 @@ is calibrated.</p>
 results.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set the random seed for reproducibility</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Sample size and treatment assignment probability used throughout</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span></code></pre></div>
 <p>The package includes two functions to generate data for the
 simulations: <code>DGP</code> and <code>DGP_X</code>. The first one
-generates data from the simulation settings of Parast et al. (2024),
-which do not include covariates; the second one generates data which
-depends on a binary covariate
+generates data from the simulation settings of <span class="citation">Parast, Cai, and Tian (2024)</span>, which do not
+include covariates; the second one generates data which depends on a
+binary covariate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
-and is used for the simulations of Carlotti and Parast (2026).</p>
+and is used for the simulations of <span class="citation">Carlotti and
+Parast (2026)</span>.</p>
 <p>For example, this is how we can generate data from the second setting
-defined in Parast et al. (2024) (i.e.: the setting where the surrogate
-is perfect and covariates are not included):</p>
+defined in <span class="citation">Parast, Cai, and Tian (2024)</span>
+(i.e.: the setting where the surrogate is perfect and covariates are not
+included):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mean vector of potential outcomes for the primary outcome and the surrogate</span></span>
 <span><span class="va">mu_star</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span><span class="op">)</span></span>
@@ -235,8 +244,8 @@ is perfect and covariates are not included):</p>
 <span>  model <span class="op">=</span> <span class="st">"Gaussian"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>While this is how we can generate data from the first setting defined
-in Carlotti and Parast (2026) (i.e.: the setting where the surrogate is
-useful and covariates are included):</p>
+in <span class="citation">Carlotti and Parast (2026)</span> (i.e.: the
+setting where the surrogate is useful and covariates are included):</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Binary covariate probability</span></span>
 <span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
@@ -317,12 +326,12 @@ in the two settings.</caption>
 <tbody>
 <tr class="odd">
 <td align="center">No X (Perfect Surrogate)</td>
-<td align="center">0.013</td>
+<td align="center">0.010</td>
 <td align="center">0</td>
 </tr>
 <tr class="even">
 <td align="center">Binary X</td>
-<td align="center">0.192</td>
+<td align="center">0.212</td>
 <td align="center">0</td>
 </tr>
 </tbody>
@@ -334,9 +343,11 @@ and
 for all the settings defined in the two papers, we use a large-scale
 Monte Carlo simulation via the
 <code>compute_estimands_Parast_et_al_2024</code> function for data
-without covariates, and the
+without covariates <span class="citation">(Parast, Cai, and Tian
+2024)</span>, and the
 <code>compute_estimands_Carlotti_and_Parast_2026</code> function for
-data including covariates.</p>
+data including covariates <span class="citation">(Carlotti and Parast
+2026)</span>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load precomputed Monte Carlo estimands (based on 1,000,000 samples)</span></span>
 <span><span class="va">estimands_Parast_et_al_2024</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="va"><a href="../reference/estimands_Parast_et_al_2024.html">estimands_Parast_et_al_2024</a></span></span>
@@ -424,8 +435,7 @@ for the simulation settings considered in Carlotti and Parast
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
 is the value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-below which the surrogate is considered valid. As explained in Carlotti
-and Parast (2026), the computation of
+below which the surrogate is considered valid. As explained in <span class="citation">Carlotti and Parast (2026)</span>, the computation of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
 is based on the distribution of the following Bayes factor:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msub><mi>F</mi><mrow><mtext mathvariant="normal">Beta</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>n</mi><msub><mover><mi>V</mi><mo accent="true">̂</mo></mover><mi>S</mi></msub><mo>,</mo><mspace width="0.167em"></mspace><mi>b</mi><mo>+</mo><mi>n</mi><mo>−</mo><mi>n</mi><msub><mover><mi>V</mi><mo accent="true">̂</mo></mover><mi>S</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>−</mo><msub><mi>F</mi><mrow><mtext mathvariant="normal">Beta</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
@@ -542,8 +552,9 @@ data).</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">v_Y</annotation></semantics></math>
 equal to the Monte Carlo estimate of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">V_Y</annotation></semantics></math>
-for setting 1 of Parast et al. (2024) (i.e.: the setting where the
-surrogate is perfect and covariates are not included).</p>
+for setting 1 of <span class="citation">Parast, Cai, and Tian
+(2024)</span> (i.e.: the setting where the surrogate is perfect and
+covariates are not included).</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Hypothesized value of the treatment effect on the primary outcome</span></span>
 <span><span class="va">v_Y</span> <span class="op">&lt;-</span> <span class="va">estimands_Parast_et_al_2024</span><span class="op">$</span><span class="va">V_Y_MC</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
@@ -576,11 +587,10 @@ the procedure does not find sufficient evidence of surrogacy.</p>
 <h3 id="bset-with-no-covariates">BSET with no covariates<a class="anchor" aria-label="anchor" href="#bset-with-no-covariates"></a>
 </h3>
 <p>As an example, we can run the BSET procedure without adjusting for
-covariates on the data generated from the second setting of Parast et
-al. (2024). First of all, we need to prepare the data in the format
-required by the function <code>BSET_no_X</code>: a data frame with three
-columns, where the first column contains the observed values of the
-primary outcome
+covariates on the data generated from the second setting of <span class="citation">Parast, Cai, and Tian (2024)</span>. First of all, we
+need to prepare the data in the format required by the function
+<code>BSET_no_X</code>: a data frame with three columns, where the first
+column contains the observed values of the primary outcome
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
 the second column contains the observed values of the surrogate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
@@ -738,11 +748,10 @@ is valid in this setting.</p>
 <h3 id="bset-with-covariates">BSET with covariates<a class="anchor" aria-label="anchor" href="#bset-with-covariates"></a>
 </h3>
 <p>As an example, we can run the BSET procedure adjusting for covariates
-on the data generated from the first setting of Carlotti and Parast
-(2026). First of all, we need to prepare the data in the format required
-by the function <code>BSET_X</code>: a data frame with four columns,
-where the first column contains the observed values of the primary
-outcome
+on the data generated from the first setting of <span class="citation">Carlotti and Parast (2026)</span>. First of all, we
+need to prepare the data in the format required by the function
+<code>BSET_X</code>: a data frame with four columns, where the first
+column contains the observed values of the primary outcome
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
 the second column contains the observed values of the surrogate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
@@ -798,7 +807,8 @@ equal to the Monte Carlo estimates of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-for setting 1 of Carlotti and Parast (2026).</p>
+for setting 1 of <span class="citation">Carlotti and Parast
+(2026)</span>.</p>
 <p>Finally, we can run the BSET procedure adjusting for covariates as
 follows:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
@@ -869,6 +879,22 @@ surrogate is valid in this setting, while the frequentist method, being
 based on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
 would incorrectly conclude that it is not.</p>
+</div>
+</div>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-carlotti2026bayesian" class="csl-entry">
+Carlotti, Pietro, and Layla Parast. 2026. <span>“A Bayesian Critique of
+Rank-Based Methods for Surrogate Marker Evaluation.”</span> <em>arXiv
+Preprint arXiv:2603.14381</em>.
+</div>
+<div id="ref-parast2024rank" class="csl-entry">
+Parast, Layla, Tianxi Cai, and Lu Tian. 2024. <span>“A Rank-Based
+Approach to Evaluate a Surrogate Marker in a Small Sample
+Setting.”</span> <em>Biometrics</em> 80 (1): ujad035.
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

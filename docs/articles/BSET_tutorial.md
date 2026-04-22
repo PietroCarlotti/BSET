@@ -8,9 +8,9 @@ provides hypothesis testing tools to evaluate whether a surrogate can
 reliably estimate the causal effect of a treatment on a primary outcome.
 The package implements the imputation-based Bayesian methodology of
 Carlotti and Parast (2026), extending the frequentist rank-based
-approach of Parast et al. (2024). BSET addresses key limitations of the
-frequentist method, including the lack of causal interpretability and
-the inability to adjust for covariates in the estimation process.
+approach of Parast, Cai, and Tian (2024). BSET addresses key limitations
+of the frequentist method, including the lack of causal interpretability
+and the inability to adjust for covariates in the estimation process.
 
 The package supports Bayesian testing both with and without baseline
 covariates. Additionally, it includes comprehensive simulation suites to
@@ -47,11 +47,11 @@ the treatment assignment `Z`. `BSET_X` additionally requires a covariate
 column `X`.
 
 To illustrate the usage of the package, we simulate a small dataset with
-a binary covariate using base R:
+a binary covariate:
 
 ``` r
 # Set the random seed for reproducibility
-set.seed(123)
+set.seed(1234)
 
 # Sample size
 n <- 50
@@ -91,17 +91,17 @@ result_no_X <- BSET::BSET_no_X(
 result_no_X$theta_posterior_plot
 ```
 
-![Example output from BSET_no_X: posterior distribution of
-\$\theta\$.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
+![Posterior distribution of \$\theta\$ from
+\`BSET_no_X\`.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
 
-Example output from BSET_no_X: posterior distribution of $`\theta`$.
+Posterior distribution of $`\theta`$ from `BSET_no_X`.
 
 To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
 
 ``` r
 result_X <- BSET::BSET_X(
-  data = df_qs,
+  data = df,
   Y = "Y",
   S = "S",
   Z = "Z",
@@ -112,19 +112,21 @@ result_X <- BSET::BSET_X(
 result_X$theta_posterior_plot
 ```
 
-![Example output from BSET_X: posterior distribution of \$\theta\$
-adjusted for a baseline
+![Posterior distribution of \$\theta\$ from \`BSET_X\`, adjusted for a
+baseline
 covariate.](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
 
-Example output from BSET_X: posterior distribution of $`\theta`$
-adjusted for a baseline covariate.
+Posterior distribution of $`\theta`$ from `BSET_X`, adjusted for a
+baseline covariate.
 
 Both functions return the posterior distribution of $`\theta`$, the
 discrepancy between the treatment effects on $`Y`$ and $`S`$. The blue
-vertical line marks the upper bound of the 95% credible interval, and
-the green vertical line marks the validation threshold $`\eta`$. If the
-blue line falls below the green line, there is evidence that the
-surrogate is valid.
+vertical line marks the upper bound of the 95% credible interval, the
+green vertical line marks the validation threshold $`\eta`$, the orange
+vertical line marks the true value of $`\delta`$ (the frequentist
+estimand of Parast, Cai, and Tian (2024)), and the red vertical line
+marks the true value of $`\theta`$. If the blue line falls below the
+green line, there is evidence that the surrogate is valid.
 
 The rest of this tutorial explains how the data are generated, how the
 estimands $`\delta`$ and $`\theta`$ are computed, and how the validation
@@ -138,7 +140,7 @@ We start by setting the random seed for reproducibility of the results.
 
 ``` r
 # Set the random seed for reproducibility
-set.seed(123)
+set.seed(1234)
 
 # Sample size and treatment assignment probability used throughout
 n <- 50
@@ -147,13 +149,14 @@ p <- 0.5
 
 The package includes two functions to generate data for the simulations:
 `DGP` and `DGP_X`. The first one generates data from the simulation
-settings of Parast et al. (2024), which do not include covariates; the
-second one generates data which depends on a binary covariate $`X`$ and
-is used for the simulations of Carlotti and Parast (2026).
+settings of Parast, Cai, and Tian (2024), which do not include
+covariates; the second one generates data which depends on a binary
+covariate $`X`$ and is used for the simulations of Carlotti and Parast
+(2026).
 
 For example, this is how we can generate data from the second setting
-defined in Parast et al. (2024) (i.e.: the setting where the surrogate
-is perfect and covariates are not included):
+defined in Parast, Cai, and Tian (2024) (i.e.: the setting where the
+surrogate is perfect and covariates are not included):
 
 ``` r
 # Mean vector of potential outcomes for the primary outcome and the surrogate
@@ -253,17 +256,17 @@ below.
 
 |         Setting          | $`\widehat{\delta}`$ | $`\widehat{\theta}`$ |
 |:------------------------:|:--------------------:|:--------------------:|
-| No X (Perfect Surrogate) |        0.013         |          0           |
-|         Binary X         |        0.192         |          0           |
+| No X (Perfect Surrogate) |        0.010         |          0           |
+|         Binary X         |        0.212         |          0           |
 
 Estimated values of $`\delta`$ and $`\theta`$ in the two settings.
 
 To determine the values of $`\delta`$ and $`\theta`$ for all the
 settings defined in the two papers, we use a large-scale Monte Carlo
 simulation via the `compute_estimands_Parast_et_al_2024` function for
-data without covariates, and the
+data without covariates (Parast, Cai, and Tian 2024), and the
 `compute_estimands_Carlotti_and_Parast_2026` function for data including
-covariates.
+covariates (Carlotti and Parast 2026).
 
 ``` r
 # Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
@@ -419,8 +422,8 @@ primary outcome (typically set equal to the estimate computed on the
 available data).
 
 For example, we can set $`v_Y`$ equal to the Monte Carlo estimate of
-$`V_Y`$ for setting 1 of Parast et al. (2024) (i.e.: the setting where
-the surrogate is perfect and covariates are not included).
+$`V_Y`$ for setting 1 of Parast, Cai, and Tian (2024) (i.e.: the setting
+where the surrogate is perfect and covariates are not included).
 
 ``` r
 # Hypothesized value of the treatment effect on the primary outcome
@@ -454,8 +457,8 @@ procedure does not find sufficient evidence of surrogacy.
 ### BSET with no covariates
 
 As an example, we can run the BSET procedure without adjusting for
-covariates on the data generated from the second setting of Parast et
-al. (2024). First of all, we need to prepare the data in the format
+covariates on the data generated from the second setting of Parast, Cai,
+and Tian (2024). First of all, we need to prepare the data in the format
 required by the function `BSET_no_X`: a data frame with three columns,
 where the first column contains the observed values of the primary
 outcome $`Y`$, the second column contains the observed values of the
@@ -703,3 +706,13 @@ the validation threshold $`\eta`$, the BSET procedure correctly
 concludes that there is evidence that the surrogate is valid in this
 setting, while the frequentist method, being based on $`\delta`$, would
 incorrectly conclude that it is not.
+
+## References
+
+Carlotti, Pietro, and Layla Parast. 2026. “A Bayesian Critique of
+Rank-Based Methods for Surrogate Marker Evaluation.” *arXiv Preprint
+arXiv:2603.14381*.
+
+Parast, Layla, Tianxi Cai, and Lu Tian. 2024. “A Rank-Based Approach to
+Evaluate a Surrogate Marker in a Small Sample Setting.” *Biometrics* 80
+(1): ujad035.

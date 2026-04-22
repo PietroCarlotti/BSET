@@ -47,7 +47,7 @@ To illustrate the usage of the package, we simulate a small dataset with a binar
 
 ```{r quick-start-data}
 # Set the random seed for reproducibility
-set.seed(123)
+set.seed(1234)
 
 # Sample size
 n <- 50
@@ -121,7 +121,7 @@ We start by setting the random seed for reproducibility of the results.
 
 ```{r set-seed}
 # Set the random seed for reproducibility
-set.seed(123)
+set.seed(1234)
 
 # Sample size and treatment assignment probability used throughout
 n <- 50
@@ -241,7 +241,15 @@ knitr::kable(
 )
 ```
 
-To determine the values of \(\delta\) and \(\theta\) for all the settings defined in the two papers, we use a large-scale Monte Carlo simulation via the `compute_estimands_Parast_et_al_2024` function for data without covariates [@parast2024rank], and the `compute_estimands_Carlotti_and_Parast_2026` function for data including covariates [@carlotti2026bayesian].
+To determine the values of \(\delta\) and \(\theta\) for all the settings defined in the two papers, we use a large-scale Monte Carlo simulation via the `compute_estimands_Parast_et_al_2024` function for data without covariates [@parast2024rank], and the `compute_estimands_Carlotti_and_Parast_2026` function for data including covariates [@carlotti2026bayesian]. These functions run a Monte Carlo simulation with a large number of samples (e.g., 1,000,000) and can be called as follows:
+
+```{r compute-delta-theta-true-code, eval=FALSE}
+# Compute Monte Carlo estimands (based on 1,000,000 samples) — this is slow
+estimands_Parast_et_al_2024 <- BSET::compute_estimands_Parast_et_al_2024(n_MC = 1000000)
+estimands_Carlotti_and_Parast_2026 <- BSET::compute_estimands_Carlotti_and_Parast_2026(n_MC = 1000000)
+```
+
+For the purpose of this tutorial, we load the precomputed versions shipped with the package:
 
 ```{r compute-delta-theta-true}
 # Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
