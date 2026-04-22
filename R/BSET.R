@@ -96,31 +96,6 @@ BSET_no_X <- function(
     plot = FALSE, mute = TRUE, parallel = TRUE
 ) {
   
-  # Inputs:
-  # data: A data frame containing all relevant variables
-  # Y: Name of the outcome variable (string)
-  # S: Name of the surrogate variable (string)
-  # Z: Name of the treatment assignment variable (string)
-  # delta_true: The true value of delta, used to calculate frequentist coverage during simulations (optional)
-  # theta_true: The true value of theta, used to calculate frequentist coverage during simulations (optional)
-  # seed: Random seed for reproducibility (default is NULL, which means a random seed will be generated)
-  # n_chains: Number of MCMC chains to run
-  # n_iter: Number of iterations per MCMC chain
-  # burn_in_ratio: Proportion of iterations to discard as burn-in
-  # a, b: Prior parameters for V_S (Beta distribution)
-  # alpha: Type I error rate for the test
-  # beta: Type II error rate for the test
-  # V_S_zero: Value of V_S under the null hypothesis
-  # BF_alternative: Alternative hypothesis for the Bayes factor test ("greater", "less or "two.sided")
-  # root_tolerance: Numerical tolerance for root-finding algorithms
-  # mu_0: Prior mean for the mean vector (default is a vector of zeros)
-  # Sigma_0: Prior covariance matrix for the mean vector (default is an identity matrix)
-  # s: Prior scale parameters for the error variance (default is a vector of ones)
-  # tau: Prior parameter for the LKJ correlation distribution (default is 1)
-  # plot: Whether to plot the posterior distribution of theta
-  # mute: Whether to suppress Stan output during model fitting (default is TRUE)
-  # parallel: Whether to use parallel processing for MCMC sampling (default is TRUE)
-  
   # Ensure all requested columns actually exist in the data
   required_cols <- c(Y, S, Z)
   missing_cols <- setdiff(required_cols, names(data))
@@ -280,13 +255,13 @@ BSET_no_X <- function(
       ggplot2::geom_vline(
         xintercept = Bayesian_test_results$CI[2],
         color = "blue",
-        linetype = "dashed",
+        linetype = "solid",
         linewidth = 1
       ) +
       ggplot2::geom_vline(
         xintercept = Bayesian_test_results$epsilon,
         color = "darkgreen",
-        linetype = "dashed",
+        linetype = "solid",
         linewidth = 1
       ) +
       ggplot2::coord_cartesian(xlim=c(-1,1)) +
@@ -301,7 +276,7 @@ BSET_no_X <- function(
         ggplot2::geom_vline(
           xintercept = delta_true,
           color = "orange",
-          linetype = "dashed",
+          linetype = "solid",
           linewidth = 1
         )
     }
@@ -311,7 +286,7 @@ BSET_no_X <- function(
         ggplot2::geom_vline(
           xintercept = theta_true,
           color = "red",
-          linetype = "dashed",
+          linetype = "solid",
           linewidth = 1
         )
     }
@@ -404,33 +379,6 @@ BSET_X <- function(
     a = 1, b = 1, alpha = 0.05, beta = 0.2, V_S_zero = 0.5, BF_alternative = "greater", root_tolerance = 1e-16,
     intercept = TRUE, mu_beta = NULL, Sigma_beta = NULL, s = rep(1, 4), tau = 1, plot = FALSE, mute = TRUE, parallel = TRUE
 ) {
-  
-  # Inputs
-  # data: A data frame containing all relevant variables
-  # Y: Name of the outcome variable (string)
-  # S: Name of the surrogate variable (string)
-  # Z: Name of the treatment assignment variable (string)
-  # X: Vector of names of covariate variables (vector of strings)
-  # delta_true: The true value of delta, used to calculate frequentist coverage during simulations (optional)
-  # theta_true: The true value of theta, used to calculate frequentist coverage during simulations (optional)
-  # seed: Random seed for reproducibility
-  # n_chains: Number of MCMC chains to run
-  # n_iter: Number of iterations per MCMC chain
-  # burn_in_ratio: Proportion of iterations to discard as burn-in
-  # a, b: Prior parameters for V_S (Beta distribution)
-  # alpha: Type I error rate for the test
-  # beta: Type II error rate for the test
-  # V_S_zero: Value of V_S under the null hypothesis
-  # BF_alternative: Alternative hypothesis for the Bayes factor test ("greater", "less" or "two.sided")
-  # root_tolerance: Numerical tolerance for root-finding algorithms
-  # intercept: Whether to include an intercept in the regression model (default is TRUE)
-  # mu_beta: Prior mean vector for regression coefficients (default is a vector of zeros)
-  # Sigma_beta: Prior covariance matrix for regression coefficients (default is a diagonal matrix with large variances)
-  # s: Prior scale parameters for the error variance (default is a vector of ones)
-  # tau: Prior parameter for the LKJ correlation distribution (default is 1)
-  # plot: Whether to plot the posterior distribution of theta
-  # mute: Whether to suppress Stan output during model fitting (default is TRUE)
-  # parallel: Whether to use parallel processing for MCMC sampling (default is TRUE)
   
   # Ensure all requested columns actually exist in the data
   required_cols <- c(Y, S, Z, X)
@@ -610,13 +558,13 @@ BSET_X <- function(
       ggplot2::geom_vline(
         xintercept = Bayesian_test_results$CI[2],
         color = "blue",
-        linetype = "dashed",
+        linetype = "solid",
         linewidth = 1
       ) +
       ggplot2::geom_vline(
         xintercept = Bayesian_test_results$epsilon,
         color = "darkgreen",
-        linetype = "dashed",
+        linetype = "solid",
         linewidth = 1
       ) +
       ggplot2::coord_cartesian(xlim=c(-1,1)) +
@@ -631,7 +579,7 @@ BSET_X <- function(
         ggplot2::geom_vline(
           xintercept = delta_true,
           color = "orange",
-          linetype = "dashed",
+          linetype = "solid",
           linewidth = 1
         )
     }
@@ -641,7 +589,7 @@ BSET_X <- function(
         ggplot2::geom_vline(
           xintercept = theta_true,
           color = "red",
-          linetype = "dashed",
+          linetype = "solid",
           linewidth = 1
         )
     }

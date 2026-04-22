@@ -27,9 +27,8 @@ A data frame with multiple columns:
 }
 }
 \source{
-Computed using
-  \code{Carlotti_and_Parast_2026_simulations(seed = 123,
-  n_simulations = 500)}.
+Generated using the code in the \code{simulations} folder of the
+  BSET GitHub repository (\url{https://github.com/PietroCarlotti/BSET}).
 }
 \usage{
 Carlotti_and_Parast_2026_simulations_grid
