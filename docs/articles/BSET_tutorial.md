@@ -36,6 +36,80 @@ library(ggplot2)
 library(dplyr)
 ```
 
+## Quick Start
+
+This section provides a minimal working example for readers who want to
+apply BSET to their data right away. The two main functions are
+`BSET_no_X`, which runs the test without adjusting for covariates, and
+`BSET_X`, which adjusts for a baseline covariate. Both require a data
+frame with columns for the primary outcome `Y`, the surrogate `S`, and
+the treatment assignment `Z`. `BSET_X` additionally requires a covariate
+column `X`.
+
+To illustrate, we simulate a small dataset with a binary covariate:
+
+``` r
+set.seed(123)
+
+data_qs <- BSET::DGP_X_binary(
+  n = 50, p = 0.5, q = 0.5,
+  mu_0 = c(5, 5, 0, 0),
+  mu_1 = c(5, -5, 0, -10),
+  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
+  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
+)
+
+df_qs <- data.frame(
+  Y = data_qs$P_observed[, "Y"],
+  S = data_qs$P_observed[, "S"],
+  Z = data_qs$Z,
+  X = data_qs$X
+)
+```
+
+To run BSET **without** adjusting for covariates, pass the data frame
+and the names of the relevant columns:
+
+``` r
+result_no_X <- BSET::BSET_no_X(data = df_qs, Y = "Y", S = "S", Z = "Z",
+                                seed = 123, plot = TRUE)
+result_no_X$theta_posterior_plot
+```
+
+![Example output from BSET_no_X: posterior distribution of
+\$\theta\$.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
+
+Example output from BSET_no_X: posterior distribution of $`\theta`$.
+
+To run BSET **with** a baseline covariate, add the covariate column name
+via the `X` argument:
+
+``` r
+result_X <- BSET::BSET_X(data = df_qs, Y = "Y", S = "S", Z = "Z", X = "X",
+                          seed = 123, plot = TRUE)
+result_X$theta_posterior_plot
+```
+
+![Example output from BSET_X: posterior distribution of \$\theta\$
+adjusted for a baseline
+covariate.](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
+
+Example output from BSET_X: posterior distribution of $`\theta`$
+adjusted for a baseline covariate.
+
+Both functions return the posterior distribution of $`\theta`$, the
+discrepancy between the treatment effects on $`Y`$ and $`S`$. The blue
+vertical line marks the upper bound of the 95% credible interval, and
+the green vertical line marks the validation threshold $`\eta`$. If the
+blue line falls below the green line, there is evidence that the
+surrogate is valid.
+
+The rest of this tutorial explains how the data are generated, how the
+estimands $`\delta`$ and $`\theta`$ are computed, and how the validation
+threshold $`\eta`$ is calibrated.
+
+------------------------------------------------------------------------
+
 ## Generating the data
 
 We start by setting the random seed for reproducibility of the results.
