@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  15 APR 2026 13:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  22 APR 2026 11:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,20 +694,36 @@ Overfull \hbox (2.58502pt too wide) in paragraph at lines 568--570
  []
 
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] (./Biometrics_paper.bbl [35] [36] [37] [38]) [39]
-<discrepancy.png, id=508, 505.89pt x 433.62pt>
+<discrepancy.png, id=522, 505.89pt x 433.62pt>
 File: discrepancy.png Graphic file (type png)
 <use discrepancy.png>
-Package pdftex.def Info: discrepancy.png  used on input line 724.
+Package pdftex.def Info: discrepancy.png  used on input line 725.
 (pdftex.def)             Requested size: 375.80544pt x 322.1243pt.
  [40
 
  <./discrepancy.png>] [41
 
 ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 765.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 766.
  [42
 
-] (./Biometrics_paper.aux)
+]
+<dcct_data.pdf, id=537, 505.89pt x 361.35pt>
+File: dcct_data.pdf Graphic file (type pdf)
+<use dcct_data.pdf>
+Package pdftex.def Info: dcct_data.pdf  used on input line 794.
+(pdftex.def)             Requested size: 375.80544pt x 268.4369pt.
+ [43
+
+ <./dcct_data.pdf>]
+<dcct_posteriors.pdf, id=553, 505.89pt x 361.35pt>
+File: dcct_posteriors.pdf Graphic file (type pdf)
+<use dcct_posteriors.pdf>
+Package pdftex.def Info: dcct_posteriors.pdf  used on input line 802.
+(pdftex.def)             Requested size: 375.80544pt x 268.4369pt.
+ [44
+
+ <./dcct_posteriors.pdf>] (./Biometrics_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -716,18 +732,18 @@ Package rerunfilecheck Info: File `Biometrics_paper.out' has not changed.
 (rerunfilecheck)             Checksum: AE6B39EE0B299C2563E38964F401A496;3055.
  ) 
 Here is how much of TeX's memory you used:
- 15409 strings out of 474116
- 247746 string characters out of 5743682
+ 15437 strings out of 474116
+ 248363 string characters out of 5743682
  1946187 words of memory out of 5000000
- 37339 multiletter control sequences out of 15000+600000
+ 37361 multiletter control sequences out of 15000+600000
  571792 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,19n,79p,1434b,618s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,19n,79p,1881b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Biometrics_paper.pdf (42 pages, 474205 bytes).
+Output written on Biometrics_paper.pdf (44 pages, 520590 bytes).
 PDF statistics:
- 650 PDF objects out of 1000 (max. 8388607)
- 557 compressed objects within 6 object streams
- 166 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 696 PDF objects out of 1000 (max. 8388607)
+ 597 compressed objects within 6 object streams
+ 172 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

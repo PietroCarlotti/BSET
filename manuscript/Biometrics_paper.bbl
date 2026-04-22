@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,6 +29,11 @@ Marc Buyse and Geert Molenberghs.
 Elizabeth Colantuoni and Michael Rosenblum.
 \newblock Leveraging prognostic baseline variables to gain precision in randomized trials.
 \newblock \emph{Statistics in medicine}, 34\penalty0 (18):\penalty0 2602--2617, 2015.
+
+\bibitem[{DCCT}(1987)]{dcct1987diabetes}
+{DCCT}.
+\newblock Diabetes control and complications trial (dcct): results of feasibility study. the dcct research group.
+\newblock \emph{Diabetes Care}, 10\penalty0 (1):\penalty0 1--19, 1987.
 
 \bibitem[{D}{C}{C}{T}(1993)]{diabetes1993effect}
 {D}{C}{C}{T}.
@@ -100,6 +105,12 @@ Ying Huang and Peter~B Gilbert.
 Guido~W Imbens and Donald~B Rubin.
 \newblock \emph{Causal inference in statistics, social, and biomedical sciences}.
 \newblock Cambridge university press, 2015.
+
+\bibitem[Lachin and Braffett(2021)]{Lachin2021DCCT}
+John Lachin and Barbara Braffett.
+\newblock {Diabetes Control and Complications Trial / Epidemiology of Diabetes Interventions and Complications (DCCT/EDIC)}, 2021.
+\newblock URL \url{https://doi.org/10.58020/mn8k-ms49}.
+\newblock {Dataset} (Version 21). Available from the NIDDK Central Repository.
 
 \bibitem[Lavine et~al.(2010)Lavine, Schwimmer, Molleston, Scheimann, Murray, Abrams, Rosenthal, Sanyal, Robuck, Brunt, et~al.]{lavine2010treatment}
 Joel~E Lavine, Jeffrey~B Schwimmer, Jean~P Molleston, Ann~O Scheimann, Karen~F Murray, Stephanie~H Abrams, Philip Rosenthal, Arun~J Sanyal, Patricia~R Robuck, Elizabeth~M Brunt, et~al.

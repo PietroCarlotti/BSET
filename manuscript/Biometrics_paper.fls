@@ -282,6 +282,16 @@ INPUT ./discrepancy.png
 INPUT ./discrepancy.png
 INPUT ./discrepancy.png
 INPUT ./discrepancy.png
+INPUT ./dcct_data.pdf
+INPUT ./dcct_data.pdf
+INPUT ./dcct_data.pdf
+INPUT ./dcct_data.pdf
+INPUT ./dcct_data.pdf
+INPUT ./dcct_posteriors.pdf
+INPUT ./dcct_posteriors.pdf
+INPUT ./dcct_posteriors.pdf
+INPUT ./dcct_posteriors.pdf
+INPUT ./dcct_posteriors.pdf
 INPUT Biometrics_paper.aux
 INPUT ./Biometrics_paper.out
 INPUT ./Biometrics_paper.out
