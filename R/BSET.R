@@ -32,18 +32,18 @@
 #' @param n_iter Number of iterations per MCMC chain (default is 2000).
 #' @param burn_in_ratio Proportion of iterations to discard as burn-in (default is 0.25).
 #' @param a,b Prior parameters for prior Beta distribution on V_S (default is a = 1, b = 1).
-#' @param alpha Type I error rate for the test (default is 0.05)
-#' @param beta Type II error rate for the test (default is 0.2)
-#' @param V_S_zero Value of V_S under the null hypothesis (default is 0.5)
+#' @param alpha Type I error rate for the test (default is 0.05).
+#' @param beta Type II error rate for the test (default is 0.2).
+#' @param V_S_zero Value of V_S under the null hypothesis (default is 0.5).
 #' @param BF_alternative Alternative hypothesis for the Bayes factor test ("greater", "less" or "two.sided").
 #' @param root_tolerance Numerical tolerance for root-finding algorithms (default is 1e-16).
-#' @param mu_0 Prior mean vector for the mean parameters (default is a vector of zeros of length 4)
-#' @param Sigma_0 Prior covariance matrix for the mean vector (default is a 4x4 identity matrix)
-#' @param s Prior scale parameters for the error variance (default is a vector of ones of length 4)
-#' @param tau Prior parameter for the LKJ correlation distribution (default is 1)
-#' @param plot Logical. Whether to plot the posterior distribution of theta (default is FALSE)
-#' @param mute Logical. Whether to suppress Stan output during model fitting (default is TRUE)
-#' @param parallel Logical. Whether to use parallel processing for MCMC sampling (default is TRUE)
+#' @param mu_0 Prior mean vector for the mean parameters (default is a vector of zeros of length 4).
+#' @param Sigma_0 Prior covariance matrix for the mean vector (default is a 4x4 identity matrix).
+#' @param s Prior scale parameters for the error variance (default is a vector of ones of length 4).
+#' @param tau Prior parameter for the LKJ correlation distribution (default is 1).
+#' @param plot Logical. Whether to plot the posterior distribution of theta (default is FALSE).
+#' @param mute Logical. Whether to suppress Stan output during model fitting (default is TRUE).
+#' @param parallel Logical. Whether to use parallel processing for MCMC sampling (default is TRUE).
 #' 
 #' @return A list containing:
 #' \itemize{

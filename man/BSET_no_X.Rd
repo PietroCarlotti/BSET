@@ -54,29 +54,29 @@ BSET_no_X(
 
 \item{a, b}{Prior parameters for prior Beta distribution on V_S (default is a = 1, b = 1).}
 
-\item{alpha}{Type I error rate for the test (default is 0.05)}
+\item{alpha}{Type I error rate for the test (default is 0.05).}
 
-\item{beta}{Type II error rate for the test (default is 0.2)}
+\item{beta}{Type II error rate for the test (default is 0.2).}
 
-\item{V_S_zero}{Value of V_S under the null hypothesis (default is 0.5)}
+\item{V_S_zero}{Value of V_S under the null hypothesis (default is 0.5).}
 
 \item{BF_alternative}{Alternative hypothesis for the Bayes factor test ("greater", "less" or "two.sided").}
 
 \item{root_tolerance}{Numerical tolerance for root-finding algorithms (default is 1e-16).}
 
-\item{mu_0}{Prior mean vector for the mean parameters (default is a vector of zeros of length 4)}
+\item{mu_0}{Prior mean vector for the mean parameters (default is a vector of zeros of length 4).}
 
-\item{Sigma_0}{Prior covariance matrix for the mean vector (default is a 4x4 identity matrix)}
+\item{Sigma_0}{Prior covariance matrix for the mean vector (default is a 4x4 identity matrix).}
 
-\item{s}{Prior scale parameters for the error variance (default is a vector of ones of length 4)}
+\item{s}{Prior scale parameters for the error variance (default is a vector of ones of length 4).}
 
-\item{tau}{Prior parameter for the LKJ correlation distribution (default is 1)}
+\item{tau}{Prior parameter for the LKJ correlation distribution (default is 1).}
 
-\item{plot}{Logical. Whether to plot the posterior distribution of theta (default is FALSE)}
+\item{plot}{Logical. Whether to plot the posterior distribution of theta (default is FALSE).}
 
-\item{mute}{Logical. Whether to suppress Stan output during model fitting (default is TRUE)}
+\item{mute}{Logical. Whether to suppress Stan output during model fitting (default is TRUE).}
 
-\item{parallel}{Logical. Whether to use parallel processing for MCMC sampling (default is TRUE)}
+\item{parallel}{Logical. Whether to use parallel processing for MCMC sampling (default is TRUE).}
 }
 \value{
 A list containing:

@@ -58,11 +58,11 @@ BSET_X(
 
 \item{a, b}{Prior parameters for prior Beta distribution on V_S (default is a = 1, b = 1).}
 
-\item{alpha}{Type I error rate for the test (default is 0.05)}
+\item{alpha}{Type I error rate for the test (default is 0.05).}
 
-\item{beta}{Type II error rate for the test (default is 0.2)}
+\item{beta}{Type II error rate for the test (default is 0.2).}
 
-\item{V_S_zero}{Value of V_S under the null hypothesis (default is 0.5)}
+\item{V_S_zero}{Value of V_S under the null hypothesis (default is 0.5).}
 
 \item{BF_alternative}{Alternative hypothesis for the Bayes factor test ("greater", "less" or "two.sided").}
 
@@ -74,15 +74,15 @@ BSET_X(
 
 \item{Sigma_beta}{Prior covariance matrix for regression coefficients (default is a diagonal matrix with large variances, with dimensions equal to the number of covariates, including the intercept if specified).}
 
-\item{s}{Prior scale parameters for the error variance (default is a vector of ones of length 4)}
+\item{s}{Prior scale parameters for the error variance (default is a vector of ones of length 4).}
 
-\item{tau}{Prior parameter for the LKJ correlation distribution (default is 1)}
+\item{tau}{Prior parameter for the LKJ correlation distribution (default is 1).}
 
-\item{plot}{Logical. Whether to plot the posterior distribution of theta (default is FALSE)}
+\item{plot}{Logical. Whether to plot the posterior distribution of theta (default is FALSE).}
 
-\item{mute}{Logical. Whether to suppress Stan output during model fitting (default is TRUE)}
+\item{mute}{Logical. Whether to suppress Stan output during model fitting (default is TRUE).}
 
-\item{parallel}{Logical. Whether to use parallel processing for MCMC sampling (default is TRUE)}
+\item{parallel}{Logical. Whether to use parallel processing for MCMC sampling (default is TRUE).}
 }
 \description{
 This function implements the Bayesian Surrogate Evaluation Test (BSET) which
