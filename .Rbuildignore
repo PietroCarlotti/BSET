@@ -9,3 +9,5 @@
 ^manuscript$
 ^pkgdown$
 ^simulations$
+^\.positai$
+^\.claude$
