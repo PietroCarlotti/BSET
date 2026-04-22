@@ -100,15 +100,15 @@ BSET_no_X(
 
 - alpha:
 
-  Type I error rate for the test (default is 0.05)
+  Type I error rate for the test (default is 0.05).
 
 - beta:
 
-  Type II error rate for the test (default is 0.2)
+  Type II error rate for the test (default is 0.2).
 
 - V_S_zero:
 
-  Value of V_S under the null hypothesis (default is 0.5)
+  Value of V_S under the null hypothesis (default is 0.5).
 
 - BF_alternative:
 
@@ -122,36 +122,36 @@ BSET_no_X(
 - mu_0:
 
   Prior mean vector for the mean parameters (default is a vector of
-  zeros of length 4)
+  zeros of length 4).
 
 - Sigma_0:
 
   Prior covariance matrix for the mean vector (default is a 4x4 identity
-  matrix)
+  matrix).
 
 - s:
 
   Prior scale parameters for the error variance (default is a vector of
-  ones of length 4)
+  ones of length 4).
 
 - tau:
 
-  Prior parameter for the LKJ correlation distribution (default is 1)
+  Prior parameter for the LKJ correlation distribution (default is 1).
 
 - plot:
 
   Logical. Whether to plot the posterior distribution of theta (default
-  is FALSE)
+  is FALSE).
 
 - mute:
 
   Logical. Whether to suppress Stan output during model fitting (default
-  is TRUE)
+  is TRUE).
 
 - parallel:
 
   Logical. Whether to use parallel processing for MCMC sampling (default
-  is TRUE)
+  is TRUE).
 
 ## Value
 

@@ -83,5 +83,5 @@ A data frame with multiple columns:
 
 ## Source
 
-Computed using
-`Parast_et_al_2024_simulations(seed = 124, n_simulations = 50)`.
+Generated using the code in the `simulations` folder of the BSET GitHub
+repository (<https://github.com/PietroCarlotti/BSET>).

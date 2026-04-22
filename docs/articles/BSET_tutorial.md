@@ -8,9 +8,9 @@ provides hypothesis testing tools to evaluate whether a surrogate can
 reliably estimate the causal effect of a treatment on a primary outcome.
 The package implements the imputation-based Bayesian methodology of
 Carlotti and Parast (2026), extending the frequentist rank-based
-approach of Parast, Cai, and Tian (2024). BSET addresses key limitations
-of the frequentist method, including the lack of causal interpretability
-and the inability to adjust for covariates in the estimation process.
+approach of Parast et al. (2024). BSET addresses key limitations of the
+frequentist method, including the lack of causal interpretability and
+the inability to adjust for covariates in the estimation process.
 
 The package supports Bayesian testing both with and without baseline
 covariates. Additionally, it includes comprehensive simulation suites to
@@ -24,6 +24,7 @@ The package is not yet available on CRAN, but you can install the
 development version of BSET from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("pak")
 # pak::pak("PietroCarlotti/BSET")
 ```
@@ -32,6 +33,7 @@ To follow along with the examples in this tutorial, you will also need
 to install the following packages:
 
 ``` r
+
 library(ggplot2)
 library(dplyr)
 ```
@@ -50,6 +52,7 @@ To illustrate the usage of the package, we simulate a small dataset with
 a binary covariate:
 
 ``` r
+
 # Set the random seed for reproducibility
 set.seed(1234)
 
@@ -80,6 +83,7 @@ To run BSET **without** adjusting for covariates, pass the data frame
 and the names of the relevant columns:
 
 ``` r
+
 result_no_X <- BSET::BSET_no_X(
   data = df,
   Y = "Y",
@@ -100,6 +104,7 @@ To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
 
 ``` r
+
 result_X <- BSET::BSET_X(
   data = df,
   Y = "Y",
@@ -124,9 +129,9 @@ discrepancy between the treatment effects on $`Y`$ and $`S`$. The blue
 vertical line marks the upper bound of the 95% credible interval, the
 green vertical line marks the validation threshold $`\eta`$, the orange
 vertical line marks the true value of $`\delta`$ (the frequentist
-estimand of Parast, Cai, and Tian (2024)), and the red vertical line
-marks the true value of $`\theta`$. If the blue line falls below the
-green line, there is evidence that the surrogate is valid.
+estimand of Parast et al. (2024)), and the red vertical line marks the
+true value of $`\theta`$. If the blue line falls below the green line,
+there is evidence that the surrogate is valid.
 
 The rest of this tutorial explains how the data are generated, how the
 estimands $`\delta`$ and $`\theta`$ are computed, and how the validation
@@ -139,6 +144,7 @@ threshold $`\eta`$ is calibrated.
 We start by setting the random seed for reproducibility of the results.
 
 ``` r
+
 # Set the random seed for reproducibility
 set.seed(1234)
 
@@ -149,16 +155,16 @@ p <- 0.5
 
 The package includes two functions to generate data for the simulations:
 `DGP` and `DGP_X`. The first one generates data from the simulation
-settings of Parast, Cai, and Tian (2024), which do not include
-covariates; the second one generates data which depends on a binary
-covariate $`X`$ and is used for the simulations of Carlotti and Parast
-(2026).
+settings of Parast et al. (2024), which do not include covariates; the
+second one generates data which depends on a binary covariate $`X`$ and
+is used for the simulations of Carlotti and Parast (2026).
 
 For example, this is how we can generate data from the second setting
-defined in Parast, Cai, and Tian (2024) (i.e.: the setting where the
-surrogate is perfect and covariates are not included):
+defined in Parast et al. (2024) (i.e.: the setting where the surrogate
+is perfect and covariates are not included):
 
 ``` r
+
 # Mean vector of potential outcomes for the primary outcome and the surrogate
 mu_star <- c(6, 6, 2.5, 2.5)
 
@@ -187,6 +193,7 @@ Carlotti and Parast (2026) (i.e.: the setting where the surrogate is
 useful and covariates are included):
 
 ``` r
+
 # Binary covariate probability
 q <- 0.5
 
@@ -234,6 +241,7 @@ functions, respectively.
 For example, for the data generated without covariates:
 
 ``` r
+
 # Compute delta
 delta_no_X <- BSET::compute_delta(MC_data = data_no_X)
 
@@ -244,6 +252,7 @@ theta_no_X <- BSET::compute_theta(MC_data = data_no_X)
 And for the data generated with covariates:
 
 ``` r
+
 # Compute delta
 delta_X <- BSET::compute_delta(MC_data = data_X)
 
@@ -260,15 +269,29 @@ below.
 |         Binary X         |        0.212         |          0           |
 
 Estimated values of $`\delta`$ and $`\theta`$ in the two settings.
+{.table}
 
 To determine the values of $`\delta`$ and $`\theta`$ for all the
 settings defined in the two papers, we use a large-scale Monte Carlo
 simulation via the `compute_estimands_Parast_et_al_2024` function for
-data without covariates (Parast, Cai, and Tian 2024), and the
+data without covariates (Parast et al. 2024), and the
 `compute_estimands_Carlotti_and_Parast_2026` function for data including
-covariates (Carlotti and Parast 2026).
+covariates (Carlotti and Parast 2026). These functions run a Monte Carlo
+simulation with a large number of samples (e.g., 1,000,000) and can be
+called as follows:
 
 ``` r
+
+# Compute Monte Carlo estimands (based on 1,000,000 samples) — this is slow
+estimands_Parast_et_al_2024 <- BSET::compute_estimands_Parast_et_al_2024(n_MC = 1000000)
+estimands_Carlotti_and_Parast_2026 <- BSET::compute_estimands_Carlotti_and_Parast_2026(n_MC = 1000000)
+```
+
+For the purpose of this tutorial, we load the precomputed versions
+shipped with the package:
+
+``` r
+
 # Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
 estimands_Parast_et_al_2024 <- BSET::estimands_Parast_et_al_2024
 estimands_Carlotti_and_Parast_2026 <- BSET::estimands_Carlotti_and_Parast_2026
@@ -288,7 +311,7 @@ surrogates or misspecified models.
 | Misspecified model  |   0.148    |   0.148    |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
-settings considered in Parast et al. (2024).
+settings considered in Parast et al. (2024). {.table}
 
 Whereas, as shown in the table below, when we include covariates in the
 data generating process, $`\delta`$ and $`\theta`$ yield different
@@ -300,7 +323,7 @@ surrogate, $`\delta`$ is significantly higher.
 | Perfect surrogate |   0.251    |   0.006    |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
-settings considered in Carlotti and Parast (2026).
+settings considered in Carlotti and Parast (2026). {.table}
 
 ## Computing the validation threshold
 
@@ -309,7 +332,6 @@ the surrogate is considered valid. As explained in Carlotti and Parast
 (2026), the computation of $`\eta`$ is based on the distribution of the
 following Bayes factor:
 ``` math
-
   BF_{n} = \frac{1 - F_{\text{Beta} \left( a + n \hat{V}_{S}, \, b + n - n \hat{V}_{S} \right)} \left( \frac{1}{2} \right)}{1 - F_{\text{Beta} \left( a, \, b \right)} \left( \frac{1}{2} \right)}.
 ```
 Given the true value of $`V_S`$, the distribution of $`BF_n`$ can be
@@ -318,6 +340,7 @@ distribution of the Bayes factor under the null hypothesis $`V_S = 0.5`$
 can be computed as follows:
 
 ``` r
+
 # Hypothesized value of V_S under the null
 V_S_zero <- 0.5
 
@@ -354,6 +377,7 @@ can compute the critical value $`BF_{n, \alpha}`$ corresponding to a
 specified Type I error rate $`\alpha`$.
 
 ``` r
+
 # Type I error rate
 alpha <- 0.05
 
@@ -367,7 +391,6 @@ BF_alpha <- BF_distribution %>%
 For example, for $`\alpha = 0.05`$ we have
 
 ``` math
-
   BF_{n, \alpha} = 1.385.
 ```
 
@@ -375,7 +398,6 @@ Once we have the value of $`BF_{n, \alpha}`$, we can compute the value
 of $`v_S`$ that satisfies the following equation:
 
 ``` math
-
   P(\text{BF}_n \geq \text{BF}_{n, \alpha} \; | \; V_S = v_S) = 1 - \beta,
 ```
 
@@ -387,6 +409,7 @@ For example, for a Type II error rate of $`\beta = 0.2`$, we can compute
 the value of $`v_S`$ as follows:
 
 ``` r
+
 # Type II error rate
 beta <- 0.2
 
@@ -406,14 +429,12 @@ V_S_star <- BSET::compute_V_S_star(
 Then, we have that
 
 ``` math
-
   v_S = 0.685.
 ```
 
 Finally, the validation threshold $`\eta`$ can be computed as
 
 ``` math
-
   \eta = \max \{v_Y - v_S, 0\},
 ```
 
@@ -422,10 +443,11 @@ primary outcome (typically set equal to the estimate computed on the
 available data).
 
 For example, we can set $`v_Y`$ equal to the Monte Carlo estimate of
-$`V_Y`$ for setting 1 of Parast, Cai, and Tian (2024) (i.e.: the setting
-where the surrogate is perfect and covariates are not included).
+$`V_Y`$ for setting 1 of Parast et al. (2024) (i.e.: the setting where
+the surrogate is perfect and covariates are not included).
 
 ``` r
+
 # Hypothesized value of the treatment effect on the primary outcome
 v_Y <- estimands_Parast_et_al_2024$V_Y_MC[2]
 
@@ -436,7 +458,6 @@ eta <- max(v_Y - V_S_star, 0)
 In this case, we have that
 
 ``` math
-
   \eta = 0.238.
 ```
 
@@ -457,8 +478,8 @@ procedure does not find sufficient evidence of surrogacy.
 ### BSET with no covariates
 
 As an example, we can run the BSET procedure without adjusting for
-covariates on the data generated from the second setting of Parast, Cai,
-and Tian (2024). First of all, we need to prepare the data in the format
+covariates on the data generated from the second setting of Parast et
+al. (2024). First of all, we need to prepare the data in the format
 required by the function `BSET_no_X`: a data frame with three columns,
 where the first column contains the observed values of the primary
 outcome $`Y`$, the second column contains the observed values of the
@@ -466,6 +487,7 @@ surrogate $`S`$, and the third column contains the treatment assignment
 $`Z`$.
 
 ``` r
+
 # Prepare the data for BSET_no_X
 BSET_no_X_data <- data.frame(
   Y = data_no_X$P_observed[, "Y"],
@@ -482,6 +504,7 @@ We also need to define the posterior sampling parameters:
   burn-in.
 
 ``` r
+
 # Posterior sampling parameters
 n_chains <- 2
 n_iter <- 2000
@@ -503,6 +526,7 @@ specify:
   correlation matrix of the potential outcomes.
 
 ``` r
+
 # Prior parameters
 mu_0 <- rep(0, 4)
 Sigma_0 <- diag(4)
@@ -532,6 +556,7 @@ Finally, we can run the BSET procedure without adjusting for covariates
 as follows:
 
 ``` r
+
 # Run the BSET procedure without adjusting for covariates
 BSET_no_X_results <- BSET::BSET_no_X(
   data = BSET_no_X_data,
@@ -606,6 +631,7 @@ the number of covariates, which in this case is equal to $`2`$
 (including the intercept).
 
 ``` r
+
 # Prepare the data for BSET_X
 BSET_X_data <- data.frame(
   Y = data_X$P_observed[, "Y"],
@@ -628,6 +654,7 @@ Bayesian model are defined as follows:
   regression coefficients of the potential outcomes on the covariates.
 
 ``` r
+
 # Prior parameters for the regression coefficients of the potential outcomes on the covariates
 d <- 2
 mu_beta <- rep(0, d)
@@ -644,6 +671,7 @@ Finally, we can run the BSET procedure adjusting for covariates as
 follows:
 
 ``` r
+
 # Run the BSET procedure adjusting for covariates
 BSET_X_results <- BSET::BSET_X(
   data = BSET_X_data,
