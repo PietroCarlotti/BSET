@@ -15,7 +15,7 @@
 
 /* ===== TABLES ===== */
 
-table.table {
+.article-container table.table {
   width: auto !important;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -39,9 +39,20 @@ table.table {
 /* ===== CODE BLOCKS ===== */
 
 pre code {
-  background: #f8f8f8;
   font-size: 0.9em;
   padding: 0.6em;
+}
+
+/* Collapse the stray \n between <pre> and <code> to zero height */
+pre.downlit,
+pre.sourceCode {
+  line-height: 0 !important;
+}
+
+pre.downlit > code,
+pre.sourceCode > code {
+  display: block;
+  line-height: 1.5 !important;
 }
 
 
