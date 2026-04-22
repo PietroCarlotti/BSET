@@ -57,8 +57,8 @@
 #'   \item{Bayesian_power}{Logical. Indicates if the Bayesian test rejected the null.}
 #'   \item{frequentist_power}{Logical. Indicates if the frequentist test rejected the null.}
 #' }
-#' @source Computed using
-#'   \code{Parast_et_al_2024_simulations(seed = 124, n_simulations = 50)}.
+#' @source Generated using the code in the \code{simulations} folder
+#'   available on the GitHub repository.
 "Parast_et_al_2024_simulations_grid"
 
 #' Simulation grid for Carlotti and Parast (2026)
@@ -86,7 +86,6 @@
 #'   \item{Bayesian_power}{Logical. Indicates if the Bayesian test rejected the null.}
 #'   \item{frequentist_power}{Logical. Indicates if the frequentist test rejected the null.}
 #' }
-#' @source Computed using
-#'   \code{Carlotti_and_Parast_2026_simulations(seed = 123,
-#'   n_simulations = 500)}.
+#' @source Generated using the code in the \code{simulations} folder
+#'   available on the GitHub repository.
 "Carlotti_and_Parast_2026_simulations_grid"
