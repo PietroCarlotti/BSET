@@ -16,6 +16,7 @@
        Wrapping in a flex container is the only reliable fix. */
     document.querySelectorAll('table.table').forEach(function (table) {
       if (!table.parentNode || table.parentNode.dataset.tableWrapper) return;
+      table.style.width = 'auto';  // override Bootstrap's width:100%
       var wrapper = document.createElement('div');
       wrapper.dataset.tableWrapper = '1';
       wrapper.style.cssText = 'display:flex;justify-content:center;width:100%;';
