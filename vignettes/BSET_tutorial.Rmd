@@ -6,6 +6,7 @@ output:
   bookdown::html_document2:
     toc: true
     toc_depth: 3
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{BSET Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-`BSET` (Bayesian Surrogate Evaluation Test) is an `R` package for assessing the validity of surrogate markers in clinical trials. It provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. The package implements the imputation-based Bayesian methodology of Carlotti and Parast (2026), extending the frequentist rank-based approach of Parast et al. (2024). BSET addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.
+`BSET` (Bayesian Surrogate Evaluation Test) is an `R` package for assessing the validity of surrogate markers in clinical trials. It provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. The package implements the imputation-based Bayesian methodology of @carlotti2026bayesian, extending the frequentist rank-based approach of @parast2024rank. BSET addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.
 
 The package supports Bayesian testing both with and without baseline covariates. Additionally, it includes comprehensive simulation suites to replicate studies from both papers, enabling performance comparisons between Bayesian and frequentist approaches across diverse clinical scenarios.
 
@@ -42,52 +43,73 @@ library(dplyr)
 
 This section provides a minimal working example for readers who want to apply BSET to their data right away. The two main functions are `BSET_no_X`, which runs the test without adjusting for covariates, and `BSET_X`, which adjusts for a baseline covariate. Both require a data frame with columns for the primary outcome `Y`, the surrogate `S`, and the treatment assignment `Z`. `BSET_X` additionally requires a covariate column `X`.
 
-To illustrate, we simulate a small dataset with a binary covariate:
+To illustrate the usage of the package, we simulate a small dataset with a binary covariate:
 
 ```{r quick-start-data}
+# Set the random seed for reproducibility
 set.seed(123)
 
-data_qs <- BSET::DGP_X_binary(
-  n = 50, p = 0.5, q = 0.5,
-  mu_0 = c(5, 5, 0, 0),
-  mu_1 = c(5, -5, 0, -10),
-  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
-  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
-)
+# Sample size
+n <- 50
 
-df_qs <- data.frame(
-  Y = data_qs$P_observed[, "Y"],
-  S = data_qs$P_observed[, "S"],
-  Z = data_qs$Z,
-  X = data_qs$X
+# Binary covariate
+X <- rbinom(n, 1, 0.5)
+
+# Treatment assignment
+Z <- rbinom(n, 1, 0.5)
+
+# Primary outcome
+Y <- 2 * Z -3 * X + rnorm(n)
+
+# Surrogate outcome
+S <- Y + rnorm(n)
+
+df <- data.frame(
+  Y = Y,
+  S = S,
+  Z = Z,
+  X = X
 )
 ```
 
 To run BSET **without** adjusting for covariates, pass the data frame and the names of the relevant columns:
 
 ```{r quick-start-no-X, eval=FALSE}
-result_no_X <- BSET::BSET_no_X(data = df_qs, Y = "Y", S = "S", Z = "Z",
-                                seed = 123, plot = TRUE)
+result_no_X <- BSET::BSET_no_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  seed = 123,
+  plot = TRUE
+)
 result_no_X$theta_posterior_plot
 ```
 
-```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Example output from BSET_no_X: posterior distribution of $\\theta$."}
+```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET_no_X`."}
 readRDS("BSET_no_X_results.rds")$theta_posterior_plot
 ```
 
 To run BSET **with** a baseline covariate, add the covariate column name via the `X` argument:
 
 ```{r quick-start-X, eval=FALSE}
-result_X <- BSET::BSET_X(data = df_qs, Y = "Y", S = "S", Z = "Z", X = "X",
-                          seed = 123, plot = TRUE)
+result_X <- BSET::BSET_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  seed = 123,
+  plot = TRUE
+)
 result_X$theta_posterior_plot
 ```
 
-```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Example output from BSET_X: posterior distribution of $\\theta$ adjusted for a baseline covariate."}
+```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET_X`, adjusted for a baseline covariate."}
 readRDS("BSET_X_results.rds")$theta_posterior_plot
 ```
 
-Both functions return the posterior distribution of \(\theta\), the discrepancy between the treatment effects on \(Y\) and \(S\). The blue vertical line marks the upper bound of the 95% credible interval, and the green vertical line marks the validation threshold \(\eta\). If the blue line falls below the green line, there is evidence that the surrogate is valid.
+Both functions return the posterior distribution of \(\theta\), the discrepancy between the treatment effects on \(Y\) and \(S\). The blue vertical line marks the upper bound of the 95% credible interval, the green vertical line marks the validation threshold \(\eta\), the orange vertical line marks the true value of \(\delta\) (the frequentist estimand of @parast2024rank), and the red vertical line marks the true value of \(\theta\). If the blue line falls below the green line, there is evidence that the surrogate is valid.
 
 The rest of this tutorial explains how the data are generated, how the estimands \(\delta\) and \(\theta\) are computed, and how the validation threshold \(\eta\) is calibrated.
 
@@ -106,9 +128,9 @@ n <- 50
 p <- 0.5
 ```
 
-The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of Parast et al. (2024), which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of Carlotti and Parast (2026).
+The package includes two functions to generate data for the simulations: `DGP` and `DGP_X`. The first one generates data from the simulation settings of @parast2024rank, which do not include covariates; the second one generates data which depends on a binary covariate \(X\) and is used for the simulations of @carlotti2026bayesian.
 
-For example, this is how we can generate data from the second setting defined in Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included):
+For example, this is how we can generate data from the second setting defined in @parast2024rank (i.e.: the setting where the surrogate is perfect and covariates are not included):
 
 ```{r generate-data-no-X}
 # Mean vector of potential outcomes for the primary outcome and the surrogate
@@ -134,7 +156,7 @@ data_no_X <- BSET::DGP_no_X(
 )
 ```
 
-While this is how we can generate data from the first setting defined in Carlotti and Parast (2026) (i.e.: the setting where the surrogate is useful and covariates are included):
+While this is how we can generate data from the first setting defined in @carlotti2026bayesian (i.e.: the setting where the surrogate is useful and covariates are included):
 
 ```{r generate-data-X}
 # Binary covariate probability
@@ -219,7 +241,7 @@ knitr::kable(
 )
 ```
 
-To determine the values of \(\delta\) and \(\theta\) for all the settings defined in the two papers, we use a large-scale Monte Carlo simulation via the `compute_estimands_Parast_et_al_2024` function for data without covariates, and the `compute_estimands_Carlotti_and_Parast_2026` function for data including covariates.
+To determine the values of \(\delta\) and \(\theta\) for all the settings defined in the two papers, we use a large-scale Monte Carlo simulation via the `compute_estimands_Parast_et_al_2024` function for data without covariates [@parast2024rank], and the `compute_estimands_Carlotti_and_Parast_2026` function for data including covariates [@carlotti2026bayesian].
 
 ```{r compute-delta-theta-true}
 # Load precomputed Monte Carlo estimands (based on 1,000,000 samples)
@@ -267,7 +289,7 @@ knitr::kable(
 
 ## Computing the validation threshold
 
-The validation threshold \(\eta\) is the value of \(\theta\) below which the surrogate is considered valid. As explained in Carlotti and Parast (2026), the computation of \(\eta\) is based on the distribution of the following Bayes factor:
+The validation threshold \(\eta\) is the value of \(\theta\) below which the surrogate is considered valid. As explained in @carlotti2026bayesian, the computation of \(\eta\) is based on the distribution of the following Bayes factor:
 \[
   BF_{n} = \frac{1 - F_{\text{Beta} \left( a + n \hat{V}_{S}, \, b + n - n \hat{V}_{S} \right)} \left( \frac{1}{2} \right)}{1 - F_{\text{Beta} \left( a, \, b \right)} \left( \frac{1}{2} \right)}.
 \]
@@ -370,7 +392,7 @@ Finally, the validation threshold \(\eta\) can be computed as
 
 where \(v_Y\) is the hypothesized value of the treatment effect on the primary outcome (typically set equal to the estimate computed on the available data).
 
-For example, we can set \(v_Y\) equal to the Monte Carlo estimate of \(V_Y\) for setting 1 of Parast et al. (2024) (i.e.: the setting where the surrogate is perfect and covariates are not included).
+For example, we can set \(v_Y\) equal to the Monte Carlo estimate of \(V_Y\) for setting 1 of @parast2024rank (i.e.: the setting where the surrogate is perfect and covariates are not included).
 
 ```{r compute-eta}
 # Hypothesized value of the treatment effect on the primary outcome
@@ -394,7 +416,7 @@ The result of the procedure is summarized by the posterior distribution of $\the
 
 ### BSET with no covariates
 
-As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of Parast et al. (2024). First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
+As an example, we can run the BSET procedure without adjusting for covariates on the data generated from the second setting of @parast2024rank. First of all, we need to prepare the data in the format required by the function `BSET_no_X`: a data frame with three columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), and the third column contains the treatment assignment \(Z\).
 
 ```{r BSET-no-X-data}
 # Prepare the data for BSET_no_X
@@ -488,7 +510,7 @@ BSET_no_X_results$theta_posterior_plot
 Two features of this result are worth highlighting. First, the posterior distribution of $\theta$ is centered around the true value of $\theta$, demonstrating that the Bayesian imputation approach accurately recovers the true discrepancy between the treatment effects on $Y$ and $S$. In this setting, covariates do not play a role in the data generating process, so the frequentist estimand $\delta$ coincides with $\theta$ and both methods perform similarly. Second, since the upper bound of the 95% credible interval falls below the validation threshold $\eta$, the BSET procedure concludes that there is evidence that the surrogate is valid in this setting.
 
 ### BSET with covariates
-As an example, we can run the BSET procedure adjusting for covariates on the data generated from the first setting of Carlotti and Parast (2026). First of all, we need to prepare the data in the format required by the function `BSET_X`: a data frame with four columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), the third column contains the treatment assignment \(Z\), and the fourth column contains the values of the binary covariate \(X\). We call \(d\) the number of covariates, which in this case is equal to \(2\) (including the intercept).
+As an example, we can run the BSET procedure adjusting for covariates on the data generated from the first setting of @carlotti2026bayesian. First of all, we need to prepare the data in the format required by the function `BSET_X`: a data frame with four columns, where the first column contains the observed values of the primary outcome \(Y\), the second column contains the observed values of the surrogate \(S\), the third column contains the treatment assignment \(Z\), and the fourth column contains the values of the binary covariate \(X\). We call \(d\) the number of covariates, which in this case is equal to \(2\) (including the intercept).
 
 ```{r BSET-X-data}
 # Prepare the data for BSET_X
@@ -512,7 +534,7 @@ mu_beta <- rep(0, d)
 Sigma_beta <- 10*diag(d)
 ```
 
-We can also specify the true values of \(\delta\) and \(\theta\) as input to the function `BSET_X` to check if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 1 of Carlotti and Parast (2026).
+We can also specify the true values of \(\delta\) and \(\theta\) as input to the function `BSET_X` to check if they are included in the posterior credible intervals. In this case, we can set \(\delta\) and \(\theta\) equal to the Monte Carlo estimates of \(\delta\) and \(\theta\) for setting 1 of @carlotti2026bayesian.
 
 Finally, we can run the BSET procedure adjusting for covariates as follows:
 
@@ -559,3 +581,5 @@ BSET_X_results$theta_posterior_plot
 ```
 
 Unlike the previous setting, covariates now play a role in the data generating process, and this is where the two methods diverge. The posterior distribution of $\theta$ is still centered around its true value, confirming that the covariate-adjusted Bayesian model correctly recovers the true discrepancy parameter. In contrast, the frequentist estimand $\delta$ diverges substantially from the true $\theta$, illustrating a key limitation of rank-based methods when covariates are present. Since the upper bound of the 95% credible interval falls below the validation threshold $\eta$, the BSET procedure correctly concludes that there is evidence that the surrogate is valid in this setting, while the frequentist method, being based on $\delta$, would incorrectly conclude that it is not.
+
+## References

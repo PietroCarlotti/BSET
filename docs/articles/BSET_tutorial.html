@@ -104,30 +104,44 @@ covariate. Both require a data frame with columns for the primary
 outcome <code>Y</code>, the surrogate <code>S</code>, and the treatment
 assignment <code>Z</code>. <code>BSET_X</code> additionally requires a
 covariate column <code>X</code>.</p>
-<p>To illustrate, we simulate a small dataset with a binary
-covariate:</p>
+<p>To illustrate the usage of the package, we simulate a small dataset
+with a binary covariate using base R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Set the random seed for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">data_qs</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/DGP_X_binary.html">DGP_X_binary</a></span><span class="op">(</span></span>
-<span>  n <span class="op">=</span> <span class="fl">50</span>, p <span class="op">=</span> <span class="fl">0.5</span>, q <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  mu_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>  mu_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span>,</span>
-<span>  Sigma_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/kronecker.html" class="external-link">kronecker</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  Sigma_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/kronecker.html" class="external-link">kronecker</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
+<span><span class="co"># Sample size</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
 <span></span>
-<span><span class="va">df_qs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  Y <span class="op">=</span> <span class="va">data_qs</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"Y"</span><span class="op">]</span>,</span>
-<span>  S <span class="op">=</span> <span class="va">data_qs</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"S"</span><span class="op">]</span>,</span>
-<span>  Z <span class="op">=</span> <span class="va">data_qs</span><span class="op">$</span><span class="va">Z</span>,</span>
-<span>  X <span class="op">=</span> <span class="va">data_qs</span><span class="op">$</span><span class="va">X</span></span>
+<span><span class="co"># Binary covariate</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Treatment assignment</span></span>
+<span><span class="va">Z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Primary outcome</span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">Z</span> <span class="op">-</span><span class="fl">3</span> <span class="op">*</span> <span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Surrogate outcome</span></span>
+<span><span class="va">S</span> <span class="op">&lt;-</span> <span class="va">Y</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Y <span class="op">=</span> <span class="va">Y</span>,</span>
+<span>  S <span class="op">=</span> <span class="va">S</span>,</span>
+<span>  Z <span class="op">=</span> <span class="va">Z</span>,</span>
+<span>  X <span class="op">=</span> <span class="va">X</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>To run BSET <strong>without</strong> adjusting for covariates, pass
 the data frame and the names of the relevant columns:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result_no_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_no_X.html">BSET_no_X</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_qs</span>, Y <span class="op">=</span> <span class="st">"Y"</span>, S <span class="op">=</span> <span class="st">"S"</span>, Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
-<span>                                seed <span class="op">=</span> <span class="fl">123</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">result_no_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_no_X.html">BSET_no_X</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">df</span>,</span>
+<span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
+<span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
+<span>  Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
+<span>  plot <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">result_no_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Example output from BSET_no_X: posterior distribution of $\theta$." width="768"><p class="caption">
@@ -138,8 +152,15 @@ Example output from BSET_no_X: posterior distribution of
 <p>To run BSET <strong>with</strong> a baseline covariate, add the
 covariate column name via the <code>X</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_qs</span>, Y <span class="op">=</span> <span class="st">"Y"</span>, S <span class="op">=</span> <span class="st">"S"</span>, Z <span class="op">=</span> <span class="st">"Z"</span>, X <span class="op">=</span> <span class="st">"X"</span>,</span>
-<span>                          seed <span class="op">=</span> <span class="fl">123</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">df_qs</span>,</span>
+<span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
+<span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
+<span>  Z <span class="op">=</span> <span class="st">"Z"</span>,</span>
+<span>  X <span class="op">=</span> <span class="st">"X"</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
+<span>  plot <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">result_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Example output from BSET_X: posterior distribution of $\theta$ adjusted for a baseline covariate." width="768"><p class="caption">
@@ -179,7 +200,7 @@ results.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Sample size and treatment assignment probability used throughout</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">7</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span></code></pre></div>
 <p>The package includes two functions to generate data for the
 simulations: <code>DGP</code> and <code>DGP_X</code>. The first one
@@ -296,12 +317,12 @@ in the two settings.</caption>
 <tbody>
 <tr class="odd">
 <td align="center">No X (Perfect Surrogate)</td>
-<td align="center">0</td>
+<td align="center">0.013</td>
 <td align="center">0</td>
 </tr>
 <tr class="even">
 <td align="center">Binary X</td>
-<td align="center">0</td>
+<td align="center">0.192</td>
 <td align="center">0</td>
 </tr>
 </tbody>
@@ -464,8 +485,8 @@ corresponding to a specified Type I error rate
 <p>For example, for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>
 we have</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>=</mo><mn>4.411</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  BF_{n, \alpha} = 4.411.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>=</mo><mn>1.385</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  BF_{n, \alpha} = 1.385.
 </annotation></semantics></math></p>
 <p>Once we have the value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msub><mi>F</mi><mrow><mi>n</mi><mo>,</mo><mi>α</mi></mrow></msub></mrow><annotation encoding="application/x-tex">BF_{n, \alpha}</annotation></semantics></math>,
@@ -503,8 +524,8 @@ as follows:</p>
 <span>  root_tolerance <span class="op">=</span> <span class="fl">1e-16</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">V_S_star</span></span></code></pre></div>
 <p>Then, we have that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>S</mi></msub><mo>=</mo><mn>0.969</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  v_S = 0.969.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>S</mi></msub><mo>=</mo><mn>0.685</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  v_S = 0.685.
 </annotation></semantics></math></p>
 <p>Finally, the validation threshold
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
@@ -530,8 +551,8 @@ surrogate is perfect and covariates are not included).</p>
 <span><span class="co"># Compute the validation threshold eta</span></span>
 <span><span class="va">eta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">v_Y</span> <span class="op">-</span> <span class="va">V_S_star</span>, <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>In this case, we have that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-  \eta = 0.
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0.238</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+  \eta = 0.238.
 </annotation></semantics></math></p>
 </div>
 <div class="section level2">

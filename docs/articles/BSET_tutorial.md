@@ -46,24 +46,33 @@ frame with columns for the primary outcome `Y`, the surrogate `S`, and
 the treatment assignment `Z`. `BSET_X` additionally requires a covariate
 column `X`.
 
-To illustrate, we simulate a small dataset with a binary covariate:
+To illustrate the usage of the package, we simulate a small dataset with
+a binary covariate using base R:
 
 ``` r
+# Set the random seed for reproducibility
 set.seed(123)
 
-data_qs <- BSET::DGP_X_binary(
-  n = 50, p = 0.5, q = 0.5,
-  mu_0 = c(5, 5, 0, 0),
-  mu_1 = c(5, -5, 0, -10),
-  Sigma_0 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2)),
-  Sigma_1 = kronecker(diag(2), matrix(c(1, 1, 1, 2), 2, 2))
-)
+# Sample size
+n <- 50
 
-df_qs <- data.frame(
-  Y = data_qs$P_observed[, "Y"],
-  S = data_qs$P_observed[, "S"],
-  Z = data_qs$Z,
-  X = data_qs$X
+# Binary covariate
+X <- rbinom(n, 1, 0.5)
+
+# Treatment assignment
+Z <- rbinom(n, 1, 0.5)
+
+# Primary outcome
+Y <- 2 * Z -3 * X + rnorm(n)
+
+# Surrogate outcome
+S <- Y + rnorm(n)
+
+df <- data.frame(
+  Y = Y,
+  S = S,
+  Z = Z,
+  X = X
 )
 ```
 
@@ -71,8 +80,14 @@ To run BSET **without** adjusting for covariates, pass the data frame
 and the names of the relevant columns:
 
 ``` r
-result_no_X <- BSET::BSET_no_X(data = df_qs, Y = "Y", S = "S", Z = "Z",
-                                seed = 123, plot = TRUE)
+result_no_X <- BSET::BSET_no_X(
+  data = df,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  seed = 123,
+  plot = TRUE
+)
 result_no_X$theta_posterior_plot
 ```
 
@@ -85,8 +100,15 @@ To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
 
 ``` r
-result_X <- BSET::BSET_X(data = df_qs, Y = "Y", S = "S", Z = "Z", X = "X",
-                          seed = 123, plot = TRUE)
+result_X <- BSET::BSET_X(
+  data = df_qs,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = "X",
+  seed = 123,
+  plot = TRUE
+)
 result_X$theta_posterior_plot
 ```
 
@@ -119,7 +141,7 @@ We start by setting the random seed for reproducibility of the results.
 set.seed(123)
 
 # Sample size and treatment assignment probability used throughout
-n <- 7
+n <- 50
 p <- 0.5
 ```
 
@@ -231,8 +253,8 @@ below.
 
 |         Setting          | $`\widehat{\delta}`$ | $`\widehat{\theta}`$ |
 |:------------------------:|:--------------------:|:--------------------:|
-| No X (Perfect Surrogate) |          0           |          0           |
-|         Binary X         |          0           |          0           |
+| No X (Perfect Surrogate) |        0.013         |          0           |
+|         Binary X         |        0.192         |          0           |
 
 Estimated values of $`\delta`$ and $`\theta`$ in the two settings.
 
@@ -343,7 +365,7 @@ For example, for $`\alpha = 0.05`$ we have
 
 ``` math
 
-  BF_{n, \alpha} = 4.411.
+  BF_{n, \alpha} = 1.385.
 ```
 
 Once we have the value of $`BF_{n, \alpha}`$, we can compute the value
@@ -382,7 +404,7 @@ Then, we have that
 
 ``` math
 
-  v_S = 0.969.
+  v_S = 0.685.
 ```
 
 Finally, the validation threshold $`\eta`$ can be computed as
@@ -412,7 +434,7 @@ In this case, we have that
 
 ``` math
 
-  \eta = 0.
+  \eta = 0.238.
 ```
 
 ## Running the BSET procedure
