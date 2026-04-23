@@ -28,7 +28,7 @@
     \addFileDependency{#1.aux}%
 }
 
-
+\myexternaldocument{BSET_appendix}
 
  \newcommand{\argmin}{\mathop{\rm arg\min}}
 \newcommand{\argmax}{\mathop{\rm arg\max}}
@@ -221,104 +221,31 @@ As noted in Section~\ref{subsec:limitations}, the parameters \(U_{Y}\) and \(V_{
     X_{i} &\iid f, \quad i = 1, \ldots, n,
   \end{aligned}
 \end{equation}
-where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance matrix that depend on \(X_{i}\), and \(f\) is the distribution of the covariate over some space \(\mathcal{X}\). Under this model, it is easy to see that
-\begin{align}
-    Y_{1i} - Y_{0i} \mid X_{i} = x \overset{\text{\footnotesize ind.}}{\sim} \mathcal{N} \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \quad i = 1, \ldots, n, \; \forall \; x \in \mathcal{X}.
-\end{align}
-Therefore, we have that
-\begin{align}
-    \begin{split}
-        V^{x}_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \mid X_{i} = x \right) \\
-        & = \Prob \left( Y_{1i} - Y_{0i} > 0 \mid X_{i} = x \right) \\
-        & = \Prob \left( \frac{Y_{1i} - Y_{0i} - \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \mid X_{i} = x \right) \\
-        & = \Prob \left( Z > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
-        & = 1 - \Phi \left( \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
-        & = \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \; \forall \; x \in \mathcal{X},
-    \end{split}
-\end{align}
-where \(Z \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal cumulative distribution function. Then, by the law of total probability, we can expand \(V_{Y}\) as follows:
-\begin{align}
-    \begin{split}
-        V_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \right) \\
-        & = \int_{\mathcal{X}} V^{x}_{Y} \, f (x) \, \text{d}x \\
-        & = \int_{\mathcal{X}} \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \, f (x) \, \text{d}x.
-    \end{split}
-\end{align}
-%\vspace{-1mm}
-Since the same reasoning applies to \(V_{S}\), we can express \(\theta\) as follows:
+where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance matrix that depend on \(X_{i}\), and \(f\) is the distribution of the covariate over some space \(\mathcal{X}\). Under the model in Equation~\eqref{eq:data_generating_process_covariates}, \(\theta\) and \(\delta\) admit a convenient analytical expression as expectations over the covariate distribution. Specifically, consider the following two assumptions:
+\begin{itemize}
+    \item \textbf{Conditional Orthogonality of Potential Outcomes}:
+    $$ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 \quad \forall \; x \in \mathcal{X}. $$
+    \item \textbf{Conditional Homoscedasticity}:
+    $$ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \quad \forall \; x \in \mathcal{X}. $$
+\end{itemize}
+Then, one can show (see Appendix~\ref{app:derivation_theta_delta}) that
 \begin{align}
 \label{eq:decomposition_theta}
-    \begin{split}
-        \theta & = \int_{\mathcal{X}} \theta^{x} \, f (x) \, \text{d}x \\
-        & = \int_{\mathcal{X}} \left( \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right) \, f (x) \, \text{d}x,
-    \end{split}
+    \delta = \E_{(X_{i}, X_{j}) \sim f \times f} \!\left( g(X_{i}, X_{j})\right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right),
 \end{align}
-where \( \theta^{x} = V^{x}_{Y} - V^{x}_{S} \; \forall \; x \in \mathcal{X}\). Instead, to derive an analytical expression for \(\delta\), we can start by noting that since
+where
 \begin{align}
-    Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n,
+\label{eq:g_definition}
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{align}
-then we have that
-\begin{align}
-    \begin{split}
-        U^{x_{i} x_{j}}_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
-        & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
-        & = \Prob \left( Z > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
-        & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
-        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n,
-    \end{split}
-\end{align}
-Then, by the law of total probability, we can expand \(U_{Y}\) as follows:
-\begin{align}
-    \begin{split}
-        U_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \right) \\
-        & = \int_{\mathcal{X}} \int_{\mathcal{X}} U^{x_{i}, x_{j}}_{Y} \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j} \\
-        & = \int_{\mathcal{X}} \int_{\mathcal{X}} \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
-    \end{split}
-\end{align}
-Since the same reasoning applies to \(U_{S}\), we can express \(\delta\) as follows:
-\begin{align}
-    \begin{split}
-        \delta & = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j} \\
-        & = \int_{\mathcal{X}} \int_{\mathcal{X}} \left( \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right) \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j},
-    \end{split}
-\end{align}
-where \( \delta^{x_{i} x_{j}} = U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S} \; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n\).
+Without these assumptions, the formula for \(g\) still entails a difference of Gaussian CDFs, but with arguments involving the conditional variances and covariances, leading to a more cumbersome expression (see Appendix~\ref{app:derivation_theta_delta}).
 
-While it may appear that the formulas for \(\delta\) and \(\theta\) are similar, they are not exactly the same. If we are willing to assume that \( \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 \; \forall \; x \in \mathcal{X} \) then it follows that
-\begin{align}
-  V^{x}_{Y} = U^{x x}_{Y} \text{ and } V^{x}_{S} = U^{x x}_{S} \; \forall \; x \in \mathcal{X}.
-\end{align}
-Moreover, if we define the function
-\begin{align}
-    g(x_{i}, x_{j}) = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right),
-\end{align}
-then it is easy to see that we can rewrite the two parameters as follows:
-\begin{align}
-    \begin{split}
-        \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \left( g(X_{i}, X_{j})\right) = \E_{X_{i} \sim f} \left( \E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right) \right) \\
-        \theta & = \E_{X_{i} \sim f} \left( g(X_{i}, X_{i}) \right),
-    \end{split}
-\end{align}
-which means that \(\theta \neq \delta\) whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right) \) and \(g(X_{i}, X_{i})\) differ in expectation. This is a quite general formulation of the issue. Therefore, to better understand when problems arise, it might be more useful to reconsider the question by imposing some simplifying assumptions. To underscore the effect of \(\mu^{x}\), suppose the potential outcomes are normalized in such a way that \(\Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \; \forall \; x \in \mathcal{X} \), thus simplifying \(g\) to
-\begin{align}
-    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right)
-\end{align}
-Even in this very restrictive scenario, \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right) \) and \(g(X_{i}, X_{i})\) may differ in expectation even under very simple distributions \(f\) for the baseline covariate. To exemplify this, we can consider two simple settings where the distribution of the potential outcomes is covariate-dependent.
+Hence, \(\theta\) and \(\delta\) do not coincide whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. Importantly, this can happen even under the two more stringent assumptions stated above. To exemplify this, we consider two simple settings where the distribution of the potential outcomes is covariate-dependent.
 
 \subsubsection{Binary Covariate Setting}
 \label{subsec:binary_covariate_setting}
 
-Let us start by considering the simplest possible setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g. \(X\) represents smoker vs non-smoker status). Then, we can derive a simple closed-form formula for \(\delta\) and \(\theta\):
-\begin{align}
-    \begin{split}
-        \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4},
-    \end{split}
-\end{align}
-which implies that
-\begin{align}
-    | \theta - \delta | = \frac{ \left| \delta^{00} + \delta^{11} - \delta^{01} - \delta^{10} \right| }{4}.
-\end{align}
-This expression highlights that the discrepancy between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity but from differences in mean potential outcomes across covariate groups. To make this more concrete, consider an even simpler setting where \(S\) is a perfect surrogate for \(Y\) and the treatment effect is homogeneous across all values of \(X\). Specifically, suppose that
+Let us start by considering the simplest possible setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To illustrate the discrepancy between \(\theta\) and \(\delta\) (see Appendix~\ref{app:binary_covariate_derivation} for the full derivation), suppose that the treatment effect is homogeneous across all values of \(X\):
 \begin{align}
     \begin{split}
         \mu^{0}_{Y_{1}} - \mu^{0}_{Y_{0}} =
@@ -327,16 +254,7 @@ This expression highlights that the discrepancy between the two parameters is dr
         \mu^{1}_{S_{1}} - \mu^{1}_{S_{0}} = \Delta,
     \end{split}
 \end{align}
-for some constant \(\Delta > 0\). Then, in this case, it follows that
-\begin{align}
-    \begin{split}
-        \delta^{00} & = \Phi(\Delta) - \Phi(\Delta) = 0 \\
-        \delta^{11} & = \Phi(\Delta) - \Phi(\Delta) = 0 \\
-        \delta^{01} & = \Phi(\Delta + \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}) - \Phi(\Delta + \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}) \\
-        \delta^{10} & = \Phi(\Delta + \mu^{1}_{Y_{0}} - \mu^{0}_{Y_{0}}) - \Phi(\Delta + \mu^{1}_{S_{0}} - \mu^{0}_{S_{0}})
-    \end{split}
-\end{align}
-This shows that the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across different \(X\) groups. This implies that
+for some constant \(\Delta > 0\). One can show (see Appendix~\ref{app:binary_covariate_derivation}) that the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across different \(X\) groups. Specifically,
 \begin{align}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
 \end{align}
@@ -355,8 +273,8 @@ To understand the intuition behind this result, consider the setting where \(d_{
 \end{itemize}
 Hence, \(|\theta - \delta| = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \approx 0.25\) for \(\Delta\) large enough (e.g., \(\Delta > 3\)) and, in particular, \(\theta = 0\) while \(\delta \approx 0.25\). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) is substantially different from \(0\), while \(\theta\) correctly captures the surrogate validity.
 
-\subsubsection{Continuous Covariate Setting}
-\label{subsec:continuous_covariate_setting}
+\subsubsection{Gaussian Covariate Setting}
+\label{subsec:gaussian_covariate_setting}
 
 Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean potential outcomes are linear functions of the covariate:
 \begin{align}
@@ -373,30 +291,10 @@ Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean pote
       \beta_{S_{0}} \\
     \end{bmatrix} \; \quad \forall \; x \in \mathbb{R}.
 \end{align}
-Then, we can express \(U_Y\) as follows:
+One can show (see Appendix~\ref{app:continuous_covariate_derivation}) that \(\delta\) and \(\theta\) are given by:
 \begin{align}
-  \begin{split}
-    U_{Y} & = \E_{X_{i}, X_{j}} \left( \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) \\
-    & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right),
-  \end{split}
+  \delta & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
 \end{align}
-where we used the fact that
-\begin{align}
-  \E_{Z \sim \mathcal{N}(0,1)} \left( \Phi(a + b Z) \right) = \Phi \left( \frac{a}{\sqrt{1 + b^2}} \right) \; \forall \; a,b \in \mathbb{R}.
-\end{align}
-A similar expression holds for \(U_{S}\), and therefore we can express \(\delta\) as follows:
-\begin{align}
-  \delta & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right).
-\end{align}
-
-On the other hand, we can express \(V_{Y}\) as follows:
-\begin{align}
-  \begin{split}
-    V_{Y} & = \E_{X_{i}} \left( \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) \right) \\
-    & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right),
-  \end{split}
-\end{align}
-where we used the same fact as before about the expectation of a Gaussian CDF with a linear argument. A similar expression holds for \(V_{S}\), and therefore we can express \(\theta\) as follows:
 \begin{align}
   \theta & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}} - \beta_{S_{0}})^2}} \right).
 \end{align}
@@ -413,19 +311,7 @@ which means that \(S\) is a perfect surrogate for \(Y\) because the treatment ef
   \end{split}
 \end{align}
 
-Then, given the values of \(m\), \(s\), \(\Delta\), if \(m \neq 0\) and \(\Delta \neq 0\), then the distance \( |\theta - \delta| = |\delta| \neq 0\) and its value is entirely driven by the magnitude of \(\beta_{Y_{0}}\) and \(\beta_{S_{0}}\). Specifically, we have that \(|\delta|\) is large whenever \(| \beta_{Y_{0}} |\) and \(| \beta_{S_{0}}| \) differ substantially and
-\begin{align}
-  \sup_{\beta_{Y_{0}}, \beta_{S_{0}}} \{ | \delta | \} = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \Delta^2}} \right) - \Phi \left( 0 \right) \right| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \Delta^2}} \right) - 0.5 \right|,
-\end{align}
-which is achieved when
-\begin{equation}
-  \beta_{Y_{0}} = 0 \text{ and } | \beta_{S_{0}} | \to +\infty \quad \text{or} \quad \beta_{S_{0}} = 0 \text{ and } | \beta_{Y_{0}} | \to +\infty.
-\end{equation}
-From this result we easily derive that
-\begin{align}
-  \sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ | \delta | \} = \sup_{\Delta} \left\{ \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \Delta^2}} \right) - 0.5 \right| \right\} = \left| \Phi \left( \frac{m}{s} \right) - 0.5 \right|,
-\end{align}
-which is achieved when \( |\Delta| \to +\infty\). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. For example, in this setting \( |\delta| \) can be as arbitrarily close to \(0.5\) if \( | \frac{m}{s} | \) is large enough (i.e., the covariate is highly concentrated around a non-zero value), while \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
+Then, given the values of \(m\), \(s\), \(\Delta\), if \(m \neq 0\) and \(\Delta \neq 0\), then \( |\theta - \delta| = |\delta| \neq 0\) and its value is entirely driven by the magnitude of \(\beta_{Y_{0}}\) and \(\beta_{S_{0}}\). One can further show (see Appendix~\ref{app:continuous_covariate_derivation}) that \(\sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = |\Phi(m/s) - 0.5|\), which can be arbitrarily close to \(0.5\) if \(|m/s|\) is large enough (i.e., the covariate is highly concentrated around a non-zero value). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
 
 The above discussion shows that the choice of discrepancy parameter is crucial, as different choices can lead to very different conclusions about surrogate validity. The rank-based approach focuses on \(\delta\), which may not capture the causal relationship between \(Y\) and \(S\) even in simple settings. We therefore advocate focusing on \(\theta\) instead.
 
@@ -794,17 +680,35 @@ over 500 replications with $n=50$ per replication. Bolding indicates the better 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{DCCT_Y.pdf}
-        \caption{Primary outcome (Y)}
+        \caption{Primary outcome}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/DCCT_S.pdf}
-        \caption{Surrogate (S)}
+        \includegraphics[width=\textwidth]{DCCT_S.pdf}
+        \caption{Surrogate}
     \end{subfigure}
-    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest (Y), change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate (S), change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
+    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
     % \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest (Y), change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization, and the surrogate (S), change in HbA1c from baseline to 1.5 years post-randomization, in the treated and control groups within the high-risk subgroup (top panel); and the relationship between the surrogate (S) and the primary outcome (Y) in the treated and control groups within the high-risk subgroup (bottom panel). In the top panel, the curves represent kernel density estimates of the marginal distributions of Y (left) and S (right), with separate curves for the treated and control groups. In the bottom panel, each point corresponds to an individual subject, plotting the observed surrogate value (S) against the observed primary outcome (Y). The solid curve in each panel represents a nonparametric estimate of the conditional mean function $E[Y \mid S=s,G=g]$, obtained using locally weighted regression (LOESS). The shaded region surrounding the curve represents the pointwise 95\% confidence interval for this estimated mean function, reflecting uncertainty due to sampling variability.}
     \label{fig:dcct}
+\end{figure}
+
+\clearpage
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_scatterplot.pdf}
+        \caption{Surrogate vs.\ primary outcome}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
+        \caption{Empirical CDFs}
+    \end{subfigure}
+    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
+    \label{fig:dcct_scatter_cdf}
 \end{figure}
 
 \clearpage

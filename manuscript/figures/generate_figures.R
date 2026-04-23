@@ -71,7 +71,6 @@ ggsave(
   height = 5
 )
 
-
 ######################################################
 # DCCT primary outcome distribution by treatment arm #
 ######################################################
@@ -85,7 +84,7 @@ p_Y <- ggplot(plot_data, aes(x = Y, color = Treatment, fill = Treatment)) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
-    x     = "Change in HbA1c from baseline to 4.5 years",
+    x     = "Change in HbA1c at 4.5 years",
     y     = "Density",
     color = NULL,
     fill  = NULL
@@ -111,7 +110,7 @@ p_S <- ggplot(plot_data, aes(x = S, color = Treatment, fill = Treatment)) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
-    x     = "Change in HbA1c from baseline to 1.5 years",
+    x     = "Change in HbA1c at 1.5 years",
     y     = "Density",
     color = NULL,
     fill  = NULL
@@ -134,24 +133,71 @@ ggsave(
 scatter_data <- hb_high_risk %>%
   mutate(Treatment = if_else(Z == 1, "Treatment", "Control"))
 
-p_scatter <- ggplot(scatter_data, aes(x = S, y = Y, color = Treatment, shape = Treatment)) +
+p_scatter <- ggplot(scatter_data, aes(x = S, y = Y, color = Treatment)) +
   geom_point(size = 2.5, alpha = 0.8) +
-  geom_smooth(formula = y ~ x, method = "loess", se = TRUE, linewidth = 0.8, alpha = 0.15) +
-  scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
-  scale_shape_manual(values = c("Treatment" = 16, "Control" = 17)) +
+  geom_smooth(formula = y ~ x, method = "loess", se = FALSE, linewidth = 0.8) +
+  scale_color_manual(
+    values = c("Treatment" = "#0072B2", "Control" = "#D55E00"),
+    guide  = guide_legend(override.aes = list(linetype = 0))
+  ) +
   labs(
-    x = "Surrogate (S): Change in HbA1c at 1.5 years",
-    y = "Primary outcome (Y): Change in HbA1c at 4.5 years",
-    color = NULL,
-    shape = NULL
+    x = "Change in HbA1c at 1.5 years",
+    y = "Change in HbA1c at 4.5 years",
+    color = NULL
   ) +
   theme_minimal(base_size = 13) +
-  theme(legend.position = "top")
+  theme(legend.position = "right")
 
 ggsave(
-  filename = "DCCT_scatter.pdf",
+  filename = "DCCT_scatterplot.pdf",
   plot = p_scatter,
-  width = 6,
+  width = 7.5,
+  height = 5,
+  device = cairo_pdf
+)
+
+#################
+# DCCT CDF plot #
+#################
+
+cdf_data <- hb_high_risk %>%
+  mutate(Treatment = if_else(Z == 1, "Treatment", "Control")) %>%
+  tidyr::pivot_longer(cols = c(Y, S), names_to = "Outcome", values_to = "value") %>%
+  mutate(
+    Outcome = if_else(Outcome == "Y", "Primary outcome", "Surrogate"),
+    Group   = paste(Treatment, Outcome, sep = " — ")
+  )
+
+p_cdf <- ggplot(cdf_data, aes(x = value, color = Group, linetype = Group)) +
+  stat_ecdf(linewidth = 0.8) +
+  scale_color_manual(values = c(
+    "Treatment — Primary outcome" = "#0072B2",
+    "Control — Primary outcome"   = "#0072B2",
+    "Treatment — Surrogate"       = "#D55E00",
+    "Control — Surrogate"         = "#D55E00"
+  )) +
+  scale_linetype_manual(values = c(
+    "Treatment — Primary outcome" = "solid",
+    "Control — Primary outcome"   = "dashed",
+    "Treatment — Surrogate"       = "solid",
+    "Control — Surrogate"         = "dashed"
+  )) +
+  labs(
+    x        = "Change in HbA1c",
+    y        = "Empirical CDF",
+    color    = NULL,
+    linetype = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position  = "right",
+    legend.key.width = unit(0.91, "cm")
+  )
+
+ggsave(
+  filename = "DCCT_CDF.pdf",
+  plot = p_cdf,
+  width = 7.5,
   height = 5,
   device = cairo_pdf
 )

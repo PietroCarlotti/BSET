@@ -28,7 +28,7 @@
     \addFileDependency{#1.aux}%
 }
 
-
+\myexternaldocument{BSET}
 
  \newcommand{\argmin}{\mathop{\rm arg\min}}
 \newcommand{\argmax}{\mathop{\rm arg\max}}
@@ -127,7 +127,166 @@
 \allowdisplaybreaks
 
 
-\section*{Appendix A}
+\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} as Expectations}
+\label{app:derivation_theta_delta}
+
+Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
+\begin{align}
+    Y_{1i} - Y_{0i} \mid X_{i} = x \overset{\text{\footnotesize ind.}}{\sim} \mathcal{N} \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \quad i = 1, \ldots, n, \; \forall \; x \in \mathcal{X}.
+\end{align}
+Therefore, we have that
+\begin{align}
+    \begin{split}
+        V^{x}_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \mid X_{i} = x \right) \\
+        & = \Prob \left( Y_{1i} - Y_{0i} > 0 \mid X_{i} = x \right) \\
+        & = \Prob \left( \frac{Y_{1i} - Y_{0i} - \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \mid X_{i} = x \right) \\
+        & = \Prob \left( Z > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
+        & = 1 - \Phi \left( \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
+        & = \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \; \forall \; x \in \mathcal{X},
+    \end{split}
+\end{align}
+where \(Z \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal cumulative distribution function. Then, by the law of total probability, we can expand \(V_{Y}\) as follows:
+\begin{align}
+    \begin{split}
+        V_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \right) \\
+        & = \int_{\mathcal{X}} V^{x}_{Y} \, f (x) \, \text{d}x \\
+        & = \int_{\mathcal{X}} \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \, f (x) \, \text{d}x.
+    \end{split}
+\end{align}
+Since the same reasoning applies to \(V_{S}\), we obtain:
+\begin{align}
+    \theta = \int_{\mathcal{X}} \left( \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right) f (x) \, \text{d}x.
+\end{align}
+To derive an analytical expression for \(\delta\), we start by noting that since
+\begin{align}
+    Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n,
+\end{align}
+then we have that
+\begin{align}
+    \begin{split}
+        U^{x_{i} x_{j}}_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
+        & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
+        & = \Prob \left( Z > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
+        & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
+        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
+    \end{split}
+\end{align}
+Then, by the law of total probability, we can expand \(U_{Y}\) as follows:
+\begin{align}
+    \begin{split}
+        U_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \right) \\
+        & = \int_{\mathcal{X}} \int_{\mathcal{X}} U^{x_{i}, x_{j}}_{Y} \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j} \\
+        & = \int_{\mathcal{X}} \int_{\mathcal{X}} \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
+    \end{split}
+\end{align}
+Since the same reasoning applies to \(U_{S}\), we obtain:
+\begin{align}
+    \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \left( \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right) \right) f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
+\end{align}
+Denoting \(\theta^{x} = V^{x}_{Y} - V^{x}_{S}\) and \(\delta^{x_{i} x_{j}} = U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S}\), the above can be written compactly as:
+\begin{align}
+    \theta = \int_{\mathcal{X}} \theta^{x} \, f(x) \, \text{d}x, \quad \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f(x_{i}) \, f(x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
+\end{align}
+Under the additional assumption that \(\Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0\) for all \(x \in \mathcal{X}\), it follows that \(V^{x}_{Y} = U^{xx}_{Y}\) and \(V^{x}_{S} = U^{xx}_{S}\), so that \(\theta^{x} = \delta^{xx}\). Defining
+\begin{align}
+    g(x_{i}, x_{j}) = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right),
+\end{align}
+we have \(\delta^{x_{i} x_{j}} = g(x_{i}, x_{j})\) and \(\theta^{x} = g(x, x)\), so that
+\begin{align}
+    \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( g(X_{i}, X_{j}) \right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right).
+\end{align}
+If the variances are further normalized so that \(\Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2}\) for all \(x \in \mathcal{X}\), then \(g\) simplifies to
+\begin{align}
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right).
+\end{align}
+
+
+\section{Derivation of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|} in the Binary Covariate Setting}
+\label{app:binary_covariate_derivation}
+
+Under the setting described in Section~\ref{subsec:binary_covariate_setting} of the main paper, let \(f = \text{Bernoulli}(1/2)\). Denoting \(\theta^{x} = g(x, x)\) and \(\delta^{x_{i} x_{j}} = g(x_{i}, x_{j})\) for \(x, x_{i}, x_{j} \in \{0, 1\}\), the expectation form of \(\theta\) and \(\delta\) reduces to
+\begin{align}
+    \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4},
+\end{align}
+which implies that
+\begin{align}
+    | \theta - \delta | = \frac{ \left| \delta^{00} + \delta^{11} - \delta^{01} - \delta^{10} \right| }{4}.
+\end{align}
+This expression highlights that the discrepancy between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity but from differences in mean potential outcomes across covariate groups.
+
+To derive the closed-form formula for \(|\theta - \delta|\) given in Section~\ref{subsec:binary_covariate_setting}, suppose moreover that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effect:
+\begin{align}
+    \mu^{0}_{Y_{1}} - \mu^{0}_{Y_{0}} =
+    \mu^{0}_{S_{1}} - \mu^{0}_{S_{0}} =
+    \mu^{1}_{Y_{1}} - \mu^{1}_{Y_{0}} =
+    \mu^{1}_{S_{1}} - \mu^{1}_{S_{0}} = \Delta > 0.
+\end{align}
+Using the normalized variance assumption \(\Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2}\) and \(\Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0\) for all \(x \in \{0,1\}\), we can compute each component of \(\delta\) directly. Within-group comparisons give:
+\begin{align}
+    \begin{split}
+        \delta^{00} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
+        \delta^{11} & = \Phi(\Delta) - \Phi(\Delta) = 0.
+    \end{split}
+\end{align}
+For cross-group comparisons, the treatment means cancel and only the control-group means remain:
+\begin{align}
+    \begin{split}
+        \delta^{01} & = \Phi\!\left(\Delta + \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\right), \\
+        \delta^{10} & = \Phi\!\left(\Delta + \mu^{1}_{Y_{0}} - \mu^{0}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{1}_{S_{0}} - \mu^{0}_{S_{0}}\right).
+    \end{split}
+\end{align}
+Substituting \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\) and recalling that \(\delta^{00} = \delta^{11} = 0\), we obtain:
+\begin{align}
+    |\theta - \delta| = \frac{1}{4} \left| \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) \right|.
+\end{align}
+
+
+\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Continuous Covariate Setting}
+\label{app:continuous_covariate_derivation}
+
+Under the setting described in Section~\ref{subsec:continuous_covariate_setting} of the main paper, let \(f = \mathcal{N}(m, s^2)\) and \(\mu^{x} = x\,(\beta_{Y_1}, \beta_{S_1}, \beta_{Y_0}, \beta_{S_0})^\top\). We use the following standard identity throughout:
+\begin{align}
+    \label{eq:gaussian_phi_identity}
+    \E_{Z \sim \mathcal{N}(0,1)} \!\left( \Phi(a + b Z) \right) = \Phi\!\left( \frac{a}{\sqrt{1 + b^2}} \right), \quad \forall \; a, b \in \mathbb{R}.
+\end{align}
+
+\paragraph{Derivation of \(\delta\).} Writing \(X_i \beta_{Y_1} - X_j \beta_{Y_0} = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} Z_i - \beta_{Y_0} Z_j)\) where \(Z_i, Z_j \iid \mathcal{N}(0,1)\), and applying Equation~\eqref{eq:gaussian_phi_identity} twice (once over \(Z_j\), once over \(Z_i\)):
+\begin{align}
+    \begin{split}
+        U_{Y} & = \E_{X_{i}, X_{j}} \!\left( \Phi \!\left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) \\
+        & = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right).
+    \end{split}
+\end{align}
+An analogous calculation for \(U_S\) yields:
+\begin{align}
+    \delta = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \!\left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right).
+\end{align}
+
+\paragraph{Derivation of \(\theta\).} Writing \(X_i(\beta_{Y_1} - \beta_{Y_0}) = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} - \beta_{Y_0})Z_i\) and applying Equation~\eqref{eq:gaussian_phi_identity} over \(Z_i\):
+\begin{align}
+    \begin{split}
+        V_{Y} & = \E_{X_{i}} \!\left( \Phi \!\left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) \right) \\
+        & = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right).
+    \end{split}
+\end{align}
+An analogous calculation for \(V_S\) yields:
+\begin{align}
+    \theta = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right) - \Phi \!\left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}} - \beta_{S_{0}})^2}} \right).
+\end{align}
+
+\paragraph{Supremum of \(|\delta|\) when \(S\) is a perfect surrogate.} Setting \(\beta_{Y_1} - \beta_{Y_0} = \beta_{S_1} - \beta_{S_0} = \Delta > 0\) so that \(\theta = 0\), we have:
+\begin{align}
+    |\delta| = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2((\beta_{Y_0}+\Delta)^2 + \beta_{Y_0}^2)}} \right) - \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2((\beta_{S_0}+\Delta)^2 + \beta_{S_0}^2)}} \right) \right|.
+\end{align}
+This is maximized when one of \(\beta_{Y_0}\), \(\beta_{S_0}\) equals zero and the other diverges to \(\pm\infty\). Setting \(\beta_{Y_0} = 0\) and \(|\beta_{S_0}| \to +\infty\) (or vice versa):
+\begin{align}
+    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}} \{ |\delta| \} = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2\Delta^2}} \right) - 0.5 \right|.
+\end{align}
+Maximizing further over \(\Delta\) by taking \(|\Delta| \to +\infty\):
+\begin{align}
+    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = \left| \Phi\!\left( \frac{m}{s} \right) - 0.5 \right|,
+\end{align}
+which can be arbitrarily close to \(0.5\) whenever \(|m/s|\) is large.
 
 
 \end{document}
