@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 12:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex
-(/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/Biometrics_paper.tex
+**/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex
+(/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -561,27 +561,27 @@ Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count338
 \l__pdf_internal_box=\box112
-) (./Biometrics_paper.aux)
-\openout1 = `Biometrics_paper.aux'.
+) (./BSET.aux)
+\openout1 = `BSET.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -643,20 +643,20 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 102.
- (./Biometrics_paper.out) (./Biometrics_paper.out)
+Package hyperref Info: Link coloring OFF on input line 103.
+ (./BSET.out) (./BSET.out)
 \@outlinefile=\write5
-\openout5 = `Biometrics_paper.out'.
+\openout5 = `BSET.out'.
 
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 112.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -666,107 +666,107 @@ Non-PDF special ignored!
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ] [3] [4] [5]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 191.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 192.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [6] [7] [8] [9] [10] [11] [12] [13] [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] [17] [18] [19] [20] [21]
-Overfull \hbox (6.27487pt too wide) in paragraph at lines 530--532
+Overfull \hbox (6.27487pt too wide) in paragraph at lines 531--533
 \OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
  []
 
 [22] [23]
-Overfull \hbox (6.27487pt too wide) in paragraph at lines 549--551
+Overfull \hbox (6.27487pt too wide) in paragraph at lines 550--552
 \OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
  []
 
 [24]
-Overfull \hbox (2.58502pt too wide) in paragraph at lines 568--570
+Overfull \hbox (2.58502pt too wide) in paragraph at lines 569--571
 \OT1/cmr/m/it/12 for ev-ery neigh-bor-hood $\OML/cmm/m/it/12 U[]$ \OT1/cmr/m/it/12 of the non-identifiable com-po-nent $\OML/cmm/m/it/12 ^^^[]$\OT1/cmr/m/it/12 , where $\OML/cmm/m/it/12 ^^Y []$
  []
 
-[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] (./Biometrics_paper.bbl [35] [36] [37] [38]) [39]
-<discrepancy.png, id=520, 505.89pt x 433.62pt>
-File: discrepancy.png Graphic file (type png)
-<use discrepancy.png>
-Package pdftex.def Info: discrepancy.png  used on input line 723.
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] (./BSET.bbl [35] [36] [37] [38]) [39]
+<figures/discrepancy.png, id=520, 505.89pt x 433.62pt>
+File: figures/discrepancy.png Graphic file (type png)
+<use figures/discrepancy.png>
+Package pdftex.def Info: figures/discrepancy.png  used on input line 724.
 (pdftex.def)             Requested size: 375.80544pt x 322.1243pt.
  [40
 
- <./discrepancy.png>]
-Overfull \hbox (7.11537pt too wide) in alignment at lines 730--740
+ <./figures/discrepancy.png>]
+Overfull \hbox (7.11537pt too wide) in alignment at lines 731--741
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (7.11537pt too wide) in alignment at lines 740--747
+Overfull \hbox (7.11537pt too wide) in alignment at lines 741--748
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (7.11537pt too wide) in alignment at lines 747--750
+Overfull \hbox (7.11537pt too wide) in alignment at lines 748--751
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (7.11537pt too wide) in alignment at lines 750--752
+Overfull \hbox (7.11537pt too wide) in alignment at lines 751--753
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (7.11537pt too wide) in alignment at lines 752--759
+Overfull \hbox (7.11537pt too wide) in alignment at lines 753--760
  [] [] [] [] [] [] 
  []
 
 [41
 
 ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 765.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 766.
  [42
 
 ]
-<DCCT_Y.pdf, id=535, 578.16pt x 361.35pt>
-File: DCCT_Y.pdf Graphic file (type pdf)
-<use DCCT_Y.pdf>
-Package pdftex.def Info: DCCT_Y.pdf  used on input line 795.
+<figures/DCCT_Y.pdf, id=535, 578.16pt x 361.35pt>
+File: figures/DCCT_Y.pdf Graphic file (type pdf)
+<use figures/DCCT_Y.pdf>
+Package pdftex.def Info: figures/DCCT_Y.pdf  used on input line 796.
 (pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
-<DCCT_S.pdf, id=536, 578.16pt x 361.35pt>
-File: DCCT_S.pdf Graphic file (type pdf)
-<use DCCT_S.pdf>
-Package pdftex.def Info: DCCT_S.pdf  used on input line 801.
+<figures/DCCT_S.pdf, id=536, 578.16pt x 361.35pt>
+File: figures/DCCT_S.pdf Graphic file (type pdf)
+<use figures/DCCT_S.pdf>
+Package pdftex.def Info: figures/DCCT_S.pdf  used on input line 802.
 (pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
  [43
 
- <./DCCT_Y.pdf> <./DCCT_S.pdf>]
-<DCCT_no_X_posterior.pdf, id=558, 578.16pt x 361.35pt>
-File: DCCT_no_X_posterior.pdf Graphic file (type pdf)
-<use DCCT_no_X_posterior.pdf>
-Package pdftex.def Info: DCCT_no_X_posterior.pdf  used on input line 814.
+ <./figures/DCCT_Y.pdf> <./figures/DCCT_S.pdf>]
+<figures/DCCT_no_X_posterior.pdf, id=558, 578.16pt x 361.35pt>
+File: figures/DCCT_no_X_posterior.pdf Graphic file (type pdf)
+<use figures/DCCT_no_X_posterior.pdf>
+Package pdftex.def Info: figures/DCCT_no_X_posterior.pdf  used on input line 815.
 (pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
-<DCCT_X_posterior.pdf, id=559, 578.16pt x 361.35pt>
-File: DCCT_X_posterior.pdf Graphic file (type pdf)
-<use DCCT_X_posterior.pdf>
-Package pdftex.def Info: DCCT_X_posterior.pdf  used on input line 820.
+<figures/DCCT_X_posterior.pdf, id=559, 578.16pt x 361.35pt>
+File: figures/DCCT_X_posterior.pdf Graphic file (type pdf)
+<use figures/DCCT_X_posterior.pdf>
+Package pdftex.def Info: figures/DCCT_X_posterior.pdf  used on input line 821.
 (pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
  [44
 
- <./DCCT_no_X_posterior.pdf> <./DCCT_X_posterior.pdf>] (./Biometrics_paper.aux)
+ <./figures/DCCT_no_X_posterior.pdf> <./figures/DCCT_X_posterior.pdf>] (./BSET.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `Biometrics_paper.out' has not changed.
+Package rerunfilecheck Info: File `BSET.out' has not changed.
 (rerunfilecheck)             Checksum: 2D42DEC64F5D1FDE959AEF2DE0FF75D1;3080.
  ) 
 Here is how much of TeX's memory you used:
- 15460 strings out of 474116
- 248929 string characters out of 5743682
+ 15468 strings out of 474116
+ 249105 string characters out of 5743682
  1946187 words of memory out of 5000000
- 37384 multiletter control sequences out of 15000+600000
+ 37392 multiletter control sequences out of 15000+600000
  571792 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,19n,79p,1881b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,19n,79p,1869b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Biometrics_paper.pdf (44 pages, 496265 bytes).
+Output written on BSET.pdf (44 pages, 496294 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  607 compressed objects within 7 object streams

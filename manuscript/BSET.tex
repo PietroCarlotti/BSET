@@ -94,6 +94,7 @@
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -715,7 +716,7 @@ This work was supported by NIDDK grant R01DK118354 (PI:Parast) and [Pietro add f
 The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidemiology of Diabetes Interventions and Complications (EDIC) study were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not represent analyses or conclusions of the DCCT/EDIC study group, NIDDK-CR, or NIH.
 
 \bibliographystyle{plainnat}
-\bibliography{Surrogate_bib}
+\bibliography{BSET_references}
 
 \clearpage
 \begin{figure}[ht]
@@ -798,7 +799,7 @@ over 500 replications with $n=50$ per replication. Bolding indicates the better 
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DCCT_S.pdf}
+        \includegraphics[width=\textwidth]{figures/DCCT_S.pdf}
         \caption{Surrogate (S)}
     \end{subfigure}
     \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest (Y), change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate (S), change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
