@@ -100,17 +100,14 @@ Dashed lines show estimated quantities: the Bayesian 95\\ credible
 interval upper bound and threshold \$\eta\$ (\<span
 style='color:#0072B2'\>blue shades\</span\>), and the frequentist 95\\
 confidence interval upper bound and threshold \$\varepsilon\$ (\<span
-style='color:#D55E00'\>orange shades\</span\>). Solid lines show the
-true values of \$\theta\$ (\<span
-style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
-style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
+style='color:#D55E00'\>orange
+shades\</span\>).](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
 
 Posterior distribution of $`\theta`$ from `BSET` without covariates.
 Dashed lines show estimated quantities: the Bayesian 95% credible
 interval upper bound and threshold $`\eta`$ (blue shades), and the
 frequentist 95% confidence interval upper bound and threshold
-$`\varepsilon`$ (orange shades). Solid lines show the true values of
-$`\theta`$ (purple) and $`\delta`$ (pink).
+$`\varepsilon`$ (orange shades).
 
 To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
@@ -134,17 +131,14 @@ baseline covariate. Dashed lines show estimated quantities: the Bayesian
 95\\ credible interval upper bound and threshold \$\eta\$ (\<span
 style='color:#0072B2'\>blue shades\</span\>), and the frequentist 95\\
 confidence interval upper bound and threshold \$\varepsilon\$ (\<span
-style='color:#D55E00'\>orange shades\</span\>). Solid lines show the
-true values of \$\theta\$ (\<span
-style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
-style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
+style='color:#D55E00'\>orange
+shades\</span\>).](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
 
 Posterior distribution of $`\theta`$ from `BSET`, adjusted for a
 baseline covariate. Dashed lines show estimated quantities: the Bayesian
 95% credible interval upper bound and threshold $`\eta`$ (blue shades),
 and the frequentist 95% confidence interval upper bound and threshold
-$`\varepsilon`$ (orange shades). Solid lines show the true values of
-$`\theta`$ (purple) and $`\delta`$ (pink).
+$`\varepsilon`$ (orange shades).
 
 The function returns the posterior distribution of $`\theta`$, the
 discrepancy between the treatment effects on $`Y`$ and $`S`$. Dashed

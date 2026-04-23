@@ -86,8 +86,8 @@ result_no_X <- BSET::BSET(
 result_no_X$theta_posterior_plot
 ```
 
-```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET` without covariates. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
-readRDS("BSET_no_X_results.rds")$theta_posterior_plot
+```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET` without covariates. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>)."}
+readRDS("BSET_quick_start_no_X_results.rds")$theta_posterior_plot
 ```
 
 To run BSET **with** a baseline covariate, add the covariate column name via the `X` argument:
@@ -105,8 +105,8 @@ result_X <- BSET::BSET(
 result_X$theta_posterior_plot
 ```
 
-```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET`, adjusted for a baseline covariate. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
-readRDS("BSET_X_results.rds")$theta_posterior_plot
+```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET`, adjusted for a baseline covariate. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>)."}
+readRDS("BSET_quick_start_X_results.rds")$theta_posterior_plot
 ```
 
 The function returns the posterior distribution of \(\theta\), the discrepancy between the treatment effects on \(Y\) and \(S\). Dashed lines in blue shades mark estimated Bayesian quantities: the upper bound of the 95% credible interval and the validation threshold \(\eta\). Dashed lines in orange shades mark estimated frequentist quantities: the upper bound of the 95% confidence interval and the threshold \(\varepsilon\) from @parast2024rank. Solid lines mark the true values: purple for \(\theta\) and pink for \(\delta\). If the Bayesian credible interval upper bound falls below the threshold \(\eta\), there is evidence that the surrogate is valid.
