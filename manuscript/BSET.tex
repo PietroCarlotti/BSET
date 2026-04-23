@@ -700,7 +700,7 @@ We illustrate our proposed method using  data from the Diabetes Control and Comp
 Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 with a history of smoking. This resulted in an analytic sample of 47 participants. Figure \ref{fig:dcct} describes the data, showing the distribution of the primary outcome and the surrogate (top panel), as well as the relationship between the surrogate and the primary outcome (bottom panel) in the treated and control groups within this high-risk subgroup.
 
 
-We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of $\widehat{\theta}$ is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of sex (male or female) and BMI (numeric). The resulting posterior distribution of $\widehat{\theta}$ incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in $\widehat{\delta} = 0.044$, a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities ($\widehat{\theta}$ vs $\widehat{\delta}$) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
+We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of $\widehat{\theta}$ is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of $\widehat{\theta}$ incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in $\widehat{\delta} = 0.044$, a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities ($\widehat{\theta}$ vs $\widehat{\delta}$) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
 
 
 \section{Discussion}\label{sec:discussion}
@@ -721,7 +721,7 @@ The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidem
 \clearpage
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{discrepancy.pdf}
+    \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
     \caption{Heatmap of \(|\theta - \delta|\) as a function of \(d_S\) and \(d_Y\) with \(\Delta = 5\).}
     \label{fig:discrepancy_heatmap}
 \end{figure}
@@ -812,16 +812,16 @@ over 500 replications with $n=50$ per replication. Bolding indicates the better 
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DCCT_no_X_posterior.pdf}
+        \includegraphics[width=\textwidth]{DCCT_no_X_theta_posterior_plot.pdf}
         \caption{Without covariates}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DCCT_X_posterior.pdf}
+        \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
         \caption{With covariates (sex and BMI)}
     \end{subfigure}
-    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with sex and BMI (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
+    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
     \label{fig:dcct_post}
 \end{figure}
 

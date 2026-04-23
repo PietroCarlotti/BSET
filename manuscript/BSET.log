@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 12:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -685,14 +685,14 @@ Overfull \hbox (2.58502pt too wide) in paragraph at lines 569--571
  []
 
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] (./BSET.bbl [35] [36] [37] [38]) [39]
-<figures/discrepancy.png, id=520, 505.89pt x 433.62pt>
-File: figures/discrepancy.png Graphic file (type png)
-<use figures/discrepancy.png>
-Package pdftex.def Info: figures/discrepancy.png  used on input line 724.
-(pdftex.def)             Requested size: 375.80544pt x 322.1243pt.
+<figures/discrepancy_heatmap.pdf, id=520, 433.62pt x 361.35pt>
+File: figures/discrepancy_heatmap.pdf Graphic file (type pdf)
+<use figures/discrepancy_heatmap.pdf>
+Package pdftex.def Info: figures/discrepancy_heatmap.pdf  used on input line 724.
+(pdftex.def)             Requested size: 375.80544pt x 313.18651pt.
  [40
 
- <./figures/discrepancy.png>]
+ <./figures/discrepancy_heatmap.pdf>]
 Overfull \hbox (7.11537pt too wide) in alignment at lines 731--741
  [] [] [] [] [] [] 
  []
@@ -724,32 +724,48 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
  [42
 
 ]
-<figures/DCCT_Y.pdf, id=535, 578.16pt x 361.35pt>
+
+pdfTeX warning: pdflatex (file ./figures/DCCT_Y.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/DCCT_Y.pdf, id=541, 433.62pt x 325.215pt>
 File: figures/DCCT_Y.pdf Graphic file (type pdf)
 <use figures/DCCT_Y.pdf>
 Package pdftex.def Info: figures/DCCT_Y.pdf  used on input line 796.
-(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
-<figures/DCCT_S.pdf, id=536, 578.16pt x 361.35pt>
+(pdftex.def)             Requested size: 225.4804pt x 169.11276pt.
+
+
+pdfTeX warning: pdflatex (file ./figures/DCCT_S.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/DCCT_S.pdf, id=542, 433.62pt x 325.215pt>
 File: figures/DCCT_S.pdf Graphic file (type pdf)
 <use figures/DCCT_S.pdf>
 Package pdftex.def Info: figures/DCCT_S.pdf  used on input line 802.
-(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
- [43
+(pdftex.def)             Requested size: 225.4804pt x 169.11276pt.
+[43
 
- <./figures/DCCT_Y.pdf> <./figures/DCCT_S.pdf>]
-<figures/DCCT_no_X_posterior.pdf, id=558, 578.16pt x 361.35pt>
-File: figures/DCCT_no_X_posterior.pdf Graphic file (type pdf)
-<use figures/DCCT_no_X_posterior.pdf>
-Package pdftex.def Info: figures/DCCT_no_X_posterior.pdf  used on input line 815.
-(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
-<figures/DCCT_X_posterior.pdf, id=559, 578.16pt x 361.35pt>
-File: figures/DCCT_X_posterior.pdf Graphic file (type pdf)
-<use figures/DCCT_X_posterior.pdf>
-Package pdftex.def Info: figures/DCCT_X_posterior.pdf  used on input line 821.
-(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
- [44
+ <./figures/DCCT_Y.pdf> <./figures/DCCT_S.pdf
 
- <./figures/DCCT_no_X_posterior.pdf> <./figures/DCCT_X_posterior.pdf>] (./BSET.aux)
+pdfTeX warning: pdflatex (file ./figures/DCCT_S.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+
+pdfTeX warning: pdflatex (file ./figures/DCCT_no_X_theta_posterior_plot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/DCCT_no_X_theta_posterior_plot.pdf, id=563, 722.7pt x 578.16pt>
+File: figures/DCCT_no_X_theta_posterior_plot.pdf Graphic file (type pdf)
+<use figures/DCCT_no_X_theta_posterior_plot.pdf>
+Package pdftex.def Info: figures/DCCT_no_X_theta_posterior_plot.pdf  used on input line 815.
+(pdftex.def)             Requested size: 225.4804pt x 180.38342pt.
+
+
+pdfTeX warning: pdflatex (file ./figures/DCCT_X_theta_posterior_plot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/DCCT_X_theta_posterior_plot.pdf, id=564, 722.7pt x 578.16pt>
+File: figures/DCCT_X_theta_posterior_plot.pdf Graphic file (type pdf)
+<use figures/DCCT_X_theta_posterior_plot.pdf>
+Package pdftex.def Info: figures/DCCT_X_theta_posterior_plot.pdf  used on input line 821.
+(pdftex.def)             Requested size: 225.4804pt x 180.38342pt.
+[44
+
+ <./figures/DCCT_no_X_theta_posterior_plot.pdf> <./figures/DCCT_X_theta_posterior_plot.pdf
+
+pdfTeX warning: pdflatex (file ./figures/DCCT_X_theta_posterior_plot.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./BSET.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -759,17 +775,17 @@ Package rerunfilecheck Info: File `BSET.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  15468 strings out of 474116
- 249105 string characters out of 5743682
+ 249399 string characters out of 5743682
  1946187 words of memory out of 5000000
  37392 multiletter control sequences out of 15000+600000
  571792 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,19n,79p,1869b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on BSET.pdf (44 pages, 496294 bytes).
+Output written on BSET.pdf (44 pages, 510754 bytes).
 PDF statistics:
- 711 PDF objects out of 1000 (max. 8388607)
- 607 compressed objects within 7 object streams
+ 741 PDF objects out of 1000 (max. 8388607)
+ 623 compressed objects within 7 object streams
  172 named destinations out of 1000 (max. 500000)
  146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
