@@ -2,12 +2,8 @@
 
 ## All functions
 
-- [`BSET_X()`](https://pietrocarlotti.github.io/BSET/reference/BSET_X.md)
-  : Bayesian Surrogate Evaluation Test with Covariates from Carlotti and
-  Parast (2026)
-- [`BSET_no_X()`](https://pietrocarlotti.github.io/BSET/reference/BSET_no_X.md)
-  : Bayesian Surrogate Evaluation Test without Covariates from Carlotti
-  and Parast (2026)
+- [`BSET()`](https://pietrocarlotti.github.io/BSET/reference/BSET.md) :
+  Bayesian Surrogate Evaluation Test from Carlotti and Parast (2026)
 - [`Bayesian_test()`](https://pietrocarlotti.github.io/BSET/reference/Bayesian_test.md)
   : Bayesian Test from Carlotti and Parast (2026)
 - [`Carlotti_and_Parast_2026_simulations_grid`](https://pietrocarlotti.github.io/BSET/reference/Carlotti_and_Parast_2026_simulations_grid.md)

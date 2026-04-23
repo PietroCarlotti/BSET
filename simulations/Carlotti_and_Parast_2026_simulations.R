@@ -9,7 +9,7 @@
 #'
 #' @details
 #' The function runs a total of 500 simulations for this setting, generating
-#' data using \code{DGP_X} and processes the results using \code{BSET_X}. The
+#' data using \code{DGP_X_binary} or \code{DGP_X_Gaussian} and processes the results using \code{BSET}. The
 #' simulation utilizes MCMC sampling via \code{rstan} for the Bayesian
 #' estimation components. Note that it relies on an external object 
 #' \code{estimands_Carlotti_and_Parast_2026} that contains the true values of
@@ -249,7 +249,7 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
     mu_beta <- array(0, dim = c(settings[[simulation_setting]]$d))
     Sigma_beta <- 10*diag(settings[[simulation_setting]]$d)
     
-    BSET_X_results <- BSET_X(
+    BSET_results <- BSET(
       data = observed_data,
       Y = "Y",
       S = "S",
@@ -276,8 +276,8 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
       mute = TRUE,
       parallel = FALSE
     )
-    
-    return(BSET_X_results)
+
+    return(BSET_results)
   }
   
   # Run all simulations

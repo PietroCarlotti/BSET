@@ -86,7 +86,7 @@ result_no_X <- BSET::BSET(
 result_no_X$theta_posterior_plot
 ```
 
-```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET` without covariates."}
+```{r quick-start-no-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET` without covariates. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
 readRDS("BSET_no_X_results.rds")$theta_posterior_plot
 ```
 
@@ -105,11 +105,11 @@ result_X <- BSET::BSET(
 result_X$theta_posterior_plot
 ```
 
-```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET`, adjusted for a baseline covariate."}
+```{r quick-start-X-show, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from `BSET`, adjusted for a baseline covariate. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
 readRDS("BSET_X_results.rds")$theta_posterior_plot
 ```
 
-The function returns the posterior distribution of \(\theta\), the discrepancy between the treatment effects on \(Y\) and \(S\). The blue vertical line marks the upper bound of the 95% credible interval, the green vertical line marks the validation threshold \(\eta\), the orange vertical line marks the true value of \(\delta\) (the frequentist estimand of @parast2024rank), and the red vertical line marks the true value of \(\theta\). If the blue line falls below the green line, there is evidence that the surrogate is valid.
+The function returns the posterior distribution of \(\theta\), the discrepancy between the treatment effects on \(Y\) and \(S\). Dashed lines in blue shades mark estimated Bayesian quantities: the upper bound of the 95% credible interval and the validation threshold \(\eta\). Dashed lines in orange shades mark estimated frequentist quantities: the upper bound of the 95% confidence interval and the threshold \(\varepsilon\) from @parast2024rank. Solid lines mark the true values: purple for \(\theta\) and pink for \(\delta\). If the Bayesian credible interval upper bound falls below the threshold \(\eta\), there is evidence that the surrogate is valid.
 
 The rest of this tutorial explains how the data are generated, how the estimands \(\delta\) and \(\theta\) are computed, and how the validation threshold \(\eta\) is calibrated.
 
@@ -510,7 +510,7 @@ BSET_no_X_results <- readRDS("BSET_no_X_results.rds")
 
 The posterior distribution of \(\theta\) from the BSET procedure without adjusting for covariates is shown in the figure below.
 
-```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
+```{r BSET-no-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure without adjusting for covariates. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
 # Plot the posterior distribution of theta
 BSET_no_X_results$theta_posterior_plot
 ```
@@ -583,7 +583,7 @@ BSET_X_results <- readRDS("BSET_X_results.rds")
 
 The posterior distribution of \(\theta\) from the BSET procedure adjusting for covariates is shown in the figure below.
 
-```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. The <span style='color:blue'>blue</span> vertical line indicates the upper bound of the 95% credible interval, the <span style='color:green'>green</span> vertical line indicates the value of the validation threshold $\\eta$, the <span style='color:orange'>orange</span> vertical line indicates the true value of $\\delta$, and the <span style='color:red'>red</span> vertical line indicates the true value of $\\theta$."}
+```{r BSET-X-plot, echo=FALSE, fig.width=8, fig.height=4.5, fig.align='center', fig.cap="Posterior distribution of $\\theta$ from the BSET procedure adjusting for covariates. Dashed lines show estimated quantities: the Bayesian 95\\% credible interval upper bound and threshold $\\eta$ (<span style='color:#0072B2'>blue shades</span>), and the frequentist 95\\% confidence interval upper bound and threshold $\\varepsilon$ (<span style='color:#D55E00'>orange shades</span>). Solid lines show the true values of $\\theta$ (<span style='color:#551A8B'>purple</span>) and $\\delta$ (<span style='color:#CC79A7'>pink</span>)."}
 # Plot the posterior distribution of theta
 BSET_X_results$theta_posterior_plot
 ```

@@ -98,13 +98,13 @@ need to install the following packages:</p>
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>This section provides a minimal working example for readers who want
-to apply BSET to their data right away. The two main functions are
-<code>BSET_no_X</code>, which runs the test without adjusting for
-covariates, and <code>BSET_X</code>, which adjusts for a baseline
-covariate. Both require a data frame with columns for the primary
-outcome <code>Y</code>, the surrogate <code>S</code>, and the treatment
-assignment <code>Z</code>. <code>BSET_X</code> additionally requires a
-covariate column <code>X</code>.</p>
+to apply BSET to their data right away. The main function is
+<code>BSET</code>, which runs the test with or without adjusting for
+covariates depending on whether the <code>X</code> argument is provided.
+It requires a data frame with columns for the primary outcome
+<code>Y</code>, the surrogate <code>S</code>, and the treatment
+assignment <code>Z</code>. When <code>X</code> is provided, the model
+additionally adjusts for those baseline covariates.</p>
 <p>To illustrate the usage of the package, we simulate a small dataset
 with a binary covariate:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -135,7 +135,7 @@ with a binary covariate:</p>
 <p>To run BSET <strong>without</strong> adjusting for covariates, pass
 the data frame and the names of the relevant columns:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result_no_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_no_X.html">BSET_no_X</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">result_no_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET.html">BSET</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">df</span>,</span>
 <span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
@@ -145,16 +145,16 @@ the data frame and the names of the relevant columns:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_no_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET_no_X`." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET` without covariates." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from <code>BSET_no_X</code>.
+from <code>BSET</code> without covariates.
 </p>
 </div>
 <p>To run BSET <strong>with</strong> a baseline covariate, add the
 covariate column name via the <code>X</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET.html">BSET</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">df</span>,</span>
 <span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
@@ -165,13 +165,13 @@ covariate column name via the <code>X</code> argument:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET_X`, adjusted for a baseline covariate." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET`, adjusted for a baseline covariate." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from <code>BSET_X</code>, adjusted for a baseline covariate.
+from <code>BSET</code>, adjusted for a baseline covariate.
 </p>
 </div>
-<p>Both functions return the posterior distribution of
+<p>The function returns the posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
 the discrepancy between the treatment effects on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
@@ -576,10 +576,11 @@ included).</p>
 <div class="section level2">
 <h2 id="running-the-bset-procedure">Running the BSET procedure<a class="anchor" aria-label="anchor" href="#running-the-bset-procedure"></a>
 </h2>
-<p>The package includes two functions to run the BSET procedure:
-<code>BSET_no_X</code> and <code>BSET_X</code>. The first one runs the
-BSET procedure without adjusting for covariates, while the second one
-runs the BSET procedure adjusting for covariates.</p>
+<p>The package includes the function <code>BSET</code> to run the BSET
+procedure. When the <code>X</code> argument is omitted (or set to
+<code>NULL</code>), the procedure runs without adjusting for covariates;
+when <code>X</code> is provided, it adjusts for the specified baseline
+covariates.</p>
 <p>The result of the procedure is summarized by the posterior
 distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
@@ -595,16 +596,16 @@ the procedure does not find sufficient evidence of surrogacy.</p>
 </h3>
 <p>As an example, we can run the BSET procedure without adjusting for
 covariates on the data generated from the second setting of <span class="citation">Parast et al. (2024)</span>. First of all, we need to
-prepare the data in the format required by the function
-<code>BSET_no_X</code>: a data frame with three columns, where the first
-column contains the observed values of the primary outcome
+prepare the data in the format required by <code>BSET</code>: a data
+frame with three columns, where the first column contains the observed
+values of the primary outcome
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
 the second column contains the observed values of the surrogate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
 and the third column contains the treatment assignment
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Prepare the data for BSET_no_X</span></span>
+<code class="sourceCode R"><span><span class="co"># Prepare the data for BSET (no covariates)</span></span>
 <span><span class="va">BSET_no_X_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Y <span class="op">=</span> <span class="va">data_no_X</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"Y"</span><span class="op">]</span>,</span>
 <span>  S <span class="op">=</span> <span class="va">data_no_X</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"S"</span><span class="op">]</span>,</span>
@@ -655,9 +656,9 @@ parameter for the correlation matrix of the potential outcomes.</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-are known, we can also specify them as input to the function
-<code>BSET_no_X</code> to check whether they are included in the
-posterior credible intervals. In this case, we can set
+are known, we can also specify them as input to <code>BSET</code> to
+check whether they are included in the posterior credible intervals. In
+this case, we can set
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
@@ -684,7 +685,7 @@ the MCMC sampling process in parallel or sequentially.</li>
 covariates as follows:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the BSET procedure without adjusting for covariates</span></span>
-<span><span class="va">BSET_no_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_no_X.html">BSET_no_X</a></span><span class="op">(</span></span>
+<span><span class="va">BSET_no_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET.html">BSET</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">BSET_no_X_data</span>,</span>
 <span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>
@@ -756,9 +757,9 @@ is valid in this setting.</p>
 </h3>
 <p>As an example, we can run the BSET procedure adjusting for covariates
 on the data generated from the first setting of <span class="citation">Carlotti and Parast (2026)</span>. First of all, we
-need to prepare the data in the format required by the function
-<code>BSET_X</code>: a data frame with four columns, where the first
-column contains the observed values of the primary outcome
+need to prepare the data in the format required by <code>BSET</code>: a
+data frame with four columns, where the first column contains the
+observed values of the primary outcome
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
 the second column contains the observed values of the surrogate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
@@ -772,7 +773,7 @@ the number of covariates, which in this case is equal to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
 (including the intercept).</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Prepare the data for BSET_X</span></span>
+<code class="sourceCode R"><span><span class="co"># Prepare the data for BSET (with covariates)</span></span>
 <span><span class="va">BSET_X_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Y <span class="op">=</span> <span class="va">data_X</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"Y"</span><span class="op">]</span>,</span>
 <span>  S <span class="op">=</span> <span class="va">data_X</span><span class="op">$</span><span class="va">P_observed</span><span class="op">[</span>, <span class="st">"S"</span><span class="op">]</span>,</span>
@@ -805,8 +806,8 @@ of the potential outcomes on the covariates.</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-as input to the function <code>BSET_X</code> to check if they are
-included in the posterior credible intervals. In this case, we can set
+as input to <code>BSET</code> to check if they are included in the
+posterior credible intervals. In this case, we can set
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
@@ -820,7 +821,7 @@ for setting 1 of <span class="citation">Carlotti and Parast
 follows:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the BSET procedure adjusting for covariates</span></span>
-<span><span class="va">BSET_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET_X.html">BSET_X</a></span><span class="op">(</span></span>
+<span><span class="va">BSET_X_results</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="fu">::</span><span class="fu"><a href="../reference/BSET.html">BSET</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">BSET_X_data</span>,</span>
 <span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  S <span class="op">=</span> <span class="st">"S"</span>,</span>

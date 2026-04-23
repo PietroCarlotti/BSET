@@ -16,7 +16,7 @@
 #' @details
 #' The function runs a total of 500 simulations for each of the four settings,
 #' generating data using \code{DGP_no_X} and processes the results using
-#' \code{BSET_no_X}. The simulation utilizes MCMC sampling via \code{rstan} for
+#' \code{BSET}. The simulation utilizes MCMC sampling via \code{rstan} for
 #' the Bayesian estimation components. Note that it relies on an external object 
 #' \code{estimands_Parast_et_al_2024} for true parameter values, which are
 #' computed using the function \code{compute_estimands_Parast_et_al_2024}.
@@ -286,7 +286,7 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
       Z = data$Z
     )
     
-    BSET_no_X_results <- BSET_no_X(
+    BSET_results <- BSET(
       data = observed_data,
       Y = "Y",
       S = "S",
@@ -312,8 +312,8 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
       mute = TRUE,
       parallel = FALSE
     )
-    
-    return(BSET_no_X_results)
+
+    return(BSET_results)
   }
   
   # Run all simulations

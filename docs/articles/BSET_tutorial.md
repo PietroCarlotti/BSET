@@ -41,12 +41,12 @@ library(dplyr)
 ## Quick Start
 
 This section provides a minimal working example for readers who want to
-apply BSET to their data right away. The two main functions are
-`BSET_no_X`, which runs the test without adjusting for covariates, and
-`BSET_X`, which adjusts for a baseline covariate. Both require a data
-frame with columns for the primary outcome `Y`, the surrogate `S`, and
-the treatment assignment `Z`. `BSET_X` additionally requires a covariate
-column `X`.
+apply BSET to their data right away. The main function is `BSET`, which
+runs the test with or without adjusting for covariates depending on
+whether the `X` argument is provided. It requires a data frame with
+columns for the primary outcome `Y`, the surrogate `S`, and the
+treatment assignment `Z`. When `X` is provided, the model additionally
+adjusts for those baseline covariates.
 
 To illustrate the usage of the package, we simulate a small dataset with
 a binary covariate:
@@ -84,7 +84,7 @@ and the names of the relevant columns:
 
 ``` r
 
-result_no_X <- BSET::BSET_no_X(
+result_no_X <- BSET::BSET(
   data = df,
   Y = "Y",
   S = "S",
@@ -95,17 +95,17 @@ result_no_X <- BSET::BSET_no_X(
 result_no_X$theta_posterior_plot
 ```
 
-![Posterior distribution of \$\theta\$ from
-\`BSET_no_X\`.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
+![Posterior distribution of \$\theta\$ from \`BSET\` without
+covariates.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
 
-Posterior distribution of $`\theta`$ from `BSET_no_X`.
+Posterior distribution of $`\theta`$ from `BSET` without covariates.
 
 To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
 
 ``` r
 
-result_X <- BSET::BSET_X(
+result_X <- BSET::BSET(
   data = df,
   Y = "Y",
   S = "S",
@@ -117,14 +117,14 @@ result_X <- BSET::BSET_X(
 result_X$theta_posterior_plot
 ```
 
-![Posterior distribution of \$\theta\$ from \`BSET_X\`, adjusted for a
+![Posterior distribution of \$\theta\$ from \`BSET\`, adjusted for a
 baseline
 covariate.](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
 
-Posterior distribution of $`\theta`$ from `BSET_X`, adjusted for a
+Posterior distribution of $`\theta`$ from `BSET`, adjusted for a
 baseline covariate.
 
-Both functions return the posterior distribution of $`\theta`$, the
+The function returns the posterior distribution of $`\theta`$, the
 discrepancy between the treatment effects on $`Y`$ and $`S`$. The blue
 vertical line marks the upper bound of the 95% credible interval, the
 green vertical line marks the validation threshold $`\eta`$, the orange
@@ -463,10 +463,10 @@ In this case, we have that
 
 ## Running the BSET procedure
 
-The package includes two functions to run the BSET procedure:
-`BSET_no_X` and `BSET_X`. The first one runs the BSET procedure without
-adjusting for covariates, while the second one runs the BSET procedure
-adjusting for covariates.
+The package includes the function `BSET` to run the BSET procedure. When
+the `X` argument is omitted (or set to `NULL`), the procedure runs
+without adjusting for covariates; when `X` is provided, it adjusts for
+the specified baseline covariates.
 
 The result of the procedure is summarized by the posterior distribution
 of $`\theta`$ and its 95% credible interval. In general, if the upper
@@ -480,15 +480,14 @@ procedure does not find sufficient evidence of surrogacy.
 As an example, we can run the BSET procedure without adjusting for
 covariates on the data generated from the second setting of Parast et
 al. (2024). First of all, we need to prepare the data in the format
-required by the function `BSET_no_X`: a data frame with three columns,
-where the first column contains the observed values of the primary
-outcome $`Y`$, the second column contains the observed values of the
-surrogate $`S`$, and the third column contains the treatment assignment
-$`Z`$.
+required by `BSET`: a data frame with three columns, where the first
+column contains the observed values of the primary outcome $`Y`$, the
+second column contains the observed values of the surrogate $`S`$, and
+the third column contains the treatment assignment $`Z`$.
 
 ``` r
 
-# Prepare the data for BSET_no_X
+# Prepare the data for BSET (no covariates)
 BSET_no_X_data <- data.frame(
   Y = data_no_X$P_observed[, "Y"],
   S = data_no_X$P_observed[, "S"],
@@ -535,10 +534,10 @@ tau <- 1
 ```
 
 If the true values of $`\delta`$ and $`\theta`$ are known, we can also
-specify them as input to the function `BSET_no_X` to check whether they
-are included in the posterior credible intervals. In this case, we can
-set $`\delta`$ and $`\theta`$ equal to the Monte Carlo estimates for
-setting 2 of Parast et al. (2024).
+specify them as input to `BSET` to check whether they are included in
+the posterior credible intervals. In this case, we can set $`\delta`$
+and $`\theta`$ equal to the Monte Carlo estimates for setting 2 of
+Parast et al. (2024).
 
 We can also specify some additional parameters for the BSET procedure,
 such as:
@@ -558,7 +557,7 @@ as follows:
 ``` r
 
 # Run the BSET procedure without adjusting for covariates
-BSET_no_X_results <- BSET::BSET_no_X(
+BSET_no_X_results <- BSET::BSET(
   data = BSET_no_X_data,
   Y = "Y",
   S = "S",
@@ -621,18 +620,18 @@ is evidence that the surrogate is valid in this setting.
 
 As an example, we can run the BSET procedure adjusting for covariates on
 the data generated from the first setting of Carlotti and Parast (2026).
-First of all, we need to prepare the data in the format required by the
-function `BSET_X`: a data frame with four columns, where the first
-column contains the observed values of the primary outcome $`Y`$, the
-second column contains the observed values of the surrogate $`S`$, the
-third column contains the treatment assignment $`Z`$, and the fourth
-column contains the values of the binary covariate $`X`$. We call $`d`$
-the number of covariates, which in this case is equal to $`2`$
-(including the intercept).
+First of all, we need to prepare the data in the format required by
+`BSET`: a data frame with four columns, where the first column contains
+the observed values of the primary outcome $`Y`$, the second column
+contains the observed values of the surrogate $`S`$, the third column
+contains the treatment assignment $`Z`$, and the fourth column contains
+the values of the binary covariate $`X`$. We call $`d`$ the number of
+covariates, which in this case is equal to $`2`$ (including the
+intercept).
 
 ``` r
 
-# Prepare the data for BSET_X
+# Prepare the data for BSET (with covariates)
 BSET_X_data <- data.frame(
   Y = data_X$P_observed[, "Y"],
   S = data_X$P_observed[, "S"],
@@ -662,10 +661,10 @@ Sigma_beta <- 10*diag(d)
 ```
 
 We can also specify the true values of $`\delta`$ and $`\theta`$ as
-input to the function `BSET_X` to check if they are included in the
-posterior credible intervals. In this case, we can set $`\delta`$ and
-$`\theta`$ equal to the Monte Carlo estimates of $`\delta`$ and
-$`\theta`$ for setting 1 of Carlotti and Parast (2026).
+input to `BSET` to check if they are included in the posterior credible
+intervals. In this case, we can set $`\delta`$ and $`\theta`$ equal to
+the Monte Carlo estimates of $`\delta`$ and $`\theta`$ for setting 1 of
+Carlotti and Parast (2026).
 
 Finally, we can run the BSET procedure adjusting for covariates as
 follows:
@@ -673,7 +672,7 @@ follows:
 ``` r
 
 # Run the BSET procedure adjusting for covariates
-BSET_X_results <- BSET::BSET_X(
+BSET_X_results <- BSET::BSET(
   data = BSET_X_data,
   Y = "Y",
   S = "S",

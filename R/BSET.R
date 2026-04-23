@@ -330,51 +330,94 @@ BSET <- function(
 
   # Posterior plot for theta
   if (plot) {
-    theta_posterior_plot <- ggplot2::ggplot(data.frame(theta = Bayesian_test_results$theta_MCMC), mapping = ggplot2::aes(x = .data$theta)) +
+    all_colors <- c(
+      "Bayesian CI (upper bound)"      = "#0072B2",
+      "Bayesian threshold (η)"    = "#56B4E9",
+      "True θ"                    = "#551A8B",
+      "Frequentist CI (upper bound)"   = "#D55E00",
+      "Frequentist threshold (ε)" = "#E69F00",
+      "True δ"                    = "#CC79A7"
+    )
+
+    all_linetypes <- c(
+      "Bayesian CI (upper bound)"      = "33",
+      "Bayesian threshold (η)"    = "33",
+      "True θ"                    = "solid",
+      "Frequentist CI (upper bound)"   = "33",
+      "Frequentist threshold (ε)" = "33",
+      "True δ"                    = "solid"
+    )
+
+    lvls <- character(0)
+    if (!is.null(theta_true)) lvls <- c(lvls, "True θ")
+    lvls <- c(lvls, "Bayesian CI (upper bound)", "Bayesian threshold (η)")
+    if (!is.null(delta_true)) lvls <- c(lvls, "True δ")
+    lvls <- c(lvls, "Frequentist CI (upper bound)", "Frequentist threshold (ε)")
+
+    dashed_df <- data.frame(
+      xintercept = c(
+        Bayesian_test_results$CI[2],
+        Bayesian_test_results$epsilon,
+        frequentist_test_results$CI[2],
+        frequentist_test_results$epsilon
+      ),
+      label = factor(
+        c("Bayesian CI (upper bound)", "Bayesian threshold (η)",
+          "Frequentist CI (upper bound)", "Frequentist threshold (ε)"),
+        levels = lvls
+      )
+    )
+
+    theta_posterior_plot <- ggplot2::ggplot(
+      data.frame(theta = Bayesian_test_results$theta_MCMC),
+      mapping = ggplot2::aes(x = .data$theta)
+    ) +
       ggplot2::geom_histogram(
-        binwidth = 0.02,
-        fill = "lightblue",
-        color = "black",
-        alpha = 0.8
+        binwidth = 0.02, fill = "lightgray", color = "black", alpha = 0.8
       ) +
       ggplot2::geom_vline(
-        xintercept = Bayesian_test_results$CI[2],
-        color = "blue",
-        linetype = "solid",
-        linewidth = 1
+        data = dashed_df,
+        ggplot2::aes(xintercept = xintercept, color = label, linetype = label),
+        linewidth = 1, key_glyph = "path"
+      )
+
+    if (!is.null(theta_true) || !is.null(delta_true)) {
+      solid_xint   <- c()
+      solid_labels <- c()
+      if (!is.null(theta_true)) {
+        solid_xint   <- c(solid_xint, theta_true)
+        solid_labels <- c(solid_labels, "True θ")
+      }
+      if (!is.null(delta_true)) {
+        solid_xint   <- c(solid_xint, delta_true)
+        solid_labels <- c(solid_labels, "True δ")
+      }
+      solid_df <- data.frame(
+        xintercept = solid_xint,
+        label      = factor(solid_labels, levels = lvls)
+      )
+      theta_posterior_plot <- theta_posterior_plot +
+        ggplot2::geom_vline(
+          data = solid_df,
+          ggplot2::aes(xintercept = xintercept, color = label, linetype = label),
+          linewidth = 1, key_glyph = "path"
+        )
+    }
+
+    theta_posterior_plot <- theta_posterior_plot +
+      ggplot2::scale_color_manual(
+        values = all_colors[lvls], breaks = lvls, drop = TRUE, name = NULL
       ) +
-      ggplot2::geom_vline(
-        xintercept = Bayesian_test_results$epsilon,
-        color = "darkgreen",
-        linetype = "solid",
-        linewidth = 1
+      ggplot2::scale_linetype_manual(
+        values = all_linetypes[lvls], breaks = lvls, drop = TRUE, name = NULL
       ) +
       ggplot2::coord_cartesian(xlim = c(-1, 1)) +
       ggplot2::theme_minimal() +
-      ggplot2::labs(
-        x = expression(theta),
-        y = "Frequency"
-      )
-
-    if (!is.null(delta_true)) {
-      theta_posterior_plot <- theta_posterior_plot +
-        ggplot2::geom_vline(
-          xintercept = delta_true,
-          color = "orange",
-          linetype = "solid",
-          linewidth = 1
-        )
-    }
-
-    if (!is.null(theta_true)) {
-      theta_posterior_plot <- theta_posterior_plot +
-        ggplot2::geom_vline(
-          xintercept = theta_true,
-          color = "red",
-          linetype = "solid",
-          linewidth = 1
-        )
-    }
+      ggplot2::theme(
+        legend.position  = "right",
+        legend.key.width = grid::unit(0.8, "cm")
+      ) +
+      ggplot2::labs(x = expression(theta), y = "Frequency")
   }
 
   # Output
