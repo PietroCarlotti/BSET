@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 11:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  23 APR 2026 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -669,16 +669,7 @@ Non-PDF special ignored!
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 191.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [6] [7] [8] [9] [10] [11] [12] [13] [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] [17] [18] [19]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\theta' on input line 487.
-
-[20] [21]
+) [6] [7] [8] [9] [10] [11] [12] [13] [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] [17] [18] [19] [20] [21]
 Overfull \hbox (6.27487pt too wide) in paragraph at lines 530--532
 \OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
  []
@@ -733,42 +724,52 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
  [42
 
 ]
-<dcct_data.pdf, id=535, 505.89pt x 361.35pt>
-File: dcct_data.pdf Graphic file (type pdf)
-<use dcct_data.pdf>
-Package pdftex.def Info: dcct_data.pdf  used on input line 793.
-(pdftex.def)             Requested size: 375.80544pt x 268.4369pt.
+<DCCT_Y.pdf, id=535, 578.16pt x 361.35pt>
+File: DCCT_Y.pdf Graphic file (type pdf)
+<use DCCT_Y.pdf>
+Package pdftex.def Info: DCCT_Y.pdf  used on input line 795.
+(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
+<DCCT_S.pdf, id=536, 578.16pt x 361.35pt>
+File: DCCT_S.pdf Graphic file (type pdf)
+<use DCCT_S.pdf>
+Package pdftex.def Info: DCCT_S.pdf  used on input line 801.
+(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
  [43
 
- <./dcct_data.pdf>]
-<dcct_posteriors.pdf, id=551, 505.89pt x 361.35pt>
-File: dcct_posteriors.pdf Graphic file (type pdf)
-<use dcct_posteriors.pdf>
-Package pdftex.def Info: dcct_posteriors.pdf  used on input line 801.
-(pdftex.def)             Requested size: 375.80544pt x 268.4369pt.
+ <./DCCT_Y.pdf> <./DCCT_S.pdf>]
+<DCCT_no_X_posterior.pdf, id=558, 578.16pt x 361.35pt>
+File: DCCT_no_X_posterior.pdf Graphic file (type pdf)
+<use DCCT_no_X_posterior.pdf>
+Package pdftex.def Info: DCCT_no_X_posterior.pdf  used on input line 814.
+(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
+<DCCT_X_posterior.pdf, id=559, 578.16pt x 361.35pt>
+File: DCCT_X_posterior.pdf Graphic file (type pdf)
+<use DCCT_X_posterior.pdf>
+Package pdftex.def Info: DCCT_X_posterior.pdf  used on input line 820.
+(pdftex.def)             Requested size: 225.4804pt x 140.92041pt.
  [44
 
- <./dcct_posteriors.pdf>] (./Biometrics_paper.aux)
+ <./DCCT_no_X_posterior.pdf> <./DCCT_X_posterior.pdf>] (./Biometrics_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `Biometrics_paper.out' has not changed.
-(rerunfilecheck)             Checksum: AE6B39EE0B299C2563E38964F401A496;3055.
+(rerunfilecheck)             Checksum: 2D42DEC64F5D1FDE959AEF2DE0FF75D1;3080.
  ) 
 Here is how much of TeX's memory you used:
- 15437 strings out of 474116
- 248363 string characters out of 5743682
+ 15460 strings out of 474116
+ 248929 string characters out of 5743682
  1946187 words of memory out of 5000000
- 37361 multiletter control sequences out of 15000+600000
+ 37384 multiletter control sequences out of 15000+600000
  571792 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,19n,79p,1881b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Biometrics_paper.pdf (44 pages, 520599 bytes).
+Output written on Biometrics_paper.pdf (44 pages, 496265 bytes).
 PDF statistics:
- 694 PDF objects out of 1000 (max. 8388607)
- 595 compressed objects within 6 object streams
+ 711 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
  172 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
