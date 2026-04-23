@@ -254,9 +254,6 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
     simulation = 1:n_simulations
   )
   
-  # Ensure compiled models are saved and reused
-  rstan_options(auto_write = TRUE)
-  
   # Function to run a single simulation for Parast et al. (2024) settings
   Parast_et_al_2024_single_simulation <- function(simulation_id, simulation_seed) {
     # Set the seed for reproducibility
