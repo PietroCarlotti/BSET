@@ -52,7 +52,7 @@
                         <h4 data-toc-skip class="author">Pietro
 Carlotti</h4>
             
-            <h4 data-toc-skip class="date">2026-04-22</h4>
+            <h4 data-toc-skip class="date">2026-04-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/PietroCarlotti/BSET/blob/HEAD/vignettes/BSET_tutorial.Rmd" class="external-link"><code>vignettes/BSET_tutorial.Rmd</code></a></small>
       <div class="d-none name"><code>BSET_tutorial.Rmd</code></div>
@@ -145,10 +145,21 @@ the data frame and the names of the relevant columns:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_no_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET` without covariates." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET` without covariates. Dashed lines show estimated quantities: the Bayesian 95\% credible interval upper bound and threshold $\eta$ (&lt;span style='color:#0072B2'&gt;blue shades&lt;/span&gt;), and the frequentist 95\% confidence interval upper bound and threshold $\varepsilon$ (&lt;span style='color:#D55E00'&gt;orange shades&lt;/span&gt;). Solid lines show the true values of $\theta$ (&lt;span style='color:#551A8B'&gt;purple&lt;/span&gt;) and $\delta$ (&lt;span style='color:#CC79A7'&gt;pink&lt;/span&gt;)." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from <code>BSET</code> without covariates.
+from <code>BSET</code> without covariates. Dashed lines show estimated
+quantities: the Bayesian 95% credible interval upper bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+(<span style="color:#0072B2">blue shades</span>), and the frequentist
+95% confidence interval upper bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+(<span style="color:#D55E00">orange shades</span>). Solid lines show the
+true values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+(<span style="color:#551A8B">purple</span>) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(<span style="color:#CC79A7">pink</span>).
 </p>
 </div>
 <p>To run BSET <strong>with</strong> a baseline covariate, add the
@@ -165,10 +176,22 @@ covariate column name via the <code>X</code> argument:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">result_X</span><span class="op">$</span><span class="va">theta_posterior_plot</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET`, adjusted for a baseline covariate." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/quick-start-X-show-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from `BSET`, adjusted for a baseline covariate. Dashed lines show estimated quantities: the Bayesian 95\% credible interval upper bound and threshold $\eta$ (&lt;span style='color:#0072B2'&gt;blue shades&lt;/span&gt;), and the frequentist 95\% confidence interval upper bound and threshold $\varepsilon$ (&lt;span style='color:#D55E00'&gt;orange shades&lt;/span&gt;). Solid lines show the true values of $\theta$ (&lt;span style='color:#551A8B'&gt;purple&lt;/span&gt;) and $\delta$ (&lt;span style='color:#CC79A7'&gt;pink&lt;/span&gt;)." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from <code>BSET</code>, adjusted for a baseline covariate.
+from <code>BSET</code>, adjusted for a baseline covariate. Dashed lines
+show estimated quantities: the Bayesian 95% credible interval upper
+bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+(<span style="color:#0072B2">blue shades</span>), and the frequentist
+95% confidence interval upper bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+(<span style="color:#D55E00">orange shades</span>). Solid lines show the
+true values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+(<span style="color:#551A8B">purple</span>) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(<span style="color:#CC79A7">pink</span>).
 </p>
 </div>
 <p>The function returns the posterior distribution of
@@ -177,16 +200,20 @@ the discrepancy between the treatment effects on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
-The blue vertical line marks the upper bound of the 95% credible
-interval, the green vertical line marks the validation threshold
+Dashed lines in blue shades mark estimated Bayesian quantities: the
+upper bound of the 95% credible interval and the validation threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>.
+Dashed lines in orange shades mark estimated frequentist quantities: the
+upper bound of the 95% confidence interval and the threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+from <span class="citation">Parast et al. (2024)</span>. Solid lines
+mark the true values: purple for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+and pink for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>.
+If the Bayesian credible interval upper bound falls below the threshold
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the orange vertical line marks the true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
-(the frequentist estimand of <span class="citation">Parast et al.
-(2024)</span>), and the red vertical line marks the true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
-If the blue line falls below the green line, there is evidence that the
-surrogate is valid.</p>
+there is evidence that the surrogate is valid.</p>
 <p>The rest of this tutorial explains how the data are generated, how
 the estimands
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
@@ -716,19 +743,22 @@ covariates as follows:</p>
 from the BSET procedure without adjusting for covariates is shown in the
 figure below.</p>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates the value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure without adjusting for covariates. Dashed lines show estimated quantities: the Bayesian 95\% credible interval upper bound and threshold $\eta$ (&lt;span style='color:#0072B2'&gt;blue shades&lt;/span&gt;), and the frequentist 95\% confidence interval upper bound and threshold $\varepsilon$ (&lt;span style='color:#D55E00'&gt;orange shades&lt;/span&gt;). Solid lines show the true values of $\theta$ (&lt;span style='color:#551A8B'&gt;purple&lt;/span&gt;) and $\delta$ (&lt;span style='color:#CC79A7'&gt;pink&lt;/span&gt;)." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure without adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
-of the 95% credible interval, the <span style="color:green">green</span>
-vertical line indicates the value of the validation threshold
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the <span style="color:orange">orange</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-and the <span style="color:red">red</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
+from the BSET procedure without adjusting for covariates. Dashed lines
+show estimated quantities: the Bayesian 95% credible interval upper
+bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+(<span style="color:#0072B2">blue shades</span>), and the frequentist
+95% confidence interval upper bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+(<span style="color:#D55E00">orange shades</span>). Solid lines show the
+true values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+(<span style="color:#551A8B">purple</span>) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(<span style="color:#CC79A7">pink</span>).
 </p>
 </div>
 <p>Two features of this result are worth highlighting. First, the
@@ -853,19 +883,22 @@ follows:</p>
 from the BSET procedure adjusting for covariates is shown in the figure
 below.</p>
 <div class="figure" style="text-align: center">
-<img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure adjusting for covariates. The &lt;span style='color:blue'&gt;blue&lt;/span&gt; vertical line indicates the upper bound of the 95% credible interval, the &lt;span style='color:green'&gt;green&lt;/span&gt; vertical line indicates the value of the validation threshold $\eta$, the &lt;span style='color:orange'&gt;orange&lt;/span&gt; vertical line indicates the true value of $\delta$, and the &lt;span style='color:red'&gt;red&lt;/span&gt; vertical line indicates the true value of $\theta$." width="768"><p class="caption">
+<img src="BSET_tutorial_files/figure-html/BSET-X-plot-1.png" class="r-plt" alt="Posterior distribution of $\theta$ from the BSET procedure adjusting for covariates. Dashed lines show estimated quantities: the Bayesian 95\% credible interval upper bound and threshold $\eta$ (&lt;span style='color:#0072B2'&gt;blue shades&lt;/span&gt;), and the frequentist 95\% confidence interval upper bound and threshold $\varepsilon$ (&lt;span style='color:#D55E00'&gt;orange shades&lt;/span&gt;). Solid lines show the true values of $\theta$ (&lt;span style='color:#551A8B'&gt;purple&lt;/span&gt;) and $\delta$ (&lt;span style='color:#CC79A7'&gt;pink&lt;/span&gt;)." width="768"><p class="caption">
 Posterior distribution of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
-from the BSET procedure adjusting for covariates. The <span style="color:blue">blue</span> vertical line indicates the upper bound
-of the 95% credible interval, the <span style="color:green">green</span>
-vertical line indicates the value of the validation threshold
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
-the <span style="color:orange">orange</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-and the <span style="color:red">red</span> vertical line indicates the
-true value of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>.
+from the BSET procedure adjusting for covariates. Dashed lines show
+estimated quantities: the Bayesian 95% credible interval upper bound and
+threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>
+(<span style="color:#0072B2">blue shades</span>), and the frequentist
+95% confidence interval upper bound and threshold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+(<span style="color:#D55E00">orange shades</span>). Solid lines show the
+true values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+(<span style="color:#551A8B">purple</span>) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(<span style="color:#CC79A7">pink</span>).
 </p>
 </div>
 <p>Unlike the previous setting, covariates now play a role in the data

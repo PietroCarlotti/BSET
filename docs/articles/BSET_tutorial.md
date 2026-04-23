@@ -95,10 +95,22 @@ result_no_X <- BSET::BSET(
 result_no_X$theta_posterior_plot
 ```
 
-![Posterior distribution of \$\theta\$ from \`BSET\` without
-covariates.](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
+![Posterior distribution of \$\theta\$ from \`BSET\` without covariates.
+Dashed lines show estimated quantities: the Bayesian 95\\ credible
+interval upper bound and threshold \$\eta\$ (\<span
+style='color:#0072B2'\>blue shades\</span\>), and the frequentist 95\\
+confidence interval upper bound and threshold \$\varepsilon\$ (\<span
+style='color:#D55E00'\>orange shades\</span\>). Solid lines show the
+true values of \$\theta\$ (\<span
+style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
+style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/quick-start-no-X-show-1.png)
 
 Posterior distribution of $`\theta`$ from `BSET` without covariates.
+Dashed lines show estimated quantities: the Bayesian 95% credible
+interval upper bound and threshold $`\eta`$ (blue shades), and the
+frequentist 95% confidence interval upper bound and threshold
+$`\varepsilon`$ (orange shades). Solid lines show the true values of
+$`\theta`$ (purple) and $`\delta`$ (pink).
 
 To run BSET **with** a baseline covariate, add the covariate column name
 via the `X` argument:
@@ -118,20 +130,32 @@ result_X$theta_posterior_plot
 ```
 
 ![Posterior distribution of \$\theta\$ from \`BSET\`, adjusted for a
-baseline
-covariate.](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
+baseline covariate. Dashed lines show estimated quantities: the Bayesian
+95\\ credible interval upper bound and threshold \$\eta\$ (\<span
+style='color:#0072B2'\>blue shades\</span\>), and the frequentist 95\\
+confidence interval upper bound and threshold \$\varepsilon\$ (\<span
+style='color:#D55E00'\>orange shades\</span\>). Solid lines show the
+true values of \$\theta\$ (\<span
+style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
+style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/quick-start-X-show-1.png)
 
 Posterior distribution of $`\theta`$ from `BSET`, adjusted for a
-baseline covariate.
+baseline covariate. Dashed lines show estimated quantities: the Bayesian
+95% credible interval upper bound and threshold $`\eta`$ (blue shades),
+and the frequentist 95% confidence interval upper bound and threshold
+$`\varepsilon`$ (orange shades). Solid lines show the true values of
+$`\theta`$ (purple) and $`\delta`$ (pink).
 
 The function returns the posterior distribution of $`\theta`$, the
-discrepancy between the treatment effects on $`Y`$ and $`S`$. The blue
-vertical line marks the upper bound of the 95% credible interval, the
-green vertical line marks the validation threshold $`\eta`$, the orange
-vertical line marks the true value of $`\delta`$ (the frequentist
-estimand of Parast et al. (2024)), and the red vertical line marks the
-true value of $`\theta`$. If the blue line falls below the green line,
-there is evidence that the surrogate is valid.
+discrepancy between the treatment effects on $`Y`$ and $`S`$. Dashed
+lines in blue shades mark estimated Bayesian quantities: the upper bound
+of the 95% credible interval and the validation threshold $`\eta`$.
+Dashed lines in orange shades mark estimated frequentist quantities: the
+upper bound of the 95% confidence interval and the threshold
+$`\varepsilon`$ from Parast et al. (2024). Solid lines mark the true
+values: purple for $`\theta`$ and pink for $`\delta`$. If the Bayesian
+credible interval upper bound falls below the threshold $`\eta`$, there
+is evidence that the surrogate is valid.
 
 The rest of this tutorial explains how the data are generated, how the
 estimands $`\delta`$ and $`\theta`$ are computed, and how the validation
@@ -589,21 +613,21 @@ The posterior distribution of $`\theta`$ from the BSET procedure without
 adjusting for covariates is shown in the figure below.
 
 ![Posterior distribution of \$\theta\$ from the BSET procedure without
-adjusting for covariates. The \<span style='color:blue'\>blue\</span\>
-vertical line indicates the upper bound of the 95% credible interval,
-the \<span style='color:green'\>green\</span\> vertical line indicates
-the value of the validation threshold \$\eta\$, the \<span
-style='color:orange'\>orange\</span\> vertical line indicates the true
-value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
-vertical line indicates the true value of
-\$\theta\$.](BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png)
+adjusting for covariates. Dashed lines show estimated quantities: the
+Bayesian 95\\ credible interval upper bound and threshold \$\eta\$
+(\<span style='color:#0072B2'\>blue shades\</span\>), and the
+frequentist 95\\ confidence interval upper bound and threshold
+\$\varepsilon\$ (\<span style='color:#D55E00'\>orange shades\</span\>).
+Solid lines show the true values of \$\theta\$ (\<span
+style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
+style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/BSET-no-X-plot-1.png)
 
 Posterior distribution of $`\theta`$ from the BSET procedure without
-adjusting for covariates. The blue vertical line indicates the upper
-bound of the 95% credible interval, the green vertical line indicates
-the value of the validation threshold $`\eta`$, the orange vertical line
-indicates the true value of $`\delta`$, and the red vertical line
-indicates the true value of $`\theta`$.
+adjusting for covariates. Dashed lines show estimated quantities: the
+Bayesian 95% credible interval upper bound and threshold $`\eta`$ (blue
+shades), and the frequentist 95% confidence interval upper bound and
+threshold $`\varepsilon`$ (orange shades). Solid lines show the true
+values of $`\theta`$ (purple) and $`\delta`$ (pink).
 
 Two features of this result are worth highlighting. First, the posterior
 distribution of $`\theta`$ is centered around the true value of
@@ -705,21 +729,21 @@ The posterior distribution of $`\theta`$ from the BSET procedure
 adjusting for covariates is shown in the figure below.
 
 ![Posterior distribution of \$\theta\$ from the BSET procedure adjusting
-for covariates. The \<span style='color:blue'\>blue\</span\> vertical
-line indicates the upper bound of the 95% credible interval, the \<span
-style='color:green'\>green\</span\> vertical line indicates the value of
-the validation threshold \$\eta\$, the \<span
-style='color:orange'\>orange\</span\> vertical line indicates the true
-value of \$\delta\$, and the \<span style='color:red'\>red\</span\>
-vertical line indicates the true value of
-\$\theta\$.](BSET_tutorial_files/figure-html/BSET-X-plot-1.png)
+for covariates. Dashed lines show estimated quantities: the Bayesian
+95\\ credible interval upper bound and threshold \$\eta\$ (\<span
+style='color:#0072B2'\>blue shades\</span\>), and the frequentist 95\\
+confidence interval upper bound and threshold \$\varepsilon\$ (\<span
+style='color:#D55E00'\>orange shades\</span\>). Solid lines show the
+true values of \$\theta\$ (\<span
+style='color:#551A8B'\>purple\</span\>) and \$\delta\$ (\<span
+style='color:#CC79A7'\>pink\</span\>).](BSET_tutorial_files/figure-html/BSET-X-plot-1.png)
 
 Posterior distribution of $`\theta`$ from the BSET procedure adjusting
-for covariates. The blue vertical line indicates the upper bound of the
-95% credible interval, the green vertical line indicates the value of
-the validation threshold $`\eta`$, the orange vertical line indicates
-the true value of $`\delta`$, and the red vertical line indicates the
-true value of $`\theta`$.
+for covariates. Dashed lines show estimated quantities: the Bayesian 95%
+credible interval upper bound and threshold $`\eta`$ (blue shades), and
+the frequentist 95% confidence interval upper bound and threshold
+$`\varepsilon`$ (orange shades). Solid lines show the true values of
+$`\theta`$ (purple) and $`\delta`$ (pink).
 
 Unlike the previous setting, covariates now play a role in the data
 generating process, and this is where the two methods diverge. The
