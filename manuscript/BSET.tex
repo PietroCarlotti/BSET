@@ -247,74 +247,52 @@ Hence, \(\theta\) and \(\delta\) do not coincide whenever \(\E_{X_{j} \sim f} \l
 
 Let us start by considering the simplest possible setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To illustrate the discrepancy between \(\theta\) and \(\delta\) (see Appendix~\ref{app:binary_covariate_derivation} for the full derivation), suppose that the treatment effect is homogeneous across all values of \(X\):
 \begin{align}
-    \begin{split}
-        \mu^{0}_{Y_{1}} - \mu^{0}_{Y_{0}} =
-        \mu^{0}_{S_{1}} - \mu^{0}_{S_{0}} =
-        \mu^{1}_{Y_{1}} - \mu^{1}_{Y_{0}} =
-        \mu^{1}_{S_{1}} - \mu^{1}_{S_{0}} = \Delta,
-    \end{split}
+    \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} = \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta, \quad x = 0, 1,
 \end{align}
-for some constant \(\Delta > 0\). One can show (see Appendix~\ref{app:binary_covariate_derivation}) that the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across different \(X\) groups. Specifically,
+for some constant \(\Delta > 0\). One can show (see Appendix~\ref{app:binary_covariate_derivation}) that the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across different \(X\) groups. Specifically, we have that
 \begin{align}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
 \end{align}
 where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). Then, to understand how the discrepancy between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\), it is useful to consider the plot of this quantity in Figure~\ref{fig:discrepancy_heatmap} for a fixed value of \(\Delta\). It appears that \(|\theta - \delta|\) is very large whenever
 \begin{align}
-    |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta
+    |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta.
 \end{align}
-and the supremum of \(|\theta - \delta|\) is \(\frac{1}{4}\), which is achieved if \(d_{Y} = 0\) and \( | d_{S} | \to +\infty\), or vice versa. % A complete analytic proof is possible, but is omitted for brevity.
-
-To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
-\begin{itemize}
-    \item \(U^{00}_{Y} = \Phi (\Delta)\) and \(U^{00}_{S} = \Phi (\Delta)\), therefore \(\delta^{00} = \Phi (\Delta) - \Phi (\Delta) = 0\),
-    \item \(U^{11}_{Y} = \Phi (\Delta)\) and \(U^{11}_{S} = \Phi (\Delta)\), therefore \(\delta^{11} = \Phi (\Delta) - \Phi (\Delta) = 0\),
-    \item \(U^{01}_{Y} = \Phi (\Delta)\) and \(U^{01}_{S} \approx 1\), therefore \(\delta^{01} \approx \Phi (\Delta) - 1 \),
-    \item \(U^{10}_{Y} = \Phi (\Delta)\) and \(U^{10}_{S} \approx 0\), therefore \(\delta^{10} \approx \Phi (\Delta) - 0 = \Phi (\Delta)\).
-\end{itemize}
-Hence, \(|\theta - \delta| = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \approx 0.25\) for \(\Delta\) large enough (e.g., \(\Delta > 3\)) and, in particular, \(\theta = 0\) while \(\delta \approx 0.25\). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) is substantially different from \(0\), while \(\theta\) correctly captures the surrogate validity.
+This implies that
+\begin{align}
+    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
+\end{align}
+%To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
+%\begin{itemize}
+%    \item \(U^{00}_{Y} = \Phi (\Delta)\) and \(U^{00}_{S} = \Phi (\Delta)\), therefore \(\delta^{00} = \Phi (\Delta) - \Phi (\Delta) = 0\),
+%    \item \(U^{11}_{Y} = \Phi (\Delta)\) and \(U^{11}_{S} = \Phi (\Delta)\), therefore \(\delta^{11} = \Phi (\Delta) - \Phi (\Delta) = 0\),
+%    \item \(U^{01}_{Y} = \Phi (\Delta)\) and \(U^{01}_{S} \approx 1\), therefore \(\delta^{01} \approx \Phi (\Delta) - 1 \),
+%    \item \(U^{10}_{Y} = \Phi (\Delta)\) and \(U^{10}_{S} \approx 0\), therefore \(\delta^{10} \approx \Phi (\Delta) - 0 = \Phi (\Delta)\).
+%\end{itemize}
+and, in particular, \(\theta = 0\) while \(|\delta|\) can be as large as \(\frac{1}{4}\). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) is substantially different from \(0\), while \(\theta\) correctly captures the surrogate validity.
 
 \subsubsection{Gaussian Covariate Setting}
 \label{subsec:gaussian_covariate_setting}
 
 Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean potential outcomes are linear functions of the covariate:
 \begin{align}
-    \mu^{x} = \begin{bmatrix}
-      \mu^{x}_{Y_{1}} \\
-      \mu^{x}_{S_{1}} \\
-      \mu^{x}_{Y_{0}} \\
-      \mu^{x}_{S_{0}} \\
-    \end{bmatrix}
-    = x \; \begin{bmatrix}
-      \beta_{Y_{1}} \\
-      \beta_{S_{1}} \\
-      \beta_{Y_{0}} \\
-      \beta_{S_{0}} \\
-    \end{bmatrix} \; \quad \forall \; x \in \mathbb{R}.
+    \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
 \end{align}
-One can show (see Appendix~\ref{app:continuous_covariate_derivation}) that \(\delta\) and \(\theta\) are given by:
+In general, \(\delta\) and \(\theta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(s\) (see Appendix~\ref{app:continuous_covariate_derivation} for their closed-form expressions). Let us therefore impose the following assumption, which corresponds to perfect surrogacy:
 \begin{align}
-  \delta & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
+    \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta,
 \end{align}
+which implies the treatment effect is the same for both \(Y\) and \(S\) across all values of the covariate. Under this assumption, \(\theta = 0\) and therefore \(|\theta - \delta| = |\delta|\), which is given by
 \begin{align}
-  \theta & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}} - \beta_{S_{0}})^2}} \right).
+    |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
 \end{align}
 
-From the above formulas, it is clear that the discrepancy between \(\theta\) and \(\delta\) is a non-trivial function of the slope parameters that govern the relationship between the covariate and the potential outcomes and the parameters of the covariate distribution. Therefore, let us consider a simpler setting where
+For \(m, \Delta \neq 0\), the value of \(|\theta - \delta|\) is entirely driven by the magnitude of \(\boldsymbol{\beta}\). One can further show (see Appendix~\ref{app:continuous_covariate_derivation}) that
 \begin{align}
-    \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta > 0,
+    \sup_{\boldsymbol{\beta}, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m}{s}\right) - \frac{1}{2} \right| \Rightarrow \sup_{\boldsymbol{\beta}, \Delta, m, s} \{ |\theta - \delta| \} = \frac{1}{2},
 \end{align}
-which means that \(S\) is a perfect surrogate for \(Y\) because the treatment effect is the same for both \(Y\) and \(S\) across all values of the covariate. In this case, it follows that
-\begin{align}
-  \begin{split}
-    \delta & = \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 ( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 )}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 ( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 )}} \right), \\
-    \theta & = \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \Delta^2}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \Delta^2}} \right) = 0.
-  \end{split}
-\end{align}
+where the outer supremum is approached for large \(|m/s|\), that is, when the covariate is highly concentrated around a non-zero mean. This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
 
-Then, given the values of \(m\), \(s\), \(\Delta\), if \(m \neq 0\) and \(\Delta \neq 0\), then \( |\theta - \delta| = |\delta| \neq 0\) and its value is entirely driven by the magnitude of \(\beta_{Y_{0}}\) and \(\beta_{S_{0}}\). One can further show (see Appendix~\ref{app:continuous_covariate_derivation}) that \(\sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = |\Phi(m/s) - 0.5|\), which can be arbitrarily close to \(0.5\) if \(|m/s|\) is large enough (i.e., the covariate is highly concentrated around a non-zero value). This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
-
-The above discussion shows that the choice of discrepancy parameter is crucial, as different choices can lead to very different conclusions about surrogate validity. The rank-based approach focuses on \(\delta\), which may not capture the causal relationship between \(Y\) and \(S\) even in simple settings. We therefore advocate focusing on \(\theta\) instead.
-
+Both settings above illustrate that the choice of discrepancy parameter is crucial, as different choices can lead to very different conclusions about surrogate validity. The rank-based approach focuses on \(\delta\), which may not capture the causal relationship between \(Y\) and \(S\) even in simple settings. We therefore advocate focusing on \(\theta\) instead.
 
 \section{Proposed Bayesian Imputation-Based Approach}\label{sec:bayesian_approach}
 The central idea of our approach is to estimate the parameter of interest and perform inference through its posterior distribution via Bayesian imputation. Specifically, we use the observed data to impute the unobserved potential outcomes from their posterior distribution. After imputing the missing potential outcomes, we can perform either between-unit or within-unit comparisons between treatment and control groups using any chosen discrepancy metric. Therefore, following the discussion in Section~\ref{subsec:limitations}, we focus on the following quantities:
