@@ -34,7 +34,6 @@
 #' does not include examples.
 #'
 #' @import dplyr
-#' @importFrom purrr map_dfr
 #' @importFrom future plan multisession
 #' @importFrom future.apply future_lapply
 #' @importFrom rstan rstan_options
@@ -322,7 +321,7 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
   names(Carlotti_and_Parast_2026_all_simulations) <- NULL
   
   # Extract results into a dataframe
-  Carlotti_and_Parast_2026_all_simulations_df <- map_dfr(Carlotti_and_Parast_2026_all_simulations, function(res) {
+  Carlotti_and_Parast_2026_all_simulations_df <- dplyr::bind_rows(lapply(Carlotti_and_Parast_2026_all_simulations, function(res) {
     tibble::tibble(
       Bayesian_epsilon = res$Bayesian_test$epsilon,
       Bayesian_CI_upper = res$Bayesian_test$CI[2],
@@ -333,8 +332,8 @@ Carlotti_and_Parast_2026_simulations <- function(seed, n_simulations, parallel =
       frequentist_coverage = as.logical(res$frequentist_test$coverage),
       frequentist_power = as.logical(res$frequentist_test$power)
     )
-  })
-  
+  }))
+
   Carlotti_and_Parast_2026_simulations_grid <-
     bind_cols(
       simulations_grid,

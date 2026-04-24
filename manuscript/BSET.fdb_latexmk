@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex BSET"] 1777041325.96602 "BSET.aux" "BSET.bbl" "BSET" 1777042099.48965 0
+["bibtex BSET"] 1777045336.77687 "BSET.aux" "BSET.bbl" "BSET" 1777045337.77572 0
   "./BSET_references.bib" 1776719338.87996 155175 193e7f937fb579b4af998e9684116e80 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "BSET.aux" 1777042099.25383 14064 505dcdd0152907d35119a6b1a8b82b3f "pdflatex"
+  "BSET.aux" 1777045337.52282 13948 aabf3d8f1e903393f5330dde986dce27 "pdflatex"
   (generated)
   "BSET.bbl"
   "BSET.blg"
   (rewritten before read)
-["pdflatex"] 1777042098.62253 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777042099.48979 0
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777042067.8167 69833 eff67e26fb3db177dfe163cd47aa7ab7 ""
+["pdflatex"] 1777045336.91795 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777045337.77586 0
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777045295.17013 67650 54d8ba2a8d11261afdb3d4a5eec65798 ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -75,6 +75,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1248133631 36118 fad905eba93cff5bce1e185fe980a177 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1248133631 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb" 1248133631 30273 87a352d78b6810ae5cfdc68d2fb827b2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb" 1248133631 35479 892d27442ef9ef29ce1ee57aa0e8a665 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1215737283 136101 f533469f523533d38317ab5729d00c8a ""
@@ -174,12 +175,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "BSET.aux" 1777042099.25383 14064 505dcdd0152907d35119a6b1a8b82b3f "pdflatex"
-  "BSET.bbl" 1777041326.08573 9859 900510fbbf5acb854db2b9453274e6e8 "bibtex BSET"
-  "BSET.out" 1777042099.26156 3070 f329cc2815f7068dacc838fb18e5ad29 "pdflatex"
-  "BSET.tex" 1777042067.8167 69833 eff67e26fb3db177dfe163cd47aa7ab7 ""
+  "BSET.aux" 1777045337.52282 13948 aabf3d8f1e903393f5330dde986dce27 "pdflatex"
+  "BSET.bbl" 1777045336.91224 9859 900510fbbf5acb854db2b9453274e6e8 "bibtex BSET"
+  "BSET.out" 1777045337.53356 3070 f329cc2815f7068dacc838fb18e5ad29 "pdflatex"
+  "BSET.tex" 1777045295.17013 67650 54d8ba2a8d11261afdb3d4a5eec65798 ""
   "BSET_appendix.aux" 1776982183.27482 1755 45df61a9ef5cf88ec50daec3c76fddf5 ""
-  "BSET_appendix.tex" 1776984094.91799 16713 981b57f3a4c642137f7b701cae916ce2 ""
+  "BSET_appendix.tex" 1777045315.08425 18668 3df490575836601ac13efc7cca72e153 ""
   "figures/DCCT_CDF.pdf" 1776978810.70224 12637 a5095cb96c96d7e64cec7f4ae0409343 ""
   "figures/DCCT_S.pdf" 1776978810.51791 11195 008be7ad4a5f41040543eabb7d0dee8c ""
   "figures/DCCT_X_theta_posterior_plot.pdf" 1776977237.31875 19681 d4af295fd5807fb80c07b482e6c07e81 ""

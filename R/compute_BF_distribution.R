@@ -14,15 +14,16 @@
 #' hypotheses can be tested by fitting the following Beta-binomial model to the
 #' data:
 #' \deqn{\hat{V}_S \mid V_S \sim \text{Binomial} (n, V_S)}
-#' \deqn{V_S \sim \text{Beta} (a, b),}
+#' \deqn{p(V_S) = \frac{\text{Beta}(V_S \mid a, b)}{\int_{1/2}^{1} \text{Beta}(v \mid a, b) \, dv}, \quad V_S \in \left(\tfrac{1}{2}, 1\right),}
 #' where \eqn{\hat{V}_S} is the sample estimate of the surrogate's treatment
 #' effect on \eqn{S} computed as
 #' \deqn{\hat{V}_S = \frac{1}{n} \sum\limits^{n}_{i=1} I(S_{1i} > S_{0i}).}
 #' The Bayes factor is then computed as the ratio of the marginal likelihoods
 #' under the alternatives:
-#' \deqn{BF_{n} = \frac{1 - F_{\text{Beta} (a + n \hat{V}_S, b + n - n \hat{V}_S)} (\frac{1}{2})}{1 - F_{\text{Beta} (a, b)} (\frac{1}{2})},}
-#' where \eqn{F_{\text{Beta}}} is the cumulative distribution function of a Beta
-#' distribution, \eqn{a} and \eqn{b} are the shape parameters of the Beta prior.
+#' \deqn{BF_{n} = \frac{B(a + n \hat{V}_S,\, b + n - n \hat{V}_S) \left(1 - F_{\text{Beta}(a + n \hat{V}_S,\, b + n - n \hat{V}_S)}\!\left(\frac{1}{2}\right)\right)}{B(a, b) \left(1 - F_{\text{Beta}(a, b)}\!\left(\frac{1}{2}\right)\right)} \cdot 2^n,}
+#' where \eqn{B(a, b)} is the Beta function, \eqn{F_{\text{Beta}(a,b)}} is the
+#' cumulative distribution function of the \eqn{\text{Beta}(a, b)} distribution,
+#' and \eqn{a} and \eqn{b} are the shape parameters of the Beta prior.
 #' Given the true value of \eqn{V_S}, the distribution of the Bayes factor can
 #' be computed by evaluating \eqn{BF_n} for all possible values of
 #' \eqn{\hat{V}_S} and their corresponding probabilities under the Binomial

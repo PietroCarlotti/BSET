@@ -425,9 +425,9 @@ The first condition of Schwartz's theorem is a relatively mild condition that ca
   \end{align}
   where \(\pi\) is a prior distribution over the parameter \(\phi\). Then, if the identifiable component of the Bayesian model is regular according to Definition~\ref{def:regularity}, the posterior distribution of \(\phi\) concentrates around the set of values that are compatible with the observed data and the model assumptions as the sample size goes to infinity:
   \begin{equation}
-    \pi \left( \phi_{I} \in U_{I}, \phi_{N} \in U_{N} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 1,
+    \pi \left( \phi_{I} \in U_{I} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 1,
   \end{equation}
-  for every neighborhood \(U_{I}\) of the identifiable component \(\phi_{I}^{*}\) and every neighborhood \(U_{N}\) of the non-identifiable component \(\phi_{N}^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by the true distribution \(f_{\phi^{*}}\). Whereas, the posterior distribution of the non-identifiable component \(\phi_{N}\) will behave as follows:
+  for every neighborhood \(U_{I}\) of the identifiable component \(\phi_{I}^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by the true distribution \(f_{\phi^{*}}\). Whereas, the posterior distribution of the non-identifiable component \(\phi_{N}\) will behave as follows:
   \begin{equation}
     \pi \left( \phi_{N} \in U_{N} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} \pi \left( \phi_{N} \in U_{N} \mid \phi_{I} = \phi_{I}^{*} \right),
   \end{equation}
@@ -468,45 +468,16 @@ where the prior for \(V_{S}\) is a Beta distribution renormalized on \( \left( \
 \end{equation}
 with \(a, b > 0\) suitably chosen prior parameters, and \(\widehat{V}_{S} = \frac{1}{n} \sum_{i=1}^{n} \one(S_{1i} > S_{0i})\). Note that \(\widehat{V}_{S}\) cannot be computed directly from the observed data, since \(S_{1i}\) and \(S_{0i}\) are never jointly observed for any unit \(i\). However, as we shall see below, this is not an issue, because the procedure to select \(v_{s}\) only requires the sampling distribution of \(\widehat{V}_{S}\) under the null hypothesis and alternative hypothesis, rather than an observed value for it.
 
-Thus, the Bayes factor that is used to compare our competing hypotheses is:
+The Bayes factor arising from this model is (see Appendix~\ref{app:BF_derivation} for the derivation):
 \begin{equation}
-    BF_{n} = \frac{m \left( \widehat{V}_{S} \mid H_{1} \right) }{m \left( \widehat{V}_{S} \mid H_{0} \right)},
+    \label{eq:BF_formula}
+    BF_{n} = \frac{B\!\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)\left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}{B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)} \cdot 2^{n},
 \end{equation}
-where \(m \left( \widehat{V}_{S} \mid H_{0} \right) \) and \(m \left( \widehat{V}_{S} \mid H_{1} \right) \) are the marginal likelihoods of \(\widehat{V}_{S}\) under the null and the alternative hypothesis, respectively. These quantities can be computed as follows:
-\begin{eqnarray}
-m \left(\widehat{V}_{S} \mid H_{0} \right) 
-%= \binom{n}{n \, \widehat{V}_{S}} \left( \frac{1}{2} \right)^{n \, \widehat{V}_{S}} \left( 1 - \frac{1}{2} \right)^{n - n \, \widehat{V}_{S}} 
-&=& \binom{n}{n \, \widehat{V}_{S}} \frac{1}{2^{n}} \\
-m\left(\widehat{V}_{S} \mid H_1\right) 
-&=& %\int_{\frac{1}{2}}^{1} \binom{n}{n \, \widehat{V}_{S}} \, u^{\,n \, \widehat{V}_{S}} (1-u)^{\,n - n \, \widehat{V}_{S}} 
-%\frac{u^{a-1} (1-u)^{b-1}}{\int_{\frac{1}{2}}^{1} v^{a-1} (1-v)^{b-1} \, dv} \, du 
-%= \binom{n}{n \, \widehat{V}_{S}} \frac{\displaystyle \int_{\frac{1}{2}}^{1} u^{a + n \, \widehat{V}_{S} -1} (1-u)^{b + n - n \, \widehat{V}_{S} - 1} \, du}{\displaystyle \int_{\frac{1}{2}}^{1} v^{a-1} (1-v)^{b-1} \, dv} 
-\binom{n}{n \, \widehat{V}_{S}} \frac{B_{\frac{1}{2}}^{1}\big(a + n \, \widehat{V}_{S}, \, b + n - n \, \widehat{V}_{S}\big)}{B_{\frac{1}{2}}^{1}(a, b)}
-\end{eqnarray}
-where \(B_{x_{0}}^{x_{1}}(a, b)\) is the incomplete Beta function with parameters \(a, b\) over the interval \([x_{0}, x_{1}]\). Therefore, we have that
-\vspace{-2mm} % REMOVE THIS IF NECESSARY
-\begin{equation}
-    \begin{aligned}
-      BF_{n} %& = \frac{\binom{n}{n \, \widehat{V}_{S}} \; \frac{B_{\frac{1}{2}}^{1}\big(a + n \, \widehat{V}_{S}, \, b + n - n \, \widehat{V}_{S}\big)}{B_{\frac{1}{2}}^{1}(a, b)}}{\binom{n}{n \, \widehat{V}_{S}} \frac{1}{2^n}} \\
-        & = \frac{B_{\frac{1}{2}}^{1}\big(a + n \, \widehat{V}_{S}, \, b + n - n \, \widehat{V}_{S}\big)}{B_{\frac{1}{2}}^{1}(a, b)} 2^n.
-    \end{aligned}
-\end{equation}
-As usual, we would like to ensure a type I error probability of $\alpha$:
+where \(B(a, b)\) is the Beta function and \(F_{\mathrm{Beta}(a,b)}\) is the CDF of the \(\mathrm{Beta}(a,b)\) distribution. As usual, we would like to ensure a type I error probability of $\alpha$:
 \begin{equation}
     \mathbb{P} (BF_{n} > BF_{n, \alpha} \mid H_0) = \alpha.
 \end{equation}
-The quantity \(BF_{n, \alpha}\) must be computed numerically, which is feasible since \(n \, \widehat{V}_{S}\) ranges between \(0\) and \(n\), and therefore \(BF_{n}\) can take at most \(n + 1\) distinct values. Thus, \(BF_{n, \alpha}\) can be obtained as the \((1 - \alpha)\)-quantile of \(BF_{n}\). Note that the distribution of \(BF_{n}\) under the null hypothesis can be derived using the following formula:
-\begin{equation}
-    \mathbb{P} (BF_{n} = x_{k} \mid H_0) = \binom{n}{k} \frac{1}{2^{n}} \text{ for } k = 0, \ldots, n,
-    \label{eq:BF_distribution_1}
-\end{equation}
-where
-\begin{equation}
-    %x_{k} = \frac{k! (n - k)!}{(n+1)!} 2^n \text{ for } k = 0, \ldots, n.
-    x_{k} = \frac{B_{\frac{1}{2}}^{1}\big(a + k, \, b + n - k \big)}{B_{\frac{1}{2}}^{1}(a, b)} 2^n \text{ for } k = 0, \ldots, n.
-    \label{eq:BF_distribution_2}
-\end{equation}
-The value of $BF_{n, \alpha}$ thus depends on the sample size $n$, the probability of type I error \( \alpha \) and the prior parameters $a, b$. 
+Since $n \, \widehat{V}_{S}$ takes values in $\{0, \ldots, n\}$, $BF_{n}$ has at most $n + 1$ distinct values, so $BF_{n, \alpha}$ can be obtained as the $(1 - \alpha)$-quantile of $BF_{n}$ (see Appendix~\ref{app:BF_derivation} for the closed-form distribution of $BF_{n}$ under $H_0$). The value of $BF_{n, \alpha}$ depends on $n$, $\alpha$, and the prior parameters $a$, $b$.
 Given $BF_{n, \alpha}$, we can define $v_{S}$ as the value such that
 \begin{equation}
     \mathbb{P} \left( BF_{n} > BF_{n, \alpha} \mid V_{S} = v_{S} > \frac{1}{2} \right) = 1 - \beta.
@@ -516,7 +487,7 @@ Given $BF_{n, \alpha}$, we can define $v_{S}$ as the value such that
 \begin{equation}
 v_{S} \mapsto \mathbb{P} \big( BF_{n} > BF_{n, \alpha} \mid V_S = v_{S} \big)
 \end{equation}
-is a monotone function. Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure as in Equations~\eqref{eq:BF_distribution_1} and~\eqref{eq:BF_distribution_2} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
+is a monotone function. Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
 
 \section{Simulation Study}\label{sec:simulation_study}
 
