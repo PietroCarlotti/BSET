@@ -289,6 +289,44 @@ Maximizing further over \(\Delta\) by taking \(|\Delta| \to +\infty\):
 which can be arbitrarily close to \(0.5\) whenever \(|m/s|\) is large.
 
 
+\section{Regularity and Posterior Consistency}
+\label{app:posterior_consistency}
+
+\begin{definition}[Regularity of a Bayesian model]
+\label{def:regularity}
+  Let the Bayesian model be defined as
+  \begin{align}
+    \begin{split}
+      D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
+      \phi & \sim \pi,
+    \end{split}
+  \end{align}
+  where \(D_{i}\) is the observed data for unit \(i\), \(f_{\phi}\) is the likelihood function parametrized by \(\phi\), and \(\pi\) is a prior distribution over the parameter \(\phi\). We say that the Bayesian model is regular if the following conditions hold:
+  \begin{itemize}
+    \item \textbf{Kullback-Leibler support of the prior}: The prior \(\pi\) assigns positive mass to every Kullback-Leibler neighborhood of the true parameter \(\phi^{*}\), i.e., for every \(\varepsilon > 0\),
+    \begin{equation}
+      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0,
+    \end{equation}
+    where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the Kullback-Leibler divergence between \(f_{\phi^{*}}\) and \(f_{\phi}\).
+    \item \textbf{Identifiability}: The model is identifiable, i.e., for every \(\phi \neq \phi'\), we have that \(f_{\phi} \neq f_{\phi'}\).
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Schwartz's theorem \citep{schwartz1965bayes}]
+  Let \(D_{i} \iid f_{\phi^{*}}\) and let the Bayesian model be
+  \begin{align}
+    \begin{split}
+      D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
+      \phi & \sim \pi.
+    \end{split}
+  \end{align}
+  If the model is regular according to Definition~\ref{def:regularity}, the posterior concentrates around \(\phi^{*}\) as \(n \to \infty\):
+  \begin{equation}
+    \pi \left( U^{c} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 0,
+  \end{equation}
+  for every neighborhood \(U\) of \(\phi^{*}\).
+\end{theorem}
+
 \section{Derivation of the Bayes Factor for the Validation Threshold}
 \label{app:BF_derivation}
 
@@ -315,5 +353,74 @@ where
     \label{eq:BF_distribution_2}
 \end{equation}
 The same formulas apply to the distribution of \(BF_{n}\) under any \(V_{S} = v_{S}\), by replacing the binomial probabilities \(\binom{n}{k} 2^{-n}\) with \(\binom{n}{k} v_{S}^{k}(1-v_{S})^{n-k}\).
+
+\section{Simulation Study: Data-Generating Processes and Implementation Details}
+\label{app:simulation_details}
+
+\paragraph{Setting 1 (Useless surrogate).} Potential outcomes are drawn independently from:
+\begin{equation}
+    P_i \iid \mathcal{N}_4\!\left(\mu^*, \Sigma^*\right), \quad
+    \mu^* = \left(5,\, \tfrac{2}{3},\, 3,\, \tfrac{2}{3}\right)^\top, \quad
+    \Sigma^* = \mathrm{diag}(3,\, 1,\, 3,\, 1).
+\end{equation}
+The surrogate potential outcomes are independent of the primary outcome potential outcomes, so $S$ carries no information about the treatment effect on $Y$.
+
+\paragraph{Setting 2 (Perfect surrogate).} The primary outcome potential outcomes $(Y_{1i}, Y_{0i}) \iid \mathcal{N}_2\!\left((6, 2.5)^\top,\, 3I_2\right)$, and the surrogate is defined as $S_{gi} = Y_{gi} + \varepsilon_{gi}$, where $(\varepsilon_{1i}, \varepsilon_{0i}) \iid \mathcal{N}_2(0,\, 0.1\,I_2)$ independently. The resulting joint distribution of $P_i = (Y_{1i}, S_{1i}, Y_{0i}, S_{0i})^\top$ is $\mathcal{N}_4(\mu^*, \Sigma^*)$ with
+\begin{align}
+    \mu^* &= (6,\, 6,\, 2.5,\, 2.5)^\top, &
+    \Sigma^* &= \begin{bmatrix} 3 & 3 & 0 & 0 \\ 3 & 3.1 & 0 & 0 \\ 0 & 0 & 3 & 3 \\ 0 & 0 & 3 & 3.1 \end{bmatrix}.
+\end{align}
+The noise is negligible ($\sigma^2_\varepsilon = 0.1$), making $S$ nearly identical to $Y$ and therefore a near-perfect surrogate.
+
+\paragraph{Setting 3 (Imperfect surrogate).} The surrogate potential outcomes $(S_{1i}, S_{0i}) \iid \mathcal{N}_2\!\left((5,3)^\top,\, 3I_2\right)$, and the primary outcome is $Y_{gi} = S_{gi} + \varepsilon_{gi}$, where $\varepsilon_{1i} \iid \mathcal{N}(1.5,\, 0.6)$ and $\varepsilon_{0i} \iid \mathcal{N}(0,\, 0.6)$ independently. The resulting joint distribution is $\mathcal{N}_4(\mu^*, \Sigma^*)$ with
+\begin{align}
+    \mu^* &= (6.5,\, 5,\, 3,\, 3)^\top, &
+    \Sigma^* &= \begin{bmatrix} 3.6 & 3 & 0 & 0 \\ 3 & 3 & 0 & 0 \\ 0 & 0 & 3.6 & 3 \\ 0 & 0 & 3 & 3 \end{bmatrix}.
+\end{align}
+The noise is more substantial ($\sigma^2_\varepsilon = 0.6$), making $S$ a valid but imperfect surrogate.
+
+\paragraph{Setting 4 (Misspecified model).} The surrogate potential outcomes are log-normal: $S_{1i} \sim \exp\!\left(\mathcal{N}(2.5,\, 1.5^2)\right)$ and $S_{0i} \sim \exp\!\left(\mathcal{N}(0.5,\, 1.5^2)\right)$. The primary outcome is a non-linear function of the surrogate plus log-normal noise:
+\begin{align}
+    Y_{1i} &= 2.0 + 1.2\sqrt{S_{1i}} + 0.3\exp(S_{1i}/500) + \exp(\varepsilon_{1i}), \\
+    Y_{0i} &= 0.8\sqrt{S_{0i}} + 0.2\exp(S_{0i}/50) + \exp(\varepsilon_{0i}),
+\end{align}
+where $\varepsilon_{gi} \iid \mathcal{N}(0,\, 0.3)$. This setting is designed to violate the Gaussian parametric assumptions of our Bayesian model.
+
+\paragraph{Setting 5.} A binary baseline covariate \(X_i \iid \text{Bernoulli}(0.5)\) is generated, and the distribution of \(P_i \mid X_i\) is the following mixture:
+\begin{equation}
+  P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; X_{i} \; \mathcal{N}_{4}\!\left(\mu^{1}, \Sigma^{1}\right)
+  + (1 - X_{i}) \; \mathcal{N}_{4}\!\left(\mu^{0}, \Sigma^{0}\right),
+  \quad i = 1,\ldots,n,
+\end{equation}
+with
+\begin{align}
+    \mu^{0} &= (5, 5, 0, 0)^\top, &
+    \mu^{1} &= (5, -5, 0, -10)^\top, \notag\\
+    \Sigma^{0} &= \Sigma^{1} =
+    \begin{bmatrix} A & 0 \\ 0 & A \end{bmatrix}, &
+    A &= \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}.
+\end{align}
+
+\paragraph{Setting 6.} A Gaussian baseline covariate \(X_i \iid \mathcal{N}(3, 1)\) is generated, and the distribution of \(P_i \mid X_i\) follows a linear Gaussian model:
+\begin{equation}
+  P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; \mathcal{N}_{4}\!\left(X_{i}\,\beta,\, \Sigma\right),
+  \quad i = 1,\ldots,n,
+\end{equation}
+with
+\begin{align}
+    \beta &= (1,\, 7,\, 0,\, 6)^\top, &
+    \Sigma &= \tfrac{1}{2}\, I_{4}.
+\end{align}
+
+\paragraph{Implementation details.} For the Bayesian method, we ran \(T = 500\) posterior sampling iterations with a burn-in of \(b = 125\). Prior parameters were set as follows across both models:
+\begin{align}
+    \mu_{0} &= (0, 0, 0, 0)^{\top}, &
+    \Sigma_{0} &= 10\, I_{4}, &
+    s &= 2, &
+    \tau &= 1, \\
+    \mu_{\beta} &= (0, 0, 0, 0)^{\top}, &
+    \Sigma_{\beta} &= 10\, I_{4}.
+\end{align}
+To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
 
 \end{document}
