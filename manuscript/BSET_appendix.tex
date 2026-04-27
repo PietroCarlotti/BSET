@@ -340,7 +340,12 @@ Under the model described in Section~\ref{subsec:alternative_threshold} of the m
              \left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}
             {B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)},
 \end{align}
-where the expression for \(m(\widehat{V}_{S} \mid H_{1})\) follows by integrating the binomial likelihood against the truncated Beta prior over \(\left(\tfrac{1}{2}, 1\right)\). Taking the ratio and cancelling the binomial coefficient yields Equation~\eqref{eq:BF_formula} of the main paper.
+where the expression for \(m(\widehat{V}_{S} \mid H_{1})\) follows by integrating the binomial likelihood against the truncated Beta prior over \(\left(\tfrac{1}{2}, 1\right)\). Taking the ratio and cancelling the binomial coefficient yields:
+\begin{equation}
+    \label{eq:BF_formula}
+    BF_{n} = \frac{B\!\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)\left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}{B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)} \cdot 2^{n},
+\end{equation}
+where \(B(a, b)\) is the Beta function and \(F_{\mathrm{Beta}(a,b)}\) is the CDF of the \(\mathrm{Beta}(a,b)\) distribution.
 
 The distribution of \(BF_{n}\) under \(H_{0}\) has closed form: since \(n \, \widehat{V}_{S} \in \{0, \ldots, n\}\), the Bayes factor takes at most \(n + 1\) distinct values \(x_{0}, \ldots, x_{n}\) with
 \begin{equation}
@@ -421,6 +426,6 @@ with
     \mu_{\beta} &= (0, 0, 0, 0)^{\top}, &
     \Sigma_{\beta} &= 10\, I_{4}.
 \end{align}
-To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
+The significance level was set to \(\alpha = 0.05\). To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
 
 \end{document}

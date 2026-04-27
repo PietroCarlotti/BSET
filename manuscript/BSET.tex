@@ -428,12 +428,7 @@ where the prior for \(V_{S}\) is a Beta distribution renormalized on \( \left( \
 \end{equation}
 with \(a, b > 0\) suitably chosen prior parameters, and \(\widehat{V}_{S} = \frac{1}{n} \sum_{i=1}^{n} \one(S_{1i} > S_{0i})\). Note that \(\widehat{V}_{S}\) cannot be computed directly from the observed data, since \(S_{1i}\) and \(S_{0i}\) are never jointly observed for any unit \(i\). However, as we shall see below, this is not an issue, because the procedure to select \(v_{s}\) only requires the sampling distribution of \(\widehat{V}_{S}\) under the null hypothesis and alternative hypothesis, rather than an observed value for it.
 
-The Bayes factor arising from this model is (see Appendix~\ref{app:BF_derivation} for the derivation):
-\begin{equation}
-    \label{eq:BF_formula}
-    BF_{n} = \frac{B\!\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)\left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}{B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)} \cdot 2^{n},
-\end{equation}
-where \(B(a, b)\) is the Beta function and \(F_{\mathrm{Beta}(a,b)}\) is the CDF of the \(\mathrm{Beta}(a,b)\) distribution. As usual, we would like to ensure a type I error probability of $\alpha$:
+The resulting Bayes factor $BF_n$ is derived and given in closed form in Appendix~\ref{app:BF_derivation}. As usual, we would like to ensure a type I error probability of $\alpha$:
 \begin{equation}
     \mathbb{P} (BF_{n} > BF_{n, \alpha} \mid H_0) = \alpha.
 \end{equation}
@@ -443,11 +438,11 @@ Given $BF_{n, \alpha}$, we can define $v_{S}$ as the value such that
     \mathbb{P} \left( BF_{n} > BF_{n, \alpha} \mid V_{S} = v_{S} > \frac{1}{2} \right) = 1 - \beta.
     \label{eq:V_S_power}
 \end{equation}
- It useful to observe that \(\forall \, v_{S} \in \left(\frac{1}{2}, 1\right)\),
+It is useful to observe that the map
 \begin{equation}
 v_{S} \mapsto \mathbb{P} \big( BF_{n} > BF_{n, \alpha} \mid V_S = v_{S} \big)
 \end{equation}
-is a monotone function. Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
+is monotone on \(\left(\frac{1}{2}, 1\right)\). Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
 
 \section{Simulation Study}\label{sec:simulation_study}
 
@@ -457,7 +452,7 @@ Specifically, in Settings 1 to 4, we replicated the data-generating mechanisms u
 
 In Settings 5 and 6, we purposefully aimed to break the frequentist rank-based method and highlight the advantage of our proposed approach based on the model in Equation~\eqref{eq:parametric_model_covariates} with covariates. Setting 5 features a binary baseline covariate, with generating parameters chosen to maximize the discrepancy between \(\delta\) and \(\theta\), which are approximately \(0.25\) and \(0\), respectively. Conditionally on the covariate, the potential outcomes are not identically distributed across units, violating a key assumption of the Mann-Whitney test. In this setting the surrogate is a replica of the primary outcome with the addition of Gaussian noise, with treatment effect homogeneity across the two subpopulations and uncorrelated potential outcomes; therefore, any valid surrogate validation method should correctly identify $S$ as valid. Setting 6 features a Gaussian baseline covariate with potential outcomes following a linear Gaussian model. The conditional treatment effect on $Y$ and $S$ is identical (implying $\theta = 0$), but the marginal rank-based discrepancy $\delta$ is nonzero due to the covariate structure, further illustrating the limitation of rank-based methods in covariate-dependent settings. Full details of all data-generating processes, prior parameters, and MCMC settings are given in Appendix~\ref{app:simulation_details}.
 
-We ran \(500\) simulations for each setting, with a sample size of \(n = 50\) and a significance level of \(\alpha = 0.05\). We quantify performance in terms of coverage of the confidence/credible intervals of the true parameter (\(\delta\) for the frequentist method and \(\theta\) for the Bayesian method) and power, by which we mean the proportion of simulation iterations where the method deemed the surrogate to be valid. In Setting $1$, the surrogate is not valid, and thus, this is the Type 1 error rate. 
+We ran \(500\) simulations for each setting, with a sample size of \(n = 50\). We quantify performance in terms of coverage of the confidence/credible intervals of the true parameter (\(\delta\) for the frequentist method and \(\theta\) for the Bayesian method) and power, by which we mean the proportion of simulation iterations where the method deemed the surrogate to be valid. In Setting $1$, the surrogate is not valid, and thus, this is the Type 1 error rate. 
 
 Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings \(1\) and \(2\), the rank-based method of \citet{parast2024rank} and the Bayesian imputation-based method perform similarly. In in Setting \(3\),improved performance is observed for the Bayesian method with higher coverage and higher power. As expected, in Setting \(4\), where the data-generating process is non-Gaussian and non-linear, the nonparametric rank-based method outperforms the Bayesian method in terms of power. Settings \(5\) and \(6\) highlight the true strength of our proposed Bayesian imputation-based method, where the frequentist method very rarely identifies the surrogate as valid, while our method correctly recognizes the surrogate as valid in all iterations. This is not surprising, since the data-generating process in Settings \(5\) and \(6\) were purposely designed to illustrate the limitations of the  the rank-based method.  The proposed Bayesian method is able to adjust for the binary covariate in these settings, and correctly capture surrogacy. The results demonstrate the power gains of our proposed methodology, though we also intentionally explore its limitations under model misspecification.
 

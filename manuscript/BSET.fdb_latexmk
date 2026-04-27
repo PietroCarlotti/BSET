@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex BSET"] 1777303444.94118 "BSET.aux" "BSET.bbl" "BSET" 1777303862.21343 0
+["bibtex BSET"] 1777308227.75996 "BSET.aux" "BSET.bbl" "BSET" 1777308228.69091 0
   "./BSET_references.bib" 1776719338.87996 155175 193e7f937fb579b4af998e9684116e80 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "BSET.aux" 1777303861.95027 13865 a157f2e070419b4d0cafd80209e7937b "pdflatex"
+  "BSET.aux" 1777308228.44508 13763 6e5ae095c4cd58d5c43884e8020fa333 "pdflatex"
   (generated)
   "BSET.bbl"
   "BSET.blg"
   (rewritten before read)
-["pdflatex"] 1777303861.33362 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777303862.2136 0
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777303861.13174 62310 9933a4fb713e60522f76568b19633d3c ""
+["pdflatex"] 1777308227.85816 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777308228.69106 0
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777308226.70554 61753 09439821bebf93e91cc3fca3cc7bd1ab ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -73,7 +73,6 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1248133631 36118 fad905eba93cff5bce1e185fe980a177 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1248133631 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb" 1248133631 30273 87a352d78b6810ae5cfdc68d2fb827b2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb" 1248133631 35479 892d27442ef9ef29ce1ee57aa0e8a665 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1215737283 136101 f533469f523533d38317ab5729d00c8a ""
@@ -173,12 +172,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "BSET.aux" 1777303861.95027 13865 a157f2e070419b4d0cafd80209e7937b "pdflatex"
-  "BSET.bbl" 1777303445.06158 9859 900510fbbf5acb854db2b9453274e6e8 "bibtex BSET"
-  "BSET.out" 1777303861.96038 3070 f329cc2815f7068dacc838fb18e5ad29 "pdflatex"
-  "BSET.tex" 1777303861.13174 62310 9933a4fb713e60522f76568b19633d3c ""
-  "BSET_appendix.aux" 1777303449.57182 3330 d8557ce06c9001580805a18d98a31d00 ""
-  "BSET_appendix.tex" 1777303443.7956 22978 6e3a8193db85508d54254f4c5f8146c9 ""
+  "BSET.aux" 1777308228.44508 13763 6e5ae095c4cd58d5c43884e8020fa333 "pdflatex"
+  "BSET.bbl" 1777308227.85045 9859 900510fbbf5acb854db2b9453274e6e8 "bibtex BSET"
+  "BSET.out" 1777308228.45445 3070 f329cc2815f7068dacc838fb18e5ad29 "pdflatex"
+  "BSET.tex" 1777308226.70554 61753 09439821bebf93e91cc3fca3cc7bd1ab ""
+  "BSET_appendix.aux" 1777308110.46591 3787 20b65916df5186c789f87b99023d08ed ""
+  "BSET_appendix.tex" 1777308101.52134 25440 2c5d32641d3cea4bd86b75ded699673c ""
   "figures/DCCT_CDF.pdf" 1777054382.93868 12637 fa4d431a2dfddfbca873b890cb201e6e ""
   "figures/DCCT_S.pdf" 1777054382.49723 11195 666629be32d35eb01cefd12563680dc7 ""
   "figures/DCCT_X_theta_posterior_plot.pdf" 1776977237.31875 19681 d4af295fd5807fb80c07b482e6c07e81 ""
