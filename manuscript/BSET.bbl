@@ -150,6 +150,11 @@ Rubin, D.~B. (1974).
 \newblock Estimating causal effects of treatments in randomized and nonrandomized studies.
 \newblock {\em Journal of educational Psychology} {\bf 66,} 688.
 
+\bibitem[\protect\citeauthoryear{Rudin}{Rudin}{1976}]{rudin1976principles}
+Rudin, W. (1976).
+\newblock {\em Principles of Mathematical Analysis}, volume~25 of {\em International series in pure and applied mathematics}.
+\newblock McGraw-Hill, New York, 3rd edition.
+
 \bibitem[\protect\citeauthoryear{Schwartz}{Schwartz}{1965}]{schwartz1965bayes}
 Schwartz, L. (1965).
 \newblock On bayes procedures.

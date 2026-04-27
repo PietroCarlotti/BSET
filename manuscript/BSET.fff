@@ -1,7 +1,7 @@
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
-    \caption{Heatmap of \(|\theta - \delta|\) as a function of \(d_S\) and \(d_Y\) with \(\Delta = 5\).}
+    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) in the setting where the distribution of the potential outcomes is Gaussian and its parameters depend on a binary covariate. Here we set \(\Delta = 5\).}
     \label{fig:discrepancy_heatmap}
 \end{figure}
 \efloatseparator

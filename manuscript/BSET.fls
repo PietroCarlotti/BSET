@@ -274,6 +274,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/bbm/bbm12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/bbm/bbm8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/bbm/bbm6.tfm
+OUTPUT BSET.fff
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
@@ -289,7 +290,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT ./BSET.bbl
 INPUT ./BSET.bbl
 INPUT BSET.bbl
-OUTPUT BSET.fff
 INPUT ./BSET.fff
 INPUT ./BSET.fff
 INPUT BSET.fff
