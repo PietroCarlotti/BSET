@@ -4,6 +4,9 @@
 
 \documentclass[referee,usenatbib]{biom}
 
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
+
 \usepackage{xr}
 \makeatletter
 \newcommand*{\addFileDependency}[1]{% argument=file name and extension
@@ -100,15 +103,17 @@ Bayesian Inference; Surrogate Markers; Clinical Trials; Causal Inference.
 
 \section{Introduction}\label{sec:introduction}
 
-
-
-Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, costly, or time-consuming to measure. These markers can accelerate the evaluation of new treatments, provided they reliably capture the causal relationship between treatment and true clinical benefit. For example, \citet{lavine2010treatment} conducted a clinical trial evaluating various treatments for children with nonalcoholic fatty liver disease, in which the primary outcome, a measure of liver function, was obtained via liver biopsy, a very invasive procedure. Instead, this study examined treatment effectiveness using a surrogate marker, change in alanine aminotransferase (ALT), a blood-based enzyme that reflects liver function, thus substantially reducing patient burden. Notably, in the United States, new treatments can be approved early based on demonstrated effectiveness on a surrogate marker via the Food and Drug Administration's (FDA) Accelerated Approval Program, established in 1992 \citep{FDA_AcceleratedApprovalProgram2024}. Many drugs have been and continue to be approved through this mechanism \citep{FDA_approved}.
+Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, costly, or time-consuming to measure \citep{annurev:/content/journals/10.1146/annurev-statistics-032921-035359}. These markers can accelerate the evaluation of promising new treatments, provided that they reliably capture the causal relationship between treatment and true clinical benefit.
+%For example, \citet{lavine2010treatment} conducted a clinical trial evaluating various treatments for children with nonalcoholic fatty liver disease, in which the primary outcome, a measure of liver function, was obtained via liver biopsy, a very invasive procedure. Instead, this study examined treatment effectiveness using a surrogate marker, change in alanine aminotransferase (ALT), a blood-based enzyme that reflects liver function, thus substantially reducing patient burden.
+Notably, in the United States, the Food and Drug Administration's (FDA) Accelerated Approval Program, established in 1992, allows new treatments to receive early approval based on demonstrated effects on surrogate markers, and many drugs have been approved, and continue to be approved, through this pathway over time \citep{FDA_AcceleratedApprovalProgram2024,FDA_approved}.
 
 A valid surrogate can substantially reduce trial burden, duration, and cost while still providing meaningful information about treatment efficacy, thereby enabling more timely access to effective treatments. However, establishing \textit{surrogate validity} is a challenging statistical problem, requiring methods that are both robust and interpretable. On this account, surrogate evaluation has been an active area of research, particularly because the FDA does not provide a formal statistical definition of a valid surrogate. A recent review by \citet{elliott2023surrogate} summarizes the state of proposed and currently used methods, including the proportion of treatment effect explained (PTE) framework \citep{freedman1992statistical,wang2002measure,parast2015robust,parast2025surrogate}, the principal stratification framework \citep{frangakis2002principal,gilbert2008evaluating}, and the meta-analytic framework \citep{buyse1998criteria,burzykowski2005evaluation,huang2011comparing}.
 
-Unfortunately, these methods often perform poorly in small trials, especially when using robust techniques such as kernel-based estimation within the PTE framework. To address this, \citet{parast2024rank} proposed a rank-based approach for evaluating surrogate markers in such settings. Although attractive for its nonparametric nature and minimal assumptions, this method has notable limitations, including unclear causal interpretation for its target estimands, low power, and limited robustness across data-generating mechanisms.
+Unfortunately, these methods often perform poorly in small trials, especially when using robust techniques such as kernel-based estimation within the PTE framework. To address this, \citet{parast2024rank} proposed a rank-based approach for evaluating surrogate markers in such settings. Despite its attractive nonparametric nature and minimal assumptions, this method has notable limitations, including unclear causal interpretation for its target estimands, low power, and limited robustness across data-generating mechanisms.
 
-In this paper, we improve upon this existing approach by proposing an imputation-based Bayesian alternative that extends the rank-based framework of \citet{parast2024rank}. Our approach is grounded in Bayesian causal inference, which treats unobserved potential outcomes as latent variables and samples them from their posterior predictive distributions \citep{li2023bayesian}. By using this perspective, our method not only provides a causal interpretation but also allows for covariate adjustment, improved efficiency, and a flexible framework for inference. The paper is organized as follows. In Section~\ref{sec:methods}, we review the existing rank-based approach for surrogate evaluation, outline its limitations, and emphasize how the choice of treatment effect estimands can influence conclusions about surrogate validity. In Section~\ref{sec:bayesian_approach}, we present our Bayesian methodology, including two parametric models for the data-generating process and a new criterion for the surrogate validation threshold. In Section~\ref{sec:simulation_study}, we present a simulation study comparing the performance of our proposed method to the existing approach. Finally, in Section~\ref{sec:discussion} we discuss potential future extensions.
+In this paper, we improve upon this existing approach by proposing an imputation-based Bayesian alternative that extends the rank-based framework of \citet{parast2024rank}. Our approach is grounded in Bayesian causal inference, which treats unobserved potential outcomes as latent variables and samples them from predictive distributions \citep{li2023bayesian}. By using this perspective, our method not only provides a causal interpretation but also allows for covariate adjustment, improved efficiency, and a flexible framework for inference.
+
+The rest of this work is organized as follows. In Section~\ref{sec:methods}, we review the existing rank-based approach for surrogate evaluation, outline its limitations, and highlight how the choice of treatment effect estimands can affect conclusions about surrogate validity. In Section~\ref{sec:bayesian_approach}, we present our Bayesian methodology, including two parametric models and a new criterion for the surrogate validation threshold. In Section~\ref{sec:simulation_study}, we present a simulation study comparing our proposed method with the existing approach, and in Section~\ref{sec:real_data_application}, we apply our method to a clinical trial dataset. Finally, Section~\ref{sec:discussion} discusses potential future extensions.
 
 \section{Methods}\label{sec:methods}
 
@@ -118,7 +123,7 @@ Let \(Y\) denote the primary outcome and \(S\) the surrogate marker. Let \(Z \in
 \[
   P_{i} = (Y_{0i}, Y_{1i}, S_{0i}, S_{1i})^{\top}.
 \]
-We assume that for each unit \(i\), the vector of potential outcomes \(P_i\) is independently drawn from a joint distribution \(F_i\), which may differ across units, and that the treatment assignment \(Z_i\) is independently drawn from a Bernoulli distribution, with \(Z_i \indep P_i\) by design. Only the potential outcomes corresponding to the observed treatment assignment are observed. That is, each unit \(i\) contributes either (i) \( P_{1i} = (Y_{1i}, S_{1i})^{\top}\) if \(Z_{i} = 1\), or (ii) \( P_{0i} = (Y_{0i}, S_{0i})^{\top}\) if \(Z_{i} = 0\). Then, the hierarchical process that generates the data is summarized as follows:
+We assume that for each unit \(i\), the vector of potential outcomes \(P_i\) is independently drawn from a joint distribution \(F_i\), which may differ across units, and that the treatment assignment \(Z_i\) is independently drawn from a Bernoulli distribution, with \(Z_i \indep P_i\) by design. Only the potential outcomes corresponding to the observed treatment assignment are observed. That is, each unit \(i\) contributes \(P_{1i} = (Y_{1i}, S_{1i})^{\top}\) when \(Z_i = 1\), and \(P_{0i} = (Y_{0i}, S_{0i})^{\top}\) when \(Z_i = 0\). The hierarchical process that generates the data is summarized as follows:
 \begin{equation}
   \label{eq:data_generating_process}
   \begin{aligned}
@@ -137,12 +142,12 @@ In the next section, we describe the existing rank-based approach for evaluating
 
 \subsection{Existing Frequentist Rank-Based Approach}\label{subsec:frequentist_approach}
 
-The main idea of \citet{parast2024rank} is that if \(S\) is a valid surrogate for \(Y\), then the treatment \(Z\) should exert a comparable effect, on a probabilistic scale, on both. Their method focuses on small-sample settings, where nonparametric kernel methods are infeasible and parametric models are difficult to validate. Motivated by this, they introduced the following probabilistic index:
+The main idea of \citet{parast2024rank} is that if \(S\) is a valid surrogate for \(Y\), then the treatment \(Z\) should have comparable effects on both, on a probabilistic scale that is invariant to differences in the measurement units of \(Y\) and \(S\). Their method focuses on small-sample settings, where nonparametric kernel methods are infeasible and parametric models are difficult to validate. Motivated by this, they used the following probabilistic index
 \begin{equation}
   \label{eq:U_definition}
-  U_{Y} = \Prob(Y_{1i} > Y_{0j}) + \frac{1}{2} \; \Prob(Y_{1i} = Y_{0j}),
+  U_{Y} = \Prob(Y_{1i} > Y_{0j}) + \frac{1}{2} \Prob(Y_{1i} = Y_{0j}),
 \end{equation}
-as a measure of the treatment effect on the primary outcome \(Y\), where \(i\) and \(j\) index two different units. This quantity is often referred to as the Mann-Whitney parameter \citep{mann1947test, thas2012probabilistic, hoeffding1992class, buyse2010generalized}, as it is the estimand targeted by the corresponding hypothesis test. In this work, we restrict our attention to continuous outcomes \(Y\), thereby excluding the possibility of ties in Equation~\eqref{eq:U_definition}. Therefore, a positive treatment effect on \(Y\) is concluded if \(U_{Y} > 0.5\). The same reasoning applies to the surrogate \(S\), with \(U_{S}\) defined analogously. Then, the discrepancy in treatment effects is measured by their difference \(\delta = U_{Y} - U_{S}\). Based on this definition, \citet{parast2024rank} propose that, if \(S\) is a valid surrogate for \(Y\), \(\delta\) should be small, leading to the following hypothesis test:
+as a measure of the treatment effect on the primary outcome \(Y\), where \(i\) and \(j\) index two different units. This quantity is often referred to as the Mann-Whitney parameter \citep{mann1947test, thas2012probabilistic, hoeffding1992class, buyse2010generalized}, as it is the estimand targeted by the corresponding hypothesis test. In this work, we restrict our attention to continuous outcomes, thereby excluding ties in Equation~\eqref{eq:U_definition}. Therefore, a positive treatment effect on \(Y\) is concluded if \(U_{Y} > 0.5\). The same reasoning applies to the surrogate \(S\), with \(U_{S}\) defined analogously. The discrepancy in treatment effects is then measured by their difference \(\delta = U_{Y} - U_{S}\). Based on this definition, \citet{parast2024rank} propose that, if \(S\) is a valid surrogate for \(Y\), \(\delta\) should be small, leading to the following hypothesis test
 \begin{equation}
   \label{eq:hypothesis_test_delta}
   \begin{cases}
@@ -160,26 +165,26 @@ To estimate the parameter of interest \(\delta\), \citet{parast2024rank} compute
     \widehat{U}_{S} & = \frac{1}{n_{1} n_{0}} \sum^{n_{1}}_{i = 1} \sum^{n_{0}}_{j = 1} \one(S_{i} > S_{j}),
   \end{aligned}
 \end{equation}
-where \(n_{1}\) and \(n_{0}\) are the treated and control sample sizes, and then estimate \(\delta\) by \(\widehat{\delta} = \widehat{U}_{Y} - \widehat{U}_{S}\). A confidence interval follows from the central limit theorem for U-statistics and closed-form variance estimators for correlated U-statistics. \citet{parast2024rank} conclude that \(S\) is valid if the upper bound of this interval is less than the pre-specified threshold \(\varepsilon\).
+where \(n_{1}\) and \(n_{0}\) are the treated and control sample sizes, and then estimate \(\delta\) by \(\widehat{\delta} = \widehat{U}_{Y} - \widehat{U}_{S}\). A confidence interval for \(\delta\) follows from the central limit theorem for U-statistics and closed-form variance estimators for linear combinations of U-statistics. \citet{parast2024rank} conclude that \(S\) is valid if the upper bound of this interval is less than the pre-specified threshold \(\varepsilon\).
 
 \subsection{Limitations of the Existing Approach}\label{subsec:limitations}
 
-The nonparametric approach of \citet{parast2024rank} provides a method for surrogate evaluation in small-sample settings, but it suffers from several notable limitations. First, it is worth questioning whether the treatment effect quantities considered truly capture the causal targets. In fact, in the causal inference literature rank-based statistics have been criticized for lacking clear causal interpretation \citep{imbens2015causal}. For example, the Mann--Whitney test assesses whether two variables are equal in distribution, but this condition is not necessarily informative about causal effects. To illustrate this point, consider that since \(U_{Y}\) represents the probability that a randomly selected treated unit has a higher \(Y\) than an independently selected control, it measures global distributional differences between groups. But is this the parameter we truly want to characterize? A more compelling target may be
-\begin{align}
+The nonparametric approach of \citet{parast2024rank} suffers from several notable limitations. Firstly, it is worth questioning whether the treatment effect quantities considered truly capture the causal targets. In the causal inference literature, rank-based statistics have in fact been criticized for lacking a clear causal interpretation \citep{imbens2015causal}. For example, the Mann--Whitney test assesses whether two variables are equal in distribution, but this condition is not necessarily informative about causal effects. To illustrate this point, note that since \(U_{Y}\) represents the probability that a randomly selected treated unit has a higher Y than an independently selected control, it captures global distributional differences between groups, rather than a directly interpretable causal effect. This motivates the consideration of alternative estimands that more directly target causal effects, such as
+\begin{equation}
   V_{Y} = \Prob(Y_{1i} > Y_{0i}),
-\end{align}
+\end{equation}
 which represents the probability that a randomly selected unit has a better outcome \(Y\) under treatment than under control. If we define \(V_{S}\) analogously for the surrogate \(S\), then we can measure the discrepancy in treatment effects via \(\theta = V_{Y} - V_{S}\). Notably, \(U_{Y}\) and \(U_{S}\) are not equivalent to \(V_{Y}\) and \(V_{S}\), as discussed in detail by \citet{fay2018causal}. This difference propagates directly to the discrepancy parameters \(\delta\) and \(\theta\). As we illustrate in Section~\ref{subsec:comparison_parameters}, they can differ substantially even under relatively simple and well-behaved data-generating mechanisms, and therefore the choice between them may lead to opposing conclusions.
 
 Secondly, the assumptions underlying the Mann--Whitney statistic may be too restrictive. In particular, the test assumes potential outcomes for each observation are independent and identically distributed. The identical distribution assumption is often unrealistic, as potential outcomes are typically influenced by covariates that vary across units.
 
-Moreover, the numerical studies in \citet{parast2024rank} show that, while their estimation approach achieves minimal bias across various settings, the resulting test evaluating the surrogate suffers from low power. Approaches that prioritize higher power, even if they require some parametric assumptions, may better detect valid surrogates, especially in small-sample settings. Along these lines, leveraging baseline covariates is a natural strategy to increase power, as covariate adjustment is known to improve both power and efficiency in other settings by reducing residual outcome variability unrelated to treatment \citep{zhang2008improving, colantuoni2015leveraging, zhang2019machine}. However, the rank-based framework of \citet{parast2024rank} does not easily allow for covariate adjustment. Incorporating baseline information would likely require a rank regression--type approach, representing a substantial methodological departure from the original framework.
+Moreover, the numerical studies in \citet{parast2024rank} show that their procedure achieves high coverage across different settings, but suffers from low power in testing surrogate validity. Approaches that prioritize higher power, even if they rely on parametric assumptions, may better detect valid surrogates, particularly in small-sample settings. Along these lines, leveraging baseline covariates is a natural strategy to increase power, as covariate adjustment improves efficiency and power by reducing residual outcome variability unrelated to the treatment \citep{zhang2008improving, colantuoni2015leveraging, zhang2019machine}. However, the rank-based framework of \citet{parast2024rank} does not readily accommodate covariate adjustment, and incorporating baseline information would likely require a rank regression-type approach, representing a substantial departure from the original framework.
 
-Hence, in Section~\ref{sec:bayesian_approach}, we describe our Bayesian imputation-based methodology addressing these limitations. In particular, our approach focuses on the causal treatment effect quantities \(V_{Y}\) and \(V_{S}\), improves power, and allows incorporation of baseline covariates. Before doing so, in the following section, we detail the difference between the discrepancy parameters; this section may be skipped without loss of continuity by readers less interested in these subtleties.
+Hence, in Section~\ref{sec:bayesian_approach}, we describe our Bayesian imputation-based methodology addressing these limitations. In particular, our approach focuses on the causal treatment effect quantities \(V_{Y}\) and \(V_{S}\), improves power, and allows incorporation of baseline covariates. The following section clarifies the discrepancy parameters and may be skipped without loss of continuity.
 
 \subsection{Comparison between Discrepancy Parameters}\label{subsec:comparison_parameters}
 
-As noted in Section~\ref{subsec:limitations}, the parameters \(U_{Y}\) and \(V_{Y}\) are not equivalent, and this difference propagates directly to the discrepancy parameters \(\delta\) and \(\theta\). In practice, this means that, under the same data-generating mechanism, the two discrepancy parameters can take substantially different values, potentially leading to opposing conclusions about surrogate validity. To illustrate this point, it is useful to consider the analytical forms of \(\delta\) and \(\theta\) in a simple setting where the potential outcomes are drawn from a Gaussian distribution with parameters that depend on a baseline covariate \(X\):
-%\vspace{-1mm}
+As noted in Section~\ref{subsec:limitations}, the parameters \(U_{Y}\) and \(V_{Y}\) are not equivalent, which carries over to \(\delta\) and \(\theta\). This means that, under the same data-generating mechanism, the two discrepancy parameters can take substantially different values, potentially leading to opposing conclusions about surrogate validity. To illustrate this point, it is useful to consider the analytical forms of \(\delta\) and \(\theta\) in a simple setting where the potential outcomes are drawn from a Gaussian distribution whose parameters that depend on a baseline covariate \(X\):
+ %\vspace{-1mm}
 \begin{equation}
   \label{eq:data_generating_process_covariates}
   \begin{aligned}
@@ -188,14 +193,16 @@ As noted in Section~\ref{subsec:limitations}, the parameters \(U_{Y}\) and \(V_{
     X_{i} &\iid f, \quad i = 1, \ldots, n,
   \end{aligned}
 \end{equation}
-where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance matrix that depend on \(X_{i}\), and \(f\) is the distribution of the covariate over some space \(\mathcal{X}\). Under the model in Equation~\eqref{eq:data_generating_process_covariates}, \(\theta\) and \(\delta\) admit a convenient analytical expression as expectations over the covariate distribution. Specifically, consider the following two assumptions:
-\begin{itemize}
-    \item \textbf{Conditional Orthogonality of Potential Outcomes}:
+where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance matrix that depend on \(X_{i}\), and \(f\) is the distribution of the covariate over some space \(\mathcal{X}\). Under the model in Equation~\eqref{eq:data_generating_process_covariates}, \(\theta\) and \(\delta\) admit a convenient analytical expression as expectations over the covariate distribution.
+
+Specifically, consider the following two assumptions:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Conditional Orthogonality}:
     $$ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 \quad \forall \; x \in \mathcal{X}. $$
     \item \textbf{Conditional Homoscedasticity}:
     $$ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \quad \forall \; x \in \mathcal{X}. $$
 \end{itemize}
-Then, one can show (see Appendix~\ref{app:derivation_theta_delta}) that
+Then, it follows that
 \begin{align}
 \label{eq:decomposition_theta}
     \delta = \E_{(X_{i}, X_{j}) \sim f \times f} \!\left( g(X_{i}, X_{j})\right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right),
@@ -205,22 +212,22 @@ where
 \label{eq:g_definition}
     g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{align}
-Without these assumptions, the formula for \(g\) still entails a difference of Gaussian CDFs, but with arguments involving the conditional variances and covariances, leading to a more cumbersome expression (see Appendix~\ref{app:derivation_theta_delta}).
+Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Appendix~\ref{app:derivation_theta_delta}.
 
-Hence, \(\theta\) and \(\delta\) do not coincide whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. Importantly, this can happen even under the two more stringent assumptions stated above. To exemplify this, we consider two simple settings where the distribution of the potential outcomes is covariate-dependent.
+Importantly, we introduce the stronger assumptions stated above for ease of exposition, as they allow us to highlight more clearly that \(\theta\) and \(\delta\) may differ substantially whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. To illustrate this point further, we consider two analytically tractable settings.
 
 \subsubsection{Binary Covariate Setting}
 \label{subsec:binary_covariate_setting}
 
-Let us start by considering the simplest possible setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To illustrate the discrepancy between \(\theta\) and \(\delta\) (see Appendix~\ref{app:binary_covariate_derivation} for the full derivation), suppose that the treatment effect is homogeneous across all values of \(X\):
+Let us start by considering the simple setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To simplify the analysis even further, let us also assume treatment effect homogeneity across \(X\):
 \begin{align}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} = \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta, \quad x = 0, 1,
 \end{align}
-for some constant \(\Delta > 0\). One can show (see Appendix~\ref{app:binary_covariate_derivation}) that the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across different \(X\) groups. Specifically, we have that
+for some constant \(\Delta > 0\). As we show in Appendix~\ref{app:binary_covariate_derivation}, the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across \(X\) groups:
 \begin{align}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
 \end{align}
-where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). Then, to understand how the discrepancy between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\), it is useful to consider the plot of this quantity in Figure~\ref{fig:discrepancy_heatmap} for a fixed value of \(\Delta\). It appears that \(|\theta - \delta|\) is very large whenever
+where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). To understand how the distance between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\), it is useful to consider the plot of this quantity in Figure~\ref{fig:discrepancy_heatmap} for a fixed value of \(\Delta\). It appears that \(|\theta - \delta|\) is very large whenever
 \begin{align}
     |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta.
 \end{align}
@@ -228,6 +235,14 @@ This implies that
 \begin{align}
     \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
 \end{align}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
+    \caption{Heatmap of \(|\theta - \delta|\) as a function of \(d_S\) and \(d_Y\) with \(\Delta = 5\).}
+    \label{fig:discrepancy_heatmap}
+\end{figure}
+
 %To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
 %\begin{itemize}
 %    \item \(U^{00}_{Y} = \Phi (\Delta)\) and \(U^{00}_{S} = \Phi (\Delta)\), therefore \(\delta^{00} = \Phi (\Delta) - \Phi (\Delta) = 0\),
@@ -283,6 +298,32 @@ and perform the hypothesis test:
     \end{cases}
 \end{equation}
 where \(\eta\) is a pre-specified threshold for surrogate validation. We reject the null hypothesis if \(\widehat{\theta}_{1 - \alpha} < \eta\); otherwise, we fail to reject it. The full procedure is summarized in Algorithm~\ref{alg:bayesian_approach}.
+
+\begin{algorithm}[htbp!]
+\caption{Bayesian Imputation-Based Approach.}
+\label{alg:bayesian_approach}
+\begin{algorithmic}[1]
+\Require Observed data \(\{Y_i, S_i, Z_{i}, X_{i}\}_{i=1}^n\), prior parameters, number of posterior iterations \(T\), burn-in \(b\), surrogate threshold \(\eta\), significance level \(\alpha\)
+\For{\(t = 1\) to \(T\)}
+    \For{\(i = 1\) to \(n\)}
+        \If{\(Z_{i} = 1\)}
+            \State Sample \(P^{(t)}_{0i} \sim p \left( P^{(t)}_{0i} \mid P_{1i}, X_{i}, Z_{i}=1\right)\)
+        \Else
+            \State Sample \(P^{(t)}_{1i} \sim p \left( P^{(t)}_{1i} \mid P_{0i}, X_{i}, Z_{i}=0\right)\)
+        \EndIf
+    \EndFor
+    \State \(\widehat{V}_Y^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(Y_{1i}^{(t)} > Y_{0i}^{(t)}\big)\)
+    \State \(\widehat{V}_{S}^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(S_{1i}^{(t)} > S_{0i}^{(t)}\big)\)
+    \State \(\widehat{\theta}^{(t)} \gets \widehat{V}_Y^{(t)} - \widehat{V}_{S}^{(t)}\)
+\EndFor
+\State \(\widehat{\theta}_{1-\alpha} \gets \operatorname{quantile}\!\Big(\widehat{\theta}^{(b+1:T)}, 1-\alpha\Big)\)
+\If{\(\widehat{\theta}_{1-\alpha} < \eta\)}
+    \State Reject \(H_0\)
+\Else
+    \State Fail to reject \(H_0\)
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 
 The primary challenge of this methodology lies in sampling the unobserved potential outcomes. Clearly, for each unit \(i\), the sampling strategy to draw the missing potential outcomes from their posterior distribution crucially depends on the assumed data-generating mechanism, denoted as \(F_{i}\) in Equation~\eqref{eq:data_generating_process}. Therefore, in the next section, we propose two flexible parametric models that can be used for this sampling step.
 
@@ -423,14 +464,63 @@ We ran \(500\) simulations for each setting, with a sample size of \(n = 50\). W
 
 Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings \(1\) and \(2\), the rank-based method of \citet{parast2024rank} and the Bayesian imputation-based method perform similarly. In in Setting \(3\),improved performance is observed for the Bayesian method with higher coverage and higher power. As expected, in Setting \(4\), where the data-generating process is non-Gaussian and non-linear, the nonparametric rank-based method outperforms the Bayesian method in terms of power. Settings \(5\) and \(6\) highlight the true strength of our proposed Bayesian imputation-based method, where the frequentist method very rarely identifies the surrogate as valid, while our method correctly recognizes the surrogate as valid in all iterations. This is not surprising, since the data-generating process in Settings \(5\) and \(6\) were purposely designed to illustrate the limitations of the  the rank-based method.  The proposed Bayesian method is able to adjust for the binary covariate in these settings, and correctly capture surrogacy. The results demonstrate the power gains of our proposed methodology, though we also intentionally explore its limitations under model misspecification.
 
-\section{Application}\label{sec:application}
+\section{Real Data Application}\label{sec:real_data_application}
 We illustrate our proposed method using  data from the Diabetes Control and Complications Trial (DCCT). This trial was a multicenter, randomized, clinical study designed to determine the effect of an intensive treatment protocol directed at maintaining blood glucose concentrations on progression of early vascular complications in patients with Type 1 diabetes, compared to a control group that received usual care \citep{dcct1987diabetes,Lachin2021DCCT,diabetes1993effect}.  Specifically, the intensive therapy was designed to achieve normal blood glucose levels with three or more insulin injections or an insulin pump. Usual care consisted of 1 or 2 insulin injections per day. Our primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years years post-randomization, while the surrogate was an earlier measurement of change in HbA1c from baseline to 1.5 years post-randomization.
 
-Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 with a history of smoking. This resulted in an analytic sample of 47 participants. Figure \ref{fig:dcct} describes the data, showing the distribution of the primary outcome and the surrogate (top panel), as well as the relationship between the surrogate and the primary outcome (bottom panel) in the treated and control groups within this high-risk subgroup.
+Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 with a history of smoking. This resulted in an analytic sample of 47 participants. Figure~\ref{fig:dcct} shows the distribution of the primary outcome and the surrogate by treatment arm. Figure~\ref{fig:dcct_scatter_cdf} illustrates the relationship between the surrogate and the primary outcome and the empirical CDFs, whose horizontal gap directly corresponds to the rank-based quantities \(U_Y\) and \(U_S\).
 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_Y.pdf}
+        \caption{Primary outcome}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_S.pdf}
+        \caption{Surrogate}
+    \end{subfigure}
+    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
+    \label{fig:dcct}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_scatterplot.pdf}
+        \caption{Surrogate vs.\ primary outcome}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
+        \caption{Empirical CDFs}
+    \end{subfigure}
+    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
+    \label{fig:dcct_scatter_cdf}
+\end{figure}
 
 We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of $\widehat{\theta}$ is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of $\widehat{\theta}$ incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in $\widehat{\delta} = 0.044$, a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities ($\widehat{\theta}$ vs $\widehat{\delta}$) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_no_X_theta_posterior_plot.pdf}
+        \caption{Without covariates}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
+        \caption{With covariates (sex and BMI)}
+    \end{subfigure}
+    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
+    \label{fig:dcct_post}
+\end{figure}
 
 \section{Discussion}\label{sec:discussion}
 
@@ -446,16 +536,6 @@ The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidem
 
 \bibliographystyle{biom}
 \bibliography{BSET_references}
-
-\clearpage
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
-    \caption{Heatmap of \(|\theta - \delta|\) as a function of \(d_S\) and \(d_Y\) with \(\Delta = 5\).}
-    \label{fig:discrepancy_heatmap}
-\end{figure}
-
-\clearpage
 
 \begin{longtable}[]{@{}cccccc@{}}
 \caption{Simulation results comparing the frequentist rank-based method and the proposed 
@@ -487,90 +567,5 @@ over 500 replications with $n=50$ per replication. Bolding indicates the better 
 5 (Binary Covariate) & Yes & 0.925 & \textbf{0.975} & 0.075 & \textbf{1.00} \\
 6 (Gaussian Covariate) & Yes & & & & \\
 \end{longtable}
-
-\vspace{3em}
-\clearpage
-
-\begin{algorithm}[htbp!]
-\caption{Bayesian Imputation-Based Approach.}
-\label{alg:bayesian_approach}
-\begin{algorithmic}[1]
-\Require Observed data \(\{Y_i, S_i, Z_{i}, X_{i}\}_{i=1}^n\), prior parameters, number of posterior iterations \(T\), burn-in \(b\), surrogate threshold \(\eta\), significance level \(\alpha\)
-\For{\(t = 1\) to \(T\)} 
-    \For{\(i = 1\) to \(n\)}
-        \If{\(Z_{i} = 1\)} 
-            \State Sample \(P^{(t)}_{0i} \sim p \left( P^{(t)}_{0i} \mid P_{1i}, X_{i}, Z_{i}=1\right)\)
-        \Else
-            \State Sample \(P^{(t)}_{1i} \sim p \left( P^{(t)}_{1i} \mid P_{0i}, X_{i}, Z_{i}=0\right)\)
-        \EndIf
-    \EndFor
-    \State \(\widehat{V}_Y^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(Y_{1i}^{(t)} > Y_{0i}^{(t)}\big)\)
-    \State \(\widehat{V}_{S}^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(S_{1i}^{(t)} > S_{0i}^{(t)}\big)\)
-    \State \(\widehat{\theta}^{(t)} \gets \widehat{V}_Y^{(t)} - \widehat{V}_{S}^{(t)}\)
-\EndFor
-\State \(\widehat{\theta}_{1-\alpha} \gets \operatorname{quantile}\!\Big(\widehat{\theta}^{(b+1:T)}, 1-\alpha\Big)\)
-\If{\(\widehat{\theta}_{1-\alpha} < \eta\)}
-    \State Reject \(H_0\)
-\Else
-    \State Fail to reject \(H_0\)
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-
-\clearpage
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_Y.pdf}
-        \caption{Primary outcome}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_S.pdf}
-        \caption{Surrogate}
-    \end{subfigure}
-    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
-    % \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest (Y), change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization, and the surrogate (S), change in HbA1c from baseline to 1.5 years post-randomization, in the treated and control groups within the high-risk subgroup (top panel); and the relationship between the surrogate (S) and the primary outcome (Y) in the treated and control groups within the high-risk subgroup (bottom panel). In the top panel, the curves represent kernel density estimates of the marginal distributions of Y (left) and S (right), with separate curves for the treated and control groups. In the bottom panel, each point corresponds to an individual subject, plotting the observed surrogate value (S) against the observed primary outcome (Y). The solid curve in each panel represents a nonparametric estimate of the conditional mean function $E[Y \mid S=s,G=g]$, obtained using locally weighted regression (LOESS). The shaded region surrounding the curve represents the pointwise 95\% confidence interval for this estimated mean function, reflecting uncertainty due to sampling variability.}
-    \label{fig:dcct}
-\end{figure}
-
-\clearpage
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_scatterplot.pdf}
-        \caption{Surrogate vs.\ primary outcome}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
-        \caption{Empirical CDFs}
-    \end{subfigure}
-    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
-    \label{fig:dcct_scatter_cdf}
-\end{figure}
-
-\clearpage
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_no_X_theta_posterior_plot.pdf}
-        \caption{Without covariates}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
-        \caption{With covariates (sex and BMI)}
-    \end{subfigure}
-    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
-    \label{fig:dcct_post}
-\end{figure}
-
 
 \end{document}

@@ -5,42 +5,42 @@ The style file: biom.bst
 Database file #1: BSET_references.bib
 You've used 35 entries,
             2146 wiz_defined-function locations,
-            740 strings with 10171 characters,
-and the built_in function-call counts, 15549 in all, are:
-= -- 1489
-> -- 756
-< -- 29
-+ -- 248
-- -- 240
-* -- 1416
-:= -- 2694
+            740 strings with 9982 characters,
+and the built_in function-call counts, 15094 in all, are:
+= -- 1464
+> -- 674
+< -- 30
++ -- 219
+- -- 210
+* -- 1354
+:= -- 2603
 add.period$ -- 106
 call.type$ -- 35
-change.case$ -- 251
-chr.to.int$ -- 35
+change.case$ -- 242
+chr.to.int$ -- 34
 cite$ -- 35
 duplicate$ -- 547
 empty$ -- 984
-format.name$ -- 299
-if$ -- 2949
-int.to.chr$ -- 1
+format.name$ -- 269
+if$ -- 2876
+int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 35
 newline$ -- 178
 num.names$ -- 140
-pop$ -- 188
+pop$ -- 178
 preamble$ -- 1
-purify$ -- 254
+purify$ -- 245
 quote$ -- 0
-skip$ -- 403
+skip$ -- 402
 stack$ -- 0
-substring$ -- 1147
+substring$ -- 1143
 swap$ -- 267
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 204
 warning$ -- 0
-while$ -- 160
+while$ -- 159
 width$ -- 0
 write$ -- 453

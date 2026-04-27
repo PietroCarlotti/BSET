@@ -35,8 +35,13 @@ Colantuoni, E. and Rosenblum, M. (2015).
 \newblock Diabetes control and complications trial research group: The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus.
 \newblock {\em New England journal of medicine} {\bf 329,} 977--986.
 
-\bibitem[\protect\citeauthoryear{Elliott}{Elliott}{2023}]{elliott2023surrogate}
-Elliott, M.~R. (2023).
+\bibitem[\protect\citeauthoryear{Elliott}{Elliott}{2023a}]{annurev:/content/journals/10.1146/annurev-statistics-032921-035359}
+Elliott, M.~R. (2023a).
+\newblock Surrogate endpoints in clinical trials.
+\newblock {\em Annual Review of Statistics and Its Application} {\bf 10,} 75--96.
+
+\bibitem[\protect\citeauthoryear{Elliott}{Elliott}{2023b}]{elliott2023surrogate}
+Elliott, M.~R. (2023b).
 \newblock Surrogate endpoints in clinical trials.
 \newblock {\em Annual Review of Statistics and its Application} {\bf 10,} 75--96.
 
@@ -104,11 +109,6 @@ Imbens, G.~W. and Rubin, D.~B. (2015).
 Lachin, J. and Braffett, B. (2021).
 \newblock {Diabetes Control and Complications Trial / Epidemiology of Diabetes Interventions and Complications (DCCT/EDIC)}.
 \newblock {Dataset} (Version 21). Available from the NIDDK Central Repository.
-
-\bibitem[\protect\citeauthoryear{Lavine, Schwimmer, Molleston, Scheimann, Murray, Abrams, Rosenthal, Sanyal, Robuck, Brunt, et~al\mbox{.}}{Lavine et~al.}{2010}]{lavine2010treatment}
-Lavine, J.~E., Schwimmer, J.~B., Molleston, J.~P., Scheimann, A.~O., Murray, K.~F., Abrams, S.~H., Rosenthal, P., Sanyal, A.~J., Robuck, P.~R., Brunt, E.~M., et~al. (2010).
-\newblock Treatment of nonalcoholic fatty liver disease in children: Tonic trial design.
-\newblock {\em Contemporary clinical trials} {\bf 31,} 62--70.
 
 \bibitem[\protect\citeauthoryear{Lewandowski, Kurowicka, and Joe}{Lewandowski et~al.}{2009}]{lewandowski2009generating}
 Lewandowski, D., Kurowicka, D., and Joe, H. (2009).
