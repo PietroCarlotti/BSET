@@ -1,17 +1,8 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 
-\documentclass[12pt]{article}
-
-% Preamble
-\usepackage[margin=1in]{geometry} % Page margins
-\usepackage{xcolor}
-\usepackage{setspace} % Line spacing
-%\doublespacing
-\renewcommand{\baselinestretch}{1.79}
+\documentclass[referee,usenatbib]{biom}
 
 \usepackage{xr}
 \makeatletter
@@ -30,12 +21,13 @@
 
 \myexternaldocument{BSET_appendix}
 
- \newcommand{\argmin}{\mathop{\rm arg\min}}
+\newcommand{\argmin}{\mathop{\rm arg\min}}
 \newcommand{\argmax}{\mathop{\rm arg\max}}
 
-
-\usepackage{graphicx,verbatim,array,multicol, xcolor, lscape, mathrsfs, color,enumitem}
-\usepackage{psfrag, amsmath, amsfonts, epsfig, fancybox, setspace,soul,amsthm,natbib,algorithm, algorithmicx, algpseudocode, float, subcaption, booktabs, pdflscape}
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{graphicx,verbatim,array,multicol,lscape,mathrsfs,color,enumitem}
+\usepackage{amsmath,amsfonts,epsfig,fancybox,soul,float,subcaption,booktabs,pdflscape}
+\usepackage{algorithm,algorithmicx,algpseudocode}
 \usepackage[hidelinks]{hyperref}
 \def\bW{{\bf W}}
 \def\bZ{{\bf Z}}
@@ -53,20 +45,13 @@
 \def\bomega{\boldsymbol{\omega}}
 \def\bPi{\boldsymbol{\Pi}}
 \def\calt{\mathcal{T}}
-\newtheorem{theorem}{Theorem}
-% \setlength{\parindent}{0pt}
 \def\bSigma{\boldsymbol{\Sigma}}
 \def\bmu{\boldsymbol{\mu}}
-\newtheorem{assumption}{Assumption}
-\setcitestyle{authoryear}
+\newtheorem{proposition}{Proposition}
 
-% Other packages
-\usepackage{bbm} % Indicator function
-\usepackage{algorithm} % Algorithm environment
-\usepackage{algpseudocode} % Algorithm pseudocode environment
-\usepackage{multirow} % For multi-row cells in tables
+\usepackage{bbm}
+\usepackage{multirow}
 
-% New commands
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
@@ -78,22 +63,16 @@
 
 \allowdisplaybreaks
 
-% New environments
-\newtheorem{definition}{Definition}
-\newtheorem{proposition}{Proposition}
-
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,array}
+\usepackage{calc}
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
 \graphicspath{{figures/}}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -102,33 +81,21 @@
 
 \begin{document}
 
-\setlength\parindent{15pt} 
+\setlength\parindent{15pt}
 
-  \begin{center}
-    \LARGE{A Bayesian Critique of Rank-Based Methods for \vspace*{6mm} \\
-    
-    Surrogate Marker Evaluation}
+\title{A Bayesian Critique of Rank-Based Methods for Surrogate Marker Evaluation}
 
-    \vspace*{15mm}
-\normalsize Pietro Carlotti$^{1}$ and Layla Parast$^{2}$ \\
-\vspace*{10mm}
-\normalsize $^{1}$Department of Statistics and Data Sciences, University of Texas at Austin, \\ \normalsize 105 E 24th St D9800, Austin, TX 78705, pietro.carlotti@utexas.edu \\
-\normalsize $^{2}$Department of Statistics and Data Sciences, University of Texas at Austin, \\ \normalsize 105 E 24th St D9800, Austin, TX 78705 \\
-
-\end{center}
-\clearpage
-\thispagestyle{empty}
+\author{Pietro Carlotti \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ pietro.carlotti@utexas.edu \and Layla Parast \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ parast@austin.utexas.edu}
 
 \begin{abstract}
-
-Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, expensive, or time-consuming to measure directly. These markers can accelerate the evaluation of new treatments, provided they reliably capture the causal relationship between treatment and true clinical benefit. \citet{parast2024rank} recently proposed a rank-based approach for evaluating surrogate markers, characterized by its nonparametric nature and minimal assumptions. While this method is useful in small-sample model-agnostic settings, it has several limitations, including a lack of clear causal interpretation, low statistical power, and insufficient robustness to different data-generating mechanisms. In this paper, we propose a Bayesian approach that addresses these shortcomings by focusing on causal treatment effect estimands and, in doing so, improves power through covariate adjustment. We demonstrate the advantages of our proposed method through a simulation study designed to highlight gains in both accuracy and power.
+Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, expensive, or time-consuming to measure directly. These markers can accelerate the evaluation of new treatments, provided they reliably capture the causal relationship between treatment and true clinical benefit. \citet{parast2024rank} recently proposed a rank-based approach for evaluating surrogate markers, characterized by its nonparametric nature and minimal assumptions. While this method is useful in small-sample model-agnostic settings, it has several limitations, including a lack of clear causal interpretation, low statistical power, and insufficient robustness to different data-generating mechanisms. In this paper, we propose a Bayesian approach that addresses these shortcomings by focusing on causal treatment effect estimands and, in doing so, improves power through covariate adjustment. To demonstrate the advantages of our proposed method, we conduct a comprehensive evaluation using both a simulation study, designed to highlight gains in accuracy and statistical power, and an application to a real clinical trial dataset.
 \end{abstract}
 
-\noindent%
-{\it Keywords:} Bayesian Inference; Surrogate Markers; Clinical Trials; Causal Inference.
-\vfill
+\begin{keywords}
+Bayesian Inference; Surrogate Markers; Clinical Trials; Causal Inference.
+\end{keywords}
 
-\newpage
+\maketitle
 
 
 \section{Introduction}\label{sec:introduction}
@@ -477,7 +444,7 @@ This work was supported by NIDDK grant R01DK118354 (PI:Parast) and [Pietro add f
 
 The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidemiology of Diabetes Interventions and Complications (EDIC) study were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not represent analyses or conclusions of the DCCT/EDIC study group, NIDDK-CR, or NIH.
 
-\bibliographystyle{plainnat}
+\bibliographystyle{biom}
 \bibliography{BSET_references}
 
 \clearpage

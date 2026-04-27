@@ -1,0 +1,61 @@
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
+    \caption{Heatmap of \(|\theta - \delta|\) as a function of \(d_S\) and \(d_Y\) with \(\Delta = 5\).}
+    \label{fig:discrepancy_heatmap}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_Y.pdf}
+        \caption{Primary outcome}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_S.pdf}
+        \caption{Surrogate}
+    \end{subfigure}
+    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
+    % \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest (Y), change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization, and the surrogate (S), change in HbA1c from baseline to 1.5 years post-randomization, in the treated and control groups within the high-risk subgroup (top panel); and the relationship between the surrogate (S) and the primary outcome (Y) in the treated and control groups within the high-risk subgroup (bottom panel). In the top panel, the curves represent kernel density estimates of the marginal distributions of Y (left) and S (right), with separate curves for the treated and control groups. In the bottom panel, each point corresponds to an individual subject, plotting the observed surrogate value (S) against the observed primary outcome (Y). The solid curve in each panel represents a nonparametric estimate of the conditional mean function $E[Y \mid S=s,G=g]$, obtained using locally weighted regression (LOESS). The shaded region surrounding the curve represents the pointwise 95\% confidence interval for this estimated mean function, reflecting uncertainty due to sampling variability.}
+    \label{fig:dcct}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_scatterplot.pdf}
+        \caption{Surrogate vs.\ primary outcome}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
+        \caption{Empirical CDFs}
+    \end{subfigure}
+    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
+    \label{fig:dcct_scatter_cdf}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_no_X_theta_posterior_plot.pdf}
+        \caption{Without covariates}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
+        \caption{With covariates (sex and BMI)}
+    \end{subfigure}
+    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
+    \label{fig:dcct_post}
+\end{figure}

@@ -1,46 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: BSET.aux
-The style file: plainnat.bst
+The style file: biom.bst
 Database file #1: BSET_references.bib
 You've used 35 entries,
-            2773 wiz_defined-function locations,
-            823 strings with 11171 characters,
-and the built_in function-call counts, 16052 in all, are:
-= -- 1473
-> -- 800
+            2146 wiz_defined-function locations,
+            740 strings with 10171 characters,
+and the built_in function-call counts, 15549 in all, are:
+= -- 1489
+> -- 756
 < -- 29
-+ -- 275
++ -- 248
 - -- 240
-* -- 1278
-:= -- 2429
-add.period$ -- 108
+* -- 1416
+:= -- 2694
+add.period$ -- 106
 call.type$ -- 35
-change.case$ -- 181
+change.case$ -- 251
 chr.to.int$ -- 35
-cite$ -- 70
-duplicate$ -- 737
-empty$ -- 1386
+cite$ -- 35
+duplicate$ -- 547
+empty$ -- 984
 format.name$ -- 299
-if$ -- 3382
+if$ -- 2949
 int.to.chr$ -- 1
-int.to.str$ -- 1
+int.to.str$ -- 0
 missing$ -- 35
-newline$ -- 185
+newline$ -- 178
 num.names$ -- 140
-pop$ -- 349
+pop$ -- 188
 preamble$ -- 1
-purify$ -- 149
+purify$ -- 254
 quote$ -- 0
-skip$ -- 574
+skip$ -- 403
 stack$ -- 0
-substring$ -- 789
-swap$ -- 74
+substring$ -- 1147
+swap$ -- 267
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 370
+type$ -- 204
 warning$ -- 0
 while$ -- 160
 width$ -- 0
-write$ -- 462
+write$ -- 453
