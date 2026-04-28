@@ -19,7 +19,7 @@
         \includegraphics[width=\textwidth]{DCCT_S.pdf}
         \caption{Surrogate}
     \end{subfigure}
-    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
+    \caption{Left panel: distribution of the primary outcome (change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization) by treatment arm. Right panel: distribution of the surrogate (change in HbA1c from baseline to 1.5 years post-randomization) by treatment arm. Both panels show the high-risk subgroup of the Diabetes Control and Complications Trial (DCCT).}
     \label{fig:dcct}
 \end{figure}
 \efloatseparator

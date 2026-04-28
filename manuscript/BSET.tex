@@ -508,7 +508,7 @@ Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings 1 an
 \section{Real Data Application}\label{sec:real_data_application}
 We illustrate our proposed method using  data from the Diabetes Control and Complications Trial (DCCT). This trial was a multicenter, randomized, clinical study designed to determine the effect of an intensive treatment protocol directed at maintaining blood glucose concentrations on progression of early vascular complications in patients with Type 1 diabetes, compared to a control group that received usual care \citep{dcct1987diabetes,Lachin2021DCCT,diabetes1993effect}.  Specifically, the intensive therapy was designed to achieve normal blood glucose levels with three or more insulin injections or an insulin pump. Usual care consisted of 1 or 2 insulin injections per day. Our primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years years post-randomization, while the surrogate was an earlier measurement of change in HbA1c from baseline to 1.5 years post-randomization.
 
-Our analysis focuses on a small subgroup of high-risk participants: those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 and a history of smoking. This yields a sample of 47 participants. Figure~\ref{fig:dcct} shows the distribution of the primary outcome and the surrogate by treatment arm. Figure~\ref{fig:dcct_scatter_cdf} illustrates the relationship between the surrogate and primary outcome, along with the empirical CDFs, whose horizontal gap directly corresponds to the rank-based quantities \(U_Y\) and \(U_S\).
+Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 and a history of smoking. This resulted in a sample of \(47\) participants. Figure~\ref{fig:dcct} shows the distribution of the primary outcome and the surrogate by treatment arm. Figure~\ref{fig:dcct_scatter_cdf} illustrates the relationship between the surrogate and the primary outcome and the empirical CDFs, whose horizontal gap directly corresponds to the rank-based quantities \(U_Y\) and \(U_S\).
 
 \begin{figure}[ht]
     \centering
@@ -523,7 +523,7 @@ Our analysis focuses on a small subgroup of high-risk participants: those in the
         \includegraphics[width=\textwidth]{DCCT_S.pdf}
         \caption{Surrogate}
     \end{subfigure}
-    \caption{Diabetes Control and Complications Trial (DCCT) data illustration of the distribution of the primary outcome of interest, change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization (left panel), and the surrogate, change in HbA1c from baseline to 1.5 years post-randomization (right panel), in the treated and control groups within the high-risk subgroup.}
+    \caption{Left panel: distribution of the primary outcome (change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization) by treatment arm. Right panel: distribution of the surrogate (change in HbA1c from baseline to 1.5 years post-randomization) by treatment arm. Both panels show the high-risk subgroup of the Diabetes Control and Complications Trial (DCCT).}
     \label{fig:dcct}
 \end{figure}
 
