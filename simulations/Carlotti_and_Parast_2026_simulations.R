@@ -1,27 +1,29 @@
 #' Run Simulations for the Settings in Carlotti and Parast (2026)
 #'
 #' This function executes the simulation study described in Carlotti and Parast
-#' (2026) for the covariate-augmented setting with a binary covariate \eqn{X}. It
-#' performs the frequentist and Bayesian surrogate evaluation tests from Parast
-#' et al. (2024) and Carlotti and Parast (2026), respectively, and returns a
-#' structured data frame of the results. The execution is parallelized using the
-#' \code{future} framework.
+#' (2026) across two covariate settings: a binary covariate setting (setting 1,
+#' \code{X_binary}) and a Gaussian covariate setting (setting 2,
+#' \code{X_Gaussian}). It performs the frequentist and Bayesian surrogate
+#' evaluation tests from Parast et al. (2024) and Carlotti and Parast (2026),
+#' respectively, and returns a structured data frame of the results. The
+#' execution is parallelized using the \code{future} framework.
 #'
 #' @details
-#' The function runs a total of 500 simulations for this setting, generating
-#' data using \code{DGP_X_binary} or \code{DGP_X_Gaussian} and processes the results using \code{BSET}. The
-#' simulation utilizes MCMC sampling via \code{rstan} for the Bayesian
-#' estimation components. Note that it relies on an external object 
+#' The function runs \code{n_simulations} simulations for each of the two
+#' settings, generating data using \code{DGP_X_binary} (setting 1) or
+#' \code{DGP_X_Gaussian} (setting 2) and processes the results using
+#' \code{BSET}. The simulation utilizes MCMC sampling via \code{rstan} for the
+#' Bayesian estimation components. Note that it relies on an external object
 #' \code{estimands_Carlotti_and_Parast_2026} that contains the true values of
 #' the parameters computed using the function
 #' \code{compute_estimands_Carlotti_and_Parast_2026}.
 #'
 #' @param seed Numeric. A random seed for reproducibility of the simulations.
-#' @param n_simulations Numeric. The number of simulation runs to execute for the setting.
+#' @param n_simulations Numeric. The number of simulation runs to execute per setting.
 #' @param parallel Logical. Whether to run the simulations in parallel or sequentially (default is TRUE).
 #' @return A data frame containing:
 #' \itemize{
-#'   \item \code{setting}: The index of the simulation setting (1 in this case).
+#'   \item \code{setting}: The index of the simulation setting (1 for binary covariate, 2 for Gaussian covariate).
 #'   \item \code{simulation}: The individual simulation run ID.
 #'   \item \code{Bayesian_epsilon}, \code{frequentist_epsilon}: Numeric. Surrogate validation thresholds for the Bayesian and frequentist tests, respectively.
 #'   \item \code{Bayesian_coverage}, \code{frequentist_coverage}: Boolean. Indicates whether the true surrogate effect is within the credible or confidence interval for the Bayesian and frequentist tests, respectively.

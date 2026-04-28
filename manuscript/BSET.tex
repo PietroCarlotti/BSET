@@ -136,7 +136,7 @@ We assume that for each unit \(i\), the vector of potential outcomes \(P_i\) is 
     Z_{i} &\iid \text{Bernoulli}(p), \quad i = 1, \ldots, n,
   \end{aligned}
 \end{equation}
-where \(p\) is the known treatment assignment probability (e.g., \(p = 0.5\) for a balanced trial).
+where \(p\) is the known treatment assignment probability (e.g., \(p = 0.5\) for a balanced trial). Finally, we denote the vector of observed data for unit \(i\) as \(D_i = (Y_i, S_i, Z_i)^{\top}\) or \(D_i = (Y_i, S_i, Z_i, X_i)^{\top}\), when covariates are available.
 
 In the next section, we describe the existing rank-based approach for evaluating a surrogate marker and call attention to its key limitations.
 
@@ -268,7 +268,7 @@ This implies that the treatment effect is the same for both \(Y\) and \(S\) acro
 \begin{align}
     |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
 \end{align}
-In particular, for \(m\Delta \neq 0\), we observe that
+In particular, for \(m, \Delta \neq 0\), we observe that
 \begin{align}
   \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{s}\right) - \frac{1}{2} \right| \nonumber \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, s} \{ |\theta - \delta| \} = \frac{1}{2},
 \end{align}
@@ -279,19 +279,34 @@ This means that in this setting, even though \(S\) is a perfect surrogate for \(
 Both settings above illustrate that the choice of discrepancy parameter is crucial, as different choices can lead to very different conclusions about surrogate validity. The rank-based approach focuses on \(\delta\), which may not capture the causal relationship between \(Y\) and \(S\) even in simple settings. We therefore advocate focusing on \(\theta\) instead.
 
 \section{Proposed Bayesian Imputation-Based Approach}\label{sec:bayesian_approach}
-The central idea of our approach is to estimate the parameter of interest and perform inference through its posterior distribution via Bayesian imputation. Specifically, we use the observed data to impute the unobserved potential outcomes from their posterior distribution. After imputing the missing potential outcomes, we can perform either between-unit or within-unit comparisons between treatment and control groups using any chosen discrepancy metric. Therefore, following the discussion in Section~\ref{subsec:limitations}, we focus on the following quantities:
+
+Our methodology treats causal inference as a missing data problem, estimating parameters by recovering unobserved potential outcomes through Bayesian imputation. We leverage observed data to generate the posterior distribution of missing outcomes, creating complete datasets that enable flexible unit-level comparisons using any discrepancy metric. Following Section~\ref{subsec:comparison_parameters}, we operationalize this approach by focusing on
 \begin{equation}
   \label{eq:V_definitions}
   \begin{aligned}
     V_{Y} & = \Prob(Y_{1i} > Y_{0i}), \quad V_{S} & = \Prob(S_{1i} > S_{0i}), \quad \theta & = V_{Y} - V_{S}.
   \end{aligned}
 \end{equation}
-As is typically done in Bayesian analysis, we perform inference on \(\theta\) by sampling from its posterior distribution. At each iteration of our sampling algorithm, we impute the unobserved \(Y_{gi}\) and \(S_{gi}\) values (e.g., \(Y_{0i}\) and \(S_{0i}\) for treated units) from their posterior distribution. Using both the observed and imputed outcomes, we compute the probabilities in Equation~\eqref{eq:V_definitions} via Monte Carlo estimators, and obtain a posterior sample for \(\theta\) by taking their difference. Then, using posterior draws of \(\theta\), we can perform inference and assess whether \(S\) is a valid surrogate. Specifically, we compute a one-sided credible interval for \(\theta\) using a quantile of the \(T\) posterior draws, after discarding the first \(b\) iterations as burn-in:
-\begin{equation}
-    \widehat{\theta}_{1 - \alpha} 
-    = \operatorname{quantile}\!\left( \widehat{\theta}^{(b+1:T)},\, 1 - \alpha \right),
-\end{equation}
-and perform the hypothesis test:
+At each iteration, we impute the unobserved potential outcomes (e.g., \(Y_{0i}\) and \(S_{0i}\) for \(Z_{i} = 0\)) from their posterior predictive distribution, as detailed in Algorithm~\ref{alg:Bayesian_imputation}.
+
+\begin{algorithm}[htbp!]
+\caption{Bayesian Imputation-Based Approach.}
+\label{alg:Bayesian_imputation}
+\begin{algorithmic}[1]
+\Require Observed data \(\{Y_i, S_i, Z_{i}, X_{i}\}_{i=1}^n\), prior parameters, number of iterations \(T\)
+\For{\(t = 1\) to \(T\)}
+    \For{\(i = 1\) to \(n\)}
+        \If{\(Z_{i} = 1\)}
+            \State Sample \(P^{(t)}_{0i} \sim \left[ P_{0i} \mid D_{1:n} \right]\)
+        \Else
+            \State Sample \(P^{(t)}_{1i} \sim \left[ P_{1i} \mid D_{1:n} \right]\)
+        \EndIf
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+Using both the observed and imputed outcomes, we compute the probabilities in Equation~\eqref{eq:V_definitions} via Monte Carlo estimators, and obtain a posterior sample for \(\theta\) by taking their difference. Then, to evaluate $S$ as a surrogate, we use the following hypothesis test on \(\theta\):
 \begin{equation}
     \label{eq:hypothesis_test_theta}
     \begin{cases}
@@ -299,30 +314,32 @@ and perform the hypothesis test:
         H_{1}: \theta < \eta.
     \end{cases}
 \end{equation}
-where \(\eta\) is a pre-specified threshold for surrogate validation. We reject the null hypothesis if \(\widehat{\theta}_{1 - \alpha} < \eta\); otherwise, we fail to reject it. The full procedure is summarized in Algorithm~\ref{alg:bayesian_approach}.
+where \(\eta\) is a pre-specified threshold for surrogate validation. Following \citet{parast2024rank}, we compute a one-sided credible interval for \(\theta\) using a quantile of the \(T\) posterior draws, after discarding the first \(b\) iterations as burn-in:
+\begin{equation}
+    \widehat{\theta}_{1 - \alpha}
+    = \operatorname{quantile}\!\left( \widehat{\theta}^{(b+1:T)},\, 1 - \alpha \right),
+\end{equation}
+and we reject the null hypothesis if \(\widehat{\theta}_{1 - \alpha} < \eta\); otherwise, we fail to reject it. Equivalently, this decision rule can be expressed in terms of the posterior probability of surrogate validity: we reject \(H_0\) if and only if \(\Prob(\theta < \eta \mid D_{1:n}) \geq 1 - \alpha\), where
+\begin{equation}
+    \Prob(\theta < \eta \mid D_{1:n}) \approx \frac{1}{T - b} \sum_{t=b+1}^{T} \one\!\left(\widehat{\theta}^{(t)} < \eta\right).
+\end{equation}
+While this is not a Bayesian hypothesis test in the strict sense, since it does not rely on Bayes factors, it provides a natural and interpretable decision rule grounded in the posterior distribution of \(\theta\). The hypothesis testing step is summarized in Algorithm~\ref{alg:Bayesian_test}.
 
 \begin{algorithm}[htbp!]
-\caption{Bayesian Imputation-Based Approach.}
-\label{alg:bayesian_approach}
+\caption{Bayesian Hypothesis Testing.}
+\label{alg:Bayesian_test}
 \begin{algorithmic}[1]
-\Require Observed data \(\{Y_i, S_i, Z_{i}, X_{i}\}_{i=1}^n\), prior parameters, number of posterior iterations \(T\), burn-in \(b\), surrogate threshold \(\eta\), significance level \(\alpha\)
+\Require Samples \(\left\{P^{(t)}_{1:n}\right\}_{t=1}^T\), burn-in \(b\), surrogate threshold \(\eta\), significance level \(\alpha\)
 \For{\(t = 1\) to \(T\)}
-    \For{\(i = 1\) to \(n\)}
-        \If{\(Z_{i} = 1\)}
-            \State Sample \(P^{(t)}_{0i} \sim p \left( P^{(t)}_{0i} \mid P_{1i}, X_{i}, Z_{i}=1\right)\)
-        \Else
-            \State Sample \(P^{(t)}_{1i} \sim p \left( P^{(t)}_{1i} \mid P_{0i}, X_{i}, Z_{i}=0\right)\)
-        \EndIf
-    \EndFor
     \State \(\widehat{V}_Y^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(Y_{1i}^{(t)} > Y_{0i}^{(t)}\big)\)
     \State \(\widehat{V}_{S}^{(t)} \gets \frac{1}{n} \sum_{i=1}^{n} \one \big(S_{1i}^{(t)} > S_{0i}^{(t)}\big)\)
     \State \(\widehat{\theta}^{(t)} \gets \widehat{V}_Y^{(t)} - \widehat{V}_{S}^{(t)}\)
 \EndFor
 \State \(\widehat{\theta}_{1-\alpha} \gets \operatorname{quantile}\!\Big(\widehat{\theta}^{(b+1:T)}, 1-\alpha\Big)\)
 \If{\(\widehat{\theta}_{1-\alpha} < \eta\)}
-    \State Reject \(H_0\)
+    \State \textbf{Reject} \(H_0\)
 \Else
-    \State Fail to reject \(H_0\)
+    \State \textbf{Fail to reject} \(H_0\)
 \EndIf
 \end{algorithmic}
 \end{algorithm}

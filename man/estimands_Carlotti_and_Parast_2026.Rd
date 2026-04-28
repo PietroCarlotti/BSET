@@ -5,14 +5,14 @@
 \alias{estimands_Carlotti_and_Parast_2026}
 \title{True estimands for Carlotti and Parast (2026)}
 \format{
-A data frame with 1 row and 6 columns:
+A data frame with 2 rows and 6 columns:
 \describe{
-  \item{U_Y_MC}{Numeric vector of Monte Carlo estimates.}
-  \item{U_S_MC}{Numeric vector of Monte Carlo estimates.}
-  \item{delta_MC}{Numeric vector of Monte Carlo estimates.}
-  \item{V_Y_MC}{Numeric vector of Monte Carlo estimates.}
-  \item{V_S_MC}{Numeric vector of Monte Carlo estimates.}
-  \item{theta_MC}{Numeric vector of Monte Carlo estimates.}
+  \item{U_Y_MC}{Monte Carlo estimate of \eqn{U_Y = P(Y_{1i} > Y_{0j})}.}
+  \item{U_S_MC}{Monte Carlo estimate of \eqn{U_S = P(S_{1i} > S_{0j})}.}
+  \item{delta_MC}{Monte Carlo estimate of \eqn{\delta = U_Y - U_S}.}
+  \item{V_Y_MC}{Monte Carlo estimate of \eqn{V_Y = P(Y_{1i} > Y_{0i})}.}
+  \item{V_S_MC}{Monte Carlo estimate of \eqn{V_S = P(S_{1i} > S_{0i})}.}
+  \item{theta_MC}{Monte Carlo estimate of \eqn{\theta = V_Y - V_S}.}
 }
 }
 \source{
@@ -23,6 +23,7 @@ estimands_Carlotti_and_Parast_2026
 }
 \description{
 A dataset containing the Monte Carlo estimates of the parameters of interest
-for the simulation settings considered in Carlotti and Parast (2026).
+for the two simulation settings considered in Carlotti and Parast (2026):
+setting 1 (binary covariate) and setting 2 (Gaussian covariate).
 }
 \keyword{datasets}

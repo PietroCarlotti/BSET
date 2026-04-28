@@ -5,14 +5,16 @@
 \alias{Carlotti_and_Parast_2026_simulations_grid}
 \title{Simulation grid for Carlotti and Parast (2026)}
 \format{
-A data frame with multiple columns:
+A data frame with 1000 rows and 17 columns:
 \describe{
-  \item{setting}{The index of the simulation setting.}
+  \item{setting}{The index of the simulation setting: 1 for the binary
+    covariate setting (\code{X_binary}) and 2 for the Gaussian covariate
+    setting (\code{X_Gaussian}).}
   \item{simulation}{The index of the simulation run.}
   \item{n_sample}{The sample size used.}
   \item{n_chains}{The number of MCMC chains used.}
   \item{n_iterations}{The number of MCMC iterations.}
-  \item{n_simulations}{The total number of simulations.}
+  \item{n_simulations}{The total number of simulations per setting.}
   \item{timestamp}{The timestamp of execution.}
   \item{seed}{The random seed used.}
   \item{BF_alternative}{The alternative hypothesis used for the Bayes factor.}
@@ -35,6 +37,8 @@ Carlotti_and_Parast_2026_simulations_grid
 }
 \description{
 A dataset containing the grid of simulation results for Carlotti and
-Parast (2026).
+Parast (2026) across two covariate settings: a binary covariate setting
+(setting 1) and a Gaussian covariate setting (setting 2). Each setting
+is run for 500 simulations, for a total of 1000 rows.
 }
 \keyword{datasets}
