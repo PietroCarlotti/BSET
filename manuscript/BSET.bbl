@@ -130,6 +130,11 @@ Miller, J.~W. and Harrison, M.~T. (2018).
 \newblock Mixture models with a prior on the number of components.
 \newblock {\em Journal of the American Statistical Association} {\bf 113,} 340--356.
 
+\bibitem[\protect\citeauthoryear{Neal}{Neal}{2011}]{neal2011mcmc}
+Neal, R.~M. (2011).
+\newblock {MCMC} using {Hamiltonian} dynamics.
+\newblock In Brooks, S., Gelman, A., Jones, G.~L., and Meng, X.-L., editors, {\em Handbook of {Markov} Chain {Monte} {Carlo}}, chapter~5, pages 113--162. CRC Press, Boca Raton, FL.
+
 \bibitem[\protect\citeauthoryear{Parast}{Parast}{2025}]{parast2025surrogate}
 Parast, L. (2025).
 \newblock Surrogate marker evaluation: A tutorial using r.
@@ -159,6 +164,14 @@ Rudin, W. (1976).
 Schwartz, L. (1965).
 \newblock On bayes procedures.
 \newblock {\em Zeitschrift f{\"u}r Wahrscheinlichkeitstheorie und verwandte Gebiete} {\bf 4,} 10--26.
+
+\bibitem[\protect\citeauthoryear{{Stan Development Team}}{{Stan Development Team}}{2023a}]{rstan2023}
+{Stan Development Team} (2023a).
+\newblock {RStan}: the {R} interface to {Stan}, version 2.21.8.
+
+\bibitem[\protect\citeauthoryear{{Stan Development Team}}{{Stan Development Team}}{2023b}]{stan2023}
+{Stan Development Team} (2023b).
+\newblock Stan modeling language users guide and reference manual, version 2.33.
 
 \bibitem[\protect\citeauthoryear{Thas, Neve, Clement, and Ottoy}{Thas et~al.}{2012}]{thas2012probabilistic}
 Thas, O., Neve, J.~D., Clement, L., and Ottoy, J.-P. (2012).

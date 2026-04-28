@@ -84,8 +84,8 @@ p_Y <- ggplot(plot_data, aes(x = Y, color = Treatment, fill = Treatment)) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
-    x     = "Change in HbA1c at 4.5 years",
-    y     = "Density",
+    x = "Change in HbA1c at 4.5 years",
+    y = "Frequency",
     color = NULL,
     fill  = NULL
   ) +
@@ -110,8 +110,8 @@ p_S <- ggplot(plot_data, aes(x = S, color = Treatment, fill = Treatment)) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
-    x     = "Change in HbA1c at 1.5 years",
-    y     = "Density",
+    x = "Change in HbA1c at 1.5 years",
+    y = "Frequency",
     color = NULL,
     fill  = NULL
   ) +

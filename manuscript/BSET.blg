@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: BSET.aux
 The style file: biom.bst
 Database file #1: BSET_references.bib
-You've used 36 entries,
+You've used 39 entries,
             2146 wiz_defined-function locations,
-            749 strings with 10129 characters,
-and the built_in function-call counts, 15420 in all, are:
-= -- 1493
-> -- 684
-< -- 32
-+ -- 222
-- -- 213
-* -- 1385
-:= -- 2658
-add.period$ -- 109
-call.type$ -- 36
-change.case$ -- 248
-chr.to.int$ -- 35
-cite$ -- 36
-duplicate$ -- 562
-empty$ -- 1008
-format.name$ -- 273
-if$ -- 2937
-int.to.chr$ -- 2
+            762 strings with 10496 characters,
+and the built_in function-call counts, 16536 in all, are:
+= -- 1598
+> -- 728
+< -- 37
++ -- 236
+- -- 226
+* -- 1472
+:= -- 2852
+add.period$ -- 117
+call.type$ -- 39
+change.case$ -- 266
+chr.to.int$ -- 37
+cite$ -- 39
+duplicate$ -- 610
+empty$ -- 1085
+format.name$ -- 289
+if$ -- 3155
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 37
-newline$ -- 183
-num.names$ -- 144
-pop$ -- 183
+missing$ -- 38
+newline$ -- 196
+num.names$ -- 158
+pop$ -- 198
 preamble$ -- 1
-purify$ -- 251
+purify$ -- 269
 quote$ -- 0
-skip$ -- 412
+skip$ -- 451
 stack$ -- 0
-substring$ -- 1155
-swap$ -- 277
-text.length$ -- 6
+substring$ -- 1223
+swap$ -- 301
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 208
+type$ -- 226
 warning$ -- 0
-while$ -- 162
+while$ -- 175
 width$ -- 0
-write$ -- 468
+write$ -- 503

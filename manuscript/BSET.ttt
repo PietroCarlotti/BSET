@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\caption{Simulation results comparing the frequentist rank-based method and the proposed Bayesian imputation-based method in terms of coverage and power in Settings 1--6, summarized over \(500\) replications with $n=50$ per replication. Bolding indicates the better performing method.}
+\label{tab:coverage_power_comparison}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Setting} & \textbf{Valid Surrogate} & \multicolumn{2}{c}{\textbf{Coverage}} & \multicolumn{2}{c}{\textbf{Power}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+& & Frequentist & Bayesian & Frequentist & Bayesian \\
+\midrule
+1 (Useless)            & No  & 0.98   & \textbf{1.00}  & 0.00          & 0.00  \\
+2 (Perfect)            & Yes & 0.98   & \textbf{1.00}  & 1.00          & 1.00  \\
+3 (Imperfect)          & Yes & 0.90   & \textbf{0.98}  & 0.54          & \textbf{0.64} \\
+4 (Misspecified)       & Yes & 0.96   & \textbf{1.00}  & \textbf{0.56} & 0.06  \\
+5 (Binary Covariate)   & Yes & 0.925  & \textbf{0.975} & 0.075         & \textbf{1.00} \\
+6 (Gaussian Covariate) & Yes & \ldots & \ldots         & \ldots        & \ldots \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -283,10 +283,11 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+OUTPUT BSET.ttt
 INPUT ./BSET.bbl
 INPUT ./BSET.bbl
 INPUT BSET.bbl
@@ -321,6 +322,9 @@ INPUT ./figures/DCCT_X_theta_posterior_plot.pdf
 INPUT ./figures/DCCT_X_theta_posterior_plot.pdf
 INPUT ./figures/DCCT_X_theta_posterior_plot.pdf
 INPUT ./figures/DCCT_X_theta_posterior_plot.pdf
+INPUT ./BSET.ttt
+INPUT ./BSET.ttt
+INPUT BSET.ttt
 INPUT BSET.aux
 INPUT ./BSET.out
 INPUT ./BSET.out
