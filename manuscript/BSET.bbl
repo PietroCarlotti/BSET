@@ -60,6 +60,11 @@ FDA (2025).
 \newblock Table of surrogate endpoints that were the basis of drug approval or licensure.
 \newblock {https://www.fda.gov/drugs/development-resources/table-surrogate-endpoints-were-basis-drug-approval-or-licensure}.
 
+\bibitem[\protect\citeauthoryear{Ferguson}{Ferguson}{1973}]{ferguson1973bayesian}
+Ferguson, T.~S. (1973).
+\newblock A {B}ayesian analysis of some nonparametric problems.
+\newblock {\em The Annals of Statistics} {\bf 1,} 209--230.
+
 \bibitem[\protect\citeauthoryear{Frangakis and Rubin}{Frangakis and Rubin}{2002}]{frangakis2002principal}
 Frangakis, C.~E. and Rubin, D.~B. (2002).
 \newblock Principal stratification in causal inference.
