@@ -17,10 +17,10 @@
 #' @return A list containing:
 #' \itemize{
 #'   \item \code{CI}: The calculated confidence interval for \eqn{\delta}.
-#'   \item \code{epsilon}: The \eqn{\varepsilon} threshold value used in the test.
-#'   \item \code{coverage}: Logical indicating if \code{delta_true} falls within the \code{CI} 
+#'   \item \code{threshold}: The \eqn{\varepsilon} threshold value used in the test.
+#'   \item \code{coverage}: Logical indicating if \code{delta_true} falls within the \code{CI}
 #'     (if \code{delta_true} is provided).
-#'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{epsilon}, which indicates that the test identifies the surrogate as valid.
+#'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{threshold}, which indicates that the test identifies the surrogate as valid.
 #' }
 #' 
 #' @references
@@ -50,7 +50,7 @@ frequentist_test <- function(P_observed, Z, alpha = 0.05, beta = 0.2, delta_true
   list(
     delta = Parast_test$delta.estimate, 
     CI = Parast_test$ci.delta,
-    epsilon = Parast_test$epsilon.used,
+    threshold = Parast_test$epsilon.used,
     coverage = frequentist_coverage,
     power = Parast_test$is.surrogate
   )

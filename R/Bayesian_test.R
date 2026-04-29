@@ -18,9 +18,9 @@
 #'   \item \code{V_S_MCMC}: Posterior draws for \eqn{V_S}.
 #'   \item \code{theta_MCMC}: Posterior draws for \eqn{\theta = V_Y - V_S}.
 #'   \item \code{CI}: The calculated credible interval for \eqn{\theta}.
-#'   \item \code{eta}: The \eqn{\eta} threshold value used in the test.
+#'   \item \code{threshold}: The \eqn{\eta} threshold value used in the test.
 #'   \item \code{coverage}: Logical indicating if \code{theta_true} falls within the \code{CI} (if \code{theta_true} is provided).
-#'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{eta}, which indicates that the test identifies the surrogate as valid.
+#'   \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{threshold}, which indicates that the test identifies the surrogate as valid.
 #' }
 #' @references
 #' \insertRef{carlotti2026bayesian}{BSET}
@@ -49,8 +49,8 @@ Bayesian_test <- function(P_MCMC, alpha = 0.05, V_S_star, theta_true = NULL, V_Y
   Bayes_CI <- c(-1, stats::quantile(theta_MCMC, probs = 1 - alpha))
   
   # Calculations
-  Bayes_epsilon <- max(mean(V_Y_MCMC) - V_S_star, 0)
-  Bayes_power <- Bayes_CI[2] < Bayes_epsilon
+  Bayes_threshold <- max(mean(V_Y_MCMC) - V_S_star, 0)
+  Bayes_power <- Bayes_CI[2] < Bayes_threshold
   
   if (!is.null(theta_true)) {
     Bayes_coverage <- theta_true < Bayes_CI[2]
@@ -64,7 +64,7 @@ Bayesian_test <- function(P_MCMC, alpha = 0.05, V_S_star, theta_true = NULL, V_Y
     V_S_MCMC = V_S_MCMC,
     theta_MCMC = theta_MCMC,
     CI = Bayes_CI,
-    epsilon = Bayes_epsilon,
+    threshold = Bayes_threshold,
     coverage = Bayes_coverage,
     power = Bayes_power
   )

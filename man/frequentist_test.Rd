@@ -22,10 +22,10 @@ frequentist coverage during simulations.}
 A list containing:
 \itemize{
   \item \code{CI}: The calculated confidence interval for \eqn{\delta}.
-  \item \code{epsilon}: The \eqn{\varepsilon} threshold value used in the test.
-  \item \code{coverage}: Logical indicating if \code{delta_true} falls within the \code{CI} 
+  \item \code{threshold}: The \eqn{\varepsilon} threshold value used in the test.
+  \item \code{coverage}: Logical indicating if \code{delta_true} falls within the \code{CI}
     (if \code{delta_true} is provided).
-  \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{epsilon}, which indicates that the test identifies the surrogate as valid.
+  \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{threshold}, which indicates that the test identifies the surrogate as valid.
 }
 }
 \description{

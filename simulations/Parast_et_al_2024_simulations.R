@@ -207,7 +207,7 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
   # Testing parameters #
   ######################
   
-  # Value of epsilon under the null hypothesis for the Bayesian test
+  # Value of threshold under the null hypothesis for the Bayesian test
   V_S_zero <- 0.5
   
   # Parameters for the Beta distribution used in the Bayesian test
@@ -359,11 +359,11 @@ Parast_et_al_2024_simulations <- function(seed, n_simulations, parallel) {
   # Extract results into a dataframe
   Parast_et_al_2024_all_simulations_df <- dplyr::bind_rows(lapply(Parast_et_al_2024_all_simulations, function(res) {
     tibble::tibble(
-      Bayesian_epsilon = res$Bayesian_test$epsilon,
+      Bayesian_threshold = res$Bayesian_test$threshold,
       Bayesian_CI_upper = res$Bayesian_test$CI[2],
       Bayesian_coverage = as.logical(res$Bayesian_test$coverage),
       Bayesian_power = as.logical(res$Bayesian_test$power),
-      frequentist_epsilon = res$frequentist_test$epsilon,
+      frequentist_threshold = res$frequentist_test$threshold,
       frequentist_CI_upper = res$frequentist_test$CI[2],
       frequentist_coverage = as.logical(res$frequentist_test$coverage),
       frequentist_power = as.logical(res$frequentist_test$power)

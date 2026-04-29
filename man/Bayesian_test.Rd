@@ -30,9 +30,9 @@ A list containing:
   \item \code{V_S_MCMC}: Posterior draws for \eqn{V_S}.
   \item \code{theta_MCMC}: Posterior draws for \eqn{\theta = V_Y - V_S}.
   \item \code{CI}: The calculated credible interval for \eqn{\theta}.
-  \item \code{eta}: The \eqn{\eta} threshold value used in the test.
+  \item \code{threshold}: The \eqn{\eta} threshold value used in the test.
   \item \code{coverage}: Logical indicating if \code{theta_true} falls within the \code{CI} (if \code{theta_true} is provided).
-  \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{eta}, which indicates that the test identifies the surrogate as valid.
+  \item \code{power}: Logical indicating if the upper bound of \code{CI} is below \code{threshold}, which indicates that the test identifies the surrogate as valid.
 }
 }
 \description{

@@ -357,9 +357,9 @@ BSET <- function(
     dashed_df <- data.frame(
       xintercept = c(
         Bayesian_test_results$CI[2],
-        Bayesian_test_results$epsilon,
+        Bayesian_test_results$threshold,
         frequentist_test_results$CI[2],
-        frequentist_test_results$epsilon
+        frequentist_test_results$threshold
       ),
       label = factor(
         c("Bayesian CI (upper bound)", "Bayesian threshold (η)",
