@@ -11,8 +11,23 @@
 2 (Perfect)            & Yes & 0.98   & \textbf{1.00}  & 1.00          & 1.00  \\
 3 (Imperfect)          & Yes & 0.90   & \textbf{0.98}  & 0.54          & \textbf{0.64} \\
 4 (Misspecified)       & Yes & 0.96   & \textbf{1.00}  & \textbf{0.56} & 0.06  \\
-5 (Binary Covariate)   & Yes & 0.925  & \textbf{0.975} & 0.075         & \textbf{1.00} \\
-6 (Gaussian Covariate) & Yes & \ldots & \ldots         & \ldots        & \ldots \\
+5 (Binary Covariate)   & Yes & 0.98           & 0.98           & 0.06          & \textbf{1.00} \\
+6 (Gaussian Covariate) & Yes & \textbf{0.96}  & 0.95           & 0.00          & \textbf{1.00} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[htbp]
+\caption{DCCT application results. The proposed Bayesian method targets \(\theta\), while the frequentist rank-based method of \citet{parast2024rank} targets \(\delta\). Thresholds are computed using \(\alpha = 0.05\) and \(\beta = 0.3\). A valid surrogate is concluded when the interval upper bound is below the threshold.}
+\label{tab:dcct_results}
+\begin{tabular}{lcccc}
+\toprule
+\raisebox{0.75ex}{\textbf{Method}} & \textbf{\shortstack{Point \\ Estimate}} & \textbf{\shortstack{Interval \\ Upper Bound}} & \raisebox{0.75ex}{\textbf{Threshold}} & \raisebox{0.75ex}{\textbf{Valid}} \\
+\midrule
+BSET, no covariates                & 0.024 & 0.149 & 0.166 & Yes \\
+BSET, age and sex                  & 0.012 & 0.149 & 0.158 & Yes \\
+Frequentist \citep{parast2024rank} & 0.044 & 0.120 & 0.132 & Yes \\
 \bottomrule
 \end{tabular}
 \end{table}

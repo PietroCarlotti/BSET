@@ -86,12 +86,12 @@
 
 \setlength\parindent{15pt}
 
-\title{A Bayesian Critique of Rank-Based Methods for Surrogate Marker Evaluation}
+\title{A Bayesian Critique of a Rank-Based Method for Surrogate Marker Evaluation}
 
 \author{Pietro Carlotti \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ pietro.carlotti@utexas.edu \and Layla Parast \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ parast@austin.utexas.edu}
 
 \begin{abstract}
-Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, expensive, or time-consuming to measure directly. These markers can accelerate the evaluation of new treatments, provided they reliably capture the causal relationship between treatment and true clinical benefit. \citet{parast2024rank} recently proposed a rank-based approach for evaluating surrogate markers, characterized by its nonparametric nature and minimal assumptions. While this method is useful in small-sample model-agnostic settings, it has several limitations, including a lack of clear causal interpretation, low statistical power, and insufficient robustness to different data-generating mechanisms. In this paper, we propose a Bayesian approach that addresses these shortcomings by focusing on causal treatment effect estimands and, in doing so, improves power through covariate adjustment. To demonstrate the advantages of our proposed method, we conduct a comprehensive evaluation using both a simulation study, designed to highlight gains in accuracy and statistical power, and an application to a real clinical trial dataset.
+Surrogate markers are often employed in clinical trials to replace primary outcomes that may be difficult, expensive, or time-consuming to measure directly. These markers can accelerate the evaluation of new treatments, provided they reliably capture the causal relationship between treatment and true clinical benefit. \citet{parast2024rank} recently proposed a rank-based approach for evaluating surrogate markers, characterized by its nonparametric nature and minimal assumptions. While this method is useful in small-sample model-agnostic settings, it has several limitations, including a lack of clear causal interpretation, low statistical power, and insufficient robustness to different data-generating mechanisms. In this paper, we propose BSET (Bayesian Surrogate Evaluation Test), a Bayesian approach that addresses these shortcomings by focusing on causal treatment effect estimands and, in doing so, improves power through covariate adjustment. To demonstrate the advantages of our proposed method, we conduct a comprehensive evaluation using both a simulation study, designed to highlight gains in accuracy and statistical power, and an application to a real clinical trial dataset.
 \end{abstract}
 
 \begin{keywords}
@@ -99,7 +99,6 @@ Bayesian Inference; Surrogate Markers; Clinical Trials; Causal Inference.
 \end{keywords}
 
 \maketitle
-
 
 \section{Introduction}\label{sec:introduction}
 
@@ -111,7 +110,7 @@ A valid surrogate can substantially reduce trial burden, duration, and cost whil
 
 Unfortunately, these methods often perform poorly in small trials, especially when using robust techniques such as kernel-based estimation within the PTE framework. To address this, \citet{parast2024rank} proposed a rank-based approach for evaluating surrogate markers in such settings. Despite its attractive nonparametric nature and minimal assumptions, this method has notable limitations, including unclear causal interpretation for its target estimands, low power, and limited robustness across data-generating mechanisms.
 
-In this paper, we improve upon this existing approach by proposing an imputation-based Bayesian alternative that extends the rank-based framework of \citet{parast2024rank}. Our approach is grounded in Bayesian causal inference, which treats unobserved potential outcomes as latent variables and samples them from predictive distributions \citep{li2023bayesian}. By using this perspective, our method not only provides a causal interpretation but also allows for covariate adjustment, improved efficiency, and a flexible framework for inference.
+In this paper, we propose BSET (Bayesian Surrogate Evaluation Test), an imputation-based Bayesian alternative that extends the rank-based framework of \citet{parast2024rank}. Our approach is grounded in Bayesian causal inference, which treats unobserved potential outcomes as latent variables and samples them from predictive distributions \citep{li2023bayesian}. By using this perspective, our method not only provides a causal interpretation but also allows for covariate adjustment, improved efficiency, and a flexible framework for inference.
 
 The rest of this work is organized as follows. In Section~\ref{sec:methods}, we review the existing rank-based approach for surrogate evaluation, outline its limitations, and highlight how the choice of treatment effect estimands can affect conclusions about surrogate validity. In Section~\ref{sec:bayesian_approach}, we present our Bayesian methodology, including two parametric models and a new criterion for the surrogate validation threshold. In Section~\ref{sec:simulation_study}, we present a simulation study comparing our proposed method with the existing approach, and in Section~\ref{sec:real_data_application}, we apply our method to a clinical trial dataset. Finally, Section~\ref{sec:discussion} discusses potential future extensions.
 
@@ -280,7 +279,7 @@ Both settings above illustrate that the choice of discrepancy parameter is cruci
 
 \section{Proposed Bayesian Imputation-Based Approach}\label{sec:bayesian_approach}
 
-Our methodology treats causal inference as a missing data problem, estimating parameters by recovering unobserved potential outcomes through Bayesian imputation. We leverage observed data to generate the posterior distribution of missing outcomes, creating complete datasets that enable flexible unit-level comparisons using any discrepancy metric. In accordance with discussion in Section~\ref{subsec:comparison_parameters}, we operationalize this approach by focusing on
+BSET treats causal inference as a missing data problem, estimating parameters by recovering unobserved potential outcomes through Bayesian imputation. We leverage observed data to generate the posterior distribution of missing outcomes, creating complete datasets that enable flexible unit-level comparisons using any discrepancy metric. In accordance with discussion in Section~\ref{subsec:comparison_parameters}, we operationalize this approach by focusing on
 \begin{equation}
   \label{eq:V_definitions}
   \begin{aligned}
@@ -499,16 +498,19 @@ Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings 1 an
 2 (Perfect)            & Yes & 0.98   & \textbf{1.00}  & 1.00          & 1.00  \\
 3 (Imperfect)          & Yes & 0.90   & \textbf{0.98}  & 0.54          & \textbf{0.64} \\
 4 (Misspecified)       & Yes & 0.96   & \textbf{1.00}  & \textbf{0.56} & 0.06  \\
-5 (Binary Covariate)   & Yes & 0.925  & \textbf{0.975} & 0.075         & \textbf{1.00} \\
-6 (Gaussian Covariate) & Yes & \ldots & \ldots         & \ldots        & \ldots \\
+5 (Binary Covariate)   & Yes & 0.98           & 0.98           & 0.06          & \textbf{1.00} \\
+6 (Gaussian Covariate) & Yes & \textbf{0.96}  & 0.95           & 0.00          & \textbf{1.00} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \section{Real Data Application}\label{sec:real_data_application}
-We illustrate our proposed method using  data from the Diabetes Control and Complications Trial (DCCT). This trial was a multicenter, randomized, clinical study designed to determine the effect of an intensive treatment protocol directed at maintaining blood glucose concentrations on progression of early vascular complications in patients with Type 1 diabetes, compared to a control group that received usual care \citep{dcct1987diabetes,Lachin2021DCCT,diabetes1993effect}.  Specifically, the intensive therapy was designed to achieve normal blood glucose levels with three or more insulin injections or an insulin pump. Usual care consisted of 1 or 2 insulin injections per day. Our primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years years post-randomization, while the surrogate was an earlier measurement of change in HbA1c from baseline to 1.5 years post-randomization.
 
-Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over 25.0 and a history of smoking. This resulted in a sample of \(47\) participants. Figure~\ref{fig:dcct} shows the distribution of the primary outcome and the surrogate by treatment arm. Figure~\ref{fig:dcct_scatter_cdf} illustrates the relationship between the surrogate and the primary outcome and the empirical CDFs, whose horizontal gap directly corresponds to the rank-based quantities \(U_Y\) and \(U_S\).
+%We illustrate our proposed method using  data from the Diabetes Control and Complications Trial (DCCT). This trial was a multicenter, randomized, clinical study designed to determine the effect of an intensive treatment protocol directed at maintaining blood glucose concentrations on progression of early vascular complications in patients with Type 1 diabetes, compared to a control group that received usual care \citep{dcct1987diabetes, Lachin2021DCCT, diabetes1993effect}.  Specifically, the intensive therapy was designed to achieve normal blood glucose levels with three or more insulin injections or an insulin pump. Usual care consisted of 1 or 2 insulin injections per day. Our primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years years post-randomization, while the surrogate was an earlier measurement of change in HbA1c from baseline to 1.5 years post-randomization. Our analysis is focused on a small subgroup of high-risk participants, specifically those in the secondary-intervention cohort (with baseline mild-to-moderate retinopathy) with a body mass index over \(25\) and a history of smoking. This resulted in a sample of \(47\) participants.
+
+We illustrate our proposed method using data from the Diabetes Control and Complications Trial (DCCT), a multicenter, randomized study comparing an intensive treatment protocol to usual care \citep{dcct1987diabetes,Lachin2021DCCT,diabetes1993effect}. The intensive therapy aimed for normoglycemia via \(3\) or more insulin injections or an insulin pump, while usual care consisted of \(1\) or \(2\) injections per day. Our analysis focuses on a high-risk subgroup of \(47\) participants from the secondary-intervention cohort (those with baseline mild-to-moderate retinopathy) who had a BMI above \(25\) and a history of smoking. We define the primary outcome as the change in hemoglobin A1c (HbA1c) from baseline to \(4.5\) years post-randomization, with the surrogate being the earlier \(1.5\)-year measurement.
+
+We begin with a visual assessment of the relationship between the primary outcome and the surrogate measure. Figure \ref{fig:dcct} displays histograms for both variables by treatment arm; in each case, the treatment group distribution exhibits a clear rightward shift relative to the control, suggesting a beneficial effect of the intensive treatment. To further examine this relationship, Figure \ref{fig:dcct_scatter_cdf} presents a scatter plot of the surrogate against the primary outcome, featuring fitted LOESS curves for each arm and their respective empirical CDFs. The scatter plot reveals that the data points are closely aligned with the diagonal, a trend further reflected by the fitted LOESS curves. This indicates that the surrogate closely mirrors the primary outcome at the individual level. Furthermore, the empirical CDFs show that the surrogate's distribution remains consistent with that of the primary outcome within each arm, while maintaining the distinct separation between treatment groups. These visualizations provide strong preliminary evidence of surrogate validity, motivating the following formal assessment.
 
 \begin{figure}[ht]
     \centering
@@ -523,7 +525,7 @@ Our analysis is focused on a small subgroup of high-risk participants, specifica
         \includegraphics[width=\textwidth]{DCCT_S.pdf}
         \caption{Surrogate}
     \end{subfigure}
-    \caption{Left panel: distribution of the primary outcome (change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization) by treatment arm. Right panel: distribution of the surrogate (change in HbA1c from baseline to 1.5 years post-randomization) by treatment arm. Both panels show the high-risk subgroup of the Diabetes Control and Complications Trial (DCCT).}
+    \caption{Left panel: histograms of the primary outcome (change in HbA1c from baseline to 4.5 years) by treatment arm. Right panel: histograms of the surrogate (change in HbA1c from baseline to 1.5 years) by treatment arm. Both panels focus on the high-risk subgroup of the DCCT dataset.}
     \label{fig:dcct}
 \end{figure}
 
@@ -540,11 +542,13 @@ Our analysis is focused on a small subgroup of high-risk participants, specifica
         \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
         \caption{Empirical CDFs}
     \end{subfigure}
-    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
+    \caption{Left panel: scatter plot of the primary outcome (4.5-year change in HbA1c) versus the surrogate (1.5-year change in HbA1c) by treatment arm, with fitted LOESS curves. Right panel: empirical CDFs of the primary outcome and the surrogate by treatment arm.}
     \label{fig:dcct_scatter_cdf}
 \end{figure}
 
-We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of $\widehat{\theta}$ is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of $\widehat{\theta}$ incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in $\widehat{\delta} = 0.044$, a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities ($\widehat{\theta}$ vs $\widehat{\delta}$) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
+%We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of $\widehat{\theta}$ is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of $\widehat{\theta}$ incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in $\widehat{\delta} = 0.044$, a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities ($\widehat{\theta}$ vs $\widehat{\delta}$) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
+
+We implemented our proposed methodology to derive the posterior distribution of $\theta$ both with and without the inclusion of age and sex as covariates. For both analyses, the thresholds $\epsilon$ and $\eta$ were determined using $\alpha = 0.05$ and $\beta = 0.3$. The resulting posterior distributions, shown in Figure \ref{fig:dcct_post}, lead us to conclude that the surrogate is valid in both cases. For comparison, the method of \citet{parast2024rank} (which does not incorporate covariates) similarly identifies the surrogate as valid.
 
 \begin{figure}[ht]
     \centering
@@ -557,11 +561,27 @@ We first applied our proposed method without covariates as described above, with
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
-        \caption{With covariates (sex and BMI)}
+        \caption{With covariates (age and sex)}
     \end{subfigure}
-    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
+    \caption{Left panel: posterior distribution of \(\theta\) applying the method with no covariates. Right panel: posterior distribution of \(\theta\) incorporating age and sex as covariates. Both panels use data from the high-risk subgroup of the DCCT.}
     \label{fig:dcct_post}
 \end{figure}
+
+Full numerical results for all three analyses are summarized in Table \ref{tab:dcct_results}. While the qualitative conclusions regarding surrogacy remain consistent across all evaluated methods, the point estimates for \(\theta\), calculated as posterior means, are notably smaller than the estimates for \(\delta\) obtained from the existing approach. Additionally, the inclusion of age and sex as covariates in our model leads to a further reduction in the estimated value of \(\theta\). Although the ground-truth surrogacy status remains unknown in this application, these results highlight the utility of our approach. In particular, this application demonstrates that our method can effectively incorporate baseline information to refine the analysis, suggesting increased estimation efficiency compared to the approach of \citet{parast2024rank}.
+
+\begin{table}[htbp]
+\caption{DCCT application results. The proposed Bayesian method targets \(\theta\), while the frequentist rank-based method of \citet{parast2024rank} targets \(\delta\). Thresholds are computed using \(\alpha = 0.05\) and \(\beta = 0.3\). A valid surrogate is concluded when the interval upper bound is below the threshold.}
+\label{tab:dcct_results}
+\begin{tabular}{lcccc}
+\toprule
+\raisebox{0.75ex}{\textbf{Method}} & \textbf{\shortstack{Point \\ Estimate}} & \textbf{\shortstack{Interval \\ Upper Bound}} & \raisebox{0.75ex}{\textbf{Threshold}} & \raisebox{0.75ex}{\textbf{Valid}} \\
+\midrule
+BSET, no covariates                & 0.024 & 0.149 & 0.166 & Yes \\
+BSET, age and sex                  & 0.012 & 0.149 & 0.158 & Yes \\
+Frequentist \citep{parast2024rank} & 0.044 & 0.120 & 0.132 & Yes \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Discussion}\label{sec:discussion}
 

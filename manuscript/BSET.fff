@@ -19,7 +19,7 @@
         \includegraphics[width=\textwidth]{DCCT_S.pdf}
         \caption{Surrogate}
     \end{subfigure}
-    \caption{Left panel: distribution of the primary outcome (change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization) by treatment arm. Right panel: distribution of the surrogate (change in HbA1c from baseline to 1.5 years post-randomization) by treatment arm. Both panels show the high-risk subgroup of the Diabetes Control and Complications Trial (DCCT).}
+    \caption{Left panel: histograms of the primary outcome (change in HbA1c from baseline to 4.5 years) by treatment arm. Right panel: histograms of the surrogate (change in HbA1c from baseline to 1.5 years) by treatment arm. Both panels focus on the high-risk subgroup of the DCCT dataset.}
     \label{fig:dcct}
 \end{figure}
 \efloatseparator
@@ -37,7 +37,7 @@
         \includegraphics[width=\textwidth]{DCCT_CDF.pdf}
         \caption{Empirical CDFs}
     \end{subfigure}
-    \caption{Left panel: scatter plot of the surrogate (change in HbA1c at 1.5 years) against the primary outcome (change in HbA1c at 4.5 years) by treatment arm, with LOESS curves. Right panel: empirical cumulative distribution functions of the primary outcome and the surrogate by treatment arm. The horizontal gap between the solid and dashed curves of the same color reflects the treatment effect on each outcome, directly corresponding to the rank-based quantities $U_Y$ and $U_S$.}
+    \caption{Left panel: scatter plot of the primary outcome (4.5-year change in HbA1c) versus the surrogate (1.5-year change in HbA1c) by treatment arm, with fitted LOESS curves. Right panel: empirical CDFs of the primary outcome and the surrogate by treatment arm.}
     \label{fig:dcct_scatter_cdf}
 \end{figure}
 \efloatseparator
@@ -53,8 +53,8 @@
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{DCCT_X_theta_posterior_plot.pdf}
-        \caption{With covariates (sex and BMI)}
+        \caption{With covariates (age and sex)}
     \end{subfigure}
-    \caption{Posterior distributions of $\widehat{\theta}$ when applying the method with no covariates (left panel) and with age and sex (right panel) to the Diabetes Control and Complications Trial (DCCT) data where the primary outcome of interest was change in hemoglobin A1c (HbA1c) from baseline to 4.5 years post-randomization and the surrogate was change in HbA1c from baseline to 1.5 years post-randomization.}
+    \caption{Left panel: posterior distribution of \(\theta\) applying the method with no covariates. Right panel: posterior distribution of \(\theta\) incorporating age and sex as covariates. Both panels use data from the high-risk subgroup of the DCCT.}
     \label{fig:dcct_post}
 \end{figure}

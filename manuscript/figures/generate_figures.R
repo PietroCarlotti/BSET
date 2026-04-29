@@ -52,10 +52,10 @@ grid$discrepancy <- with(grid,
   )
 )
 
-discrepancy_heatmap <- ggplot(grid, aes(x = d_Y, y = d_S, fill = discrepancy)) +
+discrepancy_heatmap <- ggplot(grid, mapping = aes(x = d_Y, y = d_S, fill = discrepancy)) +
   geom_raster() +
   scale_fill_gradientn(
-    name   = expression("|" * theta - delta * "|"),
+    name = expression("|" * theta - delta * "|"),
     colors = c("#08306B", "#2171B5", "#238B45", "#CCCC00", "#D94801", "#A50F15"),
     limits = c(0, 0.25)
   ) +
@@ -79,8 +79,13 @@ plot_data <- hb_high_risk %>%
   mutate(Treatment = if_else(Z == 1, "Treatment", "Control"))
 
 p_Y <- ggplot(plot_data, aes(x = Y, color = Treatment, fill = Treatment)) +
-  geom_histogram(aes(y = after_stat(density)), position = "identity",
-                 alpha = 0.2, binwidth = 0.5, boundary = 0) +
+  geom_histogram(
+    mapping = aes(y = after_stat(density)),
+    position = "identity",
+    alpha = 0.2,
+    binwidth = 0.5,
+    boundary = 0
+  ) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
@@ -94,10 +99,10 @@ p_Y <- ggplot(plot_data, aes(x = Y, color = Treatment, fill = Treatment)) +
 
 ggsave(
   filename = "DCCT_Y.pdf",
-  plot     = p_Y,
-  width    = 6,
-  height   = 4.5,
-  device   = cairo_pdf
+  plot = p_Y,
+  width = 6,
+  height = 4.5,
+  device = cairo_pdf
 )
 
 ################################################
@@ -105,25 +110,30 @@ ggsave(
 ################################################
 
 p_S <- ggplot(plot_data, aes(x = S, color = Treatment, fill = Treatment)) +
-  geom_histogram(aes(y = after_stat(density)), position = "identity",
-                 alpha = 0.2, binwidth = 0.5, boundary = 0) +
+  geom_histogram(
+    mapping = aes(y = after_stat(density)),
+    position = "identity",
+    alpha = 0.2,
+    binwidth = 0.5,
+    boundary = 0
+  ) +
   scale_color_manual(values = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   scale_fill_manual(values  = c("Treatment" = "#0072B2", "Control" = "#D55E00")) +
   labs(
     x = "Change in HbA1c at 1.5 years",
     y = "Frequency",
     color = NULL,
-    fill  = NULL
+    fill = NULL
   ) +
   theme_minimal(base_size = 13) +
   theme(legend.position = "right")
 
 ggsave(
   filename = "DCCT_S.pdf",
-  plot     = p_S,
-  width    = 6,
-  height   = 4.5,
-  device   = cairo_pdf
+  plot = p_S,
+  width = 6,
+  height = 4.5,
+  device = cairo_pdf
 )
 
 #############################
@@ -135,7 +145,12 @@ scatter_data <- hb_high_risk %>%
 
 p_scatter <- ggplot(scatter_data, aes(x = S, y = Y, color = Treatment)) +
   geom_point(size = 2.5, alpha = 0.8) +
-  geom_smooth(formula = y ~ x, method = "loess", se = FALSE, linewidth = 0.8) +
+  geom_smooth(
+    formula = y ~ x,
+    method = "loess",
+    se = FALSE,
+    linewidth = 0.8
+  ) +
   scale_color_manual(
     values = c("Treatment" = "#0072B2", "Control" = "#D55E00"),
     guide  = guide_legend(override.aes = list(linetype = 0))
@@ -162,35 +177,39 @@ ggsave(
 
 cdf_data <- hb_high_risk %>%
   mutate(Treatment = if_else(Z == 1, "Treatment", "Control")) %>%
-  tidyr::pivot_longer(cols = c(Y, S), names_to = "Outcome", values_to = "value") %>%
+  tidyr::pivot_longer(
+    cols = c(Y, S),
+    names_to = "Outcome",
+    values_to = "value"
+  ) %>%
   mutate(
     Outcome = if_else(Outcome == "Y", "Primary outcome", "Surrogate"),
-    Group   = paste(Treatment, Outcome, sep = " — ")
+    Group = paste(Treatment, Outcome, sep = " — ")
   )
 
 p_cdf <- ggplot(cdf_data, aes(x = value, color = Group, linetype = Group)) +
   stat_ecdf(linewidth = 0.8) +
   scale_color_manual(values = c(
     "Treatment — Primary outcome" = "#0072B2",
-    "Control — Primary outcome"   = "#0072B2",
-    "Treatment — Surrogate"       = "#D55E00",
-    "Control — Surrogate"         = "#D55E00"
+    "Control — Primary outcome" = "#0072B2",
+    "Treatment — Surrogate" = "#D55E00",
+    "Control — Surrogate" = "#D55E00"
   )) +
   scale_linetype_manual(values = c(
     "Treatment — Primary outcome" = "solid",
-    "Control — Primary outcome"   = "dashed",
-    "Treatment — Surrogate"       = "solid",
-    "Control — Surrogate"         = "dashed"
+    "Control — Primary outcome" = "dashed",
+    "Treatment — Surrogate" = "solid",
+    "Control — Surrogate" = "dashed"
   )) +
   labs(
-    x        = "Change in HbA1c",
-    y        = "Empirical CDF",
-    color    = NULL,
+    x = "Change in HbA1c",
+    y = "Empirical CDF",
+    color = NULL,
     linetype = NULL
   ) +
   theme_minimal(base_size = 13) +
   theme(
-    legend.position  = "right",
+    legend.position = "right",
     legend.key.width = unit(0.91, "cm")
   )
 
@@ -208,23 +227,23 @@ ggsave(
 
 set.seed(1)
 
-# BSET_no_X <- BSET(
-#   data = hb_high_risk,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   beta = 0.3,
-#   parallel = FALSE,
-#   plot = TRUE
-# )
-# 
-# ggsave(
-#   filename = "DCCT_no_X_theta_posterior_plot.pdf",
-#   plot = BSET_no_X$theta_posterior_plot,
-#   width = 10,
-#   height = 8,
-#   device = cairo_pdf
-# )
+BSET_no_X <- BSET(
+  data = hb_high_risk,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  beta = 0.3,
+  parallel = FALSE,
+  plot = TRUE
+)
+
+ggsave(
+  filename = "DCCT_no_X_theta_posterior_plot.pdf",
+  plot = BSET_no_X$theta_posterior_plot,
+  width = 10,
+  height = 8,
+  device = cairo_pdf
+)
 
 ##################################
 # DCCT posterior with covariates #
@@ -232,20 +251,20 @@ set.seed(1)
 
 set.seed(1)
 
-# BSET_X <- BSET(
-#   data = hb_high_risk,
-#   Y = "Y",
-#   S = "S",
-#   Z = "Z",
-#   X = c("AGE","MALE"),
-#   beta = 0.3,
-#   plot = TRUE
-# )
-# 
-# ggsave(
-#   filename = "DCCT_X_theta_posterior_plot.pdf",
-#   plot = BSET_X$theta_posterior_plot,
-#   width = 10,
-#   height = 8,
-#   device = cairo_pdf
-# )
+BSET_X <- BSET(
+  data = hb_high_risk,
+  Y = "Y",
+  S = "S",
+  Z = "Z",
+  X = c("AGE","MALE"),
+  beta = 0.3,
+  plot = TRUE
+)
+
+ggsave(
+  filename = "DCCT_X_theta_posterior_plot.pdf",
+  plot = BSET_X$theta_posterior_plot,
+  width = 10,
+  height = 8,
+  device = cairo_pdf
+)
