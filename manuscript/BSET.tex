@@ -147,23 +147,21 @@ The main idea of \citet{parast2024rank} is that if \(S\) is a valid surrogate fo
   U_{Y} = \Prob(Y_{1i} > Y_{0j}) + \frac{1}{2} \Prob(Y_{1i} = Y_{0j}),
 \end{equation}
 as a measure of the treatment effect on the primary outcome \(Y\), where \(i\) and \(j\) index two different units. This quantity is often referred to as the Mann-Whitney parameter \citep{mann1947test, thas2012probabilistic, hoeffding1992class, buyse2010generalized}, as it is the estimand targeted by the corresponding hypothesis test. In this work, we restrict our attention to continuous outcomes, thereby excluding ties in Equation~\eqref{eq:U_definition}. Therefore, a positive treatment effect on \(Y\) is concluded if \(U_{Y} > 0.5\). The same reasoning applies to the surrogate \(S\), with \(U_{S}\) defined analogously. The discrepancy in treatment effects is then measured by their difference \(\delta = U_{Y} - U_{S}\). Based on this definition, \citet{parast2024rank} propose that, if \(S\) is a valid surrogate for \(Y\), \(\delta\) should be small, leading to the following hypothesis test
-\begin{equation}
-  \label{eq:hypothesis_test_delta}
+\begin{equation*}
   \begin{cases}
     H_{0}: \delta \geq \varepsilon, \\
     H_{1}: \delta < \varepsilon,
   \end{cases}
-\end{equation}
+\end{equation*}
 where \(\varepsilon\) is a pre-specified threshold for surrogate validation.
 
 To estimate the parameter of interest \(\delta\), \citet{parast2024rank} compute \(\widehat{U}_{Y}\) and \(\widehat{U}_{S}\) using plug-in estimators, commonly known as the Mann--Whitney U-statistics:
-\begin{equation}
-  \label{eq:U_estimator}
+\begin{equation*}
   \begin{aligned}
     \widehat{U}_{Y} & = \frac{1}{n_{1} n_{0}} \sum^{n_{1}}_{i = 1} \sum^{n_{0}}_{j = 1} \one(Y_{i} > Y_{j}), \\
     \widehat{U}_{S} & = \frac{1}{n_{1} n_{0}} \sum^{n_{1}}_{i = 1} \sum^{n_{0}}_{j = 1} \one(S_{i} > S_{j}),
   \end{aligned}
-\end{equation}
+\end{equation*}
 where \(n_{1}\) and \(n_{0}\) are the treated and control sample sizes, and then estimate \(\delta\) by \(\widehat{\delta} = \widehat{U}_{Y} - \widehat{U}_{S}\). A confidence interval for \(\delta\) follows from the central limit theorem for U-statistics and closed-form variance estimators for linear combinations of U-statistics. \citet{parast2024rank} conclude that \(S\) is valid if the upper bound of this interval is less than the pre-specified threshold \(\varepsilon\).
 
 \subsection{Limitations of the Existing Approach}\label{subsec:limitations}
@@ -211,7 +209,7 @@ where
 \label{eq:g_definition}
     g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{align}
-Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Appendix~\ref{app:derivation_theta_delta}.
+Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Web Appendix~\ref{app:derivation_theta_delta}.
 
 Importantly, we introduce the stronger assumptions stated above for ease of exposition, as they allow us to highlight more clearly that \(\theta\) and \(\delta\) may differ substantially whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. To illustrate this point further, we consider two analytically tractable settings.
 
@@ -222,7 +220,7 @@ Let us start by considering the simple setting where \(f = \text{Bernoulli} \lef
 \begin{align}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} = \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta, \quad x = 0, 1,
 \end{align}
-for some constant \(\Delta > 0\). As we show in Appendix~\ref{app:binary_covariate_derivation}, the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across \(X\) groups:
+for some \(\Delta > 0\). As we show in Web Appendix~\ref{app:binary_covariate_derivation}, the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across \(X\) groups:
 \begin{align}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
 \end{align}
@@ -242,7 +240,7 @@ This implies that
 \begin{align}
     \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
 \end{align}
-where the first supremum is proved analytically in Appendix~\ref{app:binary_covariate_derivation}, and the second follows from the principle of iterated suprema \citep{rudin1976principles}. In particular, \(\theta = 0\) while \(|\delta|\) can be as large as \(\frac{1}{4}\), so even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) may be substantially different from \(0\), while \(\theta\) correctly reflects surrogate validity.
+where the first supremum is proved analytically in Web Appendix~\ref{app:binary_covariate_derivation}, and the second follows from the principle of iterated suprema \citep{rudin1976principles}. In particular, \(\theta = 0\) while \(|\delta|\) can be as large as \(\frac{1}{4}\), so even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) may be substantially different from \(0\), while \(\theta\) correctly reflects surrogate validity.
 
 %To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
 %\begin{itemize}
@@ -259,7 +257,7 @@ Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean pote
 \begin{align}
     \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
 \end{align}
-As we show in Appendix~\ref{app:continuous_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(s\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
+As we show in Web Appendix~\ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(s\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
 \begin{align}
     \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta.
 \end{align}
@@ -271,7 +269,7 @@ In particular, for \(m, \Delta \neq 0\), we observe that
 \begin{align}
   \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{s}\right) - \frac{1}{2} \right| \nonumber \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, s} \{ |\theta - \delta| \} = \frac{1}{2},
 \end{align}
-An analytic proof for the first supremum is given in Appendix~\ref{app:continuous_covariate_derivation}, while the second supremum follows by the principle of iterated suprema \citep{rudin1976principles}, and it is approached when \(|\frac{m}{s}| \gg 0\), which occurs when the Gaussian covariate is highly concentrated away from zero.
+An analytic proof for the first supremum is given in Web Appendix~\ref{app:gaussian_covariate_derivation}, while the second supremum follows by the principle of iterated suprema \citep{rudin1976principles}, and it is approached when \(|\frac{m}{s}| \gg 0\), which occurs when the Gaussian covariate is concentrated away from zero.
 
 This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
 
@@ -388,11 +386,11 @@ Though intuitive, the formulations in Equations~\eqref{eq:parametric_model} and 
     \textcolor{BurntOrange}{\rho_{Y_{1}S_{0}}}& \textcolor{BrickRed}{\rho_{S_{1}S_{{0}}}} & \textcolor{ForestGreen}{\rho_{Y_{0}S_{0}}}& 1
     \end{bmatrix}.
 \end{align}
-It is easy to verify that the green entries in the correlation matrix from Equation~\eqref{eq:correlation_matrix} are identifiable from the data, since they involve correlations between potential outcomes that are observed together in the data. In contrast, the remaining entries are not identifiable from the data, since they involve correlations between potential outcomes that are never observed together for any unit. Moreover, as the general formula for \(\theta\) in Appendix~\ref{app:derivation_theta_delta} shows, derived without making the two assumptions of conditional orthogonality and homoscedasticity, the red entries directly affect the computation of \(\theta\), while the orange entries do not.
+It is easy to verify that the green entries in the correlation matrix from Equation~\eqref{eq:correlation_matrix} are identifiable from the data, since they involve correlations between potential outcomes that are observed together in the data. In contrast, the remaining entries are not identifiable from the data, since they involve correlations between potential outcomes that are never jointly observed for any unit. Moreover, as the general formula for \(\theta\) in Web Appendix~\ref{app:derivation_theta_delta} shows, derived without assuming conditional orthogonality and homoscedasticity, the red entries directly affect the computation of \(\theta\), while the orange entries do not.
 
 In principle, one could address this non-identifiability by imposing assumptions on the correlation matrix $\Omega$, such as assuming independent potential outcomes by setting non-identifiable entries to zero. However, this is often an unreasonable restriction in practice. Therefore, it is necessary to determine how the posterior distribution of $\theta$ can be meaningfully interpreted without relying on such strong assumptions.
 
-Under standard regularity conditions - namely, positive prior mass to every KL neighborhood of the true parameters and model identifiability - Schwartz's theorem \citep{schwartz1965bayes} guarantees that the posterior concentrates around the true parameter value (see Appendix~\ref{app:posterior_consistency} for the formal statement and definition of regularity). While our model satisfies the first condition, it lacks identifiability, meaning posterior concentration around the true $\theta$ is not guaranteed. Instead, the posterior follows the behavior characterized by \cite{gustafson2010bayesian}:
+Under standard regularity conditions - positive prior mass to every KL neighborhood of the true parameters and model identifiability - Schwartz's theorem \citep{schwartz1965bayes} guarantees that the posterior concentrates around the true parameter value (see Web Appendix~\ref{app:posterior_consistency} for the formal statement and definition of regularity). While our model satisfies the first condition, it lacks identifiability, meaning posterior concentration around the true $\theta$ is not guaranteed. Instead, the posterior follows the behavior characterized by \cite{gustafson2010bayesian}:
 \begin{theorem}
   Let the true data-generating process be defined as
   \begin{equation}
@@ -456,11 +454,11 @@ where the prior for \(V_{S}\) is a Beta distribution renormalized on \( \left( \
 \end{equation}
 with \(a, b > 0\) suitably chosen prior parameters, and \(\widehat{V}_{S} = \frac{1}{n} \sum_{i=1}^{n} \one(S_{1i} > S_{0i})\). Note that \(\widehat{V}_{S}\) cannot be computed directly from the observed data, since \(S_{1i}\) and \(S_{0i}\) are never jointly observed for any unit \(i\). However, as we shall see in a moment, this is not an issue, because the procedure to select \(v_{s}\) only requires the sampling distribution of \(\widehat{V}_{S}\) under the null and alternative hypothesis, rather than an observed value for it.
 
-The resulting Bayes factor $BF_n$ is derived and given in closed form in Appendix~\ref{app:BF_derivation}. Then, as usual, we would like to ensure a type I error probability of $\alpha$:
+The resulting Bayes factor $BF_n$ is derived and given in closed form in Web Appendix~\ref{app:BF_derivation}. Then, as usual, we would like to ensure a type I error probability of $\alpha$:
 \begin{equation}
     \mathbb{P} (BF_{n} > BF_{n, \alpha} \mid H_0) = \alpha.
 \end{equation}
-Since $n \, \widehat{V}_{S}$ takes values in $\{0, \ldots, n\}$, $BF_{n}$ has at most $n + 1$ distinct values, so $BF_{n, \alpha}$ can be easily obtained as the $(1 - \alpha)$-quantile of the distribution of $BF_{n}$ under $H_0$, which is given in closed form in Appendix~\ref{app:BF_derivation}. Then, given $BF_{n, \alpha}$, we define $v_{S}$ as the value such that
+Since $n \, \widehat{V}_{S}$ takes values in $\{0, \ldots, n\}$, $BF_{n}$ has at most $n + 1$ distinct values, so $BF_{n, \alpha}$ can be easily obtained as the $(1 - \alpha)$-quantile of the distribution of $BF_{n}$ under $H_0$, which is given in closed form in Web Appendix~\ref{app:BF_derivation}. Then, given $BF_{n, \alpha}$, we define $v_{S}$ as the value such that
 \begin{equation}
     \mathbb{P} \left( BF_{n} > BF_{n, \alpha} \mid V_{S} = v_{S} > \frac{1}{2} \right) = 1 - \beta.
     \label{eq:V_S_power}
@@ -469,7 +467,7 @@ It is useful to observe that the map
 \begin{equation}
 v_{S} \mapsto \mathbb{P} \big( BF_{n} > BF_{n, \alpha} \mid V_S = v_{S} \big)
 \end{equation}
-is monotone on \(\left(\frac{1}{2}, 1\right)\). Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
+is monotone on \(\left(\frac{1}{2}, 1\right)\). Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Web Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
 
 \section{Simulation Study}\label{sec:simulation_study}
 
@@ -479,9 +477,9 @@ Specifically, in Settings 1-4, we replicated the data-generating mechanisms of \
 
 %Given the true data generating mechanism, one would expect our proposed method to work well in Settings 1-3, but possibly not work well in Setting 4.
 
-In Settings 5 and 6, we purposefully break the frequentist rank-based method to highlight the advantages of our model in Equation~\eqref{eq:parametric_model_covariates}. We designed these data-generating processes such that, conditional on covariates, potential outcomes are not identically distributed across units, thus violating a key assumption of the Mann-Whitney test. Setting 5 uses a binary covariate with parameters maximizing the gap between $\delta \approx 0.25$ and $\theta \approx 0$. Setting 6 employs a Gaussian covariate with potential outcomes following a linear model, resulting in $\delta \approx 0.35$ and $\theta \approx 0$. In both, the surrogate replicates the primary outcome with added Gaussian noise and uncorrelated potential outcomes. Full details are provided in Appendix~\ref{app:simulation_details}.
+In Settings 5 and 6, we purposefully break the frequentist rank-based method to highlight the advantages of our model in Equation~\eqref{eq:parametric_model_covariates}. We designed these data-generating processes such that, conditional on covariates, potential outcomes are not identically distributed across units, thus violating a key assumption of the Mann-Whitney test. Setting 5 uses a binary covariate with parameters maximizing the gap between $\delta \approx 0.25$ and $\theta \approx 0$. Setting 6 employs a Gaussian covariate with potential outcomes following a linear model, resulting in $\delta \approx 0.35$ and $\theta \approx 0$. In both, the surrogate replicates the primary outcome with added Gaussian noise and uncorrelated potential outcomes. Full details are provided in Web Appendix~\ref{app:simulation_details}.
 
-We ran \(500\) simulations for each setting, with a sample size of \(n = 50\). We quantify performance in terms of coverage of the confidence/credible intervals of the true parameter (\(\delta\) for the frequentist method and \(\theta\) for the Bayesian method) and power, by which we mean the proportion of simulation iterations where the method deemed the surrogate to be valid. In Setting $1$, the surrogate is not valid, and thus, this is the Type 1 error rate. Full details about prior parameters, and MCMC settings are given in Appendix~\ref{app:simulation_details}.
+We ran \(500\) simulations for each setting, with a sample size of \(n = 50\). We quantify performance in terms of coverage of the confidence/credible intervals of the true parameter (\(\delta\) for the frequentist method and \(\theta\) for the Bayesian method) and power, by which we mean the proportion of simulation iterations where the method deemed the surrogate to be valid. In Setting $1$, the surrogate is not valid, and thus, this is the Type 1 error rate. Full details about prior parameters, and MCMC settings are given in Web Appendix~\ref{app:simulation_details}.
 
 Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings 1 and 2, the rank-based method of \citet{parast2024rank} and our Bayesian imputation approach perform similarly. In Setting 3, the Bayesian method exhibits improved performance with higher coverage and power. Conversely, in Setting 4, where the Bayesian model is misspecified, the nonparametric rank-based approach proves more powerful. Settings 5 and 6 highlight the primary advantage of our methodology: while the frequentist method rarely identifies the surrogate as valid, our approach correctly recognizes validity in all iterations. This is expected, as these settings were designed to illustrate the limitations of the rank-based method. Our findings indicate that by adjusting for covariates, the model accurately captures surrogacy, underscoring significant power gains while clarifying that performance can be sensitive to model misspecification.
 

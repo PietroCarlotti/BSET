@@ -1,17 +1,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 
-\documentclass[12pt]{article}
+\documentclass[referee,usenatbib]{biom}
 
-% Preamble
-\usepackage[margin=1in]{geometry} % Page margins
-\usepackage{xcolor}
-\usepackage{setspace} % Line spacing
-%\doublespacing
-\renewcommand{\baselinestretch}{1.79}
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
 
 \usepackage{xr}
 \makeatletter
@@ -30,12 +24,14 @@
 
 \myexternaldocument{BSET}
 
- \newcommand{\argmin}{\mathop{\rm arg\min}}
+\newcommand{\argmin}{\mathop{\rm arg\min}}
 \newcommand{\argmax}{\mathop{\rm arg\max}}
 
 
-\usepackage{graphicx,verbatim,array,multicol, xcolor, lscape, mathrsfs, color,enumitem}
-\usepackage{psfrag, amsmath, amsfonts, epsfig, fancybox, setspace,soul,amsthm,natbib,algorithm, algorithmicx, algpseudocode, float, subcaption, booktabs, pdflscape}
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{graphicx,verbatim,array,multicol,lscape,mathrsfs,color,enumitem}
+\usepackage{amsmath,amsfonts,epsfig,fancybox,soul,float,subcaption,booktabs,pdflscape}
+\usepackage{algorithm,algorithmicx,algpseudocode}
 \usepackage[hidelinks]{hyperref}
 \def\bW{{\bf W}}
 \def\bZ{{\bf Z}}
@@ -53,20 +49,13 @@
 \def\bomega{\boldsymbol{\omega}}
 \def\bPi{\boldsymbol{\Pi}}
 \def\calt{\mathcal{T}}
-\newtheorem{theorem}{Theorem}
-% \setlength{\parindent}{0pt}
 \def\bSigma{\boldsymbol{\Sigma}}
 \def\bmu{\boldsymbol{\mu}}
-\newtheorem{assumption}{Assumption}
-\setcitestyle{authoryear}
+\newtheorem{proposition}{Proposition}
 
-% Other packages
-\usepackage{bbm} % Indicator function
-\usepackage{algorithm} % Algorithm environment
-\usepackage{algpseudocode} % Algorithm pseudocode environment
-\usepackage{multirow} % For multi-row cells in tables
+\usepackage{bbm}
+\usepackage{multirow}
 
-% New commands
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
@@ -78,22 +67,16 @@
 
 \allowdisplaybreaks
 
-% New environments
-\newtheorem{definition}{Definition}
-\newtheorem{proposition}{Proposition}
-
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,array}
+\usepackage{calc}
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -104,19 +87,16 @@
 \setlength\parindent{15pt} 
 
   \begin{center}
-    \LARGE{Supplementary Material for \\ A Bayesian Critique of Rank-Based Methods for \\
-    
-    Surrogate Marker Evaluation by Carlotti and Parast}
-
- 
-
+    \LARGE{Web Appendix for ``A Bayesian Critique of a Rank-Based Method for \\
+    Surrogate Marker Evaluation''}
 \end{center}
 \clearpage
 \thispagestyle{empty}
 
 \clearpage
 \setcounter{page}{1}
-\appendix
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}
 
 \setcounter{table}{0}
 \renewcommand{\thetable}{A\arabic{table}}
@@ -127,51 +107,69 @@
 \allowdisplaybreaks
 
 
-\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} as Expectations}
+\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} as Expectations over the Covariate Distribution}
 \label{app:derivation_theta_delta}
+
+This appendix derives expressions for \(\theta\) and \(\delta\) as expectations over the covariate distribution. 
+
+\subsection{Derivation of \texorpdfstring{\(\theta\)}{theta} as an Expectation over the Covariate Distribution}
+\label{app:derivation_theta}
 
 Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
 \begin{align}
     Y_{1i} - Y_{0i} \mid X_{i} = x \overset{\text{\footnotesize ind.}}{\sim} \mathcal{N} \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \quad i = 1, \ldots, n, \; \forall \; x \in \mathcal{X}.
 \end{align}
-Therefore, we have that
+Therefore, we obtain this analytical expression for \(V^{x}_{Y}\):
 \begin{align}
     \begin{split}
         V^{x}_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \mid X_{i} = x \right) \\
         & = \Prob \left( Y_{1i} - Y_{0i} > 0 \mid X_{i} = x \right) \\
         & = \Prob \left( \frac{Y_{1i} - Y_{0i} - \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \mid X_{i} = x \right) \\
-        & = \Prob \left( Z > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
+        & = \Prob \left( W > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
         & = \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \; \forall \; x \in \mathcal{X},
     \end{split}
 \end{align}
-where \(Z \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal cumulative distribution function. Then, by the law of total probability, we can expand \(V_{Y}\) as follows:
+where \(W \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal CDF. Then, by the law of total probability, we can derive an analytical expression for \(V_{Y}\) as follows:
+\begin{align*}
+    V_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \right) \\
+    & = \int_{\mathcal{X}} V^{x}_{Y} \, f (x) \, \text{d}x \\
+    & = \int_{\mathcal{X}} \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \, f (x) \, \text{d}x.
+\end{align*}
+Applying a similar logic to \(V_S\), we obtain this analytical expression for \(\theta\):
+\begin{equation}
+    \theta = \int_{\mathcal{X}} \theta^{x} \, f(x) \, \text{d}x,
+\end{equation}
+where we denote
+\begin{equation}
+    \theta^{x} = %V^{x}_{Y} - V^{x}_{S} =
+    \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) , \; \forall \; x \in \mathcal{X}.
+\end{equation}
+
+%\begin{equation}
+%\resizebox{.91\textwidth}{!}{%
+%    $ \displaystyle \theta = \int_{\mathcal{X}} \left[ \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right] f (x) \, \text{d}x $
+%}
+%\end{equation}
+
+\subsection{Derivation of \texorpdfstring{\(\delta\)}{delta} as an Expectation over the Covariate Distribution}
+\label{app:derivation_delta}
+
+Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
 \begin{align}
-    \begin{split}
-        V_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \right) \\
-        & = \int_{\mathcal{X}} V^{x}_{Y} \, f (x) \, \text{d}x \\
-        & = \int_{\mathcal{X}} \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \, f (x) \, \text{d}x.
-    \end{split}
+    Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
 \end{align}
-Since the same reasoning applies to \(V_{S}\), we obtain:
-\begin{align}
-    \theta = \int_{\mathcal{X}} \left( \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right) f (x) \, \text{d}x.
-\end{align}
-To derive an analytical expression for \(\delta\), we start by noting that since
-\begin{align}
-    Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n,
-\end{align}
-then we have that
+Therefore, we obtain this analytical expression for \(U^{x_{i} x_{j}}_{Y}\):
 \begin{align}
     \begin{split}
         U^{x_{i} x_{j}}_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
         & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
-        & = \Prob \left( Z > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
+        & = \Prob \left( W > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
     \end{split}
 \end{align}
-Then, by the law of total probability, we can expand \(U_{Y}\) as follows:
+Then, by the law of total probability, we can derive an analytical expression for \(U_{Y}\) as follows:
 \begin{align}
     \begin{split}
         U_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \right) \\
@@ -179,75 +177,77 @@ Then, by the law of total probability, we can expand \(U_{Y}\) as follows:
         & = \int_{\mathcal{X}} \int_{\mathcal{X}} \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
     \end{split}
 \end{align}
-Since the same reasoning applies to \(U_{S}\), we obtain:
+Applying a similar logic to \(U_{S}\), we obtain this analytical expression for \(\delta\):
 \begin{align}
-    \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \left( \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right) \right) f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
+    \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f(x_{i}) \, f(x_{j}) \, \text{d}x_{i} \, \text{d}x_{j},
 \end{align}
-Denoting \(\theta^{x} = V^{x}_{Y} - V^{x}_{S}\) and \(\delta^{x_{i} x_{j}} = U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S}\), the above can be written compactly as:
+where we denote
 \begin{align}
-    \theta = \int_{\mathcal{X}} \theta^{x} \, f(x) \, \text{d}x, \quad \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f(x_{i}) \, f(x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
-\end{align}
-Under the additional assumption that \(\Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0\) for all \(x \in \mathcal{X}\), it follows that \(V^{x}_{Y} = U^{xx}_{Y}\) and \(V^{x}_{S} = U^{xx}_{S}\), so that \(\theta^{x} = \delta^{xx}\). Defining
-\begin{align}
-    g(x_{i}, x_{j}) = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right),
-\end{align}
-we have \(\delta^{x_{i} x_{j}} = g(x_{i}, x_{j})\) and \(\theta^{x} = g(x, x)\), so that
-\begin{align}
-    \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( g(X_{i}, X_{j}) \right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right).
-\end{align}
-If the variances are further normalized so that \(\Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2}\) for all \(x \in \mathcal{X}\), then \(g\) simplifies to
-\begin{align}
-    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right).
+    \delta^{x_{i} x_{j}} = %U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S} =
+    \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right), \; \forall \; x_i, x_j \in \mathcal{X}.
 \end{align}
 
+\subsection{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}
+
+Under the assumption of conditional orthogonality stated in the paper, it follows that
+\begin{equation*}
+    V^{x}_{Y} = U^{x}_{Y} \text{ and } V^{x}_{S} = U^{x}_{S}, \; \forall \; x \in \mathcal{X},
+\end{equation*}
+so that
+\begin{equation}
+\label{eq:equivalence_theta_x_delta_xx}
+    \theta^{x} = \delta^{x x} \; \forall \; x \in \mathcal{X}.
+\end{equation}
+Under the assumption of conditional homoscedasticity stated in the paper, it follows that
+\begin{align}
+    \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right), \quad \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( g(X_{i}, X_{j}) \right),
+\end{align}
+where we denote
+\begin{align}
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \; \forall \; x_{i}, x_{j} \in \mathcal{X}.
+\end{align}
 
 \section{Derivation of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|} in the Binary Covariate Setting}
 \label{app:binary_covariate_derivation}
 
-Under the setting described in Section~\ref{subsec:binary_covariate_setting} of the main paper, let \(f = \text{Bernoulli}(1/2)\). Denoting \(\theta^{x} = g(x, x)\) and \(\delta^{x_{i} x_{j}} = g(x_{i}, x_{j})\) for \(x, x_{i}, x_{j} \in \{0, 1\}\), the expectation form of \(\theta\) and \(\delta\) reduces to
+Under the setting described in Section~\ref{subsec:binary_covariate_setting} of the main paper, \(\theta\) and \(\delta\) reduce to
 \begin{align}
-    \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4},
+    \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4}.
 \end{align}
-which implies that
+Based on Equation~\eqref{eq:equivalence_theta_x_delta_xx}, we have that
 \begin{align}
     | \theta - \delta | = \frac{ \left| \delta^{00} + \delta^{11} - \delta^{01} - \delta^{10} \right| }{4}.
 \end{align}
-This expression highlights that the discrepancy between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity but from differences in mean potential outcomes across covariate groups.
+This expression highlights that the distance between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity.
 
-To derive the closed-form formula for \(|\theta - \delta|\) given in Section~\ref{subsec:binary_covariate_setting}, suppose moreover that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effect:
+To derive a formula for \(|\theta - \delta|\), let us further simplify the setting by assuming that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effects across covariate groups:
 \begin{align}
-    \mu^{0}_{Y_{1}} - \mu^{0}_{Y_{0}} =
-    \mu^{0}_{S_{1}} - \mu^{0}_{S_{0}} =
-    \mu^{1}_{Y_{1}} - \mu^{1}_{Y_{0}} =
-    \mu^{1}_{S_{1}} - \mu^{1}_{S_{0}} = \Delta > 0.
+    \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} =
+    \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 \quad \forall \; x \in \{0,1\}.
 \end{align}
-Using the normalized variance assumption \(\Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2}\) and \(\Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0\) for all \(x \in \{0,1\}\), we can compute each component of \(\delta\) directly. Within-group comparisons give:
+Under this setting, we can easily compute the four terms in the expression for \(| \theta - \delta|\):
 \begin{align}
     \begin{split}
         \delta^{00} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
-        \delta^{11} & = \Phi(\Delta) - \Phi(\Delta) = 0.
-    \end{split}
-\end{align}
-For cross-group comparisons, the treatment means cancel and only the control-group means remain:
-\begin{align}
-    \begin{split}
+        \delta^{11} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
         \delta^{01} & = \Phi\!\left(\Delta + \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\right), \\
         \delta^{10} & = \Phi\!\left(\Delta + \mu^{1}_{Y_{0}} - \mu^{0}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{1}_{S_{0}} - \mu^{0}_{S_{0}}\right).
     \end{split}
 \end{align}
-Substituting \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\) and recalling that \(\delta^{00} = \delta^{11} = 0\), we obtain:
+Hence, we conclude that 
 \begin{align}
-    |\theta - \delta| = \frac{1}{4} \left| \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) \right|.
+    |\theta - \delta| = \frac{1}{4} \left| \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) \right|,
 \end{align}
+where we denote \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\).
 
 We now prove analytically that \(\sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} |1 - 2\Phi(\Delta)|\).
 
-% TODO: proof goes here
+\textcolor{red}{DO THE MATH!}
 
-\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Continuous Covariate Setting}
-\label{app:continuous_covariate_derivation}
+\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Gaussian Covariate Setting}
+\label{app:gaussian_covariate_derivation}
 
-Under the setting described in Section~\ref{subsec:continuous_covariate_setting} of the main paper, let \(f = \mathcal{N}(m, s^2)\) and \(\mu^{x} = x\,(\beta_{Y_1}, \beta_{S_1}, \beta_{Y_0}, \beta_{S_0})^\top\). We use the following standard identity throughout:
+Under the setting described in Section~\ref{subsec:gaussian_covariate_setting} of the main paper, let \(f = \mathcal{N}(m, s^2)\) and \(\mu^{x} = x\,(\beta_{Y_1}, \beta_{S_1}, \beta_{Y_0}, \beta_{S_0})^\top\). We use the following standard identity throughout:
 \begin{align}
     \label{eq:gaussian_phi_identity}
     \E_{Z \sim \mathcal{N}(0,1)} \!\left( \Phi(a + b Z) \right) = \Phi\!\left( \frac{a}{\sqrt{1 + b^2}} \right), \quad \forall \; a, b \in \mathbb{R}.
@@ -283,21 +283,20 @@ An analogous calculation for \(V_S\) yields:
 \end{align}
 This is maximized when one of \(\beta_{Y_0}\), \(\beta_{S_0}\) equals zero and the other diverges to \(\pm\infty\). Setting \(\beta_{Y_0} = 0\) and \(|\beta_{S_0}| \to +\infty\) (or vice versa):
 \begin{align}
-    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}} \{ |\delta| \} = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2\Delta^2}} \right) - 0.5 \right|.
+    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}} \{ |\delta| \} = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2\Delta^2}} \right) - \frac{1}{2} \right|.
 \end{align}
 Maximizing further over \(\Delta\) by taking \(|\Delta| \to +\infty\):
 \begin{align}
-    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = \left| \Phi\!\left( \frac{m}{s} \right) - 0.5 \right|,
+    \sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = \left| \Phi\!\left( \frac{m}{s} \right) - \frac{1}{2} \right|,
 \end{align}
-which can be arbitrarily close to \(0.5\) whenever \(|m/s|\) is large.
-
+which can be arbitrarily close to \(\frac{1}{2}\) whenever \(|m/s|\) is large.
 
 \section{Regularity and Posterior Consistency}
 \label{app:posterior_consistency}
 
 \begin{definition}[Regularity of a Bayesian model]
 \label{def:regularity}
-  Let the Bayesian model be defined as
+  Let a Bayesian model be defined as
   \begin{align}
     \begin{split}
       D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
@@ -430,5 +429,8 @@ with
     \Sigma_{\beta} &= 10\, I_{4}.
 \end{align}
 The significance level was set to \(\alpha = 0.05\). To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
+
+\bibliographystyle{biom}
+\bibliography{BSET_references}
 
 \end{document}
