@@ -116,20 +116,18 @@ This appendix derives expressions for \(\theta\) and \(\delta\) as expectations 
 \label{app:derivation_theta}
 
 Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
-\begin{align}
+\begin{align*}
     Y_{1i} - Y_{0i} \mid X_{i} = x \overset{\text{\footnotesize ind.}}{\sim} \mathcal{N} \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \quad i = 1, \ldots, n, \; \forall \; x \in \mathcal{X}.
-\end{align}
+\end{align*}
 Therefore, we obtain this analytical expression for \(V^{x}_{Y}\):
-\begin{align}
-    \begin{split}
+\begin{align*}
         V^{x}_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \mid X_{i} = x \right) \\
         & = \Prob \left( Y_{1i} - Y_{0i} > 0 \mid X_{i} = x \right) \\
         & = \Prob \left( \frac{Y_{1i} - Y_{0i} - \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \mid X_{i} = x \right) \\
         & = \Prob \left( W > \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x}_{Y_{1}} + \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \\
         & = \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \; \forall \; x \in \mathcal{X},
-    \end{split}
-\end{align}
+\end{align*}
 where \(W \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal CDF. Then, by the law of total probability, we can derive an analytical expression for \(V_{Y}\) as follows:
 \begin{align*}
     V_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \right) \\
@@ -137,14 +135,14 @@ where \(W \sim \mathcal{N}(0,1)\) and \(\Phi\) is the standard normal CDF. Then,
     & = \int_{\mathcal{X}} \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) \, f (x) \, \text{d}x.
 \end{align*}
 Applying a similar logic to \(V_S\), we obtain this analytical expression for \(\theta\):
-\begin{equation}
+\begin{equation*}
     \theta = \int_{\mathcal{X}} \theta^{x} \, f(x) \, \text{d}x,
-\end{equation}
+\end{equation*}
 where we denote
-\begin{equation}
+\begin{equation*}
     \theta^{x} = %V^{x}_{Y} - V^{x}_{S} =
     \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) , \; \forall \; x \in \mathcal{X}.
-\end{equation}
+\end{equation*}
 
 %\begin{equation}
 %\resizebox{.91\textwidth}{!}{%
@@ -156,36 +154,32 @@ where we denote
 \label{app:derivation_delta}
 
 Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
-\begin{align}
+\begin{align*}
     Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
-\end{align}
+\end{align*}
 Therefore, we obtain this analytical expression for \(U^{x_{i} x_{j}}_{Y}\):
-\begin{align}
-    \begin{split}
+\begin{align*}
         U^{x_{i} x_{j}}_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
         & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
         & = \Prob \left( W > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
-    \end{split}
-\end{align}
+\end{align*}
 Then, by the law of total probability, we can derive an analytical expression for \(U_{Y}\) as follows:
-\begin{align}
-    \begin{split}
+\begin{align*}
         U_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \right) \\
         & = \int_{\mathcal{X}} \int_{\mathcal{X}} U^{x_{i}, x_{j}}_{Y} \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j} \\
         & = \int_{\mathcal{X}} \int_{\mathcal{X}} \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
-    \end{split}
-\end{align}
+\end{align*}
 Applying a similar logic to \(U_{S}\), we obtain this analytical expression for \(\delta\):
-\begin{align}
+\begin{align*}
     \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f(x_{i}) \, f(x_{j}) \, \text{d}x_{i} \, \text{d}x_{j},
-\end{align}
+\end{align*}
 where we denote
-\begin{align}
+\begin{align*}
     \delta^{x_{i} x_{j}} = %U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S} =
     \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right), \; \forall \; x_i, x_j \in \mathcal{X}.
-\end{align}
+\end{align*}
 
 \subsection{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}
 
@@ -199,45 +193,43 @@ so that
     \theta^{x} = \delta^{x x} \; \forall \; x \in \mathcal{X}.
 \end{equation}
 Under the assumption of conditional homoscedasticity stated in the paper, it follows that
-\begin{align}
+\begin{align*}
     \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right), \quad \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( g(X_{i}, X_{j}) \right),
-\end{align}
+\end{align*}
 where we denote
-\begin{align}
+\begin{align*}
     g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \; \forall \; x_{i}, x_{j} \in \mathcal{X}.
-\end{align}
+\end{align*}
 
 \section{Derivation of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|} in the Binary Covariate Setting}
 \label{app:binary_covariate_derivation}
 
 Under the setting described in Section~\ref{subsec:binary_covariate_setting} of the main paper, \(\theta\) and \(\delta\) reduce to
-\begin{align}
+\begin{align*}
     \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4}.
-\end{align}
+\end{align*}
 Based on Equation~\eqref{eq:equivalence_theta_x_delta_xx}, we have that
-\begin{align}
+\begin{align*}
     | \theta - \delta | = \frac{ \left| \delta^{00} + \delta^{11} - \delta^{01} - \delta^{10} \right| }{4}.
-\end{align}
+\end{align*}
 This expression highlights that the distance between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity.
 
 To derive a formula for \(|\theta - \delta|\), let us further simplify the setting by assuming that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effects across covariate groups:
-\begin{align}
+\begin{align*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} =
     \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 \quad \forall \; x \in \{0,1\}.
-\end{align}
+\end{align*}
 Under this setting, we can easily compute the four terms in the expression for \(| \theta - \delta|\):
-\begin{align}
-    \begin{split}
+\begin{align*}
         \delta^{00} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
         \delta^{11} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
         \delta^{01} & = \Phi\!\left(\Delta + \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\right), \\
         \delta^{10} & = \Phi\!\left(\Delta + \mu^{1}_{Y_{0}} - \mu^{0}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{1}_{S_{0}} - \mu^{0}_{S_{0}}\right).
-    \end{split}
-\end{align}
+\end{align*}
 Hence, we conclude that 
-\begin{align}
+\begin{align*}
     |\theta - \delta| = \frac{1}{4} \left| \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) \right|,
-\end{align}
+\end{align*}
 where we denote \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\).
 
 We now prove analytically that \(\sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} |1 - 2\Phi(\Delta)|\).
@@ -254,41 +246,37 @@ Under the setting described in Section~\ref{subsec:gaussian_covariate_setting} o
 \end{align}
 
 \paragraph{Derivation of \(\delta\).} Writing \(X_i \beta_{Y_1} - X_j \beta_{Y_0} = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} Z_i - \beta_{Y_0} Z_j)\) where \(Z_i, Z_j \iid \mathcal{N}(0,1)\), and applying Equation~\eqref{eq:gaussian_phi_identity} twice (once over \(Z_j\), once over \(Z_i\)):
-\begin{align}
-    \begin{split}
+\begin{align*}
         U_{Y} & = \E_{X_{i}, X_{j}} \!\left( \Phi \!\left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) \\
         & = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right).
-    \end{split}
-\end{align}
+\end{align*}
 An analogous calculation for \(U_S\) yields:
-\begin{align}
+\begin{align*}
     \delta = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \!\left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right).
-\end{align}
+\end{align*}
 
 \paragraph{Derivation of \(\theta\).} Writing \(X_i(\beta_{Y_1} - \beta_{Y_0}) = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} - \beta_{Y_0})Z_i\) and applying Equation~\eqref{eq:gaussian_phi_identity} over \(Z_i\):
-\begin{align}
-    \begin{split}
+\begin{align*}
         V_{Y} & = \E_{X_{i}} \!\left( \Phi \!\left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) \right) \\
         & = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right).
-    \end{split}
-\end{align}
+\end{align*}
 An analogous calculation for \(V_S\) yields:
-\begin{align}
+\begin{align*}
     \theta = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}} - \beta_{Y_{0}})^2}} \right) - \Phi \!\left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}} - \beta_{S_{0}})^2}} \right).
-\end{align}
+\end{align*}
 
 \paragraph{Supremum of \(|\delta|\) when \(S\) is a perfect surrogate.} Setting \(\beta_{Y_1} - \beta_{Y_0} = \beta_{S_1} - \beta_{S_0} = \Delta > 0\) so that \(\theta = 0\), we have:
-\begin{align}
+\begin{align*}
     |\delta| = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2((\beta_{Y_0}+\Delta)^2 + \beta_{Y_0}^2)}} \right) - \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2((\beta_{S_0}+\Delta)^2 + \beta_{S_0}^2)}} \right) \right|.
-\end{align}
+\end{align*}
 This is maximized when one of \(\beta_{Y_0}\), \(\beta_{S_0}\) equals zero and the other diverges to \(\pm\infty\). Setting \(\beta_{Y_0} = 0\) and \(|\beta_{S_0}| \to +\infty\) (or vice versa):
-\begin{align}
+\begin{align*}
     \sup_{\beta_{Y_{0}}, \beta_{S_{0}}} \{ |\delta| \} = \left| \Phi \!\left( \frac{m\Delta}{\sqrt{1 + s^2\Delta^2}} \right) - \frac{1}{2} \right|.
-\end{align}
+\end{align*}
 Maximizing further over \(\Delta\) by taking \(|\Delta| \to +\infty\):
-\begin{align}
+\begin{align*}
     \sup_{\beta_{Y_{0}}, \beta_{S_{0}}, \Delta} \{ |\delta| \} = \left| \Phi\!\left( \frac{m}{s} \right) - \frac{1}{2} \right|,
-\end{align}
+\end{align*}
 which can be arbitrarily close to \(\frac{1}{2}\) whenever \(|m/s|\) is large.
 
 \section{Regularity and Posterior Consistency}
@@ -297,18 +285,16 @@ which can be arbitrarily close to \(\frac{1}{2}\) whenever \(|m/s|\) is large.
 \begin{definition}[Regularity of a Bayesian model]
 \label{def:regularity}
   Let a Bayesian model be defined as
-  \begin{align}
-    \begin{split}
+  \begin{align*}
       D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
       \phi & \sim \pi,
-    \end{split}
-  \end{align}
+  \end{align*}
   where \(D_{i}\) is the observed data for unit \(i\), \(f_{\phi}\) is the likelihood function parametrized by \(\phi\), and \(\pi\) is a prior distribution over the parameter \(\phi\). We say that the Bayesian model is regular if the following conditions hold:
   \begin{itemize}
     \item \textbf{Kullback-Leibler support of the prior}: The prior \(\pi\) assigns positive mass to every Kullback-Leibler neighborhood of the true parameter \(\phi^{*}\), i.e., for every \(\varepsilon > 0\),
-    \begin{equation}
+    \begin{equation*}
       \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0,
-    \end{equation}
+    \end{equation*}
     where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the Kullback-Leibler divergence between \(f_{\phi^{*}}\) and \(f_{\phi}\).
     \item \textbf{Identifiability}: The model is identifiable, i.e., for every \(\phi \neq \phi'\), we have that \(f_{\phi} \neq f_{\phi'}\).
   \end{itemize}
@@ -316,16 +302,14 @@ which can be arbitrarily close to \(\frac{1}{2}\) whenever \(|m/s|\) is large.
 
 \begin{theorem}[Schwartz's theorem \citep{schwartz1965bayes}]
   Let \(D_{i} \iid f_{\phi^{*}}\) and let the Bayesian model be
-  \begin{align}
-    \begin{split}
+  \begin{align*}
       D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
       \phi & \sim \pi.
-    \end{split}
-  \end{align}
+  \end{align*}
   If the model is regular according to Definition~\ref{def:regularity}, the posterior concentrates around \(\phi^{*}\) as \(n \to \infty\):
-  \begin{equation}
+  \begin{equation*}
     \pi \left( U^{c} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 0,
-  \end{equation}
+  \end{equation*}
   for every neighborhood \(U\) of \(\phi^{*}\).
 \end{theorem}
 
@@ -333,7 +317,7 @@ which can be arbitrarily close to \(\frac{1}{2}\) whenever \(|m/s|\) is large.
 \label{app:BF_derivation}
 
 Under the model described in Section~\ref{subsec:alternative_threshold} of the main paper, the marginal likelihoods under the null and alternative hypotheses are:
-\begin{align}
+\begin{align*}
     m\!\left(\widehat{V}_{S} \mid H_{0}\right)
     &= \binom{n}{n \, \widehat{V}_{S}} \frac{1}{2^{n}}, \\
     m\!\left(\widehat{V}_{S} \mid H_{1}\right)
@@ -341,93 +325,90 @@ Under the model described in Section~\ref{subsec:alternative_threshold} of the m
        \frac{B\!\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)
              \left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}
             {B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)},
-\end{align}
+\end{align*}
 where the expression for \(m(\widehat{V}_{S} \mid H_{1})\) follows by integrating the binomial likelihood against the truncated Beta prior over \(\left(\tfrac{1}{2}, 1\right)\). Taking the ratio and cancelling the binomial coefficient yields:
-\begin{equation}
-    \label{eq:BF_formula}
+\begin{equation*}
     BF_{n} = \frac{B\!\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)\left(1 - F_{\mathrm{Beta}\left(a + n \, \widehat{V}_{S},\, b + n - n \, \widehat{V}_{S}\right)}\!\!\left(\tfrac{1}{2}\right)\right)}{B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)} \cdot 2^{n},
-\end{equation}
+\end{equation*}
 where \(B(a, b)\) is the Beta function and \(F_{\mathrm{Beta}(a,b)}\) is the CDF of the \(\mathrm{Beta}(a,b)\) distribution.
 
 The distribution of \(BF_{n}\) under \(H_{0}\) has closed form: since \(n \, \widehat{V}_{S} \in \{0, \ldots, n\}\), the Bayes factor takes at most \(n + 1\) distinct values \(x_{0}, \ldots, x_{n}\) with
-\begin{equation}
+\begin{equation*}
     \mathbb{P}(BF_{n} = x_{k} \mid H_0) = \binom{n}{k} \frac{1}{2^{n}}, \quad k = 0, \ldots, n,
-    \label{eq:BF_distribution_1}
-\end{equation}
+\end{equation*}
 where
-\begin{equation}
+\begin{equation*}
     x_{k} = \frac{B(a + k,\, b + n - k)\left(1 - F_{\mathrm{Beta}(a+k,\, b+n-k)}\!\left(\tfrac{1}{2}\right)\right)}{B(a,b)\left(1 - F_{\mathrm{Beta}(a,b)}\!\left(\tfrac{1}{2}\right)\right)} \cdot 2^{n}, \quad k = 0, \ldots, n.
-    \label{eq:BF_distribution_2}
-\end{equation}
+\end{equation*}
 The same formulas apply to the distribution of \(BF_{n}\) under any \(V_{S} = v_{S}\), by replacing the binomial probabilities \(\binom{n}{k} 2^{-n}\) with \(\binom{n}{k} v_{S}^{k}(1-v_{S})^{n-k}\).
 
 \section{Simulation Study: Data-Generating Processes and Implementation Details}
 \label{app:simulation_details}
 
 \paragraph{Setting 1 (Useless surrogate).} Potential outcomes are drawn independently from:
-\begin{equation}
+\begin{equation*}
     P_i \iid \mathcal{N}_4\!\left(\mu^*, \Sigma^*\right), \quad
     \mu^* = \left(5,\, \tfrac{2}{3},\, 3,\, \tfrac{2}{3}\right)^\top, \quad
     \Sigma^* = \mathrm{diag}(3,\, 1,\, 3,\, 1).
-\end{equation}
+\end{equation*}
 The surrogate potential outcomes are independent of the primary outcome potential outcomes, so $S$ carries no information about the treatment effect on $Y$.
 
 \paragraph{Setting 2 (Perfect surrogate).} The primary outcome potential outcomes $(Y_{1i}, Y_{0i}) \iid \mathcal{N}_2\!\left((6, 2.5)^\top,\, 3I_2\right)$, and the surrogate is defined as $S_{gi} = Y_{gi} + \varepsilon_{gi}$, where $(\varepsilon_{1i}, \varepsilon_{0i}) \iid \mathcal{N}_2(0,\, 0.1\,I_2)$ independently. The resulting joint distribution of $P_i = (Y_{1i}, S_{1i}, Y_{0i}, S_{0i})^\top$ is $\mathcal{N}_4(\mu^*, \Sigma^*)$ with
-\begin{align}
+\begin{align*}
     \mu^* &= (6,\, 6,\, 2.5,\, 2.5)^\top, &
     \Sigma^* &= \begin{bmatrix} 3 & 3 & 0 & 0 \\ 3 & 3.1 & 0 & 0 \\ 0 & 0 & 3 & 3 \\ 0 & 0 & 3 & 3.1 \end{bmatrix}.
-\end{align}
+\end{align*}
 The noise is negligible ($\sigma^2_\varepsilon = 0.1$), making $S$ nearly identical to $Y$ and therefore a near-perfect surrogate.
 
 \paragraph{Setting 3 (Imperfect surrogate).} The surrogate potential outcomes $(S_{1i}, S_{0i}) \iid \mathcal{N}_2\!\left((5,3)^\top,\, 3I_2\right)$, and the primary outcome is $Y_{gi} = S_{gi} + \varepsilon_{gi}$, where $\varepsilon_{1i} \iid \mathcal{N}(1.5,\, 0.6)$ and $\varepsilon_{0i} \iid \mathcal{N}(0,\, 0.6)$ independently. The resulting joint distribution is $\mathcal{N}_4(\mu^*, \Sigma^*)$ with
-\begin{align}
+\begin{align*}
     \mu^* &= (6.5,\, 5,\, 3,\, 3)^\top, &
     \Sigma^* &= \begin{bmatrix} 3.6 & 3 & 0 & 0 \\ 3 & 3 & 0 & 0 \\ 0 & 0 & 3.6 & 3 \\ 0 & 0 & 3 & 3 \end{bmatrix}.
-\end{align}
+\end{align*}
 The noise is more substantial ($\sigma^2_\varepsilon = 0.6$), making $S$ a valid but imperfect surrogate.
 
 \paragraph{Setting 4 (Misspecified model).} The surrogate potential outcomes are log-normal: $S_{1i} \sim \exp\!\left(\mathcal{N}(2.5,\, 1.5^2)\right)$ and $S_{0i} \sim \exp\!\left(\mathcal{N}(0.5,\, 1.5^2)\right)$. The primary outcome is a non-linear function of the surrogate plus log-normal noise:
-\begin{align}
+\begin{align*}
     Y_{1i} &= 2.0 + 1.2\sqrt{S_{1i}} + 0.3\exp(S_{1i}/500) + \exp(\varepsilon_{1i}), \\
     Y_{0i} &= 0.8\sqrt{S_{0i}} + 0.2\exp(S_{0i}/50) + \exp(\varepsilon_{0i}),
-\end{align}
+\end{align*}
 where $\varepsilon_{gi} \iid \mathcal{N}(0,\, 0.3)$. This setting is designed to violate the Gaussian parametric assumptions of our Bayesian model.
 
 \paragraph{Setting 5.} A binary baseline covariate \(X_i \iid \text{Bernoulli}(0.5)\) is generated, and the distribution of \(P_i \mid X_i\) is the following mixture:
-\begin{equation}
+\begin{equation*}
   P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; X_{i} \; \mathcal{N}_{4}\!\left(\mu^{1}, \Sigma^{1}\right)
   + (1 - X_{i}) \; \mathcal{N}_{4}\!\left(\mu^{0}, \Sigma^{0}\right),
   \quad i = 1,\ldots,n,
-\end{equation}
+\end{equation*}
 with
-\begin{align}
+\begin{align*}
     \mu^{0} &= (5, 5, 0, 0)^\top, &
-    \mu^{1} &= (5, -5, 0, -10)^\top, \notag\\
+    \mu^{1} &= (5, -5, 0, -10)^\top, \\
     \Sigma^{0} &= \Sigma^{1} =
     \begin{bmatrix} A & 0 \\ 0 & A \end{bmatrix}, &
     A &= \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}.
-\end{align}
+\end{align*}
 
 \paragraph{Setting 6.} A Gaussian baseline covariate \(X_i \iid \mathcal{N}(3, 1)\) is generated, and the distribution of \(P_i \mid X_i\) follows a linear Gaussian model:
-\begin{equation}
+\begin{equation*}
   P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; \mathcal{N}_{4}\!\left(X_{i}\,\beta,\, \Sigma\right),
   \quad i = 1,\ldots,n,
-\end{equation}
+\end{equation*}
 with
-\begin{align}
+\begin{align*}
     \beta &= (1,\, 7,\, 0,\, 6)^\top, &
     \Sigma &= \tfrac{1}{2}\, I_{4}.
-\end{align}
+\end{align*}
 
 \paragraph{Implementation details.} For the Bayesian method, we ran \(T = 500\) posterior sampling iterations with a burn-in of \(b = 125\). Prior parameters were set as follows across both models:
-\begin{align}
+\begin{align*}
     \mu_{0} &= (0, 0, 0, 0)^{\top}, &
     \Sigma_{0} &= 10\, I_{4}, &
     s &= 2, &
     \tau &= 1, \\
     \mu_{\beta} &= (0, 0, 0, 0)^{\top}, &
     \Sigma_{\beta} &= 10\, I_{4}.
-\end{align}
+\end{align*}
 The significance level was set to \(\alpha = 0.05\). To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
 
 \bibliographystyle{biom}

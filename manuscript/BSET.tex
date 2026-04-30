@@ -167,9 +167,9 @@ where \(n_{1}\) and \(n_{0}\) are the treated and control sample sizes, and then
 \subsection{Limitations of the Existing Approach}\label{subsec:limitations}
 
 The nonparametric approach of \citet{parast2024rank} suffers from several notable limitations. Firstly, it is worth questioning whether the treatment effect quantities considered truly capture the causal targets. In the causal inference literature, rank-based statistics have in fact been criticized for lacking a clear causal interpretation \citep{imbens2015causal}. For example, the Mann--Whitney test assesses whether two variables are equal in distribution, but this condition is not necessarily informative about causal effects. To illustrate this point, note that since \(U_{Y}\) represents the probability that a randomly selected treated unit has a higher Y than an independently selected control, it captures global distributional differences between groups, rather than a directly interpretable causal effect. This motivates the consideration of alternative estimands that more directly target causal effects, such as
-\begin{equation}
+\begin{equation*}
   V_{Y} = \Prob(Y_{1i} > Y_{0i}),
-\end{equation}
+\end{equation*}
 which represents the probability that a randomly selected unit has a better outcome \(Y\) under treatment than under control. If we define \(V_{S}\) analogously for the surrogate \(S\), then we can measure the discrepancy in treatment effects via \(\theta = V_{Y} - V_{S}\). Notably, \(U_{Y}\) and \(U_{S}\) are not equivalent to \(V_{Y}\) and \(V_{S}\), as discussed in detail by \citet{fay2018causal}. This difference propagates directly to the discrepancy parameters \(\delta\) and \(\theta\). As we illustrate in Section~\ref{subsec:comparison_parameters}, they can differ substantially even under relatively simple and well-behaved data-generating mechanisms, and therefore the choice between them may lead to opposing conclusions.
 
 Secondly, the assumptions underlying the Mann--Whitney statistic may be too restrictive. In particular, the test assumes potential outcomes for each observation are independent and identically distributed. The identical distribution assumption is often unrealistic, as potential outcomes are typically influenced by covariates that vary across units.
@@ -200,15 +200,13 @@ Specifically, consider the following two assumptions:
     $$ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \quad \forall \; x \in \mathcal{X}. $$
 \end{itemize}
 Then, it follows that
-\begin{align}
-\label{eq:decomposition_theta}
+\begin{align*}
     \delta = \E_{(X_{i}, X_{j}) \sim f \times f} \!\left( g(X_{i}, X_{j})\right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right),
-\end{align}
+\end{align*}
 where
-\begin{align}
-\label{eq:g_definition}
+\begin{align*}
     g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
-\end{align}
+\end{align*}
 Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Web Appendix~\ref{app:derivation_theta_delta}.
 
 Importantly, we introduce the stronger assumptions stated above for ease of exposition, as they allow us to highlight more clearly that \(\theta\) and \(\delta\) may differ substantially whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. To illustrate this point further, we consider two analytically tractable settings.
@@ -217,17 +215,17 @@ Importantly, we introduce the stronger assumptions stated above for ease of expo
 \label{subsec:binary_covariate_setting}
 
 Let us start by considering the simple setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To simplify the analysis even further, let us also assume treatment effect homogeneity across \(X\):
-\begin{align}
+\begin{align*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} = \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta, \quad x = 0, 1,
-\end{align}
+\end{align*}
 for some \(\Delta > 0\). As we show in Web Appendix~\ref{app:binary_covariate_derivation}, the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across \(X\) groups:
-\begin{align}
+\begin{align*}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
-\end{align}
+\end{align*}
 where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). To understand how the distance between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\), it is useful to consider the plot of this quantity in Figure~\ref{fig:discrepancy_heatmap} for a fixed value of \(\Delta\). It appears that \(|\theta - \delta|\) is very large whenever
-\begin{align}
+\begin{align*}
     |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta.
-\end{align}
+\end{align*}
 
 \begin{figure}[ht]
     \centering
@@ -237,9 +235,9 @@ where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}
 \end{figure}
 
 This implies that
-\begin{align}
+\begin{align*}
     \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} | 1 - 2 \Phi (\Delta)| \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
-\end{align}
+\end{align*}
 where the first supremum is proved analytically in Web Appendix~\ref{app:binary_covariate_derivation}, and the second follows from the principle of iterated suprema \citep{rudin1976principles}. In particular, \(\theta = 0\) while \(|\delta|\) can be as large as \(\frac{1}{4}\), so even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) may be substantially different from \(0\), while \(\theta\) correctly reflects surrogate validity.
 
 %To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
@@ -254,21 +252,21 @@ where the first supremum is proved analytically in Web Appendix~\ref{app:binary_
 \label{subsec:gaussian_covariate_setting}
 
 Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean potential outcomes are linear functions of the covariate:
-\begin{align}
+\begin{align*}
     \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
-\end{align}
+\end{align*}
 As we show in Web Appendix~\ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(s\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
-\begin{align}
+\begin{align*}
     \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta.
-\end{align}
+\end{align*}
 This implies that the treatment effect is the same for both \(Y\) and \(S\) across all values of the covariate. Under this assumption, \(\theta = 0\) and therefore \(|\theta - \delta| = |\delta|\), which is given by
-\begin{align}
+\begin{align*}
     |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
-\end{align}
+\end{align*}
 In particular, for \(m, \Delta \neq 0\), we observe that
-\begin{align}
-  \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{s}\right) - \frac{1}{2} \right| \nonumber \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, s} \{ |\theta - \delta| \} = \frac{1}{2},
-\end{align}
+\begin{align*}
+  \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{s}\right) - \frac{1}{2} \right| \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, s} \{ |\theta - \delta| \} = \frac{1}{2},
+\end{align*}
 An analytic proof for the first supremum is given in Web Appendix~\ref{app:gaussian_covariate_derivation}, while the second supremum follows by the principle of iterated suprema \citep{rudin1976principles}, and it is approached when \(|\frac{m}{s}| \gg 0\), which occurs when the Gaussian covariate is concentrated away from zero.
 
 This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).
@@ -312,14 +310,14 @@ Using both the observed and imputed outcomes, we compute the probabilities in Eq
     \end{cases}
 \end{equation}
 where \(\eta\) is a pre-specified threshold for surrogate validation. Following \citet{parast2024rank}, we compute a one-sided credible interval for \(\theta\) using a quantile of the \(T\) posterior draws, after discarding the first \(b\) iterations as burn-in:
-\begin{equation}
+\begin{equation*}
     \widehat{\theta}_{1 - \alpha}
     = \operatorname{quantile}\!\left( \widehat{\theta}^{(b+1:T)},\, 1 - \alpha \right),
-\end{equation}
+\end{equation*}
 and we reject the null hypothesis if \(\widehat{\theta}_{1 - \alpha} < \eta\); otherwise, we fail to reject it. Equivalently, this decision rule can be expressed in terms of the posterior probability of surrogate validity: we reject \(H_0\) if and only if \(\Prob(\theta < \eta \mid D_{1:n}) \geq 1 - \alpha\), where
-\begin{equation}
+\begin{equation*}
     \Prob(\theta < \eta \mid D_{1:n}) \approx \frac{1}{T - b} \sum_{t=b+1}^{T} \one\!\left(\widehat{\theta}^{(t)} < \eta\right).
-\end{equation}
+\end{equation*}
 While this is not a Bayesian hypothesis test in the strict sense, since it does not rely on Bayes factors, it provides a natural and interpretable decision rule grounded in the posterior distribution of \(\theta\). The Bayesian decision rule is summarized in Algorithm~\ref{alg:Bayesian_decision_rule}.
 
 \begin{algorithm}[htbp!]
@@ -393,28 +391,26 @@ In principle, one could address this non-identifiability by imposing assumptions
 Under standard regularity conditions - positive prior mass to every KL neighborhood of the true parameters and model identifiability - Schwartz's theorem \citep{schwartz1965bayes} guarantees that the posterior concentrates around the true parameter value (see Web Appendix~\ref{app:posterior_consistency} for the formal statement and definition of regularity). While our model satisfies the first condition, it lacks identifiability, meaning posterior concentration around the true $\theta$ is not guaranteed. Instead, the posterior follows the behavior characterized by \cite{gustafson2010bayesian}:
 \begin{theorem}
   Let the true data-generating process be defined as
-  \begin{equation}
+  \begin{equation*}
     D_{i} \iid f_{\phi^{*}}, \quad i = 1, \ldots, n,
-  \end{equation}
+  \end{equation*}
   where \(D_{i}\) is the observed data for unit \(i\) and \(f_{\phi^{*}}\) is the true distribution of the data, parametrized by \(\phi^{*}\). Let the parameter \(\phi\) decompose as follows:
-  \begin{equation}
+  \begin{equation*}
     \phi = (\phi_{I}, \phi_{N}),
-  \end{equation}
+  \end{equation*}
   where \(\phi_{I}\) is the identifiable part of the parameter and \(\phi_{N}\) is the non-identifiable part of the parameter. Let the Bayesian model be defined as
-  \begin{align}
-    \begin{split}
+  \begin{align*}
       D_{i} \mid \phi & \iid f_{\phi_{I}}, \quad i = 1, \ldots, n, \\
       \phi & \sim \pi,
-    \end{split}
-  \end{align}
+  \end{align*}
   where \(\pi\) is a prior distribution over the parameter \(\phi\). Then, if the Bayesian model is regular in the sense of Definition~\ref{def:regularity} with respect to the identifiable component, the posterior distribution of \(\phi_{I}\) concentrates around the true value \(\phi_{I}^{*}\) as the sample size grows:
-  \begin{equation}
+  \begin{equation*}
     \pi \left( \phi_{I} \in U_{I} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 1,
-  \end{equation}
+  \end{equation*}
   for every neighborhood \(U_{I}\) of \(\phi_{I}^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by the true distribution \(f_{\phi^{*}}\). Whereas, the posterior distribution of \(\phi_{N}\) will behave as follows:
-  \begin{equation}
+  \begin{equation*}
     \pi \left( \phi_{N} \in U_{N} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} \pi \left( \phi_{N} \in U_{N} \mid \phi_{I} = \phi_{I}^{*} \right),
-  \end{equation}
+  \end{equation*}
   for every neighborhood \(U_{N}\) of \(\phi_{N}^{*}\), where \(\pi \left( \phi_{N} \in U_{N} \mid \phi_{I} = \phi_{I}^{*} \right)\) is the conditional prior distribution of \(\phi_{N}\) conditional on \(\phi_{I}\) being equal to its true value \(\phi_{I}^{*}\).
 \end{theorem}
 This result demonstrates that despite the lack of full identification, the posterior distribution of $\theta$ still undergoes Bayesian learning as the sample size increases. Specifically, the posterior concentrates around a set of values compatible with both the observed data and model assumptions, enabling meaningful inference for surrogate validation. However, due to the lack of concentration for the non-identifiable component, there is a non-vanishing uncertainty in the posterior distribution of \(\theta\) that persists even in the asymptotic limit. While this feature of the proposed Bayesian imputation approach may appear to constitute an inherent limitation, we argue that the methodology retains merit for at least two reasons.
@@ -428,9 +424,9 @@ Second, though lacking asymptotic consistency, our approach may outperform alter
 We now turn to selecting the surrogate validity threshold, denoted \(\varepsilon\) by \citet{parast2024rank} and \(\eta\) in Equation~\eqref{eq:hypothesis_test_theta}. Establishing a principled value for \(\varepsilon\) is not obvious; thus, \citet{parast2024rank} suggest choosing it to achieve a desired power for detecting treatment effects on \(S\). We instead propose an alternative procedure for selecting \(\eta\), similar in spirit but better suited to our Bayesian framework, which relies on a Bayes factor for hypothesis testing.
 
 The intuition for our approach is that we aim to set \(\eta\) such that when \(V_{S}\) is at most \(\eta\)-close to \(V_{Y}\), then \(S\) is a valid replacement for \(Y\). To this end, the value of \(\eta\) is defined as
-\begin{equation}
+\begin{equation*}
     \eta = \max \{ v_{Y} - v_{S}, 0 \},
-\end{equation}
+\end{equation*}
 where \(v_Y\) denotes the hypothesized treatment effect on \(Y\) and \(v_s\) is defined as the value of \(V_{S}\) that ensures a power of \(1 - \beta\) for the following hypothesis test:
 \begin{equation}
     \label{eq:hypothesis_test_V_S}
@@ -442,31 +438,31 @@ where \(v_Y\) denotes the hypothesized treatment effect on \(Y\) and \(v_s\) is 
 which is implemented using a Bayes factor. As an example, one plausible way to choose \(v_Y\) is to use the posterior mean of \(V_{Y}\) obtained from our Bayesian imputation framework. %Then $v_{Y} - v_{S}$ reflects how far we are willing to let $v_{S}$ be from $v_{Y}$, while still ensuring a \((1 - \beta)100\%\) power.
 
 As for the choice of \(v_{S}\), instead, to compute a Bayes factor for the hypothesis test in Equation~\eqref{eq:hypothesis_test_V_S}, we first need to specify a Bayesian model taking \(V_{S}\) as its unknown parameter:
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         n \, \widehat{V}_{S} \mid V_{S} & \sim \text{Binomial}(n, V_{S}), \\
         V_{S} & \sim p(V_{S}),
     \end{aligned}
-\end{equation}
+\end{equation*}
 where the prior for \(V_{S}\) is a Beta distribution renormalized on \( \left( \frac{1}{2}, 1 \right)\):
-\begin{equation}
+\begin{equation*}
     p(V_{S}) = \frac{\text{Beta}(V_{S} \mid a, b)}{\int_{\frac{1}{2}}^{1} \text{Beta}(v \mid a, b) \, dv} \; \forall \; V_{S} \in \left(\tfrac{1}{2}, 1\right),
-\end{equation}
+\end{equation*}
 with \(a, b > 0\) suitably chosen prior parameters, and \(\widehat{V}_{S} = \frac{1}{n} \sum_{i=1}^{n} \one(S_{1i} > S_{0i})\). Note that \(\widehat{V}_{S}\) cannot be computed directly from the observed data, since \(S_{1i}\) and \(S_{0i}\) are never jointly observed for any unit \(i\). However, as we shall see in a moment, this is not an issue, because the procedure to select \(v_{s}\) only requires the sampling distribution of \(\widehat{V}_{S}\) under the null and alternative hypothesis, rather than an observed value for it.
 
 The resulting Bayes factor $BF_n$ is derived and given in closed form in Web Appendix~\ref{app:BF_derivation}. Then, as usual, we would like to ensure a type I error probability of $\alpha$:
-\begin{equation}
+\begin{equation*}
     \mathbb{P} (BF_{n} > BF_{n, \alpha} \mid H_0) = \alpha.
-\end{equation}
+\end{equation*}
 Since $n \, \widehat{V}_{S}$ takes values in $\{0, \ldots, n\}$, $BF_{n}$ has at most $n + 1$ distinct values, so $BF_{n, \alpha}$ can be easily obtained as the $(1 - \alpha)$-quantile of the distribution of $BF_{n}$ under $H_0$, which is given in closed form in Web Appendix~\ref{app:BF_derivation}. Then, given $BF_{n, \alpha}$, we define $v_{S}$ as the value such that
 \begin{equation}
     \mathbb{P} \left( BF_{n} > BF_{n, \alpha} \mid V_{S} = v_{S} > \frac{1}{2} \right) = 1 - \beta.
     \label{eq:V_S_power}
 \end{equation}
 It is useful to observe that the map
-\begin{equation}
+\begin{equation*}
 v_{S} \mapsto \mathbb{P} \big( BF_{n} > BF_{n, \alpha} \mid V_S = v_{S} \big)
-\end{equation}
+\end{equation*}
 is monotone on \(\left(\frac{1}{2}, 1\right)\). Therefore, there exists a unique \(v_{S}\) satisfying Equation~\eqref{eq:V_S_power}. The probability can be evaluated using the same procedure described in Web Appendix~\ref{app:BF_derivation} for the distribution of \(BF_{n}\) given \(V_S = v_{S}\). Since the function is continuous and monotone, \(v_{S}\) can be obtained using standard numerical root-finding algorithms, such as \texttt{uniroot} in \texttt{R}.
 
 \section{Simulation Study}\label{sec:simulation_study}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -683,11 +683,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.161 \end{align}
-                  [1
+l.159 \end{align*}
+                   [1
 
 
 ]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 2
  []
@@ -703,22 +706,22 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [4]
-Overfull \hbox (8.4184pt too wide) in paragraph at lines 318--319
-[][]\OT1/cmr/m/it/12 Let $\OML/cmm/m/it/12 D[] [] f[]$ \OT1/cmr/m/it/12 and let the Bayesian
- []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 5
  []
 
 [5]
+Overfull \hbox (8.4184pt too wide) in paragraph at lines 304--305
+[][]\OT1/cmr/m/it/12 Let $\OML/cmm/m/it/12 D[] [] f[]$ \OT1/cmr/m/it/12 and let the Bayesian
+ []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 6
  []
 
 [6]
-Overfull \hbox (42.97818pt too wide) in paragraph at lines 382--383
+Overfull \hbox (42.97818pt too wide) in paragraph at lines 363--364
  []\OT1/cmr/m/it/12 Setting 3 (Im-per-fect sur-ro-gate).. [] \OT1/cmr/m/n/12 The sur-ro-gate po-ten-tial out-comes $(\OML/cmm/m/it/12 S[]; S[]\OT1/cmr/m/n/12 ) [] \OMS/cmsy/m/n/12 N[]  []$\OT1/cmr/m/n/12 ,
  []
 
@@ -727,12 +730,15 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
 
-[7] (./BSET_appendix.bbl
+[7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
 
-[8])
+[8] (./BSET_appendix.bbl)
 
 Package natbib Warning: There were multiply defined citations.
 
@@ -750,13 +756,13 @@ Package rerunfilecheck Info: File `BSET_appendix.out' has not changed.
 (rerunfilecheck)             Checksum: A5DB218DD35BB49DE925032071013A34;3692.
  ) 
 Here is how much of TeX's memory you used:
- 15124 strings out of 474116
- 239940 string characters out of 5743682
- 1949187 words of memory out of 5000000
- 37156 multiletter control sequences out of 15000+600000
+ 15074 strings out of 474116
+ 239234 string characters out of 5743682
+ 1944187 words of memory out of 5000000
+ 37149 multiletter control sequences out of 15000+600000
  567169 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,19n,79p,643b,571s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,643b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{subsection.3.3} has been referenced but does not exist, replaced by a fixed one
 
@@ -767,13 +773,13 @@ pdfTeX warning (dest): name{subsubsection.2.4.2} has been referenced but does no
 pdfTeX warning (dest): name{subsubsection.2.4.1} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{equation.2.4} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{equation.2.3} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on BSET_appendix.pdf (10 pages, 234585 bytes).
+Output written on BSET_appendix.pdf (10 pages, 233532 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 171 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
