@@ -71,6 +71,52 @@ ggsave(
   height = 5
 )
 
+##############################################################
+# Discrepancy heatmap - Gaussian covariate setting           #
+##############################################################
+
+Delta <- 5
+m <- 1
+v <- 0.1
+
+h_gauss <- function(x, Delta, m, v) {
+  pnorm(m * Delta / sqrt(1 + v^2 * ((x + Delta)^2 + x^2)))
+}
+
+beta_vals <- seq(-10, 10, length.out = 500)
+grid_gauss <- expand.grid(
+  beta_Y0 = beta_vals,
+  beta_S0 = beta_vals
+)
+
+grid_gauss$discrepancy <- with(grid_gauss,
+  abs(h_gauss(beta_Y0, Delta, m, v) - h_gauss(beta_S0, Delta, m, v))
+)
+
+sup_val <- abs(pnorm(m * sqrt(2) / v) - 0.5)
+
+discrepancy_heatmap_gauss <- ggplot(grid_gauss, aes(x = beta_Y0, y = beta_S0, fill = discrepancy)) +
+  geom_raster() +
+  scale_fill_gradientn(
+    name   = expression("|" * theta - delta * "|"),
+    colors = c("#08306B", "#2171B5", "#238B45", "#CCCC00", "#D94801", "#A50F15"),
+    limits = c(0, sup_val)
+  ) +
+  labs(
+    x = expression(beta[Y[0]]),
+    y = expression(beta[S[0]])
+  ) +
+  coord_equal() +
+  theme_minimal(base_size = 13) +
+  theme(legend.key.height = unit(1.2, "cm"))
+
+ggsave(
+  filename = "discrepancy_heatmap_gaussian.pdf",
+  plot     = discrepancy_heatmap_gauss,
+  width    = 6,
+  height   = 5
+)
+
 ######################################################
 # DCCT primary outcome distribution by treatment arm #
 ######################################################
@@ -227,23 +273,23 @@ ggsave(
 
 set.seed(1)
 
-BSET_no_X <- BSET(
-  data = hb_high_risk,
-  Y = "Y",
-  S = "S",
-  Z = "Z",
-  beta = 0.3,
-  parallel = FALSE,
-  plot = TRUE
-)
-
-ggsave(
-  filename = "DCCT_no_X_theta_posterior_plot.pdf",
-  plot = BSET_no_X$theta_posterior_plot,
-  width = 10,
-  height = 8,
-  device = cairo_pdf
-)
+# BSET_no_X <- BSET(
+#   data = hb_high_risk,
+#   Y = "Y",
+#   S = "S",
+#   Z = "Z",
+#   beta = 0.3,
+#   parallel = FALSE,
+#   plot = TRUE
+# )
+# 
+# ggsave(
+#   filename = "DCCT_no_X_theta_posterior_plot.pdf",
+#   plot = BSET_no_X$theta_posterior_plot,
+#   width = 10,
+#   height = 8,
+#   device = cairo_pdf
+# )
 
 ##################################
 # DCCT posterior with covariates #
@@ -251,20 +297,20 @@ ggsave(
 
 set.seed(1)
 
-BSET_X <- BSET(
-  data = hb_high_risk,
-  Y = "Y",
-  S = "S",
-  Z = "Z",
-  X = c("AGE","MALE"),
-  beta = 0.3,
-  plot = TRUE
-)
-
-ggsave(
-  filename = "DCCT_X_theta_posterior_plot.pdf",
-  plot = BSET_X$theta_posterior_plot,
-  width = 10,
-  height = 8,
-  device = cairo_pdf
-)
+# BSET_X <- BSET(
+#   data = hb_high_risk,
+#   Y = "Y",
+#   S = "S",
+#   Z = "Z",
+#   X = c("AGE","MALE"),
+#   beta = 0.3,
+#   plot = TRUE
+# )
+# 
+# ggsave(
+#   filename = "DCCT_X_theta_posterior_plot.pdf",
+#   plot = BSET_X$theta_posterior_plot,
+#   width = 10,
+#   height = 8,
+#   device = cairo_pdf
+# )

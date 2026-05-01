@@ -239,9 +239,44 @@ where we denote \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^
 \subsection{Supremum of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|}}
 \label{app:supremum_delta_binary_covariate}
 
-We now prove analytically that \(\sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} |1 - 2\Phi(\Delta)|\).
-
-\textcolor{red}{DO THE MATH!}
+We now compute analytically the supremum of \(|\theta - \delta|\) with respect to \(d_{Y}\) and \(d_{S}\). First, observe that the distance \(|\theta - \delta|\) can be rewritten as
+\begin{equation*}
+    |\theta - \delta| = \frac{1}{4} \left| g_{\Delta}(d_{Y}) - g_{\Delta}(d_{S}) \right|,
+\end{equation*}
+where 
+\begin{equation*}
+    g_{\Delta}(x) = \Phi(\Delta + x) + \Phi(\Delta - x) \; \forall \; x \in \mathbb{R}.
+\end{equation*}
+Then, it follows that
+\begin{align*}
+    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} & = \frac{1}{4} \left( \sup_{x} \{ g_{\Delta}(x) \} - \inf_{x} \{ g_{\Delta}(x) \} \right)
+\end{align*}
+Moreover, since 
+\begin{equation*}
+    g_{\Delta}(-x) = g_{\Delta}(x) \; \forall \; x \in \mathbb{R},
+\end{equation*}
+we only have to optimize \(g_{\Delta}\) over \(\R_{+}\). Observe that the derivative of \(g_{\Delta}\) is given by
+\begin{align*}
+    g'_{\Delta}(x) & = \phi(\Delta + x) - \phi(\Delta - x) \\
+    & = \frac{1}{\sqrt{2 \pi}} \left( e^{-\frac{(\Delta + x)^2}{2}} - e^{-\frac{(\Delta - x)^2}{2}} \right) \; \forall \; x \in \R_{+},
+\end{align*}
+where \(\phi\) is the standard normal PDF. Then, the critical points of \(g_{\Delta}\) satisfy this equation:
+\begin{align*}
+    \phi(\Delta + x) = \phi(\Delta - x) \iff ( \Delta + x )^2 = ( \Delta - x )^2,
+\end{align*}
+which has only one solution \(x = 0\), since we assumed that \(\Delta > 0\). Moreover, we have that
+\begin{equation*}
+    g'_{\Delta}(x) < 0 \; \forall \; x \in \R_{+}.
+\end{equation*}
+This implies that \(g_{\Delta}\) is strictly decreasing over \(\R_{+}\), so that
+\begin{align*}
+    \sup_{x} \{ g_{\Delta}(x) \} & = g_{\Delta}(0) = 2 \Phi(\Delta), \\
+    \inf_{x} \{ g_{\Delta}(x) \} & = \lim_{x \to +\infty} g_{\Delta}(x) = 1.
+\end{align*}
+Hence, we conclude that
+\begin{align*}
+    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} & = \frac{1}{4} \left( 2 \Phi(\Delta) - 1 \right) = \frac{1}{2} \Phi(\Delta) - \frac{1}{4}.
+\end{align*}
 
 \section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Gaussian Covariate Setting}
 \label{app:gaussian_covariate_derivation}
@@ -266,28 +301,60 @@ Using the perfect surrogacy assumption in Equation~\eqref{eq:perfect_surrogacy_a
 
 Observe that by the Gaussian covariate assumption, we have that
 \begin{align*}
-    X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} & \sim \mathcal{N} \left( m (\beta_{Y_{1}} - \beta_{Y_{0}}), s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2) \right), \quad i,j = 1, \ldots, n, \\
-    X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} & \sim \mathcal{N} \left( m (\beta_{S_{1}} - \beta_{S_{0}}), s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2) \right), \quad i,j = 1, \ldots, n.
+    X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} & \sim \mathcal{N} \left( m (\beta_{Y_{1}} - \beta_{Y_{0}}), v^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2) \right), \quad i,j = 1, \ldots, n, \\
+    X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} & \sim \mathcal{N} \left( m (\beta_{S_{1}} - \beta_{S_{0}}), v^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2) \right), \quad i,j = 1, \ldots, n.
 \end{align*}
 Therefore, we can derive an expanded analytical expression for \(\delta\) as follows:
 \begin{align*}
     \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) - \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right) \\
-    & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + s^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
+    & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + v^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + v^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
 \end{align*}
 where the last line follows from the following property of Gaussian random variables.
 
 \begin{lemma}
 \label{lemma:gaussian_phi_identity}
-    Let \(W \sim \mathcal{N}(m, s^2)\) for some \(m \in \mathbb{R}\) and \(s \in \R_{+}\). Then, we have that
+    Let \(W \sim \mathcal{N}(m, v^2)\) for some \(m \in \mathbb{R}\) and \(v \in \R_{+}\). Then, we have that
     \begin{align*}
-        \E_{W \sim \mathcal{N}(m, s^2)} \!\left( \Phi(W) \right) = \Phi \!\left( \frac{m}{\sqrt{1 + s^2}} \right).
+        \E_{W \sim \mathcal{N}(m, v^2)} \!\left( \Phi(W) \right) = \Phi \!\left( \frac{m}{\sqrt{1 + v^2}} \right).
     \end{align*}
 \end{lemma}
 
 \subsection{Supremum of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|}}
 \label{app:supremum_delta_gaussian_covariate}
 
-\textcolor{red}{DO THE MATH!}
+We now compute analytically the supremum of \(|\theta - \delta|\) with respect to \(\boldsymbol{\beta}\). First, observe that under the perfect surrogacy assumption in Equation~\eqref{eq:perfect_surrogacy_assumption_gaussian_covariate}, we have that
+\begin{align*}
+    |\theta - \delta| & = |\delta| \\
+    & = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2)}} \right) \right| \\
+    & = | h_{\Delta, m, v} (\beta_{Y_{0}}) - h_{\Delta, m, v}(\beta_{S_{0}}) |,
+\end{align*}
+where
+\begin{equation*}
+    h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((x + \Delta)^2 + x^2)}} \right) \; \forall \; x \in \mathbb{R}.
+\end{equation*}
+Then, it follows that
+\begin{align*}
+    \sup_{\boldsymbol{\beta}} \{ |\theta - \delta| \} & = \sup_{x} \{ h_{\Delta, m, v}(x) \} - \inf_{x} \{ h_{\Delta, m, v}(x) \}.
+\end{align*}
+Notice that since \(x\) only appears in the denominator of the argument of \(\Phi\), finding the extrema of \(h_{\Delta, m, v}\) is equivalent to finding the extrema of the function \(k_{\Delta, m, v}\) defined as follows:
+\begin{equation*}
+    k_{\Delta, m, v}(x) = 1 + v^2 ((x + \Delta)^2 + x^2) = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2) \; \forall \; x \in \mathbb{R}.
+\end{equation*}
+It is easy to see that
+\begin{align*}
+    \sup_{x} \{ k_{\Delta, m, v}(x) \} & = \lim_{x \to +\infty} k_{\Delta, m, v}(x) = +\infty, \\
+    \inf_{x} \{ k_{\Delta, m, v}(x) \} & = k_{\Delta, m, v}\!\left(-\frac{\Delta}{2}\right) = 1 + \frac{v^2 \Delta^2}{2},
+\end{align*}
+where we omit the algebraic details for brevity. Therefore, we have that
+\begin{align*}
+    \sup_{\boldsymbol{\beta}} \{ |\theta - \delta| \} & = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + \frac{v^2 \Delta^2}{2}}} \right) - \Phi \left( 0 \right) \right| \\
+    & = \left| \Phi \left( \frac{m}{\sqrt{\frac{1}{\Delta^2} + \frac{v^2}{2}}} \right) - \frac{1}{2} \right|,
+\end{align*}
+which is strictly increasing in \( | \Delta | \), so that
+\begin{align*}
+    \sup_{\boldsymbol{\beta}, \Delta} \{ |\theta - \delta| \} & = \lim_{|\Delta| \to +\infty} \left| \Phi \left( \frac{m}{\sqrt{\frac{1}{\Delta^2} + \frac{v^2}{2}}} \right) - \frac{1}{2} \right| \\
+    & = \left| \Phi \left( \frac{m \, \sqrt{2}}{v} \right) - \frac{1}{2} \right|.
+\end{align*}
 
 \section{Regularity and Posterior Consistency}
 \label{app:posterior_consistency}
@@ -368,7 +435,7 @@ This appendix describes the data-generating processes and the Markov chain Monte
 \subsection{Data-Generating Processes}
 \label{app:data_generating_processes}
 
-We list the data-generating processes for the six settings considered in the simulation study.
+In all six settings, the treatment indicator $Z_i \iid \text{Bernoulli}\left(\frac{1}{2}\right)$ is drawn independently of all potential outcomes. The data-generating processes for \(P_i\) in each setting are as follows.
 
 \begin{itemize}[leftmargin=*]
     \item \textbf{Setting 1 (Useless surrogate):} The potential outcomes are generated as follows:
@@ -385,18 +452,8 @@ We list the data-generating processes for the six settings considered in the sim
     \end{equation*}
     where
     \begin{align*}
-        \mu^* & = \begin{bmatrix}
-        5 \\
-        \tfrac{2}{3} \\
-        3 \\
-        \tfrac{2}{3}
-        \end{bmatrix}, &
-        \Sigma^* & = \begin{bmatrix}
-        3 & 0 & 0 & 0 \\
-        0 & 1 & 0 & 0 \\
-        0 & 0 & 3 & 0 \\
-        0 & 0 & 0 & 1
-        \end{bmatrix}
+        \mu^* &= \left(5,\, \tfrac{2}{3},\, 3,\, \tfrac{2}{3}\right)^\top, &
+        \Sigma^* &= \mathrm{diag}\!\left(3,\, 1,\, 3,\, 1\right).
     \end{align*}
 
     \item \textbf{Setting 2 (Perfect surrogate):} The potential outcomes are generated as follows:
@@ -413,8 +470,8 @@ We list the data-generating processes for the six settings considered in the sim
     \end{equation*}
     where
     \begin{align*}
-        \mu^* &= \begin{bmatrix} 6 \\ 6 \\ 2.5 \\ 2.5 \end{bmatrix}, &
-        \Sigma^* &= \begin{bmatrix} 3 & 3 & 0 & 0 \\ 3 & 3.1 & 0 & 0 \\ 0 & 0 & 3 & 3 \\ 0 & 0 & 3 & 3.1 \end{bmatrix}.
+        \mu^* &= (6,\, 6,\, 2.5,\, 2.5)^\top, &
+        \Sigma^* &= I_2 \otimes \begin{bmatrix} 3 & 3 \\ 3 & 3.1 \end{bmatrix}.
     \end{align*}
     \item \textbf{Setting 3 (Imperfect surrogate):} The potential outcomes are generated as follows:
     \begin{equation*}
@@ -430,54 +487,75 @@ We list the data-generating processes for the six settings considered in the sim
     \end{equation*}
     where
     \begin{align*}
-        \mu^* &= \begin{bmatrix} 6.5 \\ 5 \\ 3 \\ 3 \end{bmatrix}, &
-        \Sigma^* &= \begin{bmatrix} 3.6 & 3 & 0 & 0 \\ 3 & 3 & 0 & 0 \\ 0 & 0 & 3.6 & 3 \\ 0 & 0 & 3 & 3 \end{bmatrix}.
+        \mu^* &= (6.5,\, 5,\, 3,\, 3)^\top, &
+        \Sigma^* &= I_2 \otimes \begin{bmatrix} 3.6 & 3 \\ 3 & 3 \end{bmatrix}.
+    \end{align*}
+    \item \textbf{Setting 4 (Misspecified model):} The potential outcomes are generated as follows:
+    \begin{equation*}
+    \begin{array}{rl}
+        S_{1i} & \iid \text{LogNormal}(2.5,\, 1.5^2), \\
+        Y_{1i} \mid S_{1i} & \indepsim 2.0 + 1.2\sqrt{S_{1i}} + 0.3\,e^{S_{1i}/500} + \text{LogNormal}(0,\, 0.3), \\
+        S_{0i} & \iid \text{LogNormal}(0.5,\, 1.5^2), \\
+        Y_{0i} \mid S_{0i} & \indepsim 0.8\sqrt{S_{0i}} + 0.2\,e^{S_{0i}/50} + \text{LogNormal}(0,\, 0.3),
+    \end{array}
+    \quad i = 1, \ldots, n.
+    \end{equation*}
+    \item \textbf{Setting 5 (Binary covariate):} The potential outcomes are generated as follows:
+    \begin{equation*}
+    \begin{array}{rl}
+        P_{i} \mid X_{i} & \indepsim X_{i}\,\mathcal{N}_{4}\!\left(\mu^{1}, \Sigma^{1}\right) + (1 - X_{i})\,\mathcal{N}_{4}\!\left(\mu^{0}, \Sigma^{0}\right), \\
+        X_i & \iid \text{Bernoulli} \left( \frac{1}{2} \right),
+    \end{array}
+    \quad i = 1, \ldots, n,
+    \end{equation*}
+    where
+    \begin{align*}
+        \mu^{0} &= (5, 5, 0, 0)^\top, &
+        \mu^{1} &= (5, -5, 0, -10)^\top, \\
+        \Sigma^{0} &= I_2 \otimes \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}, &
+        \Sigma^{1} &= I_2 \otimes \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix},
+    \end{align*}
+    where \(\otimes\) denotes the Kronecker product.
+    \item \textbf{Setting 6 (Gaussian covariate):} The potential outcomes are generated as follows:
+    \begin{equation*}
+    \begin{array}{rl}
+        P_{i} \mid X_{i} & \indepsim \mathcal{N}_{4}\!\left(X_{i}\,\beta,\, \Sigma\right), \\
+        X_i & \iid \mathcal{N}(m,\, v^2),
+    \end{array}
+    \quad i = 1, \ldots, n,
+    \end{equation*}
+    where
+    \begin{align*}
+        \beta &= (1,\, 7,\, 0,\, 6)^\top, &
+        \Sigma &= \tfrac{1}{2}\, I_{4}, \\
+        m &= 3, &
+        v^2 &= 1.
     \end{align*}
 \end{itemize}
 
-\paragraph{Setting 4 (Misspecified model).} The surrogate potential outcomes are log-normal: $S_{1i} \sim \exp\!\left(\mathcal{N}(2.5,\, 1.5^2)\right)$ and $S_{0i} \sim \exp\!\left(\mathcal{N}(0.5,\, 1.5^2)\right)$. The primary outcome is a non-linear function of the surrogate plus log-normal noise:
-\begin{align*}
-    Y_{1i} &= 2.0 + 1.2\sqrt{S_{1i}} + 0.3\exp(S_{1i}/500) + \exp(\varepsilon_{1i}), \\
-    Y_{0i} &= 0.8\sqrt{S_{0i}} + 0.2\exp(S_{0i}/50) + \exp(\varepsilon_{0i}),
-\end{align*}
-where $\varepsilon_{gi} \iid \mathcal{N}(0,\, 0.3)$. This setting is designed to violate the Gaussian parametric assumptions of our Bayesian model.
+\subsection{Simulation Parameters}
+\label{app:simulation_parameters}
 
-\paragraph{Setting 5.} A binary baseline covariate \(X_i \iid \text{Bernoulli}(0.5)\) is generated, and the distribution of \(P_i \mid X_i\) is the following mixture:
-\begin{equation*}
-  P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; X_{i} \; \mathcal{N}_{4}\!\left(\mu^{1}, \Sigma^{1}\right)
-  + (1 - X_{i}) \; \mathcal{N}_{4}\!\left(\mu^{0}, \Sigma^{0}\right),
-  \quad i = 1,\ldots,n,
-\end{equation*}
-with
-\begin{align*}
-    \mu^{0} &= (5, 5, 0, 0)^\top, &
-    \mu^{1} &= (5, -5, 0, -10)^\top, \\
-    \Sigma^{0} &= \Sigma^{1} =
-    \begin{bmatrix} A & 0 \\ 0 & A \end{bmatrix}, &
-    A &= \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}.
-\end{align*}
+The surrogate validation threshold \(\eta\) was computed using significance level \(\alpha = 0.05\), desired power \(1 - \beta = 0.8\), and a uniform prior for \(V_S\) with \(a = b = 1\).
 
-\paragraph{Setting 6.} A Gaussian baseline covariate \(X_i \iid \mathcal{N}(3, 1)\) is generated, and the distribution of \(P_i \mid X_i\) follows a linear Gaussian model:
-\begin{equation*}
-  P_{i} \mid X_{i} \; \overset{\text{\footnotesize ind.}}{\sim} \; \mathcal{N}_{4}\!\left(X_{i}\,\beta,\, \Sigma\right),
-  \quad i = 1,\ldots,n,
-\end{equation*}
-with
-\begin{align*}
-    \beta &= (1,\, 7,\, 0,\, 6)^\top, &
-    \Sigma &= \tfrac{1}{2}\, I_{4}.
-\end{align*}
+Each setting was replicated $R = 500$ times. For both BSET implementations, we ran $C = 2$ Markov chains of $T = 500$ iterations each, discarding the first $b = 125$ as burn-in. The prior parameters for each Bayesian model are as follows.
 
-\paragraph{Implementation details.} For the Bayesian method, we ran \(T = 500\) posterior sampling iterations with a burn-in of \(b = 125\). Prior parameters were set as follows across both models:
-\begin{align*}
-    \mu_{0} &= (0, 0, 0, 0)^{\top}, &
-    \Sigma_{0} &= 10\, I_{4}, &
-    s &= 2, &
-    \tau &= 1, \\
-    \mu_{\beta} &= (0, 0, 0, 0)^{\top}, &
-    \Sigma_{\beta} &= 10\, I_{4}.
-\end{align*}
-The significance level was set to \(\alpha = 0.05\). To compute the surrogate validation threshold \(\eta\), we set the desired power to \(1 - \beta = 0.8\) and used a uniform prior for \(V_S\) by setting \(a = b = 1\).
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Parast et al.\ (2024):}
+    \begin{align*}
+        \mu_{0} &= (0, 0, 0, 0)^{\top}, &
+        \Sigma_{0} &= 10\, I_{4}, &
+        s &= 2, &
+        \tau &= 1.
+    \end{align*}
+    \item \textbf{Carlotti and Parast (2026):}
+    \begin{align*}
+        \mu_{\beta} &= (0, 0, 0, 0)^{\top}, &
+        \Sigma_{\beta} &= 10\, I_{4}, &
+        s &= 2, &
+        \tau &= 1.
+    \end{align*}
+\end{itemize}
 
 \bibliographystyle{biom}
 \bibliography{BSET_references}
