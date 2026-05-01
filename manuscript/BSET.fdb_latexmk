@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex BSET"] 1777586887.15157 "BSET.aux" "BSET.bbl" "BSET" 1777586893.3754 0
-  "./BSET_references.bib" 1777500754.67683 158347 8db6c6ed83c160cf1d63957adb3f9c75 ""
+["bibtex BSET"] 1777593711.82574 "BSET.aux" "BSET.bbl" "BSET" 1777593721.13936 0
+  "./BSET_references.bib" 1777587070.84219 156991 997ffb38d55ca971eb338ac21ad72353 ""
   "./biom.bst" 1776276666.03232 23581 d1ab0a8fbbe9fa1699fe1a76da9786a8 ""
-  "BSET.aux" 1777586893.09216 14474 76d5bad3f8bc77dc9804d09a7808ab44 "pdflatex"
+  "BSET.aux" 1777593720.89445 14474 76d5bad3f8bc77dc9804d09a7808ab44 "pdflatex"
   (generated)
   "BSET.bbl"
   "BSET.blg"
   (rewritten before read)
-["pdflatex"] 1777586892.41356 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777586893.37555 0
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777586492.49805 63452 5969bd2e5c2643a8ae0e184223df0178 ""
+["pdflatex"] 1777593720.29045 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1777593721.1395 0
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1777593689.28652 63509 0cd6df91ad8aba0383f1ed8cffaf8d5e ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -176,14 +176,14 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "BSET.aux" 1777586893.09216 14474 76d5bad3f8bc77dc9804d09a7808ab44 "pdflatex"
-  "BSET.bbl" 1777586887.26365 11160 0b0a29689fb8cce9300f96064db06f5f "bibtex BSET"
-  "BSET.fff" 1777586893.06356 2577 f7314885f7eb0a31e87f6956cd4792c1 "pdflatex"
-  "BSET.out" 1777586893.0963 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
-  "BSET.tex" 1777586492.49805 63452 5969bd2e5c2643a8ae0e184223df0178 ""
-  "BSET.ttt" 1777586893.08637 2049 97cd36d78a0c357bdb62b53602646ada "pdflatex"
-  "BSET_appendix.aux" 1777586890.03992 4782 b73f3fdd7841782ef5dd227e80a4370f ""
-  "BSET_appendix.tex" 1777586829.21414 24751 3b5d97e426d8816a72801074206b6d31 ""
+  "BSET.aux" 1777593720.89445 14474 76d5bad3f8bc77dc9804d09a7808ab44 "pdflatex"
+  "BSET.bbl" 1777593711.94467 11160 0b0a29689fb8cce9300f96064db06f5f "bibtex BSET"
+  "BSET.fff" 1777593720.86792 2577 f7314885f7eb0a31e87f6956cd4792c1 "pdflatex"
+  "BSET.out" 1777593720.90105 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
+  "BSET.tex" 1777593689.28652 63509 0cd6df91ad8aba0383f1ed8cffaf8d5e ""
+  "BSET.ttt" 1777593720.88889 2049 97cd36d78a0c357bdb62b53602646ada "pdflatex"
+  "BSET_appendix.aux" 1777593715.54069 4781 5818b341498c0cb8876ca522999f6c7d ""
+  "BSET_appendix.tex" 1777593700.06515 24807 f96f766f3f08a0f21e45211090eea2bc ""
   "biom.cls" 1776276669.02156 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1777309515.33583 225 038562b5ff2cf41664d86c05f59b0896 ""
   "figures/DCCT_CDF.pdf" 1777492106.201 12637 e19f1b65ceb9337652fd2e02e7c80eac ""

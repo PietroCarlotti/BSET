@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 17:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 19:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -101,7 +101,7 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 2023-07-04 v5.06 eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM BSET.aux on input line 25.
+Package xr Info: IMPORTING LABELS FROM BSET.aux on input line 27.
 
 (BSET.tex)
 (BSET.aux)
@@ -602,31 +602,27 @@ Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count367
 \l__pdf_internal_box=\box115
-) (./BSET_appendix.aux
-
-Package natbib Warning: Citation `schwartz1965bayes' multiply defined.
-
-)
+) (./BSET_appendix.aux)
 \openout1 = `BSET_appendix.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
  (./endrotfloat.sty
 Package: endrotfloat 2024/01/01 stub
 ) (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -655,7 +651,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 85.
+Package hyperref Info: Link coloring OFF on input line 87.
  (./BSET_appendix.out) (./BSET_appendix.out)
 \@outlinefile=\write6
 \openout6 = `BSET_appendix.out'.
@@ -668,22 +664,22 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 110.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 112.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 110.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 112.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 110.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 112.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.159 \end{align*}
+l.161 \end{align*}
                    [1
 
 
@@ -711,7 +707,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5]
-Overfull \hbox (8.4184pt too wide) in paragraph at lines 304--305
+Overfull \hbox (8.4184pt too wide) in paragraph at lines 306--307
 [][]\OT1/cmr/m/it/12 Let $\OML/cmm/m/it/12 D[] [] f[]$ \OT1/cmr/m/it/12 and let the Bayesian
  []
 
@@ -721,7 +717,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
-Overfull \hbox (42.97818pt too wide) in paragraph at lines 363--364
+Overfull \hbox (42.97818pt too wide) in paragraph at lines 365--366
  []\OT1/cmr/m/it/12 Setting 3 (Im-per-fect sur-ro-gate).. [] \OT1/cmr/m/n/12 The sur-ro-gate po-ten-tial out-comes $(\OML/cmm/m/it/12 S[]; S[]\OT1/cmr/m/n/12 ) [] \OMS/cmsy/m/n/12 N[]  []$\OT1/cmr/m/n/12 ,
  []
 
@@ -738,11 +734,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
 
-[8] (./BSET_appendix.bbl)
-
-Package natbib Warning: There were multiply defined citations.
-
-AED endfloat: Processing end Figures and Tables
+[8] (./BSET_appendix.bbl) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
  []
@@ -756,10 +748,10 @@ Package rerunfilecheck Info: File `BSET_appendix.out' has not changed.
 (rerunfilecheck)             Checksum: A5DB218DD35BB49DE925032071013A34;3692.
  ) 
 Here is how much of TeX's memory you used:
- 15074 strings out of 474116
- 239234 string characters out of 5743682
+ 15035 strings out of 474116
+ 238402 string characters out of 5743682
  1944187 words of memory out of 5000000
- 37149 multiletter control sequences out of 15000+600000
+ 37110 multiletter control sequences out of 15000+600000
  567169 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,13n,79p,643b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -776,7 +768,7 @@ pdfTeX warning (dest): name{subsubsection.2.4.1} has been referenced but does no
 pdfTeX warning (dest): name{equation.2.3} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on BSET_appendix.pdf (10 pages, 233532 bytes).
+Output written on BSET_appendix.pdf (10 pages, 233538 bytes).
 PDF statistics:
  221 PDF objects out of 1000 (max. 8388607)
  171 compressed objects within 2 object streams

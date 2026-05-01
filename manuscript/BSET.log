@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 17:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  30 APR 2026 19:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -101,7 +101,7 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 2023-07-04 v5.06 eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM BSET_appendix.aux on input line 25.
+Package xr Info: IMPORTING LABELS FROM BSET_appendix.aux on input line 27.
 
 (BSET_appendix.tex)
 (BSET_appendix.aux)
@@ -602,31 +602,27 @@ Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count367
 \l__pdf_internal_box=\box115
-) (./BSET.aux
-
-Package natbib Warning: Citation `schwartz1965bayes' multiply defined.
-
-)
+) (./BSET.aux)
 \openout1 = `BSET.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
  (./endrotfloat.sty
 Package: endrotfloat 2024/01/01 stub
 ) (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -655,20 +651,20 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 85.
+Package hyperref Info: Link coloring OFF on input line 87.
  (./BSET.out) (./BSET.out)
 \@outlinefile=\write6
 \openout6 = `BSET.out'.
 
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 102.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 104.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 102.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 104.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 102.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 104.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -688,7 +684,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.113 I
+l.115 I
        n this paper, we propose BSET (Bayesian Surrogate Evaluation Test), a... [1
 
 ]
@@ -702,7 +698,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 161.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 163.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
@@ -740,7 +736,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 288.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 290.
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
@@ -765,7 +761,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-Overfull \hbox (6.0349pt too wide) in paragraph at lines 396--398
+Overfull \hbox (6.0349pt too wide) in paragraph at lines 398--400
 \OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
  []
 
@@ -841,11 +837,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 24
  []
 
-[24])
-
-Package natbib Warning: There were multiply defined citations.
-
-AED endfloat: Processing end Figures and Tables
+[24]) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []

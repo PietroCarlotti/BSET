@@ -14,13 +14,15 @@
   \@addtofilelist{#1}
   \IfFileExists{#1}{}{\typeout{No file #1.}}
 }
-\makeatother
-
 \newcommand*{\myexternaldocument}[1]{%
+    \begingroup
+    \let\bibcite\@gobbletwo
     \externaldocument{#1}%
+    \endgroup
     \addFileDependency{#1.tex}%
     \addFileDependency{#1.aux}%
 }
+\makeatother
 
 \myexternaldocument{BSET_appendix}
 

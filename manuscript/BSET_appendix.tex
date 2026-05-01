@@ -14,13 +14,15 @@
   \@addtofilelist{#1}
   \IfFileExists{#1}{}{\typeout{No file #1.}}
 }
-\makeatother
-
 \newcommand*{\myexternaldocument}[1]{%
+    \begingroup
+    \let\bibcite\@gobbletwo
     \externaldocument{#1}%
+    \endgroup
     \addFileDependency{#1.tex}%
     \addFileDependency{#1.aux}%
 }
+\makeatother
 
 \myexternaldocument{BSET}
 
@@ -245,7 +247,7 @@ Under the setting described in Section~\ref{subsec:gaussian_covariate_setting} o
     \E_{Z \sim \mathcal{N}(0,1)} \!\left( \Phi(a + b Z) \right) = \Phi\!\left( \frac{a}{\sqrt{1 + b^2}} \right), \quad \forall \; a, b \in \mathbb{R}.
 \end{align}
 
-\paragraph{Derivation of \(\delta\).} Writing \(X_i \beta_{Y_1} - X_j \beta_{Y_0} = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} Z_i - \beta_{Y_0} Z_j)\) where \(Z_i, Z_j \iid \mathcal{N}(0,1)\), and applying Equation~\eqref{eq:gaussian_phi_identity} twice (once over \(Z_j\), once over \(Z_i\)):
+\paragraph{Derivation of \(\delta\)} Writing \(X_i \beta_{Y_1} - X_j \beta_{Y_0} = m(\beta_{Y_1} - \beta_{Y_0}) + s(\beta_{Y_1} Z_i - \beta_{Y_0} Z_j)\) where \(Z_i, Z_j \iid \mathcal{N}(0,1)\), and applying Equation~\eqref{eq:gaussian_phi_identity} twice (once over \(Z_j\), once over \(Z_i\)):
 \begin{align*}
         U_{Y} & = \E_{X_{i}, X_{j}} \!\left( \Phi \!\left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) \\
         & = \Phi \!\left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + s^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right).
