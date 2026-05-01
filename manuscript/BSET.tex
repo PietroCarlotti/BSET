@@ -258,9 +258,10 @@ Let us now consider a setting where \(f = \mathcal{N}(m,s^2)\) and the mean pote
     \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
 \end{align*}
 As we show in Web Appendix~\ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(s\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
-\begin{align*}
+\begin{equation}
+\label{eq:perfect_surrogacy_assumption_gaussian_covariate}
     \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta.
-\end{align*}
+\end{equation}
 This implies that the treatment effect is the same for both \(Y\) and \(S\) across all values of the covariate. Under this assumption, \(\theta = 0\) and therefore \(|\theta - \delta| = |\delta|\), which is given by
 \begin{align*}
     |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + s^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
@@ -458,8 +459,8 @@ The resulting Bayes factor $BF_n$ is derived and given in closed form in Web App
 \end{equation*}
 Since $n \, \widehat{V}_{S}$ takes values in $\{0, \ldots, n\}$, $BF_{n}$ has at most $n + 1$ distinct values, so $BF_{n, \alpha}$ can be easily obtained as the $(1 - \alpha)$-quantile of the distribution of $BF_{n}$ under $H_0$, which is given in closed form in Web Appendix~\ref{app:BF_derivation}. Then, given $BF_{n, \alpha}$, we define $v_{S}$ as the value such that
 \begin{equation}
+\label{eq:V_S_power}
     \mathbb{P} \left( BF_{n} > BF_{n, \alpha} \mid V_{S} = v_{S} > \frac{1}{2} \right) = 1 - \beta.
-    \label{eq:V_S_power}
 \end{equation}
 It is useful to observe that the map
 \begin{equation*}

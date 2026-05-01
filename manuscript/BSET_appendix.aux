@@ -10,14 +10,21 @@
 \newlabel{app:derivation_delta}{{A.2}{2}{Derivation of \texorpdfstring {\(\delta \)}{delta} as an Expectation over the Covariate Distribution}{subsection.1.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Derivation of \(\theta \) and \(\delta \) in the Condionally Orthogonal and Homoscedastic Setting}{3}{subsection.1.3}\protected@file@percent }
 \newlabel{eq:equivalence_theta_x_delta_xx}{{A.1}{3}{Derivation of \texorpdfstring {\(\theta \)}{theta} and \texorpdfstring {\(\delta \)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}{equation.1.1}{}}
+\newlabel{eq:g_definition}{{A.2}{3}{Derivation of \texorpdfstring {\(\theta \)}{theta} and \texorpdfstring {\(\delta \)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}{equation.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {B}Derivation of \(|\theta - \delta |\) in the Binary Covariate Setting}{3}{section.2}\protected@file@percent }
 \newlabel{app:binary_covariate_derivation}{{B}{3}{Derivation of \texorpdfstring {\(|\theta - \delta |\)}{|theta - delta|} in the Binary Covariate Setting}{section.2}{}}
+\newlabel{eq:distance_theta_delta_binary_covariate}{{A.3}{3}{Derivation of \texorpdfstring {\(|\theta - \delta |\)}{|theta - delta|} in the Binary Covariate Setting}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Supremum of \(|\theta - \delta |\)}{4}{subsection.2.1}\protected@file@percent }
+\newlabel{app:supremum_delta_binary_covariate}{{B.1}{4}{Supremum of \texorpdfstring {\(|\theta - \delta |\)}{|theta - delta|}}{subsection.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {C}Derivation of \(\theta \) and \(\delta \) in the Gaussian Covariate Setting}{4}{section.3}\protected@file@percent }
 \newlabel{app:gaussian_covariate_derivation}{{C}{4}{Derivation of \texorpdfstring {\(\theta \)}{theta} and \texorpdfstring {\(\delta \)}{delta} in the Gaussian Covariate Setting}{section.3}{}}
-\newlabel{eq:gaussian_phi_identity}{{A.2}{4}{Derivation of \texorpdfstring {\(\theta \)}{theta} and \texorpdfstring {\(\delta \)}{delta} in the Gaussian Covariate Setting}{equation.3.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Derivation of \(\delta \)}{4}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Derivation of \(\theta \).}{4}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Supremum of \(|\delta |\) when \(S\) is a perfect surrogate.}{5}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Derivation of \(\theta \)}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{app:derivation_theta_gaussian_covariate}{{C.1}{4}{Derivation of \texorpdfstring {\(\theta \)}{theta}}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Derivation of \(\delta \)}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{app:derivation_delta_gaussian_covariate}{{C.2}{4}{Derivation of \texorpdfstring {\(\delta \)}{delta}}{subsection.3.2}{}}
+\newlabel{lemma:gaussian_phi_identity}{{1}{5}{Derivation of \texorpdfstring {\(\delta \)}{delta}}{lemma.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Supremum of \(|\theta - \delta |\)}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{app:supremum_delta_gaussian_covariate}{{C.3}{5}{Supremum of \texorpdfstring {\(|\theta - \delta |\)}{|theta - delta|}}{subsection.3.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {D}Regularity and Posterior Consistency}{5}{section.4}\protected@file@percent }
 \newlabel{app:posterior_consistency}{{D}{5}{Regularity and Posterior Consistency}{section.4}{}}
 \newlabel{def:regularity}{{1}{5}{Regularity and Posterior Consistency}{definition.1}{}}
@@ -26,15 +33,14 @@
 \newlabel{app:BF_derivation}{{E}{6}{Derivation of the Bayes Factor for the Validation Threshold}{section.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {F}Simulation Study: Data-Generating Processes and Implementation Details}{7}{section.6}\protected@file@percent }
 \newlabel{app:simulation_details}{{F}{7}{Simulation Study: Data-Generating Processes and Implementation Details}{section.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Setting 1 (Useless surrogate).}{7}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Setting 2 (Perfect surrogate).}{7}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Setting 3 (Imperfect surrogate).}{7}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Setting 4 (Misspecified model).}{8}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Setting 5.}{8}{section*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Setting 6.}{8}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.1}Data-Generating Processes}{7}{subsection.6.1}\protected@file@percent }
+\newlabel{app:data_generating_processes}{{F.1}{7}{Data-Generating Processes}{subsection.6.1}{}}
 \bibstyle{biom}
 \bibdata{BSET_references}
+\@writefile{toc}{\contentsline {paragraph}{Setting 4 (Misspecified model).}{9}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setting 5.}{9}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setting 6.}{9}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Implementation details.}{9}{section*.4}\protected@file@percent }
 \bibcite{schwartz1965bayes}{{1}{1965}{{Schwartz}}{{Schwartz}}}
-\@writefile{toc}{\contentsline {paragraph}{Implementation details.}{9}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{9}{section*.11}\protected@file@percent }
-\gdef \@abspage@last{10}
+\@writefile{toc}{\contentsline {section}{References}{10}{section*.5}\protected@file@percent }
+\gdef \@abspage@last{11}
