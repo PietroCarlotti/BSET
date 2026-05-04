@@ -20,6 +20,14 @@ For a detailed walkthrough and examples of the imputation-based
 methodology, please visit the [BSET
 Tutorial](https://pietrocarlotti.github.io/BSET/articles/BSET_tutorial.html).
 
+## Citation
+
+If you use this package, please cite:
+
+Carlotti, P. and Parast, L. (2026). A Bayesian Critique of Rank-Based
+Methods for Surrogate Marker Evaluation. *arXiv preprint
+arXiv:2603.14381*.
+
 ## Replication
 
 All code and instructions needed to replicate the results presented in
