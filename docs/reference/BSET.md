@@ -242,8 +242,8 @@ df_no_X <- data.frame(
   Z = data_no_X$Z
 )
 
-# Run BSET without covariates (computationally intensive)
-# \donttest{
+# Run BSET without covariates (requires Stan compilation, ~1-2 minutes)
+if (FALSE) { # \dontrun{
 result_no_X <- BSET(
   data = df_no_X,
   Y = "Y",
@@ -253,7 +253,7 @@ result_no_X <- BSET(
   n_chains = 2,
   n_iter = 500
 )
-# }
+} # }
 
 # Generate data from the setting of Carlotti and Parast (2026) with a binary covariate
 set.seed(123)
@@ -275,8 +275,8 @@ df_X <- data.frame(
   X = data_X$X
 )
 
-# Run BSET with covariates (computationally intensive)
-# \donttest{
+# Run BSET with covariates (requires Stan compilation, ~1-2 minutes)
+if (FALSE) { # \dontrun{
 result_X <- BSET(
   data = df_X,
   Y = "Y",
@@ -287,5 +287,5 @@ result_X <- BSET(
   n_chains = 2,
   n_iter = 500
 )
-# }
+} # }
 ```
