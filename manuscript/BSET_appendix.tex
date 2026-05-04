@@ -148,7 +148,7 @@ where we denote
 
 %\begin{equation}
 %\resizebox{.91\textwidth}{!}{%
-%    $ \displaystyle \theta = \int_{\mathcal{X}} \left[ \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right] f (x) \, \text{d}x $
+%    \( \displaystyle \theta = \int_{\mathcal{X}} \left[ \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) \right] f (x) \, \text{d}x \)
 %}
 %\end{equation}
 
@@ -281,7 +281,7 @@ Hence, we conclude that
 \section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Gaussian Covariate Setting}
 \label{app:gaussian_covariate_derivation}
 
-Using the setting from Section~\ref{subsec:gaussian_covariate_setting}, we express $\theta$ and $\delta$ via Equation~\eqref{eq:g_definition} as follows:
+Using the setting from Section~\ref{subsec:gaussian_covariate_setting}, we express \(\theta\) and \(\delta\) via Equation~\eqref{eq:g_definition} as follows:
 \begin{align*}
     \theta & = \E_{X_{i} \sim f} \!\left[ \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) - \Phi \left( X_{i} (\beta_{S_{1}} - \beta_{S_{0}}) \right) \right], \\
     \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) - \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right].
@@ -435,7 +435,7 @@ This appendix describes the data-generating processes and the Markov chain Monte
 \subsection{Data-Generating Processes}
 \label{app:data_generating_processes}
 
-In all six settings, the treatment indicator $Z_i \iid \text{Bernoulli}\left(\frac{1}{2}\right)$ is drawn independently of all potential outcomes. The data-generating processes for \(P_i\) in each setting are as follows.
+In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\frac{1}{2}\right)\) is drawn independently of all potential outcomes. The data-generating processes for \(P_i\) in each setting are as follows.
 
 \begin{itemize}[leftmargin=*]
     \item \textbf{Setting 1 (Useless surrogate):} The potential outcomes are generated as follows:
@@ -538,7 +538,7 @@ In all six settings, the treatment indicator $Z_i \iid \text{Bernoulli}\left(\fr
 
 The surrogate validation threshold \(\eta\) was computed using significance level \(\alpha = 0.05\), desired power \(1 - \beta = 0.8\), and a uniform prior for \(V_S\) with \(a = b = 1\).
 
-Each setting was replicated $R = 500$ times. For both BSET implementations, we ran $C = 2$ Markov chains of $T = 500$ iterations each, discarding the first $b = 125$ as burn-in. The prior parameters for each Bayesian model are as follows.
+Each setting was replicated \(R = 500\) times. For both BSET implementations, we ran \(C = 2\) Markov chains of \(T = 500\) iterations each, discarding the first \(b = 125\) as burn-in. The prior parameters for each Bayesian model are as follows.
 
 \begin{itemize}[leftmargin=*]
     \item \textbf{Parast et al.\ (2024):}
