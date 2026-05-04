@@ -1,16 +1,20 @@
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{distance_plot_X_binary.pdf}
-    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) for Gaussian potential outcomes whose distribution depends on a binary covariate. Here we set \(\Delta = 5\).}
-    \label{fig:discrepancy_heatmap}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{distance_plot_X_Gaussian.pdf}
-    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) for Gaussian potential outcomes whose distribution depends on a Gaussian covariate. Here we set \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
-    \label{fig:discrepancy_heatmap_gaussian}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{distance_plot_X_binary.pdf}
+        \caption{Binary covariate}
+        \label{fig:distance_plot_X_binary}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{distance_plot_X_Gaussian.pdf}
+        \caption{Gaussian covariate}
+        \label{fig:distance_plot_X_Gaussian}
+    \end{subfigure}
+    \caption{Left panel: plot of \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) in the binary covariate setting, with \(\Delta = 5\). Right panel: plot of \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) in the Gaussian covariate setting, with \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
+    \label{fig:discrepancy_heatmaps}
 \end{figure}
 \efloatseparator
  

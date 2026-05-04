@@ -224,19 +224,31 @@ for some \(\Delta > 0\). As we show in Web Appendix~\ref{app:binary_covariate_de
 \begin{align*}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
 \end{align*}
-where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). To understand how the distance between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\), it is useful to consider the plot of this quantity in Figure~\ref{fig:discrepancy_heatmap} for a fixed value of \(\Delta\). It appears that \(|\theta - \delta|\) is very large whenever
+where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). Figure \ref{fig:distance_plot_X_binary} illustrates how the distance between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\) for a fixed \(\Delta\). It appears that \(|\theta - \delta|\) is large if
 \begin{align*}
     |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta.
 \end{align*}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{distance_plot_X_binary.pdf}
-    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) for Gaussian potential outcomes whose distribution depends on a binary covariate. Here we set \(\Delta = 5\).}
-    \label{fig:discrepancy_heatmap}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{distance_plot_X_binary.pdf}
+        \caption{Binary covariate}
+        \label{fig:distance_plot_X_binary}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{distance_plot_X_Gaussian.pdf}
+        \caption{Gaussian covariate}
+        \label{fig:distance_plot_X_Gaussian}
+    \end{subfigure}
+    \caption{Left panel: plot of \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) in the binary covariate setting, with \(\Delta = 5\). Right panel: plot of \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) in the Gaussian covariate setting, with \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
+    \label{fig:discrepancy_heatmaps}
 \end{figure}
 
-This implies that
+This intuition is formalized analytically in Web Appendix~\ref{app:binary_covariate_derivation}, where we also show that
 \begin{align*}
     \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{2} \, \Phi (\Delta) - \frac{1}{4} \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
 \end{align*}
@@ -266,15 +278,8 @@ This implies that the treatment effect is the same for both \(Y\) and \(S\) acro
 \begin{align*}
     |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
 \end{align*}
-%Similarly to the binary covariate setting, it might be useful to consider the plot of \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) in Figure~\ref{fig:discrepancy_heatmap_gaussian} for fixed values of \(m\), \(v\), and \(\Delta\).
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{distance_plot_X_Gaussian.pdf}
-    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) for Gaussian potential outcomes whose distribution depends on a Gaussian covariate. Here we set \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
-    \label{fig:discrepancy_heatmap_gaussian}
-\end{figure}
 
-In particular, for \(m, \Delta \neq 0\), we observe that
+Figure \ref{fig:distance_plot_X_Gaussian} illustrates how the distance between $\theta$ and $\delta$ changes as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\), for fixed \(\Delta\), \(m\), and \(v\). As derived in Web Appendix \ref{app:gaussian_covariate_derivation}, for \(m, \Delta \neq 0\) we have that
 \begin{align*}
   \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{v}\right) - \frac{1}{2} \right| \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, v} \{ |\theta - \delta| \} = \frac{1}{2},
 \end{align*}
