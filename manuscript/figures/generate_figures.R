@@ -84,9 +84,9 @@ ggsave(
 ####################################################
 
 # Parameters
-Delta <- 3
-m <- 10
-v <- 1
+Delta <- 2
+m <- 2
+v <- 2
 
 # Grid
 beta_vals <- seq(-12, 9, length.out = 500)
@@ -118,7 +118,10 @@ distance_plot_X_Gaussian <- ggplot(grid_X_Gaussian, aes(x = beta_Y0, y = beta_S0
   ) +
   coord_equal() +
   theme_minimal(base_size = 13) +
-  theme(legend.key.height = unit(1.2, "cm"))
+  theme(
+    legend.key.height = unit(1.2, "cm"),
+    panel.grid = element_blank()
+  )
 
 ggsave(
   filename = "distance_plot_X_Gaussian.pdf",

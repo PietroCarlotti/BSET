@@ -1,8 +1,16 @@
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{discrepancy_heatmap.pdf}
+    \includegraphics[width=0.8\textwidth]{distance_plot_X_binary.pdf}
     \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) for Gaussian potential outcomes whose distribution depends on a binary covariate. Here we set \(\Delta = 5\).}
     \label{fig:discrepancy_heatmap}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{distance_plot_X_Gaussian.pdf}
+    \caption{Plot of the distance \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) for Gaussian potential outcomes whose distribution depends on a Gaussian covariate. Here we set \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
+    \label{fig:discrepancy_heatmap_gaussian}
 \end{figure}
 \efloatseparator
  
