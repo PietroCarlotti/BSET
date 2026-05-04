@@ -34,25 +34,30 @@ hb_high_risk <- hb %>%
 # Set working directory
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-#######################
-# Discrepancy heatmap #
-#######################
+###################################################
+# Theta vs delta distance plot - Binary covariate #
+###################################################
 
+# Parameters
 Delta <- 5
+
+# Grid
 d_vals <- seq(-10, 10, length.out = 500)
-grid <- expand.grid(
+grid_X_binary <- expand.grid(
   d_Y = d_vals,
   d_S = d_vals
 )
 
-grid$discrepancy <- with(grid,
+# Distance
+grid_X_binary$distance <- with(grid_X_binary,
   (1/4) * abs(
     pnorm(Delta + d_Y) - pnorm(Delta + d_S) +
     pnorm(Delta - d_Y) - pnorm(Delta - d_S)
   )
 )
 
-discrepancy_heatmap <- ggplot(grid, mapping = aes(x = d_Y, y = d_S, fill = discrepancy)) +
+# Distance plot
+distance_plot_X_binary <- ggplot(grid_X_binary, mapping = aes(x = d_Y, y = d_S, fill = distance)) +
   geom_raster() +
   scale_fill_gradientn(
     name = expression("|" * theta - delta * "|"),
@@ -62,45 +67,50 @@ discrepancy_heatmap <- ggplot(grid, mapping = aes(x = d_Y, y = d_S, fill = discr
   labs(x = expression(d[Y]), y = expression(d[S])) +
   coord_equal() +
   theme_minimal(base_size = 13) +
-  theme(legend.key.height = unit(1.2, "cm"))
+  theme(
+    legend.key.height = unit(1.2, "cm"),
+    panel.grid = element_blank()
+  )
 
 ggsave(
-  filename = "discrepancy_heatmap.pdf",
-  plot = discrepancy_heatmap,
+  filename = "distance_plot_X_binary.pdf",
+  plot = distance_plot_X_binary,
   width = 6,
   height = 5
 )
 
-##############################################################
-# Discrepancy heatmap - Gaussian covariate setting           #
-##############################################################
+####################################################
+# Discrepancy heatmap - Gaussian covariate setting #
+####################################################
 
-Delta <- 5
-m <- 1
-v <- 0.1
+# Parameters
+Delta <- 3
+m <- 10
+v <- 1
 
-h_gauss <- function(x, Delta, m, v) {
-  pnorm(m * Delta / sqrt(1 + v^2 * ((x + Delta)^2 + x^2)))
-}
-
-beta_vals <- seq(-10, 10, length.out = 500)
-grid_gauss <- expand.grid(
+# Grid
+beta_vals <- seq(-12, 9, length.out = 500)
+grid_X_Gaussian <- expand.grid(
   beta_Y0 = beta_vals,
   beta_S0 = beta_vals
 )
 
-grid_gauss$discrepancy <- with(grid_gauss,
-  abs(h_gauss(beta_Y0, Delta, m, v) - h_gauss(beta_S0, Delta, m, v))
-)
+# Distance
+h_Delta_m_v <- function(x) {
+  pnorm(m * Delta / sqrt(1 + v^2 * ((x + Delta)^2 + x^2)))
+}
 
-sup_val <- abs(pnorm(m * sqrt(2) / v) - 0.5)
+grid_X_Gaussian$discrepancy <- abs(h_Delta_m_v(grid_X_Gaussian$beta_Y0) - h_Delta_m_v(grid_X_Gaussian$beta_S0))
 
-discrepancy_heatmap_gauss <- ggplot(grid_gauss, aes(x = beta_Y0, y = beta_S0, fill = discrepancy)) +
+sup_distance <- abs(pnorm(m * Delta / sqrt(1 + v^2 * Delta^2 / 2)) - 0.5)
+
+# Distance plot
+distance_plot_X_Gaussian <- ggplot(grid_X_Gaussian, aes(x = beta_Y0, y = beta_S0, fill = discrepancy)) +
   geom_raster() +
   scale_fill_gradientn(
-    name   = expression("|" * theta - delta * "|"),
+    name = expression("|" * theta - delta * "|"),
     colors = c("#08306B", "#2171B5", "#238B45", "#CCCC00", "#D94801", "#A50F15"),
-    limits = c(0, sup_val)
+    limits = c(0, sup_distance)
   ) +
   labs(
     x = expression(beta[Y[0]]),
@@ -111,10 +121,10 @@ discrepancy_heatmap_gauss <- ggplot(grid_gauss, aes(x = beta_Y0, y = beta_S0, fi
   theme(legend.key.height = unit(1.2, "cm"))
 
 ggsave(
-  filename = "discrepancy_heatmap_gaussian.pdf",
-  plot     = discrepancy_heatmap_gauss,
-  width    = 6,
-  height   = 5
+  filename = "distance_plot_X_Gaussian.pdf",
+  plot = distance_plot_X_Gaussian,
+  width = 6,
+  height = 5
 )
 
 ######################################################
@@ -182,9 +192,9 @@ ggsave(
   device = cairo_pdf
 )
 
-#############################
-# DCCT S vs Y scatter plot  #
-#############################
+############################
+# DCCT S vs Y scatter plot #
+############################
 
 scatter_data <- hb_high_risk %>%
   mutate(Treatment = if_else(Z == 1, "Treatment", "Control"))
