@@ -202,32 +202,32 @@ Specifically, consider the following two assumptions:
     $$ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \quad \forall \; x \in \mathcal{X}. $$
 \end{itemize}
 Then, it follows that
-\begin{align*}
-    \delta = \E_{(X_{i}, X_{j}) \sim f \times f} \!\left( g(X_{i}, X_{j})\right), \quad \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right),
-\end{align*}
+\begin{equation*}
+    \delta = \E_{(X_{i}, X_{j}) \sim f \times f} \!\left[ g(X_{i}, X_{j})\right], \quad \theta = \E_{X_{i} \sim f} \!\left[ g(X_{i}, X_{i}) \right],
+\end{equation*}
 where
-\begin{align*}
+\begin{equation*}
     g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
-\end{align*}
+\end{equation*}
 Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Web Appendix~\ref{app:derivation_theta_delta}.
 
-Importantly, we introduce the stronger assumptions stated above for ease of exposition, as they allow us to highlight more clearly that \(\theta\) and \(\delta\) may differ substantially whenever \(\E_{X_{j} \sim f} \left( g(X_{i}, X_{j}) \right)\) and \(g(X_{i}, X_{i})\) differ in expectation. To illustrate this point further, we consider two analytically tractable settings.
+Importantly, we introduce the stronger assumptions stated above for ease of exposition, as they allow us to highlight more clearly that \(\theta\) and \(\delta\) may differ substantially whenever \(\E_{X_{j} \sim f} \left[ g(X_{i}, X_{j}) \right]\) and \(g(X_{i}, X_{i})\) differ in expectation. To illustrate this point further, we consider two analytically tractable settings.
 
 \subsubsection{Binary Covariate Setting}
 \label{subsec:binary_covariate_setting}
 
 Let us start by considering the simple setting where \(f = \text{Bernoulli} \left( \frac{1}{2} \right) \). Although this choice may seem trivial, it can still have a meaningful interpretation in a clinical trial setting (e.g.\ \(X\) represents smoker vs non-smoker status). To simplify the analysis even further, let us also assume treatment effect homogeneity across \(X\):
-\begin{align*}
+\begin{equation*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} = \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta, \quad x = 0, 1,
-\end{align*}
+\end{equation*}
 for some \(\Delta > 0\). As we show in Web Appendix~\ref{app:binary_covariate_derivation}, the discrepancy between \(\theta\) and \(\delta\) is driven by \(\Delta\) and the difference between means of \(Y\) and \(S\) for control units across \(X\) groups:
-\begin{align*}
+\begin{equation*}
     |\theta - \delta| = \frac{1}{4} | \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) |,
-\end{align*}
+\end{equation*}
 where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\). Figure \ref{fig:distance_plot_X_binary} illustrates how the distance between \(\theta\) and \(\delta\) changes as a function of \(d_{Y}\) and \(d_{S}\) for a fixed \(\Delta\). It appears that \(|\theta - \delta|\) is large if
-\begin{align*}
+\begin{equation*}
     |d_{Y}| < \Delta \; \text{and} \; |d_{S}| > \Delta \quad \text{or} \quad |d_{Y}| > \Delta \; \text{and} \; |d_{S}| < \Delta.
-\end{align*}
+\end{equation*}
 
 \begin{figure}[ht]
     \centering
@@ -249,9 +249,9 @@ where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}
 \end{figure}
 
 This intuition is formalized analytically in Web Appendix~\ref{app:binary_covariate_derivation}, where we also show that
-\begin{align*}
+\begin{equation*}
     \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{2} \, \Phi (\Delta) - \frac{1}{4} \Rightarrow \sup_{d_{Y}, d_{S}, \Delta} \{ |\theta - \delta| \} = \frac{1}{4},
-\end{align*}
+\end{equation*}
 where the first supremum is proved analytically in Web Appendix~\ref{app:binary_covariate_derivation}, and the second follows from the principle of iterated suprema \citep{rudin1976principles}. In particular, \(\theta = 0\) while \(|\delta|\) can be as large as \(\frac{1}{4}\), so even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) may be substantially different from \(0\), while \(\theta\) correctly reflects surrogate validity.
 
 %To understand the intuition behind this result, consider the setting where \(d_{Y} = 0\) and \(d_{S} >> \Delta\). In this case, we have that
@@ -266,23 +266,23 @@ where the first supremum is proved analytically in Web Appendix~\ref{app:binary_
 \label{subsec:gaussian_covariate_setting}
 
 Let us now consider a setting where \(f = \mathcal{N}(m,v^2)\) and the mean potential outcomes are linear functions of the covariate:
-\begin{align*}
+\begin{equation*}
     \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
-\end{align*}
+\end{equation*}
 As we show in Web Appendix~\ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(v\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
 \begin{equation}
 \label{eq:perfect_surrogacy_assumption_gaussian_covariate}
     \beta_{Y_{1}} - \beta_{Y_{0}} = \beta_{S_{1}} - \beta_{S_{0}} = \Delta.
 \end{equation}
 This implies that the treatment effect is the same for both \(Y\) and \(S\) across all values of the covariate. Under this assumption, \(\theta = 0\) and therefore \(|\theta - \delta| = |\delta|\), which is given by
-\begin{align*}
+\begin{equation*}
     |\theta - \delta| = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 \left( (\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2 \right)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 \left( (\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2 \right)}} \right) \right|.
-\end{align*}
+\end{equation*}
 
 Figure \ref{fig:distance_plot_X_Gaussian} illustrates how the distance between $\theta$ and $\delta$ changes as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\), for fixed \(\Delta\), \(m\), and \(v\). As derived in Web Appendix \ref{app:gaussian_covariate_derivation}, for \(m, \Delta \neq 0\) we have that
-\begin{align*}
+\begin{equation*}
   \sup_{\boldsymbol{\beta},\, \Delta} \{ |\theta - \delta| \} = \left| \Phi\!\left(\frac{m\sqrt{2}}{v}\right) - \frac{1}{2} \right| \Rightarrow \sup_{\boldsymbol{\beta},\, \Delta,\, m,\, v} \{ |\theta - \delta| \} = \frac{1}{2},
-\end{align*}
+\end{equation*}
 An analytic proof for the first supremum is given in Web Appendix~\ref{app:gaussian_covariate_derivation}, while the second supremum follows by the principle of iterated suprema \citep{rudin1976principles}, and it is approached when \(|\frac{m}{v}| \gg 0\), which occurs when the Gaussian covariate is concentrated away from zero.
 
 This means that in this setting, even though \(S\) is a perfect surrogate for \(Y\), \(\delta\) can be substantially different from \(0\) and its value depends arbitrarily on the distribution of the covariate. In contrast, \(\theta\) correctly captures the surrogate validity by being equal to \(0\).

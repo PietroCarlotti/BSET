@@ -118,9 +118,9 @@ This appendix derives expressions for \(\theta\) and \(\delta\) as expectations 
 \label{app:derivation_theta}
 
 Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
-\begin{align*}
+\begin{equation*}
     Y_{1i} - Y_{0i} \mid X_{i} = x \overset{\text{\footnotesize ind.}}{\sim} \mathcal{N} \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right), \quad i = 1, \ldots, n, \; \forall \; x \in \mathcal{X}.
-\end{align*}
+\end{equation*}
 Therefore, we obtain this analytical expression for \(V^{x}_{Y}\):
 \begin{align*}
         V^{x}_{Y} & = \Prob \left( Y_{1i} > Y_{0i} \mid X_{i} = x \right) \\
@@ -156,9 +156,9 @@ where we denote
 \label{app:derivation_delta}
 
 Under the model in Equation~\eqref{eq:data_generating_process_covariates}, it is easy to see that
-\begin{align*}
+\begin{equation*}
     Y_{1i} - Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \sim \mathcal{N} \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
-\end{align*}
+\end{equation*}
 Therefore, we obtain this analytical expression for \(U^{x_{i} x_{j}}_{Y}\):
 \begin{align*}
         U^{x_{i} x_{j}}_{Y} & = \Prob \left( Y_{1i} > Y_{0j} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
@@ -174,14 +174,14 @@ Then, by the law of total probability, we can derive an analytical expression fo
         & = \int_{\mathcal{X}} \int_{\mathcal{X}} \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \, f (x_{i}) \, f (x_{j}) \, \text{d}x_{i} \, \text{d}x_{j}.
 \end{align*}
 Applying a similar logic to \(U_{S}\), we obtain this analytical expression for \(\delta\):
-\begin{align*}
+\begin{equation*}
     \delta = \int_{\mathcal{X}} \int_{\mathcal{X}} \delta^{x_{i} x_{j}} \, f(x_{i}) \, f(x_{j}) \, \text{d}x_{i} \, \text{d}x_{j},
-\end{align*}
+\end{equation*}
 where we denote
-\begin{align*}
+\begin{equation*}
     \delta^{x_{i} x_{j}} = %U^{x_{i} x_{j}}_{Y} - U^{x_{i} x_{j}}_{S} =
     \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right), \; \forall \; x_i, x_j \in \mathcal{X}.
-\end{align*}
+\end{equation*}
 
 \subsection{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}
 
@@ -195,9 +195,9 @@ so that
     \theta^{x} = \delta^{x x} \; \forall \; x \in \mathcal{X}.
 \end{equation}
 Under the assumption of conditional homoscedasticity stated in the paper, it follows that
-\begin{align*}
-    \theta = \E_{X_{i} \sim f} \!\left( g(X_{i}, X_{i}) \right), \quad \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( g(X_{i}, X_{j}) \right),
-\end{align*}
+\begin{equation*}
+    \theta = \E_{X_{i} \sim f} \!\left[ g(X_{i}, X_{i}) \right], \quad \delta = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ g(X_{i}, X_{j}) \right],
+\end{equation*}
 where we denote
 \begin{equation}
 \label{eq:g_definition}
@@ -208,21 +208,21 @@ where we denote
 \label{app:binary_covariate_derivation}
 
 Under the setting described in Section~\ref{subsec:binary_covariate_setting} of the main paper, \(\theta\) and \(\delta\) reduce to
-\begin{align*}
+\begin{equation*}
     \theta = \frac{\theta^{0} + \theta^{1}}{2}, \quad \delta = \frac{\delta^{00} + \delta^{11} + \delta^{01} + \delta^{10}}{4}.
-\end{align*}
+\end{equation*}
 Based on Equation~\eqref{eq:equivalence_theta_x_delta_xx}, we have that
-\begin{align}
+\begin{equation}
 \label{eq:distance_theta_delta_binary_covariate}
     | \theta - \delta | = \frac{ \left| \delta^{00} + \delta^{11} - \delta^{01} - \delta^{10} \right| }{4}.
-\end{align}
+\end{equation}
 This expression highlights that the distance between the two parameters is driven by differences between comparisons within the same covariate group and comparisons across different covariate groups. Importantly, this effect does not arise from treatment effect heterogeneity.
 
 To derive a formula for \(|\theta - \delta|\), let us further simplify the setting by assuming that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effects across covariate groups:
-\begin{align*}
+\begin{equation*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} =
     \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 \quad \forall \; x \in \{0,1\}.
-\end{align*}
+\end{equation*}
 In this setting, we can easily compute the terms in Equation~\eqref{eq:distance_theta_delta_binary_covariate} using Equation~\eqref{eq:g_definition}:
 \begin{align*}
         \delta^{00} & = \Phi(\Delta) - \Phi(\Delta) = 0, \\
@@ -231,9 +231,9 @@ In this setting, we can easily compute the terms in Equation~\eqref{eq:distance_
         \delta^{10} & = \Phi\!\left(\Delta + \mu^{1}_{Y_{0}} - \mu^{0}_{Y_{0}}\right) - \Phi\!\left(\Delta + \mu^{1}_{S_{0}} - \mu^{0}_{S_{0}}\right).
 \end{align*}
 Hence, we conclude that 
-\begin{align*}
+\begin{equation*}
     |\theta - \delta| = \frac{1}{4} \left| \Phi(\Delta + d_{Y}) - \Phi(\Delta + d_{S}) + \Phi(\Delta - d_{Y}) - \Phi(\Delta - d_{S}) \right|,
-\end{align*}
+\end{equation*}
 where we denote \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}} - \mu^{1}_{S_{0}}\).
 
 \subsection{Supremum of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|}}
@@ -248,9 +248,9 @@ where
     g_{\Delta}(x) = \Phi(\Delta + x) + \Phi(\Delta - x) \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 Then, it follows that
-\begin{align*}
-    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} & = \frac{1}{4} \left( \sup_{x} \{ g_{\Delta}(x) \} - \inf_{x} \{ g_{\Delta}(x) \} \right)
-\end{align*}
+\begin{equation*}
+    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} \left( \sup_{x} \{ g_{\Delta}(x) \} - \inf_{x} \{ g_{\Delta}(x) \} \right)
+\end{equation*}
 Moreover, since 
 \begin{equation*}
     g_{\Delta}(-x) = g_{\Delta}(x) \; \forall \; x \in \mathbb{R},
@@ -261,9 +261,9 @@ we only have to optimize \(g_{\Delta}\) over \(\R_{+}\). Observe that the deriva
     & = \frac{1}{\sqrt{2 \pi}} \left( e^{-\frac{(\Delta + x)^2}{2}} - e^{-\frac{(\Delta - x)^2}{2}} \right) \; \forall \; x \in \R_{+},
 \end{align*}
 where \(\phi\) is the standard normal PDF. Then, the critical points of \(g_{\Delta}\) satisfy this equation:
-\begin{align*}
+\begin{equation*}
     \phi(\Delta + x) = \phi(\Delta - x) \iff ( \Delta + x )^2 = ( \Delta - x )^2,
-\end{align*}
+\end{equation*}
 which has only one solution \(x = 0\), since we assumed that \(\Delta > 0\). Moreover, we have that
 \begin{equation*}
     g'_{\Delta}(x) < 0 \; \forall \; x \in \R_{+}.
@@ -274,17 +274,17 @@ This implies that \(g_{\Delta}\) is strictly decreasing over \(\R_{+}\), so that
     \inf_{x} \{ g_{\Delta}(x) \} & = \lim_{x \to +\infty} g_{\Delta}(x) = 1.
 \end{align*}
 Hence, we conclude that
-\begin{align*}
-    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} & = \frac{1}{4} \left( 2 \Phi(\Delta) - 1 \right) = \frac{1}{2} \Phi(\Delta) - \frac{1}{4}.
-\end{align*}
+\begin{equation*}
+    \sup_{d_{Y}, d_{S}} \{ |\theta - \delta| \} = \frac{1}{4} \left( 2 \Phi(\Delta) - 1 \right) = \frac{1}{2} \Phi(\Delta) - \frac{1}{4}.
+\end{equation*}
 
 \section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Gaussian Covariate Setting}
 \label{app:gaussian_covariate_derivation}
 
 Using the setting from Section~\ref{subsec:gaussian_covariate_setting}, we express $\theta$ and $\delta$ via Equation~\eqref{eq:g_definition} as follows:
 \begin{align*}
-    \theta & = \E_{X_{i} \sim f} \!\left( \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) - \Phi \left( X_{i} (\beta_{S_{1}} - \beta_{S_{0}}) \right) \right), \\
-    \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) - \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right).
+    \theta & = \E_{X_{i} \sim f} \!\left[ \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) - \Phi \left( X_{i} (\beta_{S_{1}} - \beta_{S_{0}}) \right) \right], \\
+    \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) - \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right].
 \end{align*}
 
 \subsection{Derivation of \texorpdfstring{\(\theta\)}{theta}}
@@ -292,8 +292,8 @@ Using the setting from Section~\ref{subsec:gaussian_covariate_setting}, we expre
 
 Using the perfect surrogacy assumption in Equation~\eqref{eq:perfect_surrogacy_assumption_gaussian_covariate}, we have that
 \begin{align*}
-    \theta & = \E_{X_{i} \sim f} \!\left( \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) - \Phi \left( X_{i} (\beta_{S_{1}} - \beta_{S_{0}}) \right) \right) \\
-    & = \E_{X_{i} \sim f} \!\left( \Phi \left( X_{i} \Delta \right) - \Phi \left( X_{i} \Delta \right) \right) = 0.
+    \theta & = \E_{X_{i} \sim f} \!\left[ \Phi \left( X_{i} (\beta_{Y_{1}} - \beta_{Y_{0}}) \right) - \Phi \left( X_{i} (\beta_{S_{1}} - \beta_{S_{0}}) \right) \right] \\
+    & = \E_{X_{i} \sim f} \!\left[ \Phi \left( X_{i} \Delta \right) - \Phi \left( X_{i} \Delta \right) \right] = 0.
 \end{align*}
 
 \subsection{Derivation of \texorpdfstring{\(\delta\)}{delta}}
@@ -306,7 +306,7 @@ Observe that by the Gaussian covariate assumption, we have that
 \end{align*}
 Therefore, we can derive an expanded analytical expression for \(\delta\) as follows:
 \begin{align*}
-    \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right) - \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left( \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right) \\
+    \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right] - \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right] \\
     & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + v^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + v^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
 \end{align*}
 where the last line follows from the following property of Gaussian random variables.
@@ -314,9 +314,9 @@ where the last line follows from the following property of Gaussian random varia
 \begin{lemma}
 \label{lemma:gaussian_phi_identity}
     Let \(W \sim \mathcal{N}(m, v^2)\) for some \(m \in \mathbb{R}\) and \(v \in \R_{+}\). Then, we have that
-    \begin{align*}
-        \E_{W \sim \mathcal{N}(m, v^2)} \!\left( \Phi(W) \right) = \Phi \!\left( \frac{m}{\sqrt{1 + v^2}} \right).
-    \end{align*}
+    \begin{equation*}
+        \E_{W \sim \mathcal{N}(m, v^2)} \!\left[ \Phi(W) \right] = \Phi \!\left( \frac{m}{\sqrt{1 + v^2}} \right).
+    \end{equation*}
 \end{lemma}
 
 \subsection{Supremum of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|}}
@@ -333,9 +333,9 @@ where
     h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((x + \Delta)^2 + x^2)}} \right) \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 Then, it follows that
-\begin{align*}
-    \sup_{\boldsymbol{\beta}} \{ |\theta - \delta| \} & = \sup_{x} \{ h_{\Delta, m, v}(x) \} - \inf_{x} \{ h_{\Delta, m, v}(x) \}.
-\end{align*}
+\begin{equation*}
+    \sup_{\boldsymbol{\beta}} \{ |\theta - \delta| \} = \sup_{x} \{ h_{\Delta, m, v}(x) \} - \inf_{x} \{ h_{\Delta, m, v}(x) \}.
+\end{equation*}
 Notice that since \(x\) only appears in the denominator of the argument of \(\Phi\), finding the extrema of \(h_{\Delta, m, v}\) is equivalent to finding the extrema of the function \(k_{\Delta, m, v}\) defined as follows:
 \begin{equation*}
     k_{\Delta, m, v}(x) = 1 + v^2 ((x + \Delta)^2 + x^2) = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2) \; \forall \; x \in \mathbb{R}.
