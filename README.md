@@ -1,5 +1,5 @@
 
-# BSET <img src="BSET_hexsticker.png" align="right" height="220" alt="BSET hex logo" />
+# BSET <img src="man/figures/logo.png" align="right" height="220" alt="BSET hex logo" />
 
 <!-- badges: start -->
 

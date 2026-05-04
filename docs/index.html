@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>A Bayesian Surrogate Evaluation Test • BSET</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -14,6 +19,7 @@
 <script src="extra.js"></script><meta property="og:title" content="A Bayesian Surrogate Evaluation Test">
 <meta name="description" content="An implementation of the Bayesian Surrogate Evaluation Test (BSET) for assessing the validity of surrogate markers in clinical trials. Provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. Implements the imputation-based Bayesian methodology of Carlotti and Parast (2026), extending the frequentist rank-based approach of Parast et al. (2024). Addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.">
 <meta property="og:description" content="An implementation of the Bayesian Surrogate Evaluation Test (BSET) for assessing the validity of surrogate markers in clinical trials. Provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. Implements the imputation-based Bayesian methodology of Carlotti and Parast (2026), extending the frequentist rank-based approach of Parast et al. (2024). Addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.">
+<meta property="og:image" content="https://pietrocarlotti.github.io/BSET/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -45,8 +51,10 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="bset">BSET<a class="anchor" aria-label="anchor" href="#bset"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="bset-">BSET <a class="anchor" aria-label="anchor" href="#bset-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 <!-- badges: end -->
 <p><code>BSET</code> (Bayesian Surrogate Evaluation Test) is an <code>R</code> package for assessing the validity of surrogate markers in clinical trials. It provides hypothesis testing tools to evaluate whether a surrogate can reliably estimate the causal effect of a treatment on a primary outcome. The package implements the imputation-based Bayesian methodology of Carlotti and Parast (2026), extending the frequentist rank-based approach of Parast et al. (2024). BSET addresses key limitations of the frequentist method, including the lack of causal interpretability and the inability to adjust for covariates in the estimation process.</p>
