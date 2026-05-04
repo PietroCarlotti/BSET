@@ -1,5 +1,5 @@
 \begin{table}[htbp]
-\caption{Simulation results comparing the frequentist rank-based method and the proposed Bayesian imputation-based method in terms of coverage and power in Settings 1--6, summarized over \(500\) replications with $n=50$ per replication. Bolding indicates the better performing method.}
+\caption{Simulation results comparing the frequentist rank-based method and the proposed Bayesian imputation-based method in terms of coverage and power in Settings 1--6, summarized over \(500\) replications with \(n=50\) per replication. Bolding indicates the better performing method.}
 \label{tab:coverage_power_comparison}
 \begin{tabular}{lccccc}
 \toprule

@@ -165,7 +165,7 @@ Therefore, we obtain this analytical expression for \(U^{x_{i} x_{j}}_{Y}\):
         & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
         & = \Prob \left( W > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
-        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , \quad \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
+        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , ; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
 \end{align*}
 Then, by the law of total probability, we can derive an analytical expression for \(U_{Y}\) as follows:
 \begin{align*}
@@ -221,7 +221,7 @@ This expression highlights that the distance between the two parameters is drive
 To derive a formula for \(|\theta - \delta|\), let us further simplify the setting by assuming that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effects across covariate groups:
 \begin{equation*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} =
-    \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 \quad \forall \; x \in \{0,1\}.
+    \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 ; \forall \; x \in \{0,1\}.
 \end{equation*}
 In this setting, we can easily compute the terms in Equation~\eqref{eq:distance_theta_delta_binary_covariate} using Equation~\eqref{eq:g_definition}:
 \begin{align*}
@@ -372,12 +372,12 @@ This appendix provides a formal definition of regularity for Bayesian models and
   \begin{itemize}[leftmargin=*]
     \item \textbf{Kullback-Leibler support of the prior}: The prior \(\pi\) assigns positive mass to every Kullback-Leibler neighborhood of the true parameter \(\phi^{*}\):
     \begin{equation*}
-      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0 \quad \forall \; \varepsilon \in \R_{+},
+      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0 ; \forall \; \varepsilon \in \R_{+},
     \end{equation*}
     where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the Kullback-Leibler divergence of \(f_{\phi}\) from \(f_{\phi^{*}}\).
     \item \textbf{Identifiability}: The model is identifiable: 
     \begin{equation*}
-        f_{\phi} \neq f_{\phi'} \quad \forall \; \phi \neq \phi'.
+        f_{\phi} \neq f_{\phi'} ; \forall \; \phi \neq \phi'.
     \end{equation*}
   \end{itemize}
 \end{definition}

@@ -197,9 +197,9 @@ where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance 
 Specifically, consider the following two assumptions:
 \begin{itemize}[leftmargin=*]
     \item \textbf{Conditional Orthogonality}:
-    \[ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 \quad \forall \; x \in \mathcal{X}. \]
+    \[ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 ; \forall \; x \in \mathcal{X}. \]
     \item \textbf{Conditional Homoscedasticity}:
-    \[ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} \quad \forall \; x \in \mathcal{X}. \]
+    \[ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} ; \forall \; x \in \mathcal{X}. \]
 \end{itemize}
 Then, it follows that
 \begin{equation*}
@@ -207,7 +207,7 @@ Then, it follows that
 \end{equation*}
 where
 \begin{equation*}
-    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \quad \forall \; x_{i}, x_{j} \in \mathcal{X}.
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) ; \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{equation*}
 Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in Web Appendix~\ref{app:derivation_theta_delta}.
 
@@ -267,7 +267,7 @@ where the first supremum is proved analytically in Web Appendix~\ref{app:binary_
 
 Let us now consider a setting where \(f = \mathcal{N}(m,v^2)\) and the mean potential outcomes are linear functions of the covariate:
 \begin{equation*}
-    \mu^{x} = x \boldsymbol{\beta} \quad \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
+    \mu^{x} = x \boldsymbol{\beta} ; \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
 \end{equation*}
 As we show in Web Appendix~\ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(v\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
 \begin{equation}
