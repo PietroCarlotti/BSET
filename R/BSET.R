@@ -332,27 +332,27 @@ BSET <- function(
   if (plot) {
     all_colors <- c(
       "Bayesian CI (upper bound)"      = "#0072B2",
-      "Bayesian threshold (η)"    = "#56B4E9",
-      "True θ"                    = "#551A8B",
+      "Bayesian threshold (\u03b7)"    = "#56B4E9",
+      "True \u03b8"                    = "#551A8B",
       "Frequentist CI (upper bound)"   = "#D55E00",
-      "Frequentist threshold (ε)" = "#E69F00",
-      "True δ"                    = "#CC79A7"
+      "Frequentist threshold (\u03b5)" = "#E69F00",
+      "True \u03b4"                    = "#CC79A7"
     )
 
     all_linetypes <- c(
       "Bayesian CI (upper bound)"      = "33",
-      "Bayesian threshold (η)"    = "33",
-      "True θ"                    = "solid",
+      "Bayesian threshold (\u03b7)"    = "33",
+      "True \u03b8"                    = "solid",
       "Frequentist CI (upper bound)"   = "33",
-      "Frequentist threshold (ε)" = "33",
-      "True δ"                    = "solid"
+      "Frequentist threshold (\u03b5)" = "33",
+      "True \u03b4"                    = "solid"
     )
 
     lvls <- character(0)
-    if (!is.null(theta_true)) lvls <- c(lvls, "True θ")
-    lvls <- c(lvls, "Bayesian CI (upper bound)", "Bayesian threshold (η)")
-    if (!is.null(delta_true)) lvls <- c(lvls, "True δ")
-    lvls <- c(lvls, "Frequentist CI (upper bound)", "Frequentist threshold (ε)")
+    if (!is.null(theta_true)) lvls <- c(lvls, "True \u03b8")
+    lvls <- c(lvls, "Bayesian CI (upper bound)", "Bayesian threshold (\u03b7)")
+    if (!is.null(delta_true)) lvls <- c(lvls, "True \u03b4")
+    lvls <- c(lvls, "Frequentist CI (upper bound)", "Frequentist threshold (\u03b5)")
 
     dashed_df <- data.frame(
       xintercept = c(
@@ -362,8 +362,8 @@ BSET <- function(
         frequentist_test_results$threshold
       ),
       label = factor(
-        c("Bayesian CI (upper bound)", "Bayesian threshold (η)",
-          "Frequentist CI (upper bound)", "Frequentist threshold (ε)"),
+        c("Bayesian CI (upper bound)", "Bayesian threshold (\u03b7)",
+          "Frequentist CI (upper bound)", "Frequentist threshold (\u03b5)"),
         levels = lvls
       )
     )
@@ -386,11 +386,11 @@ BSET <- function(
       solid_labels <- c()
       if (!is.null(theta_true)) {
         solid_xint   <- c(solid_xint, theta_true)
-        solid_labels <- c(solid_labels, "True θ")
+        solid_labels <- c(solid_labels, "True \u03b8")
       }
       if (!is.null(delta_true)) {
         solid_xint   <- c(solid_xint, delta_true)
-        solid_labels <- c(solid_labels, "True δ")
+        solid_labels <- c(solid_labels, "True \u03b4")
       }
       solid_df <- data.frame(
         xintercept = solid_xint,

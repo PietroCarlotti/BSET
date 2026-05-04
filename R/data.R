@@ -22,8 +22,9 @@
 #' for the two simulation settings considered in Carlotti and Parast (2026):
 #' setting 1 (binary covariate) and setting 2 (Gaussian covariate).
 #'
-#' @format A data frame with 2 rows and 6 columns:
+#' @format A data frame with 2 rows and 7 columns:
 #' \describe{
+#'   \item{setting}{The index of the simulation setting.}
 #'   \item{U_Y_MC}{Monte Carlo estimate of \eqn{U_Y = P(Y_{1i} > Y_{0j})}.}
 #'   \item{U_S_MC}{Monte Carlo estimate of \eqn{U_S = P(S_{1i} > S_{0j})}.}
 #'   \item{delta_MC}{Monte Carlo estimate of \eqn{\delta = U_Y - U_S}.}

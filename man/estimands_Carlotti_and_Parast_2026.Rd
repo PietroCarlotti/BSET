@@ -5,8 +5,9 @@
 \alias{estimands_Carlotti_and_Parast_2026}
 \title{True estimands for Carlotti and Parast (2026)}
 \format{
-A data frame with 2 rows and 6 columns:
+A data frame with 2 rows and 7 columns:
 \describe{
+  \item{setting}{The index of the simulation setting.}
   \item{U_Y_MC}{Monte Carlo estimate of \eqn{U_Y = P(Y_{1i} > Y_{0j})}.}
   \item{U_S_MC}{Monte Carlo estimate of \eqn{U_S = P(S_{1i} > S_{0j})}.}
   \item{delta_MC}{Monte Carlo estimate of \eqn{\delta = U_Y - U_S}.}
