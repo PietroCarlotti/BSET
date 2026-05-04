@@ -60,13 +60,14 @@ A list containing:
 
 - `CI`: The calculated credible interval for \\\theta\\.
 
-- `eta`: The \\\eta\\ threshold value used in the test.
+- `threshold`: The \\\eta\\ threshold value used in the test.
 
 - `coverage`: Logical indicating if `theta_true` falls within the `CI`
   (if `theta_true` is provided).
 
-- `power`: Logical indicating if the upper bound of `CI` is below `eta`,
-  which indicates that the test identifies the surrogate as valid.
+- `power`: Logical indicating if the upper bound of `CI` is below
+  `threshold`, which indicates that the test identifies the surrogate as
+  valid.
 
 ## References
 

@@ -338,7 +338,8 @@ surrogate, $`\delta`$ is significantly higher.
 
 |      Setting      | $`\delta`$ | $`\theta`$ |
 |:-----------------:|:----------:|:----------:|
-| Perfect surrogate |   0.251    |   0.006    |
+| Perfect surrogate |   0.252    |   0.006    |
+| Perfect surrogate |   0.357    |   0.000    |
 
 Monte Carlo estimates of $`\delta`$ and $`\theta`$ for the simulation
 settings considered in Carlotti and Parast (2026). {.table}

@@ -8,22 +8,26 @@ surrogate's treatment effect on \\S\\ measured as the probability
 \$\$V_S = P(S\_{1i} \> S\_{0i})\$\$ and \\V_S^{0}\\ is a hypothesized
 value under the null hypothesis. These hypotheses can be tested by
 fitting the following Beta-binomial model to the data: \$\$\hat{V}\_S
-\mid V_S \sim \text{Binomial} (n, V_S)\$\$ \$\$V_S \sim \text{Beta} (a,
-b),\$\$ where \\\hat{V}\_S\\ is the sample estimate of the surrogate's
-treatment effect on \\S\\ computed as \$\$\hat{V}\_S = \frac{1}{n}
+\mid V_S \sim \text{Binomial} (n, V_S)\$\$ \$\$p(V_S) =
+\frac{\text{Beta}(V_S \mid a, b)}{\int\_{1/2}^{1} \text{Beta}(v \mid a,
+b) \\ dv}, \quad V_S \in \left(\tfrac{1}{2}, 1\right),\$\$ where
+\\\hat{V}\_S\\ is the sample estimate of the surrogate's treatment
+effect on \\S\\ computed as \$\$\hat{V}\_S = \frac{1}{n}
 \sum\limits^{n}\_{i=1} I(S\_{1i} \> S\_{0i}).\$\$ The Bayes factor is
 then computed as the ratio of the marginal likelihoods under the
-alternatives: \$\$BF\_{n} = \frac{1 - F\_{\text{Beta} (a + n \hat{V}\_S,
-b + n - n \hat{V}\_S)} (\frac{1}{2})}{1 - F\_{\text{Beta} (a, b)}
-(\frac{1}{2})},\$\$ where \\F\_{\text{Beta}}\\ is the cumulative
-distribution function of a Beta distribution, \\a\\ and \\b\\ are the
-shape parameters of the Beta prior. Given the true value of \\V_S\\, the
-distribution of the Bayes factor can be computed by evaluating \\BF_n\\
-for all possible values of \\\hat{V}\_S\\ and their corresponding
-probabilities under the Binomial distribution with parameters \\n\\ and
-the true value of \\V_S\\. This function is generally not intended to be
-called directly by the user and is instead used internally within
-`BSET_no_X` and `BSET_X`.
+alternatives: \$\$BF\_{n} = \frac{B(a + n \hat{V}\_S,\\ b + n - n
+\hat{V}\_S) \left(1 - F\_{\text{Beta}(a + n \hat{V}\_S,\\ b + n - n
+\hat{V}\_S)}\\\left(\frac{1}{2}\right)\right)}{B(a, b) \left(1 -
+F\_{\text{Beta}(a, b)}\\\left(\frac{1}{2}\right)\right)} \cdot 2^n,\$\$
+where \\B(a, b)\\ is the Beta function, \\F\_{\text{Beta}(a,b)}\\ is the
+cumulative distribution function of the \\\text{Beta}(a, b)\\
+distribution, and \\a\\ and \\b\\ are the shape parameters of the Beta
+prior. Given the true value of \\V_S\\, the distribution of the Bayes
+factor can be computed by evaluating \\BF_n\\ for all possible values of
+\\\hat{V}\_S\\ and their corresponding probabilities under the Binomial
+distribution with parameters \\n\\ and the true value of \\V_S\\. This
+function is generally not intended to be called directly by the user and
+is instead used internally within `BSET_no_X` and `BSET_X`.
 
 ## Usage
 

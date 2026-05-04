@@ -44,13 +44,13 @@ A list containing:
 
 - `CI`: The calculated confidence interval for \\\delta\\.
 
-- `epsilon`: The \\\varepsilon\\ threshold value used in the test.
+- `threshold`: The \\\varepsilon\\ threshold value used in the test.
 
 - `coverage`: Logical indicating if `delta_true` falls within the `CI`
   (if `delta_true` is provided).
 
 - `power`: Logical indicating if the upper bound of `CI` is below
-  `epsilon`, which indicates that the test identifies the surrogate as
+  `threshold`, which indicates that the test identifies the surrogate as
   valid.
 
 ## References

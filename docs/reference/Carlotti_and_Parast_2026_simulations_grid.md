@@ -1,7 +1,9 @@
 # Simulation grid for Carlotti and Parast (2026)
 
 A dataset containing the grid of simulation results for Carlotti and
-Parast (2026).
+Parast (2026) across two covariate settings: a binary covariate setting
+(setting 1) and a Gaussian covariate setting (setting 2). Each setting
+is run for 500 simulations, for a total of 1000 rows.
 
 ## Usage
 
@@ -11,11 +13,13 @@ Carlotti_and_Parast_2026_simulations_grid
 
 ## Format
 
-A data frame with multiple columns:
+A data frame with 1000 rows and 17 columns:
 
 - setting:
 
-  The index of the simulation setting.
+  The index of the simulation setting: 1 for the binary covariate
+  setting (`X_binary`) and 2 for the Gaussian covariate setting
+  (`X_Gaussian`).
 
 - simulation:
 
@@ -35,7 +39,7 @@ A data frame with multiple columns:
 
 - n_simulations:
 
-  The total number of simulations.
+  The total number of simulations per setting.
 
 - timestamp:
 
