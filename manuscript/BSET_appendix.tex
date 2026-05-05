@@ -307,7 +307,7 @@ Observe that by the Gaussian covariate assumption, we have that
 Therefore, we can derive an expanded analytical expression for \(\delta\) as follows:
 \begin{align*}
     \delta & = \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{Y_{1}} - X_{j} \beta_{Y_{0}} \right) \right] - \E_{(X_{i}, X_{j}) \sim f^{2}} \!\left[ \Phi \left( X_{i} \beta_{S_{1}} - X_{j} \beta_{S_{0}} \right) \right] \\
-    & = \Phi \left( \frac{m (\beta_{Y_{1}} - \beta_{Y_{0}})}{\sqrt{1 + v^2 (\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m (\beta_{S_{1}} - \beta_{S_{0}})}{\sqrt{1 + v^2 (\beta_{S_{1}}^2 + \beta_{S_{0}}^2)}} \right),
+    & = \Phi \left( \frac{m [\beta_{Y_{1}} - \beta_{Y_{0}}]}{\sqrt{1 + v^2 [\beta_{Y_{1}}^2 + \beta_{Y_{0}}^2]}} \right) - \Phi \left( \frac{m [\beta_{S_{1}} - \beta_{S_{0}}]}{\sqrt{1 + v^2 [\beta_{S_{1}}^2 + \beta_{S_{0}}^2]}} \right),
 \end{align*}
 where the last line follows from the following property of Gaussian random variables.
 
@@ -325,12 +325,12 @@ where the last line follows from the following property of Gaussian random varia
 We now compute analytically the supremum of \(|\theta - \delta|\) with respect to \(\boldsymbol{\beta}\). First, observe that under the perfect surrogacy assumption in Equation~\eqref{eq:perfect_surrogacy_assumption_gaussian_covariate}, we have that
 \begin{align*}
     |\theta - \delta| & = |\delta| \\
-    & = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2)}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2)}} \right) \right| \\
+    & = \left| \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 [(\beta_{Y_{0}} + \Delta)^2 + \beta_{Y_{0}}^2]}} \right) - \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 [(\beta_{S_{0}} + \Delta)^2 + \beta_{S_{0}}^2]}} \right) \right| \\
     & = | h_{\Delta, m, v} (\beta_{Y_{0}}) - h_{\Delta, m, v}(\beta_{S_{0}}) |,
 \end{align*}
 where
 \begin{equation*}
-    h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 ((x + \Delta)^2 + x^2)}} \right) \; \forall \; x \in \mathbb{R}.
+    h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 [(x + \Delta)^2 + x^2]}} \right) \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 Then, it follows that
 \begin{equation*}
@@ -338,7 +338,7 @@ Then, it follows that
 \end{equation*}
 Notice that since \(x\) only appears in the denominator of the argument of \(\Phi\), finding the extrema of \(h_{\Delta, m, v}\) is equivalent to finding the extrema of the function \(k_{\Delta, m, v}\) defined as follows:
 \begin{equation*}
-    k_{\Delta, m, v}(x) = 1 + v^2 ((x + \Delta)^2 + x^2) = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2) \; \forall \; x \in \mathbb{R}.
+    k_{\Delta, m, v}(x) = 1 + v^2 [(x + \Delta)^2 + x^2] = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2) \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 It is easy to see that
 \begin{align*}

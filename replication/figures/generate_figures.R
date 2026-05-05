@@ -59,9 +59,8 @@ grid_X_binary$distance <- with(grid_X_binary,
 # Distance plot
 distance_plot_X_binary <- ggplot(grid_X_binary, mapping = aes(x = d_Y, y = d_S, fill = distance)) +
   geom_raster() +
-  scale_fill_gradientn(
+  scale_fill_viridis_c(
     name = expression("|" * theta - delta * "|"),
-    colors = c("#08306B", "#2171B5", "#238B45", "#CCCC00", "#D94801", "#A50F15"),
     limits = c(0, 0.25)
   ) +
   labs(x = expression(d[Y]), y = expression(d[S])) +
@@ -107,9 +106,8 @@ sup_distance <- abs(pnorm(m * Delta / sqrt(1 + v^2 * Delta^2 / 2)) - 0.5)
 # Distance plot
 distance_plot_X_Gaussian <- ggplot(grid_X_Gaussian, aes(x = beta_Y0, y = beta_S0, fill = discrepancy)) +
   geom_raster() +
-  scale_fill_gradientn(
+  scale_fill_viridis_c(
     name = expression("|" * theta - delta * "|"),
-    colors = c("#08306B", "#2171B5", "#238B45", "#CCCC00", "#D94801", "#A50F15"),
     limits = c(0, sup_distance)
   ) +
   labs(

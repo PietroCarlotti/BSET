@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  5 MAY 2026 11:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  5 MAY 2026 12:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -605,24 +605,24 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 ) (./BSET.aux)
 \openout1 = `BSET.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
  (./endrotfloat.sty
 Package: endrotfloat 2024/01/01 stub
 ) (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -651,20 +651,20 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 87.
+Package hyperref Info: Link coloring OFF on input line 90.
  (./BSET.out) (./BSET.out)
 \@outlinefile=\write6
 \openout6 = `BSET.out'.
 
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 104.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 107.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 104.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 107.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 104.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 107.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -684,7 +684,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.115 I
+l.118 I
        n this paper, we propose BSET (Bayesian Surrogate Evaluation Test), a... [1
 
 ]
@@ -698,7 +698,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 163.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 166.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
@@ -736,7 +736,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 304.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 306.
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
@@ -751,22 +751,23 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [10]
+Underfull \vbox (badness 7796) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 11
  []
 
 [11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
 
 [12]
-Overfull \hbox (6.0349pt too wide) in paragraph at lines 412--414
-\OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
- []
-
-
-Underfull \vbox (badness 1603) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -774,11 +775,19 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [13]
+Overfull \hbox (6.0349pt too wide) in paragraph at lines 414--416
+\OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
+ []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 14
  []
 
 [14]
+Underfull \vbox (badness 7344) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 15
  []
@@ -812,6 +821,9 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
@@ -837,46 +849,30 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 24
  []
 
-[24]) AED endfloat: Processing end Figures and Tables
+[24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
-[25] (./BSET.fff
-<../replication/figures/distance_plot_X_binary.pdf, id=439, 433.62pt x 361.35pt>
-File: ../replication/figures/distance_plot_X_binary.pdf Graphic file (type pdf)
-<use ../replication/figures/distance_plot_X_binary.pdf>
-Package pdftex.def Info: ../replication/figures/distance_plot_X_binary.pdf  used on input line 5.
-(pdftex.def)             Requested size: 225.48038pt x 187.90308pt.
-<../replication/figures/distance_plot_X_Gaussian.pdf, id=440, 433.62pt x 361.35pt>
-File: ../replication/figures/distance_plot_X_Gaussian.pdf Graphic file (type pdf)
-<use ../replication/figures/distance_plot_X_Gaussian.pdf>
-Package pdftex.def Info: ../replication/figures/distance_plot_X_Gaussian.pdf  used on input line 12.
-(pdftex.def)             Requested size: 225.48038pt x 187.90308pt.
-
+[25]) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
-[26
-
-
- <../replication/figures/distance_plot_X_binary.pdf> <../replication/figures/distance_plot_X_Gaussian.pdf>]
-
-pdfTeX warning: pdflatex (file ../replication/figures/DCCT_Y.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_Y.pdf, id=461, 433.62pt x 325.215pt>
-File: ../replication/figures/DCCT_Y.pdf Graphic file (type pdf)
-<use ../replication/figures/DCCT_Y.pdf>
-Package pdftex.def Info: ../replication/figures/DCCT_Y.pdf  used on input line 25.
-(pdftex.def)             Requested size: 225.48038pt x 169.11276pt.
-
-
-pdfTeX warning: pdflatex (file ../replication/figures/DCCT_S.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_S.pdf, id=462, 433.62pt x 325.215pt>
-File: ../replication/figures/DCCT_S.pdf Graphic file (type pdf)
-<use ../replication/figures/DCCT_S.pdf>
-Package pdftex.def Info: ../replication/figures/DCCT_S.pdf  used on input line 31.
-(pdftex.def)             Requested size: 225.48038pt x 169.11276pt.
+[26] (./BSET.fff
+<../replication/figures/distance_plot_X_binary.pdf, id=441, 433.62pt x 361.35pt>
+File: ../replication/figures/distance_plot_X_binary.pdf Graphic file (type pdf)
+<use ../replication/figures/distance_plot_X_binary.pdf>
+Package pdftex.def Info: ../replication/figures/distance_plot_X_binary.pdf  used on input line 5.
+(pdftex.def)             Requested size: 225.48038pt x 187.90308pt.
+<../replication/figures/distance_plot_X_Gaussian.pdf, id=442, 433.62pt x 361.35pt>
+File: ../replication/figures/distance_plot_X_Gaussian.pdf Graphic file (type pdf)
+<use ../replication/figures/distance_plot_X_Gaussian.pdf>
+Package pdftex.def Info: ../replication/figures/distance_plot_X_Gaussian.pdf  used on input line 12.
+(pdftex.def)             Requested size: 225.48038pt x 187.90308pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 27
@@ -884,25 +880,23 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [27
 
- <../replication/figures/DCCT_Y.pdf> <../replication/figures/DCCT_S.pdf
 
-pdfTeX warning: pdflatex (file ../replication/figures/DCCT_S.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
+ <../replication/figures/distance_plot_X_binary.pdf> <../replication/figures/distance_plot_X_Gaussian.pdf>]
 
-pdfTeX warning: pdflatex (file ../replication/figures/DCCT_scatterplot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_scatterplot.pdf, id=482, 542.025pt x 361.35pt>
-File: ../replication/figures/DCCT_scatterplot.pdf Graphic file (type pdf)
-<use ../replication/figures/DCCT_scatterplot.pdf>
-Package pdftex.def Info: ../replication/figures/DCCT_scatterplot.pdf  used on input line 43.
-(pdftex.def)             Requested size: 225.48038pt x 150.32137pt.
+pdfTeX warning: pdflatex (file ../replication/figures/DCCT_Y.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<../replication/figures/DCCT_Y.pdf, id=463, 433.62pt x 325.215pt>
+File: ../replication/figures/DCCT_Y.pdf Graphic file (type pdf)
+<use ../replication/figures/DCCT_Y.pdf>
+Package pdftex.def Info: ../replication/figures/DCCT_Y.pdf  used on input line 25.
+(pdftex.def)             Requested size: 225.48038pt x 169.11276pt.
 
 
-pdfTeX warning: pdflatex (file ../replication/figures/DCCT_CDF.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_CDF.pdf, id=483, 542.025pt x 361.35pt>
-File: ../replication/figures/DCCT_CDF.pdf Graphic file (type pdf)
-<use ../replication/figures/DCCT_CDF.pdf>
-Package pdftex.def Info: ../replication/figures/DCCT_CDF.pdf  used on input line 49.
-(pdftex.def)             Requested size: 225.48038pt x 150.32137pt.
+pdfTeX warning: pdflatex (file ../replication/figures/DCCT_S.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<../replication/figures/DCCT_S.pdf, id=464, 433.62pt x 325.215pt>
+File: ../replication/figures/DCCT_S.pdf Graphic file (type pdf)
+<use ../replication/figures/DCCT_S.pdf>
+Package pdftex.def Info: ../replication/figures/DCCT_S.pdf  used on input line 31.
+(pdftex.def)             Requested size: 225.48038pt x 169.11276pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 28
@@ -910,13 +904,39 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [28
 
+ <../replication/figures/DCCT_Y.pdf> <../replication/figures/DCCT_S.pdf
+
+pdfTeX warning: pdflatex (file ../replication/figures/DCCT_S.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+
+pdfTeX warning: pdflatex (file ../replication/figures/DCCT_scatterplot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<../replication/figures/DCCT_scatterplot.pdf, id=484, 542.025pt x 361.35pt>
+File: ../replication/figures/DCCT_scatterplot.pdf Graphic file (type pdf)
+<use ../replication/figures/DCCT_scatterplot.pdf>
+Package pdftex.def Info: ../replication/figures/DCCT_scatterplot.pdf  used on input line 43.
+(pdftex.def)             Requested size: 225.48038pt x 150.32137pt.
+
+
+pdfTeX warning: pdflatex (file ../replication/figures/DCCT_CDF.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<../replication/figures/DCCT_CDF.pdf, id=485, 542.025pt x 361.35pt>
+File: ../replication/figures/DCCT_CDF.pdf Graphic file (type pdf)
+<use ../replication/figures/DCCT_CDF.pdf>
+Package pdftex.def Info: ../replication/figures/DCCT_CDF.pdf  used on input line 49.
+(pdftex.def)             Requested size: 225.48038pt x 150.32137pt.
+
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 29
+ []
+
+[29
+
  <../replication/figures/DCCT_scatterplot.pdf> <../replication/figures/DCCT_CDF.pdf
 
 pdfTeX warning: pdflatex (file ../replication/figures/DCCT_CDF.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
 
 pdfTeX warning: pdflatex (file ../replication/figures/DCCT_no_X_theta_posterior_plot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_no_X_theta_posterior_plot.pdf, id=504, 722.7pt x 578.16pt>
+<../replication/figures/DCCT_no_X_theta_posterior_plot.pdf, id=506, 722.7pt x 578.16pt>
 File: ../replication/figures/DCCT_no_X_theta_posterior_plot.pdf Graphic file (type pdf)
 <use ../replication/figures/DCCT_no_X_theta_posterior_plot.pdf>
 Package pdftex.def Info: ../replication/figures/DCCT_no_X_theta_posterior_plot.pdf  used on input line 61.
@@ -924,17 +944,17 @@ Package pdftex.def Info: ../replication/figures/DCCT_no_X_theta_posterior_plot.p
 
 
 pdfTeX warning: pdflatex (file ../replication/figures/DCCT_X_theta_posterior_plot.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../replication/figures/DCCT_X_theta_posterior_plot.pdf, id=505, 722.7pt x 578.16pt>
+<../replication/figures/DCCT_X_theta_posterior_plot.pdf, id=507, 722.7pt x 578.16pt>
 File: ../replication/figures/DCCT_X_theta_posterior_plot.pdf Graphic file (type pdf)
 <use ../replication/figures/DCCT_X_theta_posterior_plot.pdf>
 Package pdftex.def Info: ../replication/figures/DCCT_X_theta_posterior_plot.pdf  used on input line 67.
 (pdftex.def)             Requested size: 225.48038pt x 180.38342pt.
 )
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 29
+\OT1/cmr/m/n/9 30
  []
 
-[29
+[30
 
  <../replication/figures/DCCT_no_X_theta_posterior_plot.pdf> <../replication/figures/DCCT_X_theta_posterior_plot.pdf
 
@@ -946,18 +966,18 @@ Overfull \hbox (19.1154pt too wide) in paragraph at lines 4--18
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 30
- []
-
-[30
-
-
-])
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 31
  []
 
 [31
+
+
+])
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 32
+ []
+
+[32
 
 ] (./BSET.aux)
  ***********
@@ -968,21 +988,21 @@ Package rerunfilecheck Info: File `BSET.out' has not changed.
 (rerunfilecheck)             Checksum: E4207A7EF15059FB69757BDD19BE3ED1;2823.
  ) 
 Here is how much of TeX's memory you used:
- 15470 strings out of 474116
- 249600 string characters out of 5743682
+ 15474 strings out of 474116
+ 249654 string characters out of 5743682
  1940187 words of memory out of 5000000
- 37442 multiletter control sequences out of 15000+600000
+ 37445 multiletter control sequences out of 15000+600000
  575245 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,79p,1861b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,1861b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{definition.1} has been referenced but does not exist, replaced by a fixed one
 
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on BSET.pdf (32 pages, 680325 bytes).
+Output written on BSET.pdf (33 pages, 623516 bytes).
 PDF statistics:
- 690 PDF objects out of 1000 (max. 8388607)
- 569 compressed objects within 6 object streams
- 111 named destinations out of 1000 (max. 500000)
+ 692 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
+ 112 named destinations out of 1000 (max. 500000)
  153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
