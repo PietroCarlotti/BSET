@@ -88,12 +88,13 @@
 \makeatother
 
 \begin{document}
+\label{firstpage}
 
 \setlength\parindent{15pt}
 
 \title[A Bayesian Surrogate Evaluation Test]{A Bayesian Critique of a Rank-Based Method for Surrogate Marker Evaluation}
 
-\author[Carlotti and Parast]{Pietro Carlotti \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ Welch 5.216, 105 E 24th St D9800, Austin, TX 78705 \\ pietro.carlotti@utexas.edu\ (Corresponding author) \and Layla Parast \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ Welch 5.216, 105 E 24th St D9800, Austin, TX 78705 \\ parast@austin.utexas.edu}
+\author[Carlotti and Parast]{Pietro Carlotti$^{*}$\email{pietro.carlotti@utexas.edu} \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ Welch 5.216, 105 E 24th St D9800, Austin, TX 78705 \and Layla Parast\emailx{parast@austin.utexas.edu} \\ Department of Statistics and Data Sciences, University of Texas at Austin \\ Welch 5.216, 105 E 24th St D9800, Austin, TX 78705}
 
 \begin{abstract}
 In clinical trials, surrogate markers are used to replace primary outcomes that are difficult, costly, or time-consuming to collect. When valid, they can accelerate treatment evaluation by reliably capturing the causal effect of treatment on clinical benefit. Parast, Cai, and Tian (2024, \textit{Biometrics}) recently proposed a rank-based method for surrogate marker evaluation in small-sample settings, exploiting its nonparametric nature and minimal modeling assumptions. However, this method has notable limitations: its target estimand lacks a clear causal interpretation, it exhibits low statistical power, and it is not sufficiently robust across different data-generating mechanisms. We propose BSET (Bayesian Surrogate Evaluation Test), a Bayesian imputation-based approach that addresses these shortcomings by targeting a causally interpretable estimand and improving power through covariate adjustment. We derive analytical expressions for both estimands under Gaussian data-generating mechanisms, showing they can differ substantially even in simple settings, and introduce a principled criterion for selecting the surrogate validation threshold based on a Bayes factor argument. We evaluate BSET through a simulation study and illustrate the method using data from the Diabetes Control and Complications Trial.
@@ -248,6 +249,8 @@ where \(d_{Y} = \mu^{0}_{Y_{0}} - \mu^{1}_{Y_{0}}\) and \(d_{S} = \mu^{0}_{S_{0}
     \end{subfigure}
     \caption{Left panel: plot of \(|\theta - \delta|\) as a function of \(d_Y\) and \(d_S\) in the binary covariate setting, with \(\Delta = 5\). Right panel: plot of \(|\theta - \delta|\) as a function of \(\beta_{Y_0}\) and \(\beta_{S_0}\) in the Gaussian covariate setting, with \(\Delta = 2\), \(m = 2\), and \(v = 2\).}
     \label{fig:discrepancy_heatmaps}
+
+\noindent Alt text: Two side-by-side heatmaps showing the absolute discrepancy between the causal estimand theta and the rank-based estimand delta as a function of two parameters, using a perceptually uniform color scale from dark purple (low discrepancy) to yellow (high discrepancy). The left panel varies d-Y and d-S in the binary covariate setting; the right panel varies the regression slopes beta-Y0 and beta-S0 in the Gaussian covariate setting. Both panels show that the discrepancy can be large in regions where the parameters for the primary outcome and surrogate differ substantially.
 \end{figure}
 
 This intuition is formalized analytically in Web Appendix~\ref{app:binary_covariate_derivation}, where we also show that
@@ -387,7 +390,7 @@ However, one of the main advantages of our proposed Bayesian framework is its ab
     \Omega & \sim \; \text{LKJ}(\tau),
   \end{aligned}
 \end{equation}
-where we place a Gaussian prior on the regression coefficients in the matrix \(B\) and we adopt the same separation strategy for the covariance matrix \(\Sigma\) as in the first model. For both models, posterior sampling is carried out via Hamiltonian Monte Carlo \citep{neal2011mcmc} as implemented in Stan \citep{stan2023}, interfaced through the \texttt{rstan} R package \citep{rstan2023}.
+where we place a Gaussian prior on the regression coefficients in the matrix \(B\) and we adopt the same separation strategy for the covariance matrix \(\Sigma\) as in the first model. For both models, posterior sampling is carried out via Hamiltonian Monte Carlo \citep{neal2011mcmc} using the Stan modeling language \citep{stan2023} and the \texttt{rstan} package \citep{rstan2023} in R.
 
 \subsection{Identifiability of \texorpdfstring{\(\theta\)}{theta} and Interpretation of its Posterior}
 \label{subsection:identifiability}
@@ -539,6 +542,8 @@ We begin with a visual assessment of the relationship between the primary outcom
     \end{subfigure}
     \caption{Left panel: histograms of the primary outcome (change in HbA1c from baseline to 4.5 years) by treatment arm. Right panel: histograms of the surrogate (change in HbA1c from baseline to 1.5 years) by treatment arm. Both panels focus on the high-risk subgroup of the DCCT dataset.}
     \label{fig:dcct}
+
+\noindent Alt text: Two side-by-side overlapping histograms comparing treatment and control groups. In both panels, the treatment group distribution (blue) is shifted to the right relative to the control group (vermillion), indicating a beneficial treatment effect. The left panel shows change in HbA1c at 4.5 years; the right panel shows change in HbA1c at 1.5 years. The similar shift patterns in both panels provide visual evidence that the surrogate captures the treatment effect on the primary outcome.
 \end{figure}
 
 \begin{figure}[ht]
@@ -556,6 +561,8 @@ We begin with a visual assessment of the relationship between the primary outcom
     \end{subfigure}
     \caption{Left panel: scatter plot of the primary outcome (4.5-year change in HbA1c) versus the surrogate (1.5-year change in HbA1c) by treatment arm, with fitted LOESS curves. Right panel: empirical CDFs of the primary outcome and the surrogate by treatment arm.}
     \label{fig:dcct_scatter_cdf}
+
+\noindent Alt text: Left panel: scatter plot with points colored by treatment arm (blue for treatment, vermillion for control), showing a strong positive association between surrogate and primary outcome with data points closely aligned along the diagonal; fitted LOESS curves for each arm closely follow the diagonal. Right panel: empirical CDF plot with four curves distinguished by color (blue or vermillion) and linetype (solid or dashed) for treatment versus control and primary outcome versus surrogate; the CDF curves for the surrogate and primary outcome are closely matched within each arm.
 \end{figure}
 
 %We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of \(\widehat{\theta}\) is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of \(\widehat{\theta}\) incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in \(\widehat{\delta} = 0.044\), a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities (\(\widehat{\theta}\) vs \(\widehat{\delta}\)) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
@@ -577,6 +584,8 @@ We implemented our proposed methodology to derive the posterior distribution of 
     \end{subfigure}
     \caption{Left panel: posterior distribution of \(\theta\) applying the method with no covariates. Right panel: posterior distribution of \(\theta\) incorporating age and sex as covariates. Both panels use data from the high-risk subgroup of the DCCT.}
     \label{fig:dcct_post}
+
+\noindent Alt text: Two side-by-side histogram plots of the posterior distribution of theta, the discrepancy parameter. In both panels the distribution is concentrated near zero and well below the validation threshold, supporting the conclusion that the surrogate is valid. Vertical lines indicate the credible interval upper bound and the validation threshold. The right panel, incorporating age and sex as covariates, shows a slightly more concentrated posterior closer to zero compared to the left panel.
 \end{figure}
 
 Full numerical results for all three analyses are summarized in Table \ref{tab:dcct_results}. While the qualitative conclusions regarding surrogacy remain consistent across all evaluated methods, the point estimates for \(\theta\), calculated as posterior means, are notably smaller than the estimates for \(\delta\) obtained from the existing approach. Additionally, the inclusion of age and sex as covariates in our model leads to a further reduction in the estimated value of \(\theta\). Although the ground-truth surrogacy status remains unknown in this application, these results highlight the utility of our approach. In particular, this application demonstrates that our method can effectively incorporate baseline information to refine the analysis, suggesting increased estimation efficiency compared to the approach of \citet{parast2024rank}.
@@ -607,6 +616,8 @@ To further mitigate the risk of model misspecification, future work could extend
 
 A further limitation, shared with most single-trial surrogate evaluation methods, concerns transportability to future studies. The conclusion that \(S\) is a valid surrogate for \(Y\) is inherently tied to the trial's specific population and data-generating mechanism, and there is no guarantee that the same surrogacy relationship holds in future studies with different patient populations, covariate distributions, or treatment regimes. This concern partly motivated the development of meta-analytic approaches to surrogate evaluation \citep{buyse1998criteria,burzykowski2005evaluation}, which pool evidence across multiple trials to assess surrogacy more robustly across contexts. A natural and promising direction for future work is to extend BSET to a hierarchical Bayesian framework, enabling the joint modeling of surrogate-outcome relationships across multiple trials and providing a principled way to assess transportability while borrowing strength across studies.
 
+\backmatter
+
 \section*{Funding and Acknowledgments}
 The authors declare no conflicts of interest. This work was supported by NIDDK grant R01DK118354 (PI:Parast). The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidemiology of Diabetes Interventions and Complications (EDIC) study were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not represent analyses or conclusions of the DCCT/EDIC study group, NIDDK-CR, or NIH. The authors used AI tools (Claude, Anthropic) to assist with manuscript preparation and R package development.
 
@@ -616,4 +627,8 @@ The DCCT data were obtained from the NIDDK Central Repository (NIDDK-CR) and are
 \bibliographystyle{biom}
 \bibliography{BSET_references}
 
+\section*{Supporting Information}
+Web Appendices A and B, referenced in Sections~\ref{sec:bayesian_approach} and \ref{sec:simulation_study}, are available with this paper at the Biometrics website on Wiley Online Library.
+
+\label{lastpage}
 \end{document}
