@@ -85,11 +85,6 @@ Hoeffding, W. (1992).
 \newblock A class of statistics with asymptotically normal distribution.
 \newblock In {\em Breakthroughs in statistics: Foundations and basic theory}, pages 308--334. Springer.
 
-\bibitem[\protect\citeauthoryear{Holland}{Holland}{1986}]{holland1986statistics}
-Holland, P.~W. (1986).
-\newblock Statistics and causal inference.
-\newblock {\em Journal of the American Statistical Association} {\bf 81,} 945--960.
-
 \bibitem[\protect\citeauthoryear{Huang and Gilbert}{Huang and Gilbert}{2011}]{huang2011comparing}
 Huang, Y. and Gilbert, P.~B. (2011).
 \newblock Comparing biomarkers as principal surrogate endpoints.
@@ -129,11 +124,6 @@ Miller, J.~W. and Harrison, M.~T. (2018).
 Neal, R.~M. (2011).
 \newblock {MCMC} using {Hamiltonian} dynamics.
 \newblock In Brooks, S., Gelman, A., Jones, G.~L., and Meng, X.-L., editors, {\em Handbook of {Markov} Chain {Monte} {Carlo}}, chapter~5, pages 113--162. CRC Press, Boca Raton, FL.
-
-\bibitem[\protect\citeauthoryear{Parast}{Parast}{2025}]{parast2025surrogate}
-Parast, L. (2025).
-\newblock Surrogate marker evaluation: A tutorial using r.
-\newblock {\em Statistics in Medicine} {\bf 44,} e70048.
 
 \bibitem[\protect\citeauthoryear{Parast, Cai, and Tian}{Parast et~al.}{2024}]{parast2024rank}
 Parast, L., Cai, T., and Tian, L. (2024).

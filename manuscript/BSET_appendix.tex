@@ -431,15 +431,15 @@ Finally, to compute the probability on the left-hand side of Equation~\eqref{eq:
     \mathbb{P} \left( BF_{n} = x_{k} \mid V_{S} = v_{S} > \frac{1}{2} \right) = \binom{n}{k} v_{S}^{k}(1-v_{S})^{n-k}, \quad k = 0, \ldots, n.
 \end{equation*}
 
-\section{Simulation Study: 1Data-Generating Processes and Implementation Details}
+\section{Simulation Study Details}
 \label{app:simulation_details}
 
-This appendix describes the data-generating processes and the Markov chain Monte Carlo implementation details for the simulation study in Section~\ref{sec:simulation_study} of the main paper.
+This appendix describes the DGPs and the Markov chain Monte Carlo implementation details for the simulation study in Section~\ref{sec:simulation_study} of the main paper.
 
-\subsection{Data-Generating Processes}
+\subsection{DGPs}
 \label{app:data_generating_processes}
 
-In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\frac{1}{2}\right)\) is drawn independently of all potential outcomes. The data-generating processes for \(P_i\) in each setting are as follows.
+In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\frac{1}{2}\right)\) is drawn independently of all potential outcomes. The DGPs for \(P_i\) in each setting are as follows.
 
 \begin{itemize}[leftmargin=*]
     \item \textbf{Setting 1 (Useless surrogate):} The potential outcomes are generated as follows:

@@ -36,7 +36,7 @@
     \caption{Left panel: histograms of the primary outcome (change in HbA1c from baseline to 4.5 years) by treatment arm. Right panel: histograms of the surrogate (change in HbA1c from baseline to 1.5 years) by treatment arm. Both panels focus on the high-risk subgroup of the DCCT dataset.}
     \label{fig:dcct}
 
-\noindent Alt text: Two side-by-side overlapping histograms comparing treatment and control groups. In both panels, the treatment group distribution (blue) is shifted to the right relative to the control group (vermillion), indicating a beneficial treatment effect. The left panel shows change in HbA1c at 4.5 years; the right panel shows change in HbA1c at 1.5 years. The similar shift patterns in both panels provide visual evidence that the surrogate captures the treatment effect on the primary outcome.
+\noindent Alt text: Two side-by-side overlapping histograms comparing treatment and control groups. In both panels, the treatment group distribution (blue) is shifted to the right relative to the control group (red), indicating a beneficial treatment effect. The left panel shows change in HbA1c at 4.5 years; the right panel shows change in HbA1c at 1.5 years. The similar shift patterns in both panels provide visual evidence that the surrogate captures the treatment effect on the primary outcome.
 \end{figure}
 \efloatseparator
  
@@ -56,7 +56,7 @@
     \caption{Left panel: scatter plot of the primary outcome (4.5-year change in HbA1c) versus the surrogate (1.5-year change in HbA1c) by treatment arm, with fitted LOESS curves. Right panel: empirical CDFs of the primary outcome and the surrogate by treatment arm.}
     \label{fig:dcct_scatter_cdf}
 
-\noindent Alt text: Left panel: scatter plot with points colored by treatment arm (blue for treatment, vermillion for control), showing a strong positive association between surrogate and primary outcome with data points closely aligned along the diagonal; fitted LOESS curves for each arm closely follow the diagonal. Right panel: empirical CDF plot with four curves distinguished by color (blue or vermillion) and linetype (solid or dashed) for treatment versus control and primary outcome versus surrogate; the CDF curves for the surrogate and primary outcome are closely matched within each arm.
+\noindent Alt text: Left panel: scatter plot with points colored by treatment arm (blue for treatment, red for control), showing a strong positive association between surrogate and primary outcome with data points closely aligned along the diagonal; fitted LOESS curves for each arm closely follow the diagonal. Right panel: empirical CDF plot with four curves distinguished by color (blue or red) and linetype (solid or dashed) for treatment versus control and primary outcome versus surrogate; the CDF curves for the surrogate and primary outcome are closely matched within each arm.
 \end{figure}
 \efloatseparator
  
