@@ -418,20 +418,16 @@ Under standard regularity conditions (positive prior mass on every Kullback-Leib
   \begin{equation*}
     D_{i} \iid f_{\phi^{*}}, \quad i = 1, \ldots, n,
   \end{equation*}
-  where \(D_{i}\) is the observed data for unit \(i\) and \(f_{\phi^{*}}\) is the true distribution of the data, parametrized by \(\phi^{*}\). Let the parameter \(\phi\) decompose as follows:
-  \begin{equation*}
-    \phi = (\phi_{I}, \phi_{N}),
-  \end{equation*}
-  where \(\phi_{I}\) is the identifiable part of the parameter and \(\phi_{N}\) is the non-identifiable part of the parameter. Let the Bayesian model be defined as
+  where \(D_{i}\) is the observed data for unit \(i\) and \(f_{\phi^{*}}\) is the true distribution parametrized by \(\phi^{*}\). Let \(\phi\) decompose as \(\phi = (\phi_{I}, \phi_{N})\), where \(\phi_{I}\) is identifiable and \(\phi_{N}\) is non-identifiable. Let the Bayesian model be defined as
   \begin{align*}
       D_{i} \mid \phi & \iid f_{\phi_{I}}, \quad i = 1, \ldots, n, \\
       \phi & \sim \pi,
   \end{align*}
-  where \(\pi\) is a prior distribution over the parameter \(\phi\). Then, if the Bayesian model is regular in the sense of Definition~\ref{def:regularity} with respect to the identifiable component, the posterior distribution of \(\phi_{I}\) concentrates around the true value \(\phi_{I}^{*}\) as the sample size grows:
+  where \(\pi\) is a prior distribution over \(\phi\). Then, if the Bayesian model is regular in the sense of Definition~\ref{def:regularity} with respect to \(\phi_{I}\), the posterior distribution of \(\phi_{I}\) concentrates around \(\phi_{I}^{*}\):
   \begin{equation*}
     \pi \left( \phi_{I} \in U_{I} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 1,
   \end{equation*}
-  for every neighborhood \(U_{I}\) of \(\phi_{I}^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by the true distribution \(f_{\phi^{*}}\). Whereas, the posterior distribution of \(\phi_{N}\) will behave as follows:
+  for every neighborhood \(U_{I}\) of \(\phi_{I}^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by \(f_{\phi^{*}}\). Whereas, the posterior distribution of \(\phi_{N}\) behaves as follows:
   \begin{equation*}
     \pi \left( \phi_{N} \in U_{N} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} \pi \left( \phi_{N} \in U_{N} \mid \phi_{I} = \phi_{I}^{*} \right),
   \end{equation*}
@@ -461,7 +457,7 @@ where \(v_Y\) denotes the hypothesized treatment effect on \(Y\) and \(v_S\) is 
 \end{equation}
 which is implemented using a Bayes factor. As an example, one plausible way to choose \(v_Y\) is to use the posterior mean of \(V_{Y}\) obtained from our Bayesian imputation framework. %Then \(v_{Y} - v_{S}\) reflects how far we are willing to let \(v_{S}\) be from \(v_{Y}\), while still ensuring a \((1 - \beta)100\%\) power.
 
-As for the choice of \(v_{S}\), instead, to compute a Bayes factor for the hypothesis test in Equation~\eqref{eq:hypothesis_test_V_S}, we first need to specify a Bayesian model taking \(V_{S}\) as its unknown parameter:
+As for \(v_{S}\), we need to compute a Bayes factor for the hypothesis test in Equation~\eqref{eq:hypothesis_test_V_S}. To do so, we first need to specify a Bayesian model taking \(V_{S}\) as its unknown parameter:
 \begin{equation*}
     \begin{aligned}
         n \, \widehat{V}_{S} \mid V_{S} & \sim \text{Binomial}(n, V_{S}), \\
@@ -491,7 +487,7 @@ is monotone on \(\left(\frac{1}{2}, 1\right)\). Therefore, there exists a unique
 
 \section{Simulation Study}\label{sec:simulation_study}
 
-We expanded our assessment of the proposed Bayesian imputation-based method through a simulation study conducted across six distinct settings. In these scenarios, we evaluated its performance relative to the frequentist rank-based approach introduced by \citet{parast2024rank}, focusing specifically on key metrics such as test coverage and statistical power.
+We expand our assessment of the proposed Bayesian imputation-based method through a simulation study conducted across six distinct settings. In these scenarios, we evaluated its performance relative to the frequentist rank-based approach introduced by \citet{parast2024rank}, focusing specifically on key metrics such as parameter coverage and statistical power.
 
 Specifically, in Settings 1-4, we replicated the DGPs of \citet{parast2024rank} to facilitate direct comparison, implementing the model in Equation~\eqref{eq:parametric_model} without covariates. Settings 1-3 feature Gaussian potential outcomes: in Setting 1, the surrogate is useless (\(S\) independent of \(Y\)), while in Settings 2 and 3, it is a linear transformation of the outcome with either negligible or more substantial Gaussian noise, representing perfect and imperfect surrogates, respectively. Setting 4 utilizes non-Gaussian distributions and a non-linear transformation with non-Gaussian noise.
 
@@ -528,7 +524,7 @@ Results are shown in Table~\ref{tab:coverage_power_comparison}. In Settings 1 an
 
 We illustrate our proposed method using data from the Diabetes Control and Complications Trial (DCCT), a multicenter, randomized study comparing an intensive treatment protocol to usual care \citep{dcct1987diabetes,Lachin2021DCCT,diabetes1993effect}. The intensive therapy aimed for normoglycemia via \(3\) or more insulin injections or an insulin pump, while usual care consisted of \(1\) or \(2\) injections per day. Our analysis focuses on a high-risk subgroup of \(47\) participants from the secondary-intervention cohort (those with baseline mild-to-moderate retinopathy) who had a body mass index (BMI) above \(25\) and a history of smoking. We define the primary outcome as the change in hemoglobin A1c (HbA1c) from baseline to \(4.5\) years post-randomization, with the surrogate being the earlier \(1.5\)-year measurement.
 
-We begin with a visual assessment of the relationship between the primary outcome and the surrogate measure. Figure \ref{fig:dcct} displays histograms for both variables by treatment arm; in each case, the treatment group distribution exhibits a clear rightward shift relative to the control, suggesting a beneficial effect of the intensive treatment. To further examine this relationship, Figure \ref{fig:dcct_scatter_cdf} presents a scatter plot of the surrogate against the primary outcome, featuring fitted locally estimated scatterplot smoothing (LOESS) curves for each arm and their respective empirical cumulative distribution functions (CDFs). The scatter plot reveals that the data points are closely aligned with the diagonal, a trend further reflected by the fitted LOESS curves. This indicates that the surrogate closely mirrors the primary outcome at the individual level. Furthermore, the empirical CDFs show that the surrogate's distribution remains consistent with that of the primary outcome within each arm, while maintaining the distinct separation between treatment groups. These visualizations provide strong preliminary evidence of surrogate validity, motivating the following formal assessment.
+We begin with a visual assessment of the relationship between the primary outcome and the surrogate. Figure \ref{fig:dcct} displays histograms for both variables by treatment arm; in each case, the treatment group distribution exhibits a clear rightward shift relative to the control, suggesting a beneficial effect of the intensive treatment. To further examine this relationship, Figure \ref{fig:dcct_scatter_cdf} presents a scatter plot of the surrogate against the primary outcome, featuring fitted locally estimated scatterplot smoothing (LOESS) curves for each arm and their respective empirical cumulative distribution functions (CDFs). The scatter plot reveals that the data points are closely aligned with the diagonal, a trend further reflected by the fitted LOESS curves. This indicates that the surrogate closely mirrors the primary outcome at the individual level. Furthermore, the empirical CDFs show that the surrogate's distribution remains consistent with that of the primary outcome within each arm, while maintaining the distinct separation between treatment groups. These visualizations provide preliminary evidence of surrogate validity, motivating the following formal assessment.
 
 \begin{figure}[ht]
     \centering
@@ -570,7 +566,7 @@ We begin with a visual assessment of the relationship between the primary outcom
 
 %We first applied our proposed method without covariates as described above, with a specified power of 0.70 used to determine the corresponding threshold. The resulting posterior distribution of \(\widehat{\theta}\) is shown in the left panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.027, and a credible interval upper bound of 0.149. The calculated threshold was 0.164 and thus, we conclude that change in HbA1c from baseline to 1.5 years is a surrogate for change in HbA1c from baseline to 4.5 years post-randomization. Next, we applied our proposed procedure incorporating the covariates of age (numeric) and sex (male or female). The resulting posterior distribution of \(\widehat{\theta}\) incorporating these covariates is shown in the right panel of Figure \ref{fig:dcct_post}, with an average estimate of 0.010, and a credible interval upper bound of 0.149. The calculated threshold was 0.158 and thus, we similarly conclude that this is a valid surrogate. For comparison, the method of \citet{parast2024rank} without covariates (because covariates are not possible to incorporate) resulted in \(\widehat{\delta} = 0.044\), a confidence interval upper bound of 0.120, and with a threshold of 0.132, concluding that this is a surrogate marker. While the conclusions are similar, it is certainly worth noting that the estimated difference quantities (\(\widehat{\theta}\) vs \(\widehat{\delta}\)) are smaller using the proposed definition and estimation approaches. Of course, the true values and true surrogacy here are unknown. Nonetheless, this application highlights the potential utility of our proposed approach and, in particular, demonstrates improved characterization of surrogacy and increased efficiency compared to the existing approach.
 
-We implemented our proposed methodology to derive the posterior distribution of \(\theta\) both with and without the inclusion of age and sex as covariates. For both analyses, the thresholds \(\epsilon\) and \(\eta\) were determined using \(\alpha = 0.05\) and \(\beta = 0.3\). The resulting posterior distributions, shown in Figure \ref{fig:dcct_post}, lead us to conclude that the surrogate is valid in both cases. For comparison, the method of \citet{parast2024rank} (which does not incorporate covariates) similarly identifies the surrogate as valid.
+We implemented our proposed methodology to derive the posterior distribution of \(\theta\) both with and without the inclusion of age and sex as covariates. For both analyses, the thresholds \(\varepsilon\) and \(\eta\) were determined using \(\alpha = 0.05\) and \(\beta = 0.3\). The resulting posterior distributions, shown in Figure \ref{fig:dcct_post}, lead us to conclude that the surrogate is valid in both cases. For comparison, the method of \citet{parast2024rank} (which does not incorporate covariates) similarly identifies the surrogate as valid.
 
 \begin{figure}[ht]
     \centering
@@ -609,7 +605,7 @@ Frequentist \citep{parast2024rank} & 0.044 & 0.120 & 0.132 & Yes \\
 
 \section{Discussion}\label{sec:discussion}
 
-BSET is an imputation-based Bayesian framework for surrogate evaluation that addresses limitations of the rank-based method by \citet{parast2024rank}, such as its lack of causal interpretation, low statistical power and the inability to adjust for covariates. By targeting a causal estimand, BSET enables inference on the individual-level association between endpoints. Simulations demonstrate substantial power gains, particularly in covariate-dependent settings where rank-based methods may fail to capture valid surrogacy. These findings are supported by the DCCT application, where BSET provided smaller point estimates for the discrepancy parameter while maintaining consistent qualitative conclusions. Despite these advantages, the proposed method has several limitations discussed below.
+BSET is an imputation-based Bayesian framework for surrogate evaluation that addresses limitations of the rank-based method by \citet{parast2024rank}, such as its lack of causal interpretation, low statistical power and the inability to adjust for covariates. By targeting a causal estimand, BSET enables inference on the individual-level association between endpoints. Simulations demonstrate substantial power gains, particularly in covariate-dependent settings where rank-based methods may fail to capture valid surrogacy. These findings are supported by the DCCT application, where BSET provided smaller point estimates for the discrepancy parameter while maintaining consistent qualitative conclusions. The proposed methodology is implemented in the \texttt{BSET} R package \citep{bset_package}. Despite these advantages, the proposed method has several limitations discussed below.
 
 %Some parameters in our model are unidentifiable, which can prevent the posterior from concentrating around the true values. This is inherent to causal inference, and the Bayesian approach can be seen as a faithful way to inject uncertainty about these parameters. This issue is intrinsic to causal inference problems and the Bayesian approach can be seen as a faithful way to inject uncertainty about the unidentifiable parameters into the inference process. Sensitivity analyses examining robustness of our conclusions regarding surrogate validity to unidentified covariance parameters would also be useful, and we aim to incorporate such results into our framework and future software.
 
@@ -623,7 +619,7 @@ A further limitation, shared with most single-trial surrogate evaluation methods
 
 \section*{Funding and Acknowledgments}
 
-The authors declare no conflicts of interest. This work was supported by NIDDK grant R01DK118354 (PI:Parast). The Diabetes Control and Complications Trial (DCCT) and its follow-up, the Epidemiology of Diabetes Interventions and Complications (EDIC) study, were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not reflect the views of the DCCT/EDIC study group, NIDDK-CR, or NIH. AI tools (Claude, Anthropic) were used to assist with manuscript preparation and R package development.
+The authors declare no conflicts of interest. This work was supported by NIDDK grant R01DK118354 (PI:Parast). The Diabetes Control and Complications Trial (DCCT) was conducted by the DCCT/EDIC Research Group and supported by the National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not reflect the views of the DCCT/EDIC study group, NIDDK-CR, or NIH. AI tools (Claude, Anthropic) were used to assist with manuscript preparation and R package development.
 
 \section*{Data Availability}
 
@@ -633,7 +629,7 @@ The DCCT data were obtained from the NIDDK-CR and are available upon request.
 \bibliography{BSET_references}
 
 \section*{Supplementary Material}
-Web Appendices A--F, referenced in Sections~\ref{sec:methods}--\ref{sec:simulation_study}, are available with this paper at the Biometrics website on Oxford Academic. The \texttt{BSET} R package and replication code are available at \url{https://github.com/PietroCarlotti/BSET/tree/main/replication}.
+Web Appendices A--F, referenced in Sections~\ref{sec:methods}--\ref{sec:simulation_study}, are available with this paper at the Biometrics website on Oxford Academic. The \texttt{BSET} R package, tutorial, and replication code are available at \url{https://github.com/PietroCarlotti/BSET}.
 
 \label{lastpage}
 \end{document}

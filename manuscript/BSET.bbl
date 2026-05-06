@@ -20,6 +20,11 @@ Buyse, M. and Molenberghs, G. (1998).
 \newblock Criteria for the validation of surrogate endpoints in randomized experiments.
 \newblock {\em Biometrics} pages 1014--1029.
 
+\bibitem[\protect\citeauthoryear{Carlotti and Parast}{Carlotti and Parast}{2026}]{bset_package}
+Carlotti, P. and Parast, L. (2026).
+\newblock Bset r package, version 1.0.
+\newblock {https://github.com/PietroCarlotti/BSET}.
+
 \bibitem[\protect\citeauthoryear{Colantuoni and Rosenblum}{Colantuoni and Rosenblum}{2015}]{colantuoni2015leveraging}
 Colantuoni, E. and Rosenblum, M. (2015).
 \newblock Leveraging prognostic baseline variables to gain precision in randomized trials.

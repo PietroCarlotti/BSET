@@ -372,13 +372,13 @@ This appendix provides a formal definition of regularity for Bayesian models and
       D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
       \phi & \sim \pi,
   \end{align*}
-  where \(D_{i}\) is the observed data for unit \(i\), \(f_{\phi}\) is the likelihood function parametrized by \(\phi\), and \(\pi\) is a prior distribution over the parameter \(\phi\). We say that the Bayesian model is \textit{regular} if the following conditions hold:
+  where \(D_{i}\) is the observed data for unit \(i\), \(f_{\phi}\) is the likelihood parametrized by \(\phi\), and \(\pi\) is a prior distribution over \(\phi\). Then, the model is \textit{regular} if the following two conditions hold:
   \begin{itemize}[leftmargin=*]
-    \item \textbf{Kullback-Leibler support of the prior}: The prior \(\pi\) assigns positive mass to every Kullback-Leibler neighborhood of the true parameter \(\phi^{*}\):
+    \item \textbf{KL support of the prior}: \(\pi\) assigns positive mass to every KL neighborhood of \(\phi^{*}\):
     \begin{equation*}
-      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0, \; \forall \; \varepsilon \in \R_{+},
+      \pi \left( D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right) > 0, \; \forall \; \varepsilon \in \R_{+},
     \end{equation*}
-    where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the Kullback-Leibler divergence of \(f_{\phi}\) from \(f_{\phi^{*}}\).
+    where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the KL divergence of \(f_{\phi}\) from \(f_{\phi^{*}}\).
     \item \textbf{Identifiability}: The model is identifiable: 
     \begin{equation*}
         f_{\phi} \neq f_{\phi'}, \; \forall \; \phi \neq \phi'.
@@ -387,20 +387,20 @@ This appendix provides a formal definition of regularity for Bayesian models and
 \end{definition}
 
 \begin{theorem}[Schwartz's theorem \citep{schwartz1965bayes}]
-  Let the data be generated from the following process:
+  Let the true DGP be defined as
   \begin{equation*}
     D_{i} \iid f_{\phi^{*}}, \quad i = 1, \ldots, n,
   \end{equation*}
-  and let the Bayesian model be defined as
+  where \(D_{i}\) is the observed data for unit \(i\) and \(f_{\phi^{*}}\) is the true distribution parametrized by \(\phi^{*}\). Let the Bayesian model be defined as
   \begin{align*}
       D_{i} \mid \phi & \iid f_{\phi}, \quad i = 1, \ldots, n, \\
-      \phi & \sim \pi.
+      \phi & \sim \pi,
   \end{align*}
-  If the model is \textit{regular} according to Definition~\ref{def:regularity}, then we have that
+  where \(\pi\) is a prior distribution over \(\phi\). Then, if the Bayesian model is regular in the sense of Definition~\ref{def:regularity}, the posterior distribution of \(\phi\) concentrates around \(\phi^{*}\):
   \begin{equation*}
-    \pi \left( U^{c} \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 0,
+    \pi \left( \phi \in U \mid D_{1:n} \right) \overset{P_{\phi^{*}}}{\to} 1,
   \end{equation*}
-  for every neighborhood \(U\) of \(\phi^{*}\), where  \(P_{\phi^{*}}\) is the probability measure induced by \(f_{\phi^{*}}\).
+  for every neighborhood \(U\) of \(\phi^{*}\), where \(P_{\phi^{*}}\) is the probability measure induced by \(f_{\phi^{*}}\).
 \end{theorem}
 
 \section{Derivation of the Bayes Factor for the Validation Threshold}

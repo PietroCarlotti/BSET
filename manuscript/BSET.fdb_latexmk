@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex BSET"] 1778092469.23814 "BSET.aux" "BSET.bbl" "BSET" 1778093553.71301 0
-  "./BSET_references.bib" 1778085241.36759 157196 07dda0f18b1acca0b153a1a0f8740a98 ""
+["bibtex BSET"] 1778094729.67586 "BSET.aux" "BSET.bbl" "BSET" 1778095638.92578 0
+  "./BSET_references.bib" 1778094084.81946 157381 1f63e5c3a4cfbddd27ac39054deec6fd ""
   "./biom.bst" 1776276666.03232 23581 d1ab0a8fbbe9fa1699fe1a76da9786a8 ""
-  "BSET.aux" 1778093553.42576 15263 e3477bd08d06cecafd86bd369fce82ba "pdflatex"
+  "BSET.aux" 1778095638.65729 15368 bd39a05801391fc8dc8714858d4c93a4 "pdflatex"
   (generated)
   "BSET.bbl"
   "BSET.blg"
   (rewritten before read)
-["pdflatex"] 1778093552.74791 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1778093553.71314 0
+["pdflatex"] 1778095637.98363 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1778095638.92592 0
   "../replication/figures/DCCT_CDF.pdf" 1778002429.18206 12637 2275ea877d85c1b2771a4bfed076d198 ""
   "../replication/figures/DCCT_S.pdf" 1778002428.14108 11464 0eaeab2e037824ba3ce6648d21e38559 ""
   "../replication/figures/DCCT_X_theta_posterior_plot.pdf" 1777492483.55948 19693 d255547242df3b820a1848d0c20e1e93 ""
@@ -16,7 +16,7 @@
   "../replication/figures/DCCT_scatterplot.pdf" 1778002429.0645 14066 90c0cb8e6a7f6c2300cba490b75fb5d2 ""
   "../replication/figures/distance_plot_X_Gaussian.pdf" 1778002427.07792 104273 6abf89feb6f5ebdb5a2bfbf1519c461d ""
   "../replication/figures/distance_plot_X_binary.pdf" 1778002426.70236 88328 eb7304f73a940d1b5b2ef560161e4b60 ""
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1778093553.49499 67069 e1fb0b6c27ea57c263e3b9ba88ccd448 ""
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1778095615.77163 66824 4e7a1b0de5fd564f23984943f633bb5f ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -187,14 +187,14 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "BSET.aux" 1778093553.42576 15263 e3477bd08d06cecafd86bd369fce82ba "pdflatex"
-  "BSET.bbl" 1778092469.35071 10856 21da3cee5686b9e4cae610eadbd1eb87 "bibtex BSET"
-  "BSET.fff" 1778093553.38349 5302 637d8a193c9c1a15b47ef84868333a65 "pdflatex"
-  "BSET.out" 1778093553.4359 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
-  "BSET.tex" 1778093553.49499 67069 e1fb0b6c27ea57c263e3b9ba88ccd448 ""
-  "BSET.ttt" 1778093553.41399 2051 bef647883bc6afcc6449d21b1220a33d "pdflatex"
-  "BSET_appendix.aux" 1778088292.51346 5629 c67a9825e05985b45731dfd54782833a ""
-  "BSET_appendix.tex" 1778092721.38262 31240 9f4f4c819c0379f34cf9cf4504c4c45e ""
+  "BSET.aux" 1778095638.65729 15368 bd39a05801391fc8dc8714858d4c93a4 "pdflatex"
+  "BSET.bbl" 1778094729.76836 11080 230782c16ba1d8ca52c323f12d64f17a "bibtex BSET"
+  "BSET.fff" 1778095638.62439 5302 637d8a193c9c1a15b47ef84868333a65 "pdflatex"
+  "BSET.out" 1778095638.66262 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
+  "BSET.tex" 1778095615.77163 66824 4e7a1b0de5fd564f23984943f633bb5f ""
+  "BSET.ttt" 1778095638.65167 2051 bef647883bc6afcc6449d21b1220a33d "pdflatex"
+  "BSET_appendix.aux" 1778095537.34823 5493 34da2259e79e9acbb747b933aa514f14 ""
+  "BSET_appendix.tex" 1778095538.71668 31333 7b31a88f9a84699f2edecfa7458429d2 ""
   "biom.cls" 1776276669.02156 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1777309515.33583 225 038562b5ff2cf41664d86c05f59b0896 ""
   (generated)
