@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex BSET"] 1778086030.17487 "BSET.aux" "BSET.bbl" "BSET" 1778086031.12019 0
+["bibtex BSET"] 1778086623.63258 "BSET.aux" "BSET.bbl" "BSET" 1778086727.52258 0
   "./BSET_references.bib" 1778085241.36759 157196 07dda0f18b1acca0b153a1a0f8740a98 ""
   "./biom.bst" 1776276666.03232 23581 d1ab0a8fbbe9fa1699fe1a76da9786a8 ""
-  "BSET.aux" 1778086030.86228 15412 039304ee9a3fedf24120eab29335d2f1 "pdflatex"
+  "BSET.aux" 1778086727.23714 15412 3c76f72e5c72a3d4401d7616b2d94ed7 "pdflatex"
   (generated)
   "BSET.bbl"
   "BSET.blg"
   (rewritten before read)
-["pdflatex"] 1778086030.27139 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1778086031.12033 0
+["pdflatex"] 1778086726.60731 "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" "BSET.pdf" "BSET" 1778086727.52273 0
   "../replication/figures/DCCT_CDF.pdf" 1778002429.18206 12637 2275ea877d85c1b2771a4bfed076d198 ""
   "../replication/figures/DCCT_S.pdf" 1778002428.14108 11464 0eaeab2e037824ba3ce6648d21e38559 ""
   "../replication/figures/DCCT_X_theta_posterior_plot.pdf" 1777492483.55948 19693 d255547242df3b820a1848d0c20e1e93 ""
@@ -16,7 +16,7 @@
   "../replication/figures/DCCT_scatterplot.pdf" 1778002429.0645 14066 90c0cb8e6a7f6c2300cba490b75fb5d2 ""
   "../replication/figures/distance_plot_X_Gaussian.pdf" 1778002427.07792 104273 6abf89feb6f5ebdb5a2bfbf1519c461d ""
   "../replication/figures/distance_plot_X_binary.pdf" 1778002426.70236 88328 eb7304f73a940d1b5b2ef560161e4b60 ""
-  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1778086019.27083 67586 139ae9b4e14e65b4706529955432c6a0 ""
+  "/Users/pc29642/Library/CloudStorage/Box-Box/Research/Layla/BSET/manuscript/BSET.tex" 1778086716.10574 67392 d25fcac1b7c85eb15876d000a1f227ae ""
   "/Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1756843291.39554 8424 07ce8ad8441e103a85812b4656981b99 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -187,14 +187,14 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1738104311.49433 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1738104245 8221430 2d8708d543e2f62bb3817920d7712a29 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "BSET.aux" 1778086030.86228 15412 039304ee9a3fedf24120eab29335d2f1 "pdflatex"
-  "BSET.bbl" 1778086030.2596 11301 294239ca80073232ecdd2994552e1342 "bibtex BSET"
-  "BSET.fff" 1778086030.8289 5323 6f54e9111ed50c2bec03690c375c5606 "pdflatex"
-  "BSET.out" 1778086030.87179 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
-  "BSET.tex" 1778086019.27083 67586 139ae9b4e14e65b4706529955432c6a0 ""
-  "BSET.ttt" 1778086030.8565 2051 bef647883bc6afcc6449d21b1220a33d "pdflatex"
-  "BSET_appendix.aux" 1777921290.92335 5507 3e0a8757615b6a7846749d4ab37b4fcd ""
-  "BSET_appendix.tex" 1777999013.0481 31246 57dcddfe510b0ccfca02913c8d09a74e ""
+  "BSET.aux" 1778086727.23714 15412 3c76f72e5c72a3d4401d7616b2d94ed7 "pdflatex"
+  "BSET.bbl" 1778086623.74927 11301 294239ca80073232ecdd2994552e1342 "bibtex BSET"
+  "BSET.fff" 1778086727.19613 5323 6f54e9111ed50c2bec03690c375c5606 "pdflatex"
+  "BSET.out" 1778086727.24052 2823 e4207a7ef15059fb69757bdd19be3ed1 "pdflatex"
+  "BSET.tex" 1778086716.10574 67392 d25fcac1b7c85eb15876d000a1f227ae ""
+  "BSET.ttt" 1778086727.22489 2051 bef647883bc6afcc6449d21b1220a33d "pdflatex"
+  "BSET_appendix.aux" 1778086472.47122 5884 fd4bf41806595a556d6c81ad6a2b0813 ""
+  "BSET_appendix.tex" 1778086432.49661 31446 5e065e42efabe115816bae031566104f ""
   "biom.cls" 1776276669.02156 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1777309515.33583 225 038562b5ff2cf41664d86c05f59b0896 ""
   (generated)
