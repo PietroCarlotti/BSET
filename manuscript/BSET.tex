@@ -392,7 +392,7 @@ However, one of the main advantages of our proposed Bayesian framework is its ab
     \Omega & \sim \; \text{LKJ}(\tau),
   \end{aligned}
 \end{equation}
-where we place a Gaussian prior on the regression coefficients in the matrix \(B\) and we adopt the same separation strategy for the covariance matrix \(\Sigma\) as in the first model. For both models, posterior sampling is carried out via Hamiltonian Monte Carlo \citep{neal2011mcmc} using the Stan modeling language \citep{stan2023} and the \texttt{rstan} package \citep{rstan2023} in R.
+with Gaussian priors on the entries of \(B\) and the same separation strategy for \(\Sigma\) as in the first model. For both models, posterior sampling is carried out via Hamiltonian Monte Carlo \citep{neal2011mcmc} using Stan \citep{stan2023} and the \texttt{rstan} package \citep{rstan2023} in R.
 
 \subsection{Identifiability of \texorpdfstring{\(\theta\)}{theta} and Interpretation of its Posterior}
 \label{subsection:identifiability}
