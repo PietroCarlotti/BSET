@@ -93,7 +93,7 @@
 \setlength\parindent{15pt} 
 
   \begin{center}
-    \LARGE{Supplementary Material for ``A Bayesian Critique of a Rank-Based Method for \\
+    \LARGE{Supplementary Material for ``A Bayesian Critique of a Rank-Based Method for
     Surrogate Marker Evaluation'' by Carlotti and Parast}
 \end{center}
 \clearpage
@@ -113,7 +113,7 @@
 \allowdisplaybreaks
 
 
-\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} as Expectations over the Covariate Distribution}
+\section{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} as Expectations}
 \label{app:derivation_theta_delta}
 
 This appendix derives expressions for \(\theta\) and \(\delta\) as expectations over the covariate distribution. 
@@ -147,7 +147,7 @@ Applying a similar logic to \(V_S\), we obtain this analytical expression for \(
 where we denote
 \begin{equation*}
     \theta^{x} = %V^{x}_{Y} - V^{x}_{S} =
-    \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right) , \; \forall \; x \in \mathcal{X}.
+    \Phi \left( \frac{ \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}}}{\sqrt{\Sigma^{x}_{Y_{1} Y_{1}} + \Sigma^{x}_{Y_{0} Y_{0}} - 2 \Sigma^{x}_{Y_{1} Y_{0}}}} \right) - \Phi \left( \frac{ \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}}}{\sqrt{\Sigma^{x}_{S_{1} S_{1}} + \Sigma^{x}_{S_{0} S_{0}} - 2 \Sigma^{x}_{S_{1} S_{0}}}} \right), \; \forall \; x \in \mathcal{X}.
 \end{equation*}
 
 %\begin{equation}
@@ -169,7 +169,7 @@ Therefore, we obtain this analytical expression for \(U^{x_{i} x_{j}}_{Y}\):
         & = \Prob \left( \frac{Y_{1i} - Y_{0j} - \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \mid X_{i} = x_{i}, X_{j} = x_{j} \right) \\
         & = \Prob \left( W > \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
         & = 1 - \Phi \left( \frac{- \mu^{x_{i}}_{Y_{1}} + \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) \\
-        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) , ; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
+        & = \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}, \; i,j = 1, \ldots, n.
 \end{align*}
 Then, by the law of total probability, we can derive an analytical expression for \(U_{Y}\) as follows:
 \begin{align*}
@@ -187,16 +187,16 @@ where we denote
     \Phi \left( \frac{\mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}}}{\sqrt{\Sigma^{x_{i}}_{Y_{1} Y_{1}} + \Sigma^{x_{j}}_{Y_{0} Y_{0}}}} \right) - \Phi \left( \frac{\mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}}}{\sqrt{\Sigma^{x_{i}}_{S_{1} S_{1}} + \Sigma^{x_{j}}_{S_{0} S_{0}}}} \right), \; \forall \; x_i, x_j \in \mathcal{X}.
 \end{equation*}
 
-\subsection{Derivation of \texorpdfstring{\(\theta\)}{theta} and \texorpdfstring{\(\delta\)}{delta} in the Condionally Orthogonal and Homoscedastic Setting}
+\subsection{Derivation in the Condionally Orthogonal and Homoscedastic Setting}
 
 Under the assumption of conditional orthogonality stated in the paper, it follows that
 \begin{equation*}
-    V^{x}_{Y} = U^{x}_{Y} \text{ and } V^{x}_{S} = U^{x}_{S}, \; \forall \; x \in \mathcal{X},
+    V^{x}_{Y} = U^{xx}_{Y} \text{ and } V^{x}_{S} = U^{xx}_{S}, \; \forall \; x \in \mathcal{X},
 \end{equation*}
 so that
 \begin{equation}
 \label{eq:equivalence_theta_x_delta_xx}
-    \theta^{x} = \delta^{x x} \; \forall \; x \in \mathcal{X}.
+    \theta^{x} = \delta^{x x}, \; \forall \; x \in \mathcal{X}.
 \end{equation}
 Under the assumption of conditional homoscedasticity stated in the paper, it follows that
 \begin{equation*}
@@ -205,7 +205,7 @@ Under the assumption of conditional homoscedasticity stated in the paper, it fol
 where we denote
 \begin{equation}
 \label{eq:g_definition}
-    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) \; \forall \; x_{i}, x_{j} \in \mathcal{X}.
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{equation}
 
 \section{Derivation of \texorpdfstring{\(|\theta - \delta|\)}{|theta - delta|} in the Binary Covariate Setting}
@@ -225,7 +225,7 @@ This expression highlights that the distance between the two parameters is drive
 To derive a formula for \(|\theta - \delta|\), let us further simplify the setting by assuming that \(S\) is a perfect surrogate for \(Y\) with homogeneous treatment effects across covariate groups:
 \begin{equation*}
     \mu^{x}_{Y_{1}} - \mu^{x}_{Y_{0}} =
-    \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0 ; \forall \; x \in \{0,1\}.
+    \mu^{x}_{S_{1}} - \mu^{x}_{S_{0}} = \Delta > 0, \; \forall \; x \in \{0,1\}.
 \end{equation*}
 In this setting, we can easily compute the terms in Equation~\eqref{eq:distance_theta_delta_binary_covariate} using Equation~\eqref{eq:g_definition}:
 \begin{align*}
@@ -249,7 +249,7 @@ We now compute analytically the supremum of \(|\theta - \delta|\) with respect t
 \end{equation*}
 where 
 \begin{equation*}
-    g_{\Delta}(x) = \Phi(\Delta + x) + \Phi(\Delta - x) \; \forall \; x \in \mathbb{R}.
+    g_{\Delta}(x) = \Phi(\Delta + x) + \Phi(\Delta - x), \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 Then, it follows that
 \begin{equation*}
@@ -257,12 +257,12 @@ Then, it follows that
 \end{equation*}
 Moreover, since 
 \begin{equation*}
-    g_{\Delta}(-x) = g_{\Delta}(x) \; \forall \; x \in \mathbb{R},
+    g_{\Delta}(-x) = g_{\Delta}(x), \; \forall \; x \in \mathbb{R},
 \end{equation*}
 we only have to optimize \(g_{\Delta}\) over \(\R_{+}\). Observe that the derivative of \(g_{\Delta}\) is given by
 \begin{align*}
     g'_{\Delta}(x) & = \phi(\Delta + x) - \phi(\Delta - x) \\
-    & = \frac{1}{\sqrt{2 \pi}} \left( e^{-\frac{(\Delta + x)^2}{2}} - e^{-\frac{(\Delta - x)^2}{2}} \right) \; \forall \; x \in \R_{+},
+    & = \frac{1}{\sqrt{2 \pi}} \left( e^{-\frac{(\Delta + x)^2}{2}} - e^{-\frac{(\Delta - x)^2}{2}} \right), \; \forall \; x \in \R_{+},
 \end{align*}
 where \(\phi\) is the standard normal PDF. Then, the critical points of \(g_{\Delta}\) satisfy this equation:
 \begin{equation*}
@@ -270,7 +270,7 @@ where \(\phi\) is the standard normal PDF. Then, the critical points of \(g_{\De
 \end{equation*}
 which has only one solution \(x = 0\), since we assumed that \(\Delta > 0\). Moreover, we have that
 \begin{equation*}
-    g'_{\Delta}(x) < 0 \; \forall \; x \in \R_{+}.
+    g'_{\Delta}(x) < 0, \; \forall \; x \in \R_{+}.
 \end{equation*}
 This implies that \(g_{\Delta}\) is strictly decreasing over \(\R_{+}\), so that
 \begin{align*}
@@ -334,7 +334,7 @@ We now compute analytically the supremum of \(|\theta - \delta|\) with respect t
 \end{align*}
 where
 \begin{equation*}
-    h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 [(x + \Delta)^2 + x^2]}} \right) \; \forall \; x \in \mathbb{R}.
+    h_{\Delta, m, v}(x) = \Phi \left( \frac{m \Delta}{\sqrt{1 + v^2 [(x + \Delta)^2 + x^2]}} \right), \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 Then, it follows that
 \begin{equation*}
@@ -342,7 +342,7 @@ Then, it follows that
 \end{equation*}
 Notice that since \(x\) only appears in the denominator of the argument of \(\Phi\), finding the extrema of \(h_{\Delta, m, v}\) is equivalent to finding the extrema of the function \(k_{\Delta, m, v}\) defined as follows:
 \begin{equation*}
-    k_{\Delta, m, v}(x) = 1 + v^2 [(x + \Delta)^2 + x^2] = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2) \; \forall \; x \in \mathbb{R}.
+    k_{\Delta, m, v}(x) = 1 + v^2 [(x + \Delta)^2 + x^2] = 1 + v^2 (2 x^2 + 2 \Delta x + \Delta^2), \; \forall \; x \in \mathbb{R}.
 \end{equation*}
 It is easy to see that
 \begin{align*}
@@ -376,12 +376,12 @@ This appendix provides a formal definition of regularity for Bayesian models and
   \begin{itemize}[leftmargin=*]
     \item \textbf{Kullback-Leibler support of the prior}: The prior \(\pi\) assigns positive mass to every Kullback-Leibler neighborhood of the true parameter \(\phi^{*}\):
     \begin{equation*}
-      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0 ; \forall \; \varepsilon \in \R_{+},
+      \pi \left( \left\{ \phi : D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi}) < \varepsilon \right\} \right) > 0, \; \forall \; \varepsilon \in \R_{+},
     \end{equation*}
     where \(D_{\mathrm{KL}}(f_{\phi^{*}} \| f_{\phi})\) is the Kullback-Leibler divergence of \(f_{\phi}\) from \(f_{\phi^{*}}\).
     \item \textbf{Identifiability}: The model is identifiable: 
     \begin{equation*}
-        f_{\phi} \neq f_{\phi'} ; \forall \; \phi \neq \phi'.
+        f_{\phi} \neq f_{\phi'}, \; \forall \; \phi \neq \phi'.
     \end{equation*}
   \end{itemize}
 \end{definition}
@@ -431,7 +431,7 @@ Finally, to compute the probability on the left-hand side of Equation~\eqref{eq:
     \mathbb{P} \left( BF_{n} = x_{k} \mid V_{S} = v_{S} > \frac{1}{2} \right) = \binom{n}{k} v_{S}^{k}(1-v_{S})^{n-k}, \quad k = 0, \ldots, n.
 \end{equation*}
 
-\section{Simulation Study: Data-Generating Processes and Implementation Details}
+\section{Simulation Study: 1Data-Generating Processes and Implementation Details}
 \label{app:simulation_details}
 
 This appendix describes the data-generating processes and the Markov chain Monte Carlo implementation details for the simulation study in Section~\ref{sec:simulation_study} of the main paper.
@@ -477,6 +477,7 @@ In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\f
         \mu^* &= (6,\, 6,\, 2.5,\, 2.5)^\top, &
         \Sigma^* &= I_2 \otimes \begin{bmatrix} 3 & 3 \\ 3 & 3.1 \end{bmatrix}.
     \end{align*}
+    where \(\otimes\) denotes the Kronecker product.
     \item \textbf{Setting 3 (Imperfect surrogate):} The potential outcomes are generated as follows:
     \begin{equation*}
     \begin{array}{l}
@@ -519,7 +520,6 @@ In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\f
         \Sigma^{0} &= I_2 \otimes \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}, &
         \Sigma^{1} &= I_2 \otimes \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix},
     \end{align*}
-    where \(\otimes\) denotes the Kronecker product.
     \item \textbf{Setting 6 (Gaussian covariate):} The potential outcomes are generated as follows:
     \begin{equation*}
     \begin{array}{rl}

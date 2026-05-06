@@ -203,9 +203,9 @@ where \(\mu^{X_{i}}\) and \(\Sigma^{X_{i}}\) are the mean vector and covariance 
 Specifically, consider the following two assumptions:
 \begin{itemize}[leftmargin=*]
     \item \textbf{Conditional Orthogonality}:
-    \[ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0 ; \forall \; x \in \mathcal{X}. \]
+    \[ \Sigma^{x}_{Y_{1} Y_{0}} = \Sigma^{x}_{S_{1} S_{0}} = 0, \; \forall \; x \in \mathcal{X}. \]
     \item \textbf{Conditional Homoscedasticity}:
-    \[ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2} ; \forall \; x \in \mathcal{X}. \]
+    \[ \Sigma^{x}_{Y_{1} Y_{1}} = \Sigma^{x}_{S_{1} S_{1}} = \Sigma^{x}_{Y_{0} Y_{0}} = \Sigma^{x}_{S_{0} S_{0}} = \frac{1}{2}, \; \forall \; x \in \mathcal{X}. \]
 \end{itemize}
 Then, it follows that
 \begin{equation*}
@@ -213,7 +213,7 @@ Then, it follows that
 \end{equation*}
 where
 \begin{equation*}
-    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right) ; \forall \; x_{i}, x_{j} \in \mathcal{X}.
+    g(x_{i}, x_{j}) = \Phi \left( \mu^{x_{i}}_{Y_{1}} - \mu^{x_{j}}_{Y_{0}} \right) - \Phi \left( \mu^{x_{i}}_{S_{1}} - \mu^{x_{j}}_{S_{0}} \right), \; \forall \; x_{i}, x_{j} \in \mathcal{X}.
 \end{equation*}
 Without the two assumptions above, the formula for \(g\) still involves a difference of Gaussian CDFs with arguments depending on conditional variances and covariances, leading to a more cumbersome expression. The full derivation is given in \ref{app:derivation_theta_delta}.
 
@@ -275,7 +275,7 @@ where the first supremum is proved analytically in \ref{app:binary_covariate_der
 
 Let us now consider a setting where \(f = \mathcal{N}(m,v^2)\) and the mean potential outcomes are linear functions of the covariate:
 \begin{equation*}
-    \mu^{x} = x \boldsymbol{\beta} ; \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
+    \mu^{x} = x \boldsymbol{\beta}, \; \forall \; x \in \mathbb{R}, \quad \text{where} \quad \boldsymbol{\beta} = (\beta_{Y_{1}}, \beta_{S_{1}}, \beta_{Y_{0}}, \beta_{S_{0}})^{\top}.
 \end{equation*}
 As we show in \ref{app:gaussian_covariate_derivation}, the general formulas for \(\theta\) and \(\delta\) are non-trivial functions of the slope parameter \(\boldsymbol{\beta}\) and the covariate distribution parameters \(m\) and \(v\). Then, to simplify the analysis, let us assume perfect surrogacy by imposing the following assumption:
 \begin{equation}
@@ -378,7 +378,7 @@ The first model we consider excludes covariates, and therefore more closely alig
     \Omega & \sim \; \text{LKJ}(\tau),
   \end{aligned}
 \end{equation}
-where we place a Gaussian prior on the mean vector \(\mu\) and we adopt a separation strategy \citep{barnard2000modeling} for the covariance matrix \(\Sigma\), decomposing it into a correlation matrix \(\Omega\) and a scale vector \(\sigma_{1:4}\). This allows us to specify easily interpretable priors: a Lewandowski-Kurowicka-Joe (LKJ) prior \citep{lewandowski2009generating} for the correlation and a half-normal prior for the scale.
+where we place a Gaussian prior on the mean vector \(\mu\) and we adopt a separation strategy \citep{barnard2000modeling} for the covariance matrix \(\Sigma\), decomposing it into a correlation matrix \(\Omega\) and a scale vector \(\sigma_{1:4}\). This yields interpretable priors: a Lewandowski-Kurowicka-Joe (LKJ) \citep{lewandowski2009generating} for the correlations and a half-normal for the scale.
 
 However, one of the main advantages of our proposed Bayesian framework is its ability to naturally incorporate baseline covariates into the data-generating mechanism. To illustrate this feature, we consider a second model that introduces covariates through a linear regression structure, specifying \(F_{i}\) from Equation~\eqref{eq:data_generating_process} as follows:
 \begin{equation}
@@ -412,7 +412,7 @@ It is easy to verify that the blue entries in the correlation matrix from Equati
 
 In principle, one could address this non-identifiability by imposing assumptions on the correlation matrix \(\Omega\), such as assuming independent potential outcomes by setting non-identifiable entries to zero. However, this is often an unreasonable restriction in practice. Therefore, it is necessary to determine how the posterior distribution of \(\theta\) can be meaningfully interpreted without relying on such strong assumptions.
 
-Under standard regularity conditions - positive prior mass to every Kullback-Leibler (KL) neighborhood of the true parameters and model identifiability - Schwartz's theorem \citep{schwartz1965bayes} guarantees that the posterior concentrates around the true parameter value (see \ref{app:posterior_consistency} for the formal statement and definition of regularity). While our model satisfies the first condition, it lacks identifiability, meaning posterior concentration around the true \(\theta\) is not guaranteed. Instead, the posterior follows the behavior characterized by \cite{gustafson2010bayesian}:
+Under standard regularity conditions - positive prior mass to every Kullback-Leibler (KL) neighborhood of the true parameters and model identifiability - Schwartz's theorem \citep{schwartz1965bayes} guarantees that the posterior concentrates around the true parameter value (see \ref{app:posterior_consistency} for the formal statement and definition of regularity). While our model satisfies the first condition, it lacks identifiability, meaning posterior concentration around the true \(\theta\) is not guaranteed. Instead, the posterior behaves as described in \cite{gustafson2010bayesian}:
 \begin{theorem}
   Let the true data-generating process be defined as
   \begin{equation*}
@@ -470,7 +470,7 @@ As for the choice of \(v_{S}\), instead, to compute a Bayes factor for the hypot
 \end{equation*}
 where the prior for \(V_{S}\) is a Beta distribution renormalized on \( \left( \frac{1}{2}, 1 \right)\):
 \begin{equation*}
-    p(V_{S}) = \frac{\text{Beta}(V_{S} \mid a, b)}{\int_{\frac{1}{2}}^{1} \text{Beta}(v \mid a, b) \, dv} \; \forall \; V_{S} \in \left(\tfrac{1}{2}, 1\right),
+    p(V_{S}) = \frac{\text{Beta}(V_{S} \mid a, b)}{\int_{\frac{1}{2}}^{1} \text{Beta}(v \mid a, b) \, dv}, \; \forall \; V_{S} \in \left(\tfrac{1}{2}, 1\right),
 \end{equation*}
 with \(a, b > 0\) suitably chosen prior parameters, and \(\widehat{V}_{S} = \frac{1}{n} \sum_{i=1}^{n} \one(S_{1i} > S_{0i})\). Note that \(\widehat{V}_{S}\) cannot be computed directly from the observed data, since \(S_{1i}\) and \(S_{0i}\) are never jointly observed for any unit \(i\). However, as we shall see in a moment, this is not an issue, because the procedure to select \(v_{s}\) only requires the sampling distribution of \(\widehat{V}_{S}\) under the null and alternative hypothesis, rather than an observed value for it.
 
@@ -622,10 +622,12 @@ A further limitation, shared with most single-trial surrogate evaluation methods
 \backmatter
 
 \section*{Funding and Acknowledgments}
-The authors declare no conflicts of interest. This work was supported by NIDDK grant R01DK118354 (PI:Parast). The Diabetes Control and Complications Trial (DCCT) and its follow-up the Epidemiology of Diabetes Interventions and Complications (EDIC) study were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not represent analyses or conclusions of the DCCT/EDIC study group, NIDDK-CR, or NIH. The authors used AI tools (Claude, Anthropic) to assist with manuscript preparation and R package development.
+
+The authors declare no conflicts of interest. This work was supported by NIDDK grant R01DK118354 (PI:Parast). The Diabetes Control and Complications Trial (DCCT) and its follow-up, the Epidemiology of Diabetes Interventions and Complications (EDIC) study, were conducted by the DCCT/EDIC Research Group and supported by National Institutes of Health (NIH) grants and contracts and by the General Clinical Research Center Program (GCRC), the National Center for Research Resources (NCRR). The resources from the DCCT/EDIC study were supplied by NIDDK Central Repository (NIDDK-CR). This manuscript was not prepared under the auspices of the DCCT/EDIC study and does not reflect the views of the DCCT/EDIC study group, NIDDK-CR, or NIH. AI tools (Claude, Anthropic) were used to assist with manuscript preparation and R package development.
 
 \section*{Data Availability}
-The DCCT data were obtained from the NIDDK Central Repository (NIDDK-CR) and are available to researchers upon request to NIDDK-CR.
+
+The DCCT data were obtained from the NIDDK-CR and are available upon request.
 
 \bibliographystyle{biom}
 \bibliography{BSET_references}

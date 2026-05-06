@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  6 MAY 2026 11:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.28)  6 MAY 2026 13:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -751,23 +751,22 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [10]
-Underfull \vbox (badness 7796) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 11
  []
 
 [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
 
 [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (6.0349pt too wide) in paragraph at lines 420--422
+\OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
+ []
+
+
+Underfull \vbox (badness 1603) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -775,19 +774,11 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [13]
-Overfull \hbox (6.0349pt too wide) in paragraph at lines 420--422
-\OT1/cmr/m/it/12 where $\OML/cmm/m/it/12 D[]$ \OT1/cmr/m/it/12 is the ob-served data for unit $\OML/cmm/m/it/12 i$ \OT1/cmr/m/it/12 and $\OML/cmm/m/it/12 f[]$ \OT1/cmr/m/it/12 is the true dis-tri-bu-tion of the data, parametrized
- []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 14
  []
 
 [14]
-Underfull \vbox (badness 7344) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 15
  []
@@ -821,9 +812,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
@@ -849,7 +837,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 24
  []
 
-[24]
+[24]) AED endfloat: Processing end Figures and Tables
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -857,7 +845,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
-[25]) AED endfloat: Processing end Figures and Tables
+[25]
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
@@ -994,12 +982,12 @@ Here is how much of TeX's memory you used:
  37450 multiletter control sequences out of 15000+600000
  575591 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,79p,1861b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,1861b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{definition.1} has been referenced but does not exist, replaced by a fixed one
 
  </Users/pc29642/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on BSET.pdf (33 pages, 640895 bytes).
+Output written on BSET.pdf (33 pages, 640945 bytes).
 PDF statistics:
  705 PDF objects out of 1000 (max. 8388607)
  579 compressed objects within 6 object streams
