@@ -13,7 +13,7 @@ Burzykowski, T., Molenberghs, G., and Buyse, M. (2005).
 \bibitem[\protect\citeauthoryear{Buyse}{Buyse}{2010}]{buyse2010generalized}
 Buyse, M. (2010).
 \newblock Generalized pairwise comparisons of prioritized outcomes in the two-sample problem.
-\newblock {\em Statistics in medicine} {\bf 29,} 3245--3257.
+\newblock {\em Statistics in Medicine} {\bf 29,} 3245--3257.
 
 \bibitem[\protect\citeauthoryear{Buyse and Molenberghs}{Buyse and Molenberghs}{1998}]{buyse1998criteria}
 Buyse, M. and Molenberghs, G. (1998).
@@ -23,7 +23,7 @@ Buyse, M. and Molenberghs, G. (1998).
 \bibitem[\protect\citeauthoryear{Colantuoni and Rosenblum}{Colantuoni and Rosenblum}{2015}]{colantuoni2015leveraging}
 Colantuoni, E. and Rosenblum, M. (2015).
 \newblock Leveraging prognostic baseline variables to gain precision in randomized trials.
-\newblock {\em Statistics in medicine} {\bf 34,} 2602--2617.
+\newblock {\em Statistics in Medicine} {\bf 34,} 2602--2617.
 
 \bibitem[\protect\citeauthoryear{{DCCT}}{{DCCT}}{1987}]{dcct1987diabetes}
 {DCCT} (1987).
@@ -33,7 +33,7 @@ Colantuoni, E. and Rosenblum, M. (2015).
 \bibitem[\protect\citeauthoryear{{D}{C}{C}{T}}{{D}{C}{C}{T}}{1993}]{diabetes1993effect}
 {D}{C}{C}{T} (1993).
 \newblock Diabetes control and complications trial research group: The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus.
-\newblock {\em New England journal of medicine} {\bf 329,} 977--986.
+\newblock {\em New England Journal of Medicine} {\bf 329,} 977--986.
 
 \bibitem[\protect\citeauthoryear{Elliott}{Elliott}{2023a}]{annurev:/content/journals/10.1146/annurev-statistics-032921-035359}
 Elliott, M.~R. (2023a).
@@ -43,22 +43,12 @@ Elliott, M.~R. (2023a).
 \bibitem[\protect\citeauthoryear{Elliott}{Elliott}{2023b}]{elliott2023surrogate}
 Elliott, M.~R. (2023b).
 \newblock Surrogate endpoints in clinical trials.
-\newblock {\em Annual Review of Statistics and its Application} {\bf 10,} 75--96.
+\newblock {\em Annual Review of Statistics and Its Application} {\bf 10,} 75--96.
 
 \bibitem[\protect\citeauthoryear{Fay, Brittain, Shih, Follmann, and Gabriel}{Fay et~al.}{2018}]{fay2018causal}
 Fay, M.~P., Brittain, E.~H., Shih, J.~H., Follmann, D.~A., and Gabriel, E.~E. (2018).
 \newblock Causal estimands and confidence intervals associated with wilcoxon-mann-whitney tests in randomized experiments.
 \newblock {\em Statistics in Medicine} {\bf 37,} 2923--2937.
-
-\bibitem[\protect\citeauthoryear{{FDA}}{{FDA}}{1992}]{FDA_AcceleratedApprovalProgram2024}
-{FDA} (1992).
-\newblock U.s. food and drug administration, accelerated approval program.
-\newblock FDA — NDA and BLA Approvals.
-
-\bibitem[\protect\citeauthoryear{FDA}{FDA}{2025}]{FDA_approved}
-FDA (2025).
-\newblock Table of surrogate endpoints that were the basis of drug approval or licensure.
-\newblock {https://www.fda.gov/drugs/development-resources/table-surrogate-endpoints-were-basis-drug-approval-or-licensure}.
 
 \bibitem[\protect\citeauthoryear{Ferguson}{Ferguson}{1973}]{ferguson1973bayesian}
 Ferguson, T.~S. (1973).
@@ -73,7 +63,7 @@ Frangakis, C.~E. and Rubin, D.~B. (2002).
 \bibitem[\protect\citeauthoryear{Freedman, Graubard, and Schatzkin}{Freedman et~al.}{1992}]{freedman1992statistical}
 Freedman, L.~S., Graubard, B.~I., and Schatzkin, A. (1992).
 \newblock Statistical validation of intermediate endpoints for chronic diseases.
-\newblock {\em Statistics in medicine} {\bf 11,} 167--178.
+\newblock {\em Statistics in Medicine} {\bf 11,} 167--178.
 
 \bibitem[\protect\citeauthoryear{Ghosal and Van~der Vaart}{Ghosal and Van~der Vaart}{2017}]{ghosal2017fundamentals}
 Ghosal, S. and Van~der Vaart, A.~W. (2017).
@@ -88,7 +78,7 @@ Gilbert, P.~B. and Hudgens, M.~G. (2008).
 \bibitem[\protect\citeauthoryear{Gustafson}{Gustafson}{2010}]{gustafson2010bayesian}
 Gustafson, P. (2010).
 \newblock Bayesian inference for partially identified models.
-\newblock {\em The international journal of biostatistics} {\bf 6,}.
+\newblock {\em The International Journal of Biostatistics} {\bf 6,}.
 
 \bibitem[\protect\citeauthoryear{Hoeffding}{Hoeffding}{1992}]{hoeffding1992class}
 Hoeffding, W. (1992).
@@ -98,7 +88,7 @@ Hoeffding, W. (1992).
 \bibitem[\protect\citeauthoryear{Holland}{Holland}{1986}]{holland1986statistics}
 Holland, P.~W. (1986).
 \newblock Statistics and causal inference.
-\newblock {\em Journal of the American statistical Association} {\bf 81,} 945--960.
+\newblock {\em Journal of the American Statistical Association} {\bf 81,} 945--960.
 
 \bibitem[\protect\citeauthoryear{Huang and Gilbert}{Huang and Gilbert}{2011}]{huang2011comparing}
 Huang, Y. and Gilbert, P.~B. (2011).
@@ -128,7 +118,7 @@ Li, F., Ding, P., and Mealli, F. (2023).
 \bibitem[\protect\citeauthoryear{Mann and Whitney}{Mann and Whitney}{1947}]{mann1947test}
 Mann, H.~B. and Whitney, D.~R. (1947).
 \newblock On a test of whether one of two random variables is stochastically larger than the other.
-\newblock {\em The annals of mathematical statistics} pages 50--60.
+\newblock {\em The Annals of Mathematical Statistics} pages 50--60.
 
 \bibitem[\protect\citeauthoryear{Miller and Harrison}{Miller and Harrison}{2018}]{miller2018mixture}
 Miller, J.~W. and Harrison, M.~T. (2018).
@@ -158,7 +148,7 @@ Parast, L., McDermott, M.~M., and Tian, L. (2016).
 \bibitem[\protect\citeauthoryear{Rubin}{Rubin}{1974}]{rubin1974estimating}
 Rubin, D.~B. (1974).
 \newblock Estimating causal effects of treatments in randomized and nonrandomized studies.
-\newblock {\em Journal of educational Psychology} {\bf 66,} 688.
+\newblock {\em Journal of Educational Psychology} {\bf 66,} 688.
 
 \bibitem[\protect\citeauthoryear{Rudin}{Rudin}{1976}]{rudin1976principles}
 Rudin, W. (1976).
@@ -173,15 +163,27 @@ Schwartz, L. (1965).
 \bibitem[\protect\citeauthoryear{{Stan Development Team}}{{Stan Development Team}}{2023a}]{rstan2023}
 {Stan Development Team} (2023a).
 \newblock {RStan}: the {R} interface to {Stan}, version 2.21.8.
+\newblock Accessed September 18, 2025.
 
 \bibitem[\protect\citeauthoryear{{Stan Development Team}}{{Stan Development Team}}{2023b}]{stan2023}
 {Stan Development Team} (2023b).
 \newblock Stan modeling language users guide and reference manual, version 2.33.
+\newblock Accessed September 18, 2025.
 
 \bibitem[\protect\citeauthoryear{Thas, Neve, Clement, and Ottoy}{Thas et~al.}{2012}]{thas2012probabilistic}
 Thas, O., Neve, J.~D., Clement, L., and Ottoy, J.-P. (2012).
 \newblock Probabilistic index models.
 \newblock {\em Journal of the Royal Statistical Society Series B: Statistical Methodology} {\bf 74,} 623--671.
+
+\bibitem[\protect\citeauthoryear{{U.S. Food and Drug Administration}}{{U.S. Food and Drug Administration}}{1992}]{FDA_AcceleratedApprovalProgram2024}
+{U.S. Food and Drug Administration} (1992).
+\newblock Accelerated approval program.
+\newblock Accessed September 18, 2025.
+
+\bibitem[\protect\citeauthoryear{{U.S. Food and Drug Administration}}{{U.S. Food and Drug Administration}}{2025}]{FDA_approved}
+{U.S. Food and Drug Administration} (2025).
+\newblock Table of surrogate endpoints that were the basis of drug approval or licensure.
+\newblock Accessed September 18, 2025.
 
 \bibitem[\protect\citeauthoryear{Wang and Taylor}{Wang and Taylor}{2002}]{wang2002measure}
 Wang, Y. and Taylor, J.~M. (2002).
