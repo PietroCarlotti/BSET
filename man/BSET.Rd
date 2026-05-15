@@ -160,8 +160,8 @@ df_no_X <- data.frame(
   Z = data_no_X$Z
 )
 
-# Run BSET without covariates (requires Stan compilation, ~1-2 minutes)
-\dontrun{
+# Run BSET without covariates (requires Stan compilation, ~3 minutes)
+\donttest{
 result_no_X <- BSET(
   data = df_no_X,
   Y = "Y",
@@ -193,8 +193,8 @@ df_X <- data.frame(
   X = data_X$X
 )
 
-# Run BSET with covariates (requires Stan compilation, ~1-2 minutes)
-\dontrun{
+# Run BSET with covariates (requires Stan compilation, ~3 minutes)
+\donttest{
 result_X <- BSET(
   data = df_X,
   Y = "Y",

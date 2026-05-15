@@ -272,8 +272,8 @@ with \(\Sigma\), \(\sigma_k\), and \(\Omega\) as above.</p>
 <span class="r-in"><span>  Z <span class="op">=</span> <span class="va">data_no_X</span><span class="op">$</span><span class="va">Z</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Run BSET without covariates (requires Stan compilation, ~1-2 minutes)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># Run BSET without covariates (requires Stan compilation, ~3 minutes)</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">result_no_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">df_no_X</span>,</span></span>
 <span class="r-in"><span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span></span>
@@ -283,7 +283,7 @@ with \(\Sigma\), \(\sigma_k\), and \(\Omega\) as above.</p>
 <span class="r-in"><span>  n_chains <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>  n_iter <span class="op">=</span> <span class="fl">500</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate data from the setting of Carlotti and Parast (2026) with a binary covariate</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
@@ -305,8 +305,8 @@ with \(\Sigma\), \(\sigma_k\), and \(\Omega\) as above.</p>
 <span class="r-in"><span>  X <span class="op">=</span> <span class="va">data_X</span><span class="op">$</span><span class="va">X</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Run BSET with covariates (requires Stan compilation, ~1-2 minutes)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># Run BSET with covariates (requires Stan compilation, ~3 minutes)</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">result_X</span> <span class="op">&lt;-</span> <span class="fu">BSET</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">df_X</span>,</span></span>
 <span class="r-in"><span>  Y <span class="op">=</span> <span class="st">"Y"</span>,</span></span>
@@ -317,7 +317,7 @@ with \(\Sigma\), \(\sigma_k\), and \(\Omega\) as above.</p>
 <span class="r-in"><span>  n_chains <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>  n_iter <span class="op">=</span> <span class="fl">500</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -2,7 +2,7 @@ Package: BSET
 Type: Package
 Title: A Bayesian Surrogate Evaluation Test
 Version: 1.0
-Date: 2026-05-04
+Date: 2026-05-15
 Authors@R: c(
     person("Pietro", "Carlotti", role = c("aut", "cre"),
            email = "pietro.carlotti@utexas.edu"),
@@ -13,8 +13,9 @@ Description: An implementation of the Bayesian Surrogate Evaluation Test
     trials. Provides hypothesis testing tools to evaluate whether a
     surrogate can reliably estimate the causal effect of a treatment on a
     primary outcome. Implements the imputation-based Bayesian methodology
-    of Carlotti and Parast (2026), extending the frequentist rank-based
-    approach of Parast et al. (2024). Addresses key limitations of the
+    of Carlotti and Parast (2026) <https://arxiv.org/abs/2603.14381>,
+    extending the frequentist rank-based approach of Parast et al. (2024)
+    <doi:10.1093/biometrics/ujad035>. Addresses key limitations of the
     frequentist method, including the lack of causal interpretability and
     the inability to adjust for covariates in the estimation process.
 License: GPL-3
