@@ -499,9 +499,9 @@ In all six settings, the treatment indicator \(Z_i \iid \text{Bernoulli}\left(\f
     \begin{equation*}
     \begin{array}{rl}
         S_{1i} & \iid \text{LogNormal}(2.5,\, 1.5^2), \\
-        Y_{1i} \mid S_{1i} & \indepsim 2.0 + 1.2\sqrt{S_{1i}} + 0.3\,e^{S_{1i}/500} + \text{LogNormal}(0,\, 0.3), \\
+        Y_{1i} \mid S_{1i} & \indepsim 2.0 + 1.2\sqrt{S_{1i}} + 0.3\,e^{\frac{S_{1i}}{500}} + \text{LogNormal}(0,\, 0.3), \\
         S_{0i} & \iid \text{LogNormal}(0.5,\, 1.5^2), \\
-        Y_{0i} \mid S_{0i} & \indepsim 0.8\sqrt{S_{0i}} + 0.2\,e^{S_{0i}/50} + \text{LogNormal}(0,\, 0.3),
+        Y_{0i} \mid S_{0i} & \indepsim 0.8\sqrt{S_{0i}} + 0.2\,e^{\frac{S_{0i}}{50}} + \text{LogNormal}(0,\, 0.3),
     \end{array}
     \quad i = 1, \ldots, n.
     \end{equation*}
