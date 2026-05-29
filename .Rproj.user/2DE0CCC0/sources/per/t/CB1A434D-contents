@@ -1,0 +1,27 @@
+cat("\014")
+
+# Update documentation and install package
+devtools::document()
+devtools::install(upgrade = "never")
+
+library(BSET)
+
+# Run CRAN checks
+devtools::check(cran = TRUE, vignettes = TRUE)
+
+# Build package
+devtools::build(path = ".")
+
+# Build manual
+devtools::build_manual(path = ".")
+
+# Build vignettes
+# devtools::build_vignettes()
+
+# Build pkgdown website
+pkgdown::build_site()
+
+# Windows specific checks
+# devtools::check_win_devel()
+# devtools::check_win_release()
+# foghorn::winbuilder_queue()
